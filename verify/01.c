@@ -23,6 +23,7 @@ Run (e.g. BASH syntax):  ./01
       - Pick up random_r as a weak_alias of __random_r
       - TYPE_0 is #define'd as naught in random_r.c
     */
+#  include <errno.h>
 #  include <stdlib.h>
 #  define TYPE_0 0
 
