@@ -113,8 +113,8 @@ C     Calculate conversion factor
 
       factor = exp(log(2.0)/40)
 
-C     Loop over all integer angles in range [-90:+90] ([-PI/2:+PI/2])
-C     - Call ln_check with each angle converted to radians
+C     Loop over 41 values between sqrt(2)/2 and sqrt(2)
+C     - Call ln_check with each value
 C     - Print results
 
       x = sqrt(2.0) / 2.0
@@ -124,6 +124,12 @@ C     - Print results
         print*,i,x,yshift,truln,nasln,tayln,errln
         x = x * factor
       enddo
+
+C     Loop over values from 1/32768 (2**-15) to sqrt(2) in exponential
+C     steps of sqrt(2)/2
+C     - Call ln_check with each value
+C     - Print results
+
 
       x = 1.0 / 32768.0
       do i=1,16
