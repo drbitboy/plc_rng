@@ -1,7 +1,16 @@
 """
+Purpose:  verify that Gaussian-distribution random number data in
+          file Compact_AOI_Test.L5X are indeed normal
+
+
 Usage:
 
+  make
+
+    OR
+
   python parse_gng_data_run_anderson_darling.py < Compact_AOI_Test.L5X
+
 
 Expected results for Compact_AOI_Test.L5X*
 
@@ -38,33 +47,61 @@ import numpy
 
 do_debug = 'DEBUG' in os.environ
 
-### Regular exprsion fo
-rgx_start = re.compile('^<Array DataType="REAL" Dimensions="1000"')
-rgx_end = re.compile('^</Array>')
+if "__main__" == __name__:
 
-ct = -1
-lt_vals = list()
-for rawline in sys.stdin:
+  ### Regular expressions for start and end of data
+  ### - Assume gaussian data are only data in file with a dimension
+  ###   greater than 99
 
-  if do_debug: print(dict(ct=ct,rawline=rawline))
+  rgx_start = re.compile('^<Array DataType="REAL" Dimensions="\d\d\d+"')
+  rgx_end = re.compile('^</Array>')
 
-  if 0>ct:
-    if rgx_start.match(rawline.strip()): ct = 0
-    continue
+  ### ct is -1 until line matching rgx_start is found
+  ### lt_vals will contain the data
 
-  if rgx_end.match(rawline.strip()): break
+  ct = -1
+  lt_vals = list()
 
-  lt_vals.append(float(rawline.split('"')[3]))
-  ct += 1
+  ### Loop over lines in STDIN
 
-arr = numpy.array(lt_vals)
+  for rawline in sys.stdin:
 
-print(dict(mean=arr.mean(),stddev=arr.std(),count=ct))
+    if do_debug: print(dict(ct=ct,rawline=rawline))
 
-try:
-  import scipy.stats as ss
-except:
-  ss = False
+    ### While ct is -1, look for start line
 
-if ss: print(dict(anderson=ss.anderson(arr,dist='norm')))
-else : print('Anderson-Darling tests are not available via scipy.stats on this system')
+    if 0>ct:
+
+      ### If start line is found, initialize count to zero; continue
+      ### to next line in loop in all cases
+
+      if rgx_start.match(rawline.strip()): ct = 0
+      continue
+
+    ### If end line is found, exit the loop
+
+    if rgx_end.match(rawline.strip()): break
+
+    ### Otherwise line is between start and end; parse fourth
+    ### quote-separated token as a floating point value, add it to
+    ### the list, and increment the count
+
+    lt_vals.append(float(rawline.split('"')[3]))
+    ct += 1
+
+  ### Convert the list to a numpy array; print the mean and std. dev.
+
+  arr = numpy.array(lt_vals)
+  print(dict(mean=arr.mean(),stddev=arr.std(),count=ct))
+
+  ### Try to import scipy.stats, to get the Anderson-Darling tests
+
+  try:
+    import scipy.stats as ss
+  except:
+    ss = False
+
+  ### Run the Anderson-Darling normality tests
+
+  if ss: print(dict(anderson=ss.anderson(arr,dist='norm')))
+  else : print('Anderson-Darling tests are not available via scipy.stats on this system')
