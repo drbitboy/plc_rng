@@ -2,6 +2,9 @@
 
 Programs to verify that the various algorithms used can be expected to produce, or have produced, correct results.
 
+## Usage
+
+    make
 
 ### 01.c, 01.h, stdlib_random_r.c
 
