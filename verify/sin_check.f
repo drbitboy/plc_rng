@@ -15,7 +15,7 @@ C Other resources:
 C
 C   https://www.ams.org/journals/mcom/1980-34-149/S0025-5718-1980-0551302-5/S0025-5718-1980-0551302-5.pdf
 C
-      subroutine check_sin(y,trusin,chbsin,taysin,ulpsin,errsin)
+      subroutine sin_check(y,trusin,chbsin,taysin,ulpsin,errsin)
       implicitnone
       real*4 y
       real*4 trusin
@@ -112,11 +112,11 @@ C     Calculate conversion factor
       rpd = datan(1d0) / 45d0
 
 C     Loop over all integer angles in range [-90:+90] ([-PI/2:+PI/2])
-C     - Call check_sin with each angle converted to radians
+C     - Call sin_check with each angle converted to radians
 C     - Print results
 
       do i=-90,90,1
-        call check_sin(i*rpd,trusin,chbsin,taysin,ulpsin,errsin)
+        call sin_check(i*rpd,trusin,chbsin,taysin,ulpsin,errsin)
         print*,i,trusin,chbsin,taysin,ulpsin,errsin
       enddo
       end

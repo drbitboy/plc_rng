@@ -3,17 +3,23 @@ FC=gfortran
 
 STDERR=/dev/null
 
-EXES=check_sin 02 01
+EXES=ln_check sin_check 02 01
 
 run: $(EXES:%=run_%)
 
-run_check_sin: check_sin
-	./$< | tee check_sin_results.txt | tail
+run_ln_check: ln_check
+	./$< | tee ln_check_results.txt | tail
+
+run_sin_check: sin_check
+	./$< | tee sin_check_results.txt | tail
 
 run_%: %
 	./$<
 
-check_sin: check_sin.f Makefile
+ln_check: ln_check.f Makefile
+	$(FC) $< -o $@
+
+sin_check: sin_check.f Makefile
 	$(FC) $< -o $@
 
 02: 02.c Makefile
@@ -26,4 +32,4 @@ check_sin: check_sin.f Makefile
 	|| ( echo Failed modified buildQ | tr Q \\n && false )
 
 clean:
-	$(RM) 01 02 check_sin *.exe *.exe.stackdump
+	$(RM) $(EXES) *.exe *.exe.stackdump
