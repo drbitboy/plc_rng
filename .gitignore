@@ -1,6 +1,6 @@
 *.exe
 *.py?
-x.x
-plc_programs/MicroLogix/GAUSSIAN_NUMBER_GENERATOR_BAK*.RSS
+x.*
+*_BAK*.RSS
 plc_programs/MicroLogix/Gaussian_number_generator*.RSS
 plc_programs/MicroLogix/Gaussian_number_generator*.pdf
