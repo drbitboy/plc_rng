@@ -2,7 +2,7 @@
 
 Purpose:
 
-  Verify that 16-bit LCG (a,b) pair does
+  Verify that 15-bit LCG (a,b) pair does
   not repeat in less than 32,768 steps
 
 

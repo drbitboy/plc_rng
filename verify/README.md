@@ -13,7 +13,7 @@ Verify that negative 32-bit seeds produce functionally identical results to posi
 
 ### 02.c
 
-Verify that 16-bit LCG (a=20077,b=12345) pair does not repeat in less than 32,768 steps
+Verify that 15-bit LCG (a=20077,b=12345) pair does not repeat in less than 32,768 steps
 
 
 ### check_sin.f
