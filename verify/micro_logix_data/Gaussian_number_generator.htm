@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
-<!-- saved from url=(0107)file:///C:/Users/drbit/AppData/Local/Temp/lu156124odvcz.tmp/lu156124odvdf.tmp/GNG_save_data_view_halted.htm -->
+<!-- saved from url=(0107)file:///C:/Users/drbit/AppData/Local/Temp/lu181805vja4c.tmp/lu181805vja4h.tmp/Gaussian_number_generator.htm -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   
@@ -12,32 +12,32 @@
 <h1></h1>
 <p>RSLogix Micro Project Report</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Processor Information</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:51</p>
+<p>Wednesday, January 01, 2020 - 12:36:56</p>
 <p> Processor Type: Bul.1763     MicroLogix 1100 Series B</p>
 <p> Processor Name: UNTITLED</p>
 <p> Total Memory Used: *</p>
 <p> Total Memory Left: *</p>
 <p> Program Files: 3</p>
-<p> Data Files: 13</p>
+<p> Data Files: 14</p>
 <p> Program ID: 0</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>I/O Configuration</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:52</p>
+<p>Wednesday, January 01, 2020 - 12:36:56</p>
 <p> 0     Bul.1763            MicroLogix 1100 Series B          </p>
 <p> 1                                                           </p>
 <p> 2                                                           </p>
 <p> 3                                                           </p>
 <p> 4                                                           </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Channel Configuration</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:52</p>
+<p>Wednesday, January 01, 2020 - 12:36:56</p>
 <p> CHANNEL 0 (SYSTEM) - Driver: DF1 Full Duplex</p>
 <p>    CHANNEL 0 (SYSTEM) - Driver: DF1 Full Duplex Edit Resource/Owner Timeout:  60</p>
 <p>    CHANNEL 0 (SYSTEM) - Driver: DF1 Full Duplex Passthru Link ID:  1</p>
@@ -78,10 +78,10 @@
 <p>    Contact:  </p>
 <p>    Location:  </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Program File List</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:52</p>
+<p>Wednesday, January 01, 2020 - 12:36:57</p>
 <p>Name </p>
 <p>Number </p>
 <p>Type </p>
@@ -105,12 +105,12 @@
 <p>LADDER </p>
 <p>  15 </p>
 <p>No </p>
-<p>  1970</p>
+<p>  2573</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File List</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:52</p>
+<p>Wednesday, January 01, 2020 - 12:36:57</p>
 <p>Name </p>
 <p>Number </p>
 <p>Type </p>
@@ -215,7 +215,7 @@
 <p>   512 </p>
 <p>   256 </p>
 <p>F11:255</p>
-<p>GNDATA3 </p>
+<p>GNGDATA3 </p>
 <p> 12 </p>
 <p>F </p>
 <p>Global </p>
@@ -223,26 +223,34 @@
 <p>   512 </p>
 <p>   256 </p>
 <p>F12:255</p>
+<p>LONG </p>
+<p> 13 </p>
+<p>L </p>
+<p>Global </p>
+<p>No </p>
+<p>    16 </p>
+<p>     8 </p>
+<p>L13:7</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
+<p>Wednesday, January 01, 2020 - 12:36:57</p>
 <p>Gaussian-distribution Random Number Generator (GNG/RNG)</p>
 <p>N.B. This is designed to generate a distribution with a mean of zero and a variance of unity.</p>
 <p>N.B. The natural logarithm approximation algorithm rungs only work with U1 values in the range [1/32768:sqrt(2)]</p>
 <p>N.B. The sine approximation algorithm rungs only work with argument in the range [-0.25:+1.25]</p>
 <p>N.B. The natural logarithm and sine approximations are accurate to about six significant digits; see ../../verify/ for more details</p>
+<p>N.B. A 16-bit INTEGER (word) LCG with (a,b) = (20077,12345) is mathematically correct, but arithmetic errors in precluded its use here</p>
 <p>- GNG uses the Box-Muller Transform</p>
 <p>  - Cf. https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform</p>
-<p>  - Not yet implemented</p>
-<p>    - Test harness is [RSLogix Micro Starter Lite],</p>
-<p>      - Which has neither LN nor COS, nor SIN instructions</p>
-<p>      - Unary NEG instruction used as placeholder for now</p>
+<p>  - Test harness is [RSLogix Micro Starter Lite + RSLogix Emulator 500],</p>
+<p>    - Which has neither LN nor COS, nor SIN instructions</p>
 <p>  - A pair of uniform-distribution random numbers (UDRNs) generate the inputs:  U1 and U2</p>
-<p>    - Uniform RNG uses a Linear Congruential Generator</p>
+<p>    - Uniform RNG uses a Linear Congruential Generator (LCG)</p>
 <p>      - Cf. https://en.wikipedia.org/wiki/Linear_congruential_generator</p>
 <p>    - LCG Seed algorithm sequence is [UDRN(i+1) = (UDRN(i) * a + b) MOD m]</p>
+<p>      - The following info regarding overflow is likely no longer true since the code switched to 32-bit LONGs in the LCGs</p>
 <p>      - [Overflow Trap] bit (S:5/0) must be cleared after LCG calculations to prevent Halt on Minor Fault</p>
 <p>      - 16-bit MUL and ADD, with [Math Overflow Selected] bit (S:2/14) set, implements effective modulus [m] of 32,768 (2**15)</p>
 <p>        - Sign (bit 15; 0x8000) of 16-bit seed is irrelevant to calculation</p>
@@ -268,16 +276,23 @@
 <p>B3:9</p>
 <p>0</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
 <p>Page 2  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
 <p>On [First Pass] (S:1/15):</p>
 <p>Ensure LCG 1 Seed 1 (N7:0) is initialized with zero</p>
 <p>Ensure [Math Overflow Selected] (S:2/14) is set so overflow will be allowed and work as needed when LCG algorithm is run</p>
 <p>Assign constants:</p>
 <p>- Square root of 2, SQRT2 (F8:22);</p>
-<p>- Natural logarithm of 2, LN2 (F8:20) </p>
+<p>- Natural logarithm of 2, LN2 (F8:20)</p>
+<p>- LCG (a,b,m) parameters:  LCG_A (L13:3); LCG_B (L13:4); LCG_M (L13:5)</p>
+<p>  - 32-bit LONGs</p>
+<p>  - (20077,12345,FFFF8000H=-32768) for 15-bit LCG:  32,768-value period</p>
+<p>    - Source:  empiral by the author</p>
+<p>  - (1103515245,12345,80000000H=-2147483648) for 31-bit LCG:  2,147,483,648-value period; source is GLIB</p>
+<p>    - Source:  GLIBC STDLIB e.g. cf. https://code.woboq.org/userspace/glibc/stdlib/random_r.c.html#360</p>
+<p>Clear (set values to zero) all data in four Data Files, GNGDATA0/1/2/3, that will hold 1024 GNG samples (256 samples per file)</p>
 <p>0001</p>
 <p>S:1</p>
 <p>15</p>
@@ -289,11 +304,10 @@
 <p> </p>
 <p>0&lt;</p>
 <p>Dest</p>
-<p>N7:0</p>
+<p>L13:0</p>
 <p> </p>
-<p>-13063&lt;</p>
+<p>-6497&lt;</p>
 <p>MOV</p>
-<p>SEED_1</p>
 <p>L</p>
 <p>S:2</p>
 <p>14</p>
@@ -325,14 +339,305 @@
 <p>MOV</p>
 <p>The natural log of 2</p>
 <p>LN2</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>20077</p>
+<p> </p>
+<p>20077&lt;</p>
+<p>Dest</p>
+<p>L13:3</p>
+<p> </p>
+<p>20077&lt;</p>
+<p>MOV</p>
+<p>((a*seed)+b)|m</p>
+<p>LCG_A</p>
+<h1 style="page-break-before:always; "></h1>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
+<p>LAD 2 -  --- Total Rungs in File = 15</p>
+<p>Page 3  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>12345</p>
+<p> </p>
+<p>12345&lt;</p>
+<p>Dest</p>
+<p>L13:4</p>
+<p> </p>
+<p>12345&lt;</p>
+<p>MOV</p>
+<p>((a*seed)+b)|m</p>
+<p>LCG_B</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>-32768</p>
+<p> </p>
+<p>-32768&lt;</p>
+<p>Dest</p>
+<p>L13:5</p>
+<p> </p>
+<p>-32768&lt;</p>
+<p>MOV</p>
+<p>((a*seed)+b)|m</p>
+<p>LCG_M</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>0</p>
+<p> </p>
+<p>0&lt;</p>
+<p>Dest</p>
+<p>N7:6</p>
+<p> </p>
+<p>1025&lt;</p>
+<p>MOV</p>
+<p>GNGDATA_ADDRESS</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>0</p>
+<p> </p>
+<p>0&lt;</p>
+<p>Dest</p>
+<p>N7:4</p>
+<p> </p>
+<p>192&lt;</p>
+<p>MOV</p>
+<p>FILL_POINTER</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F9:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F9:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F10:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F10:[FILL_POINTER]</p>
+<h1 style="page-break-before:always; "></h1>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
+<p>LAD 2 -  --- Total Rungs in File = 15</p>
+<p>Page 4  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F11:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F11:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F12:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F12:[FILL_POINTER]</p>
+<p>ADD</p>
+<p>Add</p>
+<p>Source A</p>
+<p>N7:4</p>
+<p> </p>
+<p>192&lt;</p>
+<p>Source B</p>
+<p>64</p>
+<p> </p>
+<p>64&lt;</p>
+<p>Dest</p>
+<p>N7:4</p>
+<p> </p>
+<p>192&lt;</p>
+<p>ADD</p>
+<p>FILL_POINTER</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F9:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F9:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F10:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F10:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F11:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F11:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F12:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F12:[FILL_POINTER]</p>
+<h1 style="page-break-before:always; "></h1>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
+<p>LAD 2 -  --- Total Rungs in File = 15</p>
+<p>Page 5  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
+<p>ADD</p>
+<p>Add</p>
+<p>Source A</p>
+<p>N7:4</p>
+<p> </p>
+<p>192&lt;</p>
+<p>Source B</p>
+<p>64</p>
+<p> </p>
+<p>64&lt;</p>
+<p>Dest</p>
+<p>N7:4</p>
+<p> </p>
+<p>192&lt;</p>
+<p>ADD</p>
+<p>FILL_POINTER</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F9:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F9:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F10:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F10:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F11:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F11:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F12:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F12:[FILL_POINTER]</p>
+<p>ADD</p>
+<p>Add</p>
+<p>Source A</p>
+<p>N7:4</p>
+<p> </p>
+<p>192&lt;</p>
+<p>Source B</p>
+<p>64</p>
+<p> </p>
+<p>64&lt;</p>
+<p>Dest</p>
+<p>N7:4</p>
+<p> </p>
+<p>192&lt;</p>
+<p>ADD</p>
+<p>FILL_POINTER</p>
+<h1 style="page-break-before:always; "></h1>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
+<p>LAD 2 -  --- Total Rungs in File = 15</p>
+<p>Page 6  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F9:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F9:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F10:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F10:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F11:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F11:[FILL_POINTER]</p>
+<p>FLL</p>
+<p>Fill File</p>
+<p>Source</p>
+<p>0.0</p>
+<p>Dest</p>
+<p>#F12:[N7:4]</p>
+<p>Length</p>
+<p>64</p>
+<p>FLL</p>
+<p>#F12:[FILL_POINTER]</p>
 <p> </p>
 <p>B3:9</p>
 <p>3</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 3  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
+<p>Page 7  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
 <p>Even scan, LCG 1  and 2:</p>
 <p>Run LCG 1 to update Seed 2 (N7:1); input is Seed 1 (N7:0); output is Seed 2 (N7:1), which will in turn be input to next run of LCG 2</p>
 <p>Run LCG 2 to update Seed 1 (N7:0); input is Seed 2 (N7:1); output is Seed 2 (N7:0), which will in turn be input to next run of LCG 1</p>
@@ -346,104 +651,98 @@
 <p>MUL</p>
 <p>Multiply</p>
 <p>Source A</p>
-<p>N7:0</p>
+<p>L13:0</p>
 <p> </p>
-<p>-13063&lt;</p>
+<p>-6497&lt;</p>
 <p>Source B</p>
-<p>20077</p>
+<p>L13:3</p>
 <p> </p>
 <p>20077&lt;</p>
 <p>Dest</p>
-<p>N7:1</p>
+<p>L13:1</p>
 <p> </p>
-<p>-20295&lt;</p>
+<p>-3653&lt;</p>
 <p>MUL</p>
-<p>SEED_2</p>
 <p>ADD</p>
 <p>Add</p>
 <p>Source A</p>
-<p>N7:1</p>
+<p>L13:1</p>
 <p> </p>
-<p>-20295&lt;</p>
+<p>-3653&lt;</p>
 <p>Source B</p>
-<p>12345</p>
+<p>L13:4</p>
 <p> </p>
 <p>12345&lt;</p>
 <p>Dest</p>
-<p>N7:1</p>
+<p>L13:1</p>
 <p> </p>
-<p>-20295&lt;</p>
+<p>-3653&lt;</p>
 <p>ADD</p>
-<p>SEED_2</p>
 <p>OR</p>
 <p>Bitwise Inclusive OR</p>
 <p>Source A</p>
-<p>N7:1</p>
+<p>L13:1</p>
 <p> </p>
-<p>B0B9h&lt;</p>
+<p>FFFFF1BBh&lt;</p>
 <p>Source B</p>
-<p>-32768</p>
+<p>L13:5</p>
 <p> </p>
-<p>-32768&lt;</p>
+<p>FFFF8000h&lt;</p>
 <p>Dest</p>
-<p>N7:1</p>
+<p>L13:1</p>
 <p> </p>
-<p>B0B9h&lt;</p>
+<p>FFFFF1BBh&lt;</p>
 <p>OR</p>
-<p>SEED_2</p>
 <p>MUL</p>
 <p>Multiply</p>
 <p>Source A</p>
-<p>N7:1</p>
+<p>L13:1</p>
 <p> </p>
-<p>-20295&lt;</p>
+<p>-3653&lt;</p>
 <p>Source B</p>
-<p>20077</p>
+<p>L13:3</p>
 <p> </p>
 <p>20077&lt;</p>
 <p>Dest</p>
-<p>N7:0</p>
+<p>L13:0</p>
 <p> </p>
-<p>-13063&lt;</p>
+<p>-6497&lt;</p>
 <p>MUL</p>
-<p>SEED_1</p>
 <p>ADD</p>
 <p>Add</p>
 <p>Source A</p>
-<p>N7:0</p>
+<p>L13:0</p>
 <p> </p>
-<p>-13063&lt;</p>
+<p>-6497&lt;</p>
 <p>Source B</p>
-<p>12345</p>
+<p>0</p>
 <p> </p>
-<p>12345&lt;</p>
+<p>0&lt;</p>
 <p>Dest</p>
-<p>N7:0</p>
+<p>L13:0</p>
 <p> </p>
-<p>-13063&lt;</p>
+<p>-6497&lt;</p>
 <p>ADD</p>
-<p>SEED_1</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 4  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
+<p>Page 8  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
 <p>OR</p>
 <p>Bitwise Inclusive OR</p>
 <p>Source A</p>
-<p>N7:0</p>
+<p>L13:0</p>
 <p> </p>
-<p>CCF9h&lt;</p>
+<p>FFFFE69Fh&lt;</p>
 <p>Source B</p>
-<p>-32768</p>
+<p>L13:5</p>
 <p> </p>
-<p>-32768&lt;</p>
+<p>FFFF8000h&lt;</p>
 <p>Dest</p>
-<p>N7:0</p>
+<p>L13:0</p>
 <p> </p>
-<p>CCF9h&lt;</p>
+<p>FFFFE69Fh&lt;</p>
 <p>OR</p>
-<p>SEED_1</p>
 <p>S:5</p>
 <p>0</p>
 <p>Overflow</p>
@@ -456,11 +755,6 @@
 <p> </p>
 <p>B3:9</p>
 <p>1</p>
-<h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
-<p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 5  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
 <p>End of uniform-distribution RNGs</p>
 <p>Start of Box-Muller Transform to generate gaussian-distribution RNG (GNG)</p>
 <p>This rung is for testing the natural logarithm algorithm</p>
@@ -486,7 +780,7 @@
 <p>NEQ</p>
 <p>Not Equal</p>
 <p>Source A</p>
-<p>N7:7</p>
+<p>L13:7</p>
 <p> </p>
 <p>0&lt;</p>
 <p>Source B</p>
@@ -494,12 +788,10 @@
 <p> </p>
 <p>0&lt;</p>
 <p>NEQ</p>
-<p>LN test value</p>
-<p>TEST_SEED_1</p>
 <p>GRT</p>
 <p>Greater Than (A&gt;B)</p>
 <p>Source A</p>
-<p>N7:7</p>
+<p>L13:7</p>
 <p> </p>
 <p>0&lt;</p>
 <p>Source B</p>
@@ -507,24 +799,21 @@
 <p> </p>
 <p>0&lt;</p>
 <p>GRT</p>
-<p>LN test value</p>
-<p>TEST_SEED_1</p>
 <p>NEG</p>
 <p>Negate</p>
 <p>Source</p>
-<p>N7:7</p>
+<p>L13:7</p>
 <p> </p>
 <p>0&lt;</p>
 <p>Dest</p>
-<p>N7:0</p>
+<p>L13:0</p>
 <p> </p>
-<p>-13063&lt;</p>
+<p>-6497&lt;</p>
 <p>NEG</p>
-<p>SEED_1</p>
 <p>LES</p>
 <p>Less Than (A&lt;B)</p>
 <p>Source A</p>
-<p>N7:7</p>
+<p>L13:7</p>
 <p> </p>
 <p>0&lt;</p>
 <p>Source B</p>
@@ -532,23 +821,25 @@
 <p> </p>
 <p>0&lt;</p>
 <p>LES</p>
-<p>LN test value</p>
-<p>TEST_SEED_1</p>
 <p>MOV</p>
 <p>Move</p>
 <p>Source</p>
-<p>N7:7</p>
+<p>L13:7</p>
 <p> </p>
 <p>0&lt;</p>
 <p>Dest</p>
-<p>N7:0</p>
+<p>L13:0</p>
 <p> </p>
-<p>-13063&lt;</p>
+<p>-6497&lt;</p>
 <p>MOV</p>
-<p>SEED_1</p>
 <p> </p>
 <p>B3:9</p>
 <p>4</p>
+<h1 style="page-break-before:always; "></h1>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
+<p>LAD 2 -  --- Total Rungs in File = 15</p>
+<p>Page 9  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
 <p>Even scan, scale Seeds 1 and 2:</p>
 <p>Scale Seed 1 (N7:0) to range (0.0:1.0]; output to U1 (F8:0)</p>
 <p>Scale Seed 2 (N7:1) to range (0.0:1.0]; output to U2 (F8:1)</p>
@@ -556,47 +847,69 @@
 <p>B3:0</p>
 <p>0</p>
 <p>ODDEVEN</p>
-<p>DIV</p>
-<p>Divide</p>
-<p>Source A</p>
-<p>N7:0</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>L13:0</p>
 <p> </p>
-<p>-13063&lt;</p>
-<p>Source B</p>
-<p>-32768.0</p>
-<p> </p>
-<p>-32768.0&lt;</p>
+<p>-6497&lt;</p>
 <p>Dest</p>
 <p>F8:0</p>
 <p> </p>
-<p>0.4103699&lt;</p>
-<p>DIV</p>
+<p>0.08407593&lt;</p>
+<p>MOV</p>
 <p>U1</p>
 <p>DIV</p>
 <p>Divide</p>
 <p>Source A</p>
-<p>N7:1</p>
+<p>F8:0</p>
 <p> </p>
-<p>-20295&lt;</p>
+<p>0.08407593&lt;</p>
 <p>Source B</p>
-<p>-32768.0</p>
+<p>L13:5</p>
 <p> </p>
-<p>-32768.0&lt;</p>
+<p>-32768&lt;</p>
+<p>Dest</p>
+<p>F8:0</p>
+<p> </p>
+<p>0.08407593&lt;</p>
+<p>DIV</p>
+<p>U1</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>L13:1</p>
+<p> </p>
+<p>-3653&lt;</p>
 <p>Dest</p>
 <p>F8:1</p>
 <p> </p>
-<p>0.802948&lt;</p>
+<p>0.4994812&lt;</p>
+<p>MOV</p>
+<p>U2</p>
+<p>DIV</p>
+<p>Divide</p>
+<p>Source A</p>
+<p>F8:1</p>
+<p> </p>
+<p>0.4994812&lt;</p>
+<p>Source B</p>
+<p>L13:5</p>
+<p> </p>
+<p>-32768&lt;</p>
+<p>Dest</p>
+<p>F8:1</p>
+<p> </p>
+<p>0.4994812&lt;</p>
 <p>DIV</p>
 <p>U2</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 6  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
+<p>Page 10  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
 <p>Even scan, load constants and transform U1 to U1_Y, U1_V and U1_V_SQUARED:</p>
 <p>- These are parameters for the LN(U1_Y) polynomial calculation on the next rung</p>
-<p>- N_LN2 = ln(2)</p>
-<p>- SQRT2 = sqrt(2)</p>
 <p>- N_LN2 = n*ln(2) where</p>
 <p>  - ln(U1) = n*ln(2) + ln(U1_Y)</p>
 <p>  - n is integer such that SQRT2/2 &lt;= U1_y &lt; SQRT2</p>
@@ -611,11 +924,11 @@
 <p>Source</p>
 <p>F8:0</p>
 <p> </p>
-<p>0.4103699&lt;</p>
+<p>0.08407593&lt;</p>
 <p>Dest</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>MOV</p>
 <p>U1 shifted to near 1</p>
 <p>U1_Y</p>
@@ -628,7 +941,7 @@
 <p>Dest</p>
 <p>F8:19</p>
 <p> </p>
-<p>0.6931472&lt;</p>
+<p>2.772589&lt;</p>
 <p>MOV</p>
 <p>n*ln(2)= ln(U1/U1_Y)</p>
 <p>N_LN2</p>
@@ -658,7 +971,7 @@
 <p>Source B</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>GEQ</p>
 <p>Target for U1_Y</p>
 <p>SHIFT_LIMIT</p>
@@ -667,7 +980,7 @@
 <p>Source A</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>Source B</p>
 <p>256.0</p>
 <p> </p>
@@ -675,7 +988,7 @@
 <p>Dest</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>MUL</p>
 <p>U1 shifted to near 1</p>
 <p>U1_Y</p>
@@ -692,28 +1005,28 @@
 <p>Dest</p>
 <p>F8:23</p>
 <p> </p>
-<p>-0.1792603&lt;</p>
+<p>0.3452148&lt;</p>
 <p>MUL</p>
 <p>INTERMEDIATE_LN_ARG</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 7  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
+<p>Page 11  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
 <p>ADD</p>
 <p>Add</p>
 <p>Source A</p>
 <p>F8:23</p>
 <p> </p>
-<p>-0.1792603&lt;</p>
+<p>0.3452148&lt;</p>
 <p>Source B</p>
 <p>F8:19</p>
 <p> </p>
-<p>0.6931472&lt;</p>
+<p>2.772589&lt;</p>
 <p>Dest</p>
 <p>F8:19</p>
 <p> </p>
-<p>0.6931472&lt;</p>
+<p>2.772589&lt;</p>
 <p>ADD</p>
 <p>n*ln(2)= ln(U1/U1_Y)</p>
 <p>N_LN2</p>
@@ -743,7 +1056,7 @@
 <p>Source B</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>GEQ</p>
 <p>Target for U1_Y</p>
 <p>SHIFT_LIMIT</p>
@@ -752,7 +1065,7 @@
 <p>Source A</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>Source B</p>
 <p>16.0</p>
 <p> </p>
@@ -760,7 +1073,7 @@
 <p>Dest</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>MUL</p>
 <p>U1 shifted to near 1</p>
 <p>U1_Y</p>
@@ -777,7 +1090,7 @@
 <p>Dest</p>
 <p>F8:23</p>
 <p> </p>
-<p>-0.1792603&lt;</p>
+<p>0.3452148&lt;</p>
 <p>MUL</p>
 <p>INTERMEDIATE_LN_ARG</p>
 <p>ADD</p>
@@ -785,23 +1098,23 @@
 <p>Source A</p>
 <p>F8:23</p>
 <p> </p>
-<p>-0.1792603&lt;</p>
+<p>0.3452148&lt;</p>
 <p>Source B</p>
 <p>F8:19</p>
 <p> </p>
-<p>0.6931472&lt;</p>
+<p>2.772589&lt;</p>
 <p>Dest</p>
 <p>F8:19</p>
 <p> </p>
-<p>0.6931472&lt;</p>
+<p>2.772589&lt;</p>
 <p>ADD</p>
 <p>n*ln(2)= ln(U1/U1_Y)</p>
 <p>N_LN2</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 8  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
+<p>Page 12  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
 <p>DIV</p>
 <p>Divide</p>
 <p>Source A</p>
@@ -828,7 +1141,7 @@
 <p>Source B</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>GEQ</p>
 <p>Target for U1_Y</p>
 <p>SHIFT_LIMIT</p>
@@ -837,7 +1150,7 @@
 <p>Source A</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>Source B</p>
 <p>4.0</p>
 <p> </p>
@@ -845,7 +1158,7 @@
 <p>Dest</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>MUL</p>
 <p>U1 shifted to near 1</p>
 <p>U1_Y</p>
@@ -862,7 +1175,7 @@
 <p>Dest</p>
 <p>F8:23</p>
 <p> </p>
-<p>-0.1792603&lt;</p>
+<p>0.3452148&lt;</p>
 <p>MUL</p>
 <p>INTERMEDIATE_LN_ARG</p>
 <p>ADD</p>
@@ -870,15 +1183,15 @@
 <p>Source A</p>
 <p>F8:23</p>
 <p> </p>
-<p>-0.1792603&lt;</p>
+<p>0.3452148&lt;</p>
 <p>Source B</p>
 <p>F8:19</p>
 <p> </p>
-<p>0.6931472&lt;</p>
+<p>2.772589&lt;</p>
 <p>Dest</p>
 <p>F8:19</p>
 <p> </p>
-<p>0.6931472&lt;</p>
+<p>2.772589&lt;</p>
 <p>ADD</p>
 <p>n*ln(2)= ln(U1/U1_Y)</p>
 <p>N_LN2</p>
@@ -900,10 +1213,10 @@
 <p>Target for U1_Y</p>
 <p>SHIFT_LIMIT</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 9  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
+<p>Page 13  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
 <p>GEQ</p>
 <p>Grtr Than or Eql (A&gt;=B)</p>
 <p>Source A</p>
@@ -913,7 +1226,7 @@
 <p>Source B</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>GEQ</p>
 <p>Target for U1_Y</p>
 <p>SHIFT_LIMIT</p>
@@ -922,7 +1235,7 @@
 <p>Source A</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>Source B</p>
 <p>2.0</p>
 <p> </p>
@@ -930,7 +1243,7 @@
 <p>Dest</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>MUL</p>
 <p>U1 shifted to near 1</p>
 <p>U1_Y</p>
@@ -943,11 +1256,11 @@
 <p>Source B</p>
 <p>F8:19</p>
 <p> </p>
-<p>0.6931472&lt;</p>
+<p>2.772589&lt;</p>
 <p>Dest</p>
 <p>F8:19</p>
 <p> </p>
-<p>0.6931472&lt;</p>
+<p>2.772589&lt;</p>
 <p>ADD</p>
 <p>n*ln(2)= ln(U1/U1_Y)</p>
 <p>N_LN2</p>
@@ -956,7 +1269,7 @@
 <p>Source A</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>Source B</p>
 <p>1.0</p>
 <p> </p>
@@ -964,7 +1277,7 @@
 <p>Dest</p>
 <p>F8:23</p>
 <p> </p>
-<p>-0.1792603&lt;</p>
+<p>0.3452148&lt;</p>
 <p>SUB</p>
 <p>INTERMEDIATE_LN_ARG</p>
 <p>ADD</p>
@@ -972,7 +1285,7 @@
 <p>Source A</p>
 <p>F8:16</p>
 <p> </p>
-<p>0.8207397&lt;</p>
+<p>1.345215&lt;</p>
 <p>Source B</p>
 <p>1.0</p>
 <p> </p>
@@ -980,7 +1293,7 @@
 <p>Dest</p>
 <p>F8:17</p>
 <p> </p>
-<p>-0.09845462&lt;</p>
+<p>0.1471997&lt;</p>
 <p>ADD</p>
 <p>(U1_Y-1) / (U1_Y+1)</p>
 <p>U1_V</p>
@@ -989,37 +1302,37 @@
 <p>Source A</p>
 <p>F8:23</p>
 <p> </p>
-<p>-0.1792603&lt;</p>
+<p>0.3452148&lt;</p>
 <p>Source B</p>
 <p>F8:17</p>
 <p> </p>
-<p>-0.09845462&lt;</p>
+<p>0.1471997&lt;</p>
 <p>Dest</p>
 <p>F8:17</p>
 <p> </p>
-<p>-0.09845462&lt;</p>
+<p>0.1471997&lt;</p>
 <p>DIV</p>
 <p>(U1_Y-1) / (U1_Y+1)</p>
 <p>U1_V</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 10  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
+<p>Page 14  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
 <p>MUL</p>
 <p>Multiply</p>
 <p>Source A</p>
 <p>F8:17</p>
 <p> </p>
-<p>-0.09845462&lt;</p>
+<p>0.1471997&lt;</p>
 <p>Source B</p>
 <p>F8:17</p>
 <p> </p>
-<p>-0.09845462&lt;</p>
+<p>0.1471997&lt;</p>
 <p>Dest</p>
 <p>F8:18</p>
 <p> </p>
-<p>0.009693313&lt;</p>
+<p>0.02166774&lt;</p>
 <p>MUL</p>
 <p>The square of U1_V</p>
 <p>U1_V_SQUARED</p>
@@ -1027,11 +1340,11 @@
 <p>B3:9</p>
 <p>6</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 11  </p>
-<p>Tuesday, December 31, 2019 - 16:29:53</p>
-<p>Even scan, calculate U1 term SQRT( -2 LN(U1) ), put intoU1_TERM_GNG (F8.2):</p>
+<p>Page 15  </p>
+<p>Wednesday, January 01, 2020 - 12:36:58</p>
+<p>Even scan, calculate U1 term SQRT( -2 LN(U1) ), put result into U1_TERM_GNG (F8.2):</p>
 <p>1) Natural logarithim approximated with polynomial:  ln(U1_Y) = 2*U1_V + (U1_V**3 / Q(V**2))</p>
 <p>1.1) Cf. https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19720010958.pdf</p>
 <p>1.2) LN(U1) = N_LN2 + LN(U1_Y)</p>
@@ -1051,11 +1364,11 @@
 <p>Source B</p>
 <p>F8:18</p>
 <p> </p>
-<p>0.009693313&lt;</p>
+<p>0.02166774&lt;</p>
 <p>Dest</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>MUL</p>
 <p>SQRT(-2 LN(U1))</p>
 <p>U1_TERM_GNG</p>
@@ -1068,18 +1381,18 @@
 <p>Source B</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Dest</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>ADD</p>
 <p>SQRT(-2 LN(U1))</p>
 <p>U1_TERM_GNG</p>
 <p>NEQ</p>
 <p>Not Equal</p>
 <p>Source A</p>
-<p>N7:7</p>
+<p>L13:7</p>
 <p> </p>
 <p>0&lt;</p>
 <p>Source B</p>
@@ -1087,14 +1400,12 @@
 <p> </p>
 <p>0&lt;</p>
 <p>NEQ</p>
-<p>LN test value</p>
-<p>TEST_SEED_1</p>
 <p>MOV</p>
 <p>Move</p>
 <p>Source</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Dest</p>
 <p>F8:24</p>
 <p> </p>
@@ -1107,15 +1418,15 @@
 <p>Source A</p>
 <p>F8:18</p>
 <p> </p>
-<p>0.009693313&lt;</p>
+<p>0.02166774&lt;</p>
 <p>Source B</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Dest</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>DIV</p>
 <p>SQRT(-2 LN(U1))</p>
 <p>U1_TERM_GNG</p>
@@ -1128,23 +1439,23 @@
 <p>Source B</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Dest</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>ADD</p>
 <p>SQRT(-2 LN(U1))</p>
 <p>U1_TERM_GNG</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 12  </p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Page 16  </p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>NEQ</p>
 <p>Not Equal</p>
 <p>Source A</p>
-<p>N7:7</p>
+<p>L13:7</p>
 <p> </p>
 <p>0&lt;</p>
 <p>Source B</p>
@@ -1152,14 +1463,12 @@
 <p> </p>
 <p>0&lt;</p>
 <p>NEQ</p>
-<p>LN test value</p>
-<p>TEST_SEED_1</p>
 <p>MOV</p>
 <p>Move</p>
 <p>Source</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Dest</p>
 <p>F8:25</p>
 <p> </p>
@@ -1172,22 +1481,22 @@
 <p>Source A</p>
 <p>F8:17</p>
 <p> </p>
-<p>-0.09845462&lt;</p>
+<p>0.1471997&lt;</p>
 <p>Source B</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Dest</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>MUL</p>
 <p>SQRT(-2 LN(U1))</p>
 <p>U1_TERM_GNG</p>
 <p>NEQ</p>
 <p>Not Equal</p>
 <p>Source A</p>
-<p>N7:7</p>
+<p>L13:7</p>
 <p> </p>
 <p>0&lt;</p>
 <p>Source B</p>
@@ -1195,14 +1504,12 @@
 <p> </p>
 <p>0&lt;</p>
 <p>NEQ</p>
-<p>LN test value</p>
-<p>TEST_SEED_1</p>
 <p>MOV</p>
 <p>Move</p>
 <p>Source</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Dest</p>
 <p>F8:26</p>
 <p> </p>
@@ -1214,22 +1521,22 @@
 <p>Source A</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Source B</p>
 <p>F8:19</p>
 <p> </p>
-<p>0.6931472&lt;</p>
+<p>2.772589&lt;</p>
 <p>Dest</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>SUB</p>
 <p>SQRT(-2 LN(U1))</p>
 <p>U1_TERM_GNG</p>
 <p>NEQ</p>
 <p>Not Equal</p>
 <p>Source A</p>
-<p>N7:7</p>
+<p>L13:7</p>
 <p> </p>
 <p>0&lt;</p>
 <p>Source B</p>
@@ -1237,14 +1544,12 @@
 <p> </p>
 <p>0&lt;</p>
 <p>NEQ</p>
-<p>LN test value</p>
-<p>TEST_SEED_1</p>
 <p>MOV</p>
 <p>Move</p>
 <p>Source</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Dest</p>
 <p>F8:27</p>
 <p> </p>
@@ -1253,10 +1558,10 @@
 <p>LN(U1) test result</p>
 <p>TEST_LN_U1</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 13  </p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Page 17  </p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>DIV</p>
 <p>Divide</p>
 <p>Source A</p>
@@ -1279,7 +1584,7 @@
 <p>Source A</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Source B</p>
 <p>-2.0</p>
 <p> </p>
@@ -1287,7 +1592,7 @@
 <p>Dest</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>MUL</p>
 <p>SQRT(-2 LN(U1))</p>
 <p>U1_TERM_GNG</p>
@@ -1296,11 +1601,11 @@
 <p>Source</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Dest</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>SQR</p>
 <p>SQRT(-2 LN(U1))</p>
 <p>U1_TERM_GNG</p>
@@ -1308,10 +1613,10 @@
 <p>B3:9</p>
 <p>7</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 14  </p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Page 18  </p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>All scans:  transform U2 into [argument to sine], in range (-0.25:+0.25], and calculate [argument to sine squared]</p>
 <p>0) All steps except the last two are done in the intermediate sin arg, F8:15</p>
 <p>0.1) We refer to F8:15 as U2' in these comments</p>
@@ -1339,11 +1644,11 @@
 <p>Source</p>
 <p>F8:1</p>
 <p> </p>
-<p>0.802948&lt;</p>
+<p>0.4994812&lt;</p>
 <p>Dest</p>
 <p>F8:15</p>
 <p> </p>
-<p>-0.197052&lt;</p>
+<p>-0.2494812&lt;</p>
 <p>MOV</p>
 <p>Scratch space to</p>
 <p>hold conversion of</p>
@@ -1358,7 +1663,7 @@
 <p>Source A</p>
 <p>F8:15</p>
 <p> </p>
-<p>-0.197052&lt;</p>
+<p>-0.2494812&lt;</p>
 <p>Source B</p>
 <p>0.25</p>
 <p> </p>
@@ -1366,7 +1671,7 @@
 <p>Dest</p>
 <p>F8:15</p>
 <p> </p>
-<p>-0.197052&lt;</p>
+<p>-0.2494812&lt;</p>
 <p>ADD</p>
 <p>Scratch space to</p>
 <p>hold conversion of</p>
@@ -1378,7 +1683,7 @@
 <p>Source A</p>
 <p>F8:15</p>
 <p> </p>
-<p>-0.197052&lt;</p>
+<p>-0.2494812&lt;</p>
 <p>Source B</p>
 <p>0.75</p>
 <p> </p>
@@ -1394,7 +1699,7 @@
 <p>Source A</p>
 <p>F8:15</p>
 <p> </p>
-<p>-0.197052&lt;</p>
+<p>-0.2494812&lt;</p>
 <p>Source B</p>
 <p>-1.0</p>
 <p> </p>
@@ -1402,7 +1707,7 @@
 <p>Dest</p>
 <p>F8:15</p>
 <p> </p>
-<p>-0.197052&lt;</p>
+<p>-0.2494812&lt;</p>
 <p>ADD</p>
 <p>Scratch space to</p>
 <p>hold conversion of</p>
@@ -1410,16 +1715,16 @@
 <p>[argument to sine]</p>
 <p>INTERMEDIATE_SIN_ARG</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 15  </p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Page 19  </p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>GEQ</p>
 <p>Grtr Than or Eql (A&gt;=B)</p>
 <p>Source A</p>
 <p>F8:15</p>
 <p> </p>
-<p>-0.197052&lt;</p>
+<p>-0.2494812&lt;</p>
 <p>Source B</p>
 <p>0.25</p>
 <p> </p>
@@ -1439,11 +1744,11 @@
 <p>Source B</p>
 <p>F8:15</p>
 <p> </p>
-<p>-0.197052&lt;</p>
+<p>-0.2494812&lt;</p>
 <p>Dest</p>
 <p>F8:15</p>
 <p> </p>
-<p>-0.197052&lt;</p>
+<p>-0.2494812&lt;</p>
 <p>SUB</p>
 <p>Scratch space to</p>
 <p>hold conversion of</p>
@@ -1455,7 +1760,7 @@
 <p>Source A</p>
 <p>F8:15</p>
 <p> </p>
-<p>-0.197052&lt;</p>
+<p>-0.2494812&lt;</p>
 <p>Source B</p>
 <p>6.283185</p>
 <p> </p>
@@ -1463,7 +1768,7 @@
 <p>Dest</p>
 <p>F8:8</p>
 <p> </p>
-<p>-1.238114&lt;</p>
+<p>-1.567537&lt;</p>
 <p>MUL</p>
 <p>Argument to sine;</p>
 <p>may be PI/2 greater</p>
@@ -1475,24 +1780,24 @@
 <p>Source A</p>
 <p>F8:8</p>
 <p> </p>
-<p>-1.238114&lt;</p>
+<p>-1.567537&lt;</p>
 <p>Source B</p>
 <p>F8:8</p>
 <p> </p>
-<p>-1.238114&lt;</p>
+<p>-1.567537&lt;</p>
 <p>Dest</p>
 <p>F8:9</p>
 <p> </p>
-<p>1.532927&lt;</p>
+<p>2.457171&lt;</p>
 <p>MUL</p>
 <p>Square of argument</p>
 <p>to sine</p>
 <p>SIN_ARG_SQUARED</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 16  </p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Page 20  </p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>All scans, calculate sin(SIN_ARG), output to U2_GNG_TERM (F8.3):</p>
 <p>The sin(SIN_ARG) will be cos(U2) or sin(U2) for even or odd scans, respectively,</p>
 <p>And also are cosine or sine of polar angle in Box-Muller Transform.</p>
@@ -1510,7 +1815,7 @@
 <p>Dest</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>MOV</p>
 <p>Sine or cosine of (2</p>
 <p> PI U1); also</p>
@@ -1521,15 +1826,15 @@
 <p>Source A</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>Source B</p>
 <p>F8:9</p>
 <p> </p>
-<p>1.532927&lt;</p>
+<p>2.457171&lt;</p>
 <p>Dest</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>MUL</p>
 <p>Sine or cosine of (2</p>
 <p> PI U1); also</p>
@@ -1540,7 +1845,7 @@
 <p>Source A</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>Source B</p>
 <p>0.00830629</p>
 <p> </p>
@@ -1548,7 +1853,7 @@
 <p>Dest</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>ADD</p>
 <p>Sine or cosine of (2</p>
 <p> PI U1); also</p>
@@ -1559,31 +1864,31 @@
 <p>Source A</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>Source B</p>
 <p>F8:9</p>
 <p> </p>
-<p>1.532927&lt;</p>
+<p>2.457171&lt;</p>
 <p>Dest</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>MUL</p>
 <p>Sine or cosine of (2</p>
 <p> PI U1); also</p>
 <p>running series sum</p>
 <p>U2_TERM_GNG</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 17  </p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Page 21  </p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>ADD</p>
 <p>Add</p>
 <p>Source A</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>Source B</p>
 <p>-0.1666482</p>
 <p> </p>
@@ -1591,7 +1896,7 @@
 <p>Dest</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>ADD</p>
 <p>Sine or cosine of (2</p>
 <p> PI U1); also</p>
@@ -1602,15 +1907,15 @@
 <p>Source A</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>Source B</p>
 <p>F8:9</p>
 <p> </p>
-<p>1.532927&lt;</p>
+<p>2.457171&lt;</p>
 <p>Dest</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>MUL</p>
 <p>Sine or cosine of (2</p>
 <p> PI U1); also</p>
@@ -1621,7 +1926,7 @@
 <p>Source A</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>Source B</p>
 <p>0.9999966</p>
 <p> </p>
@@ -1629,7 +1934,7 @@
 <p>Dest</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>ADD</p>
 <p>Sine or cosine of (2</p>
 <p> PI U1); also</p>
@@ -1640,15 +1945,15 @@
 <p>Source A</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>Source B</p>
 <p>F8:8</p>
 <p> </p>
-<p>-1.238114&lt;</p>
+<p>-1.567537&lt;</p>
 <p>Dest</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>MUL</p>
 <p>Sine or cosine of (2</p>
 <p> PI U1); also</p>
@@ -1658,10 +1963,10 @@
 <p>B3:9</p>
 <p>5</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 18  </p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Page 22  </p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>All scans:</p>
 <p>Perform final calculation [U1_TERM_GNG * U2_TERM_GNG] on all scans; output to F8:4</p>
 <p>0009</p>
@@ -1670,46 +1975,37 @@
 <p>Source A</p>
 <p>F8:2</p>
 <p> </p>
-<p>1.334688&lt;</p>
+<p>2.225325&lt;</p>
 <p>Source B</p>
 <p>F8:3</p>
 <p> </p>
-<p>-0.9451693&lt;</p>
+<p>-0.9999944&lt;</p>
 <p>Dest</p>
 <p>F8:4</p>
 <p> </p>
-<p>-1.261506&lt;</p>
+<p>1.159541&lt;</p>
 <p>MUL</p>
 <p>Gaussian-distrib.</p>
 <p>random number</p>
 <p>GNG</p>
-<p>Toggle ODDEVEN scan bit at the end of each scan</p>
-<p>0010</p>
-<p>B3:0</p>
-<p>0</p>
-<p>ODDEVEN</p>
-<p> </p>
-<p>B3:0</p>
-<p>0</p>
-<p>ODDEVEN</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 19  </p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Page 23  </p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>Manage GNGDATAn_ENABLE bits to control which file (F9 thorugh F12) should be enabled</p>
 <p>They change when GNGDATA_ADDRESS is a multiple of 256</p>
 <p>- So GNGADDR_255 will be zero</p>
 <p>- First unlatch whichever is enabled</p>
 <p>- Then latch whichever bank should be enabled</p>
 <p>  - e.g. if GNGDATA_ADDRESS is 512, then 512/256 =&gt; 2, so latch GNGDATA2_ENABLE</p>
-<p>0011</p>
+<p>0010</p>
 <p>AND</p>
 <p>Bitwise AND</p>
 <p>Source A</p>
 <p>N7:6</p>
 <p> </p>
-<p>0066h&lt;</p>
+<p>0401h&lt;</p>
 <p>Source B</p>
 <p>255</p>
 <p> </p>
@@ -1717,7 +2013,7 @@
 <p>Dest</p>
 <p>N7:5</p>
 <p> </p>
-<p>0065h&lt;</p>
+<p>0001h&lt;</p>
 <p>AND</p>
 <p>GNGDATA_ADDRESS&amp;255</p>
 <p>GNGADDR_255</p>
@@ -1726,7 +2022,7 @@
 <p>Source A</p>
 <p>N7:5</p>
 <p> </p>
-<p>101&lt;</p>
+<p>1&lt;</p>
 <p>Source B</p>
 <p>0</p>
 <p> </p>
@@ -1767,7 +2063,7 @@
 <p>Source A</p>
 <p>N7:6</p>
 <p> </p>
-<p>102&lt;</p>
+<p>1025&lt;</p>
 <p>Source B</p>
 <p>0</p>
 <p> </p>
@@ -1783,7 +2079,7 @@
 <p>Source A</p>
 <p>N7:6</p>
 <p> </p>
-<p>102&lt;</p>
+<p>1025&lt;</p>
 <p>Source B</p>
 <p>256</p>
 <p> </p>
@@ -1795,16 +2091,16 @@
 <p>1</p>
 <p>GNGDATA1_ENABLE</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 20  </p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Page 24  </p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>EQU</p>
 <p>Equal</p>
 <p>Source A</p>
 <p>N7:6</p>
 <p> </p>
-<p>102&lt;</p>
+<p>1025&lt;</p>
 <p>Source B</p>
 <p>512</p>
 <p> </p>
@@ -1820,7 +2116,7 @@
 <p>Source A</p>
 <p>N7:6</p>
 <p> </p>
-<p>102&lt;</p>
+<p>1025&lt;</p>
 <p>Source B</p>
 <p>768</p>
 <p> </p>
@@ -1835,11 +2131,76 @@
 <p>B3:9</p>
 <p>9</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>LAD 2 -  --- Total Rungs in File = 15</p>
-<p>Page 21  </p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Page 25  </p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>Move GNG random number to next position in GNGDATAn file enabled by GNGDATAn_ENABLE</p>
+<p>0011</p>
+<p>B3:8</p>
+<p>0</p>
+<p>GNGDATA0_ENABLE</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>F8:4</p>
+<p> </p>
+<p>1.159541&lt;</p>
+<p>Dest</p>
+<p>F9:[N7:5]</p>
+<p> </p>
+<p>-1.252713&lt;</p>
+<p>MOV</p>
+<p>F12</p>
+<p>B3:8</p>
+<p>1</p>
+<p>GNGDATA1_ENABLE</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>F8:4</p>
+<p> </p>
+<p>1.159541&lt;</p>
+<p>Dest</p>
+<p>F10:[N7:5]</p>
+<p> </p>
+<p>-1.486764&lt;</p>
+<p>MOV</p>
+<p>F10:[GNGADDR_255]</p>
+<p>B3:8</p>
+<p>2</p>
+<p>GNGDATA2_ENABLE</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>F8:4</p>
+<p> </p>
+<p>1.159541&lt;</p>
+<p>Dest</p>
+<p>F11:[N7:5]</p>
+<p> </p>
+<p>-1.376872&lt;</p>
+<p>MOV</p>
+<p>F11:[GNGADDR_255]</p>
+<p>B3:8</p>
+<p>3</p>
+<p>GNGDATA3_ENABLE</p>
+<p>MOV</p>
+<p>Move</p>
+<p>Source</p>
+<p>F8:4</p>
+<p> </p>
+<p>1.159541&lt;</p>
+<p>Dest</p>
+<p>F12:[N7:5]</p>
+<p> </p>
+<p>-1.011568&lt;</p>
+<p>MOV</p>
+<p>F12:[GNGADDR_255]</p>
+<p> </p>
+<p>B3:9</p>
+<p>8</p>
+<p>Increment GNGDATA_ADDR by 1, stop after 1024 values have been stored in the file</p>
 <p>0012</p>
 <p>e</p>
 <p>e</p>
@@ -1853,158 +2214,61 @@
 <p>e</p>
 <p>e</p>
 <p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>e</p>
-<p>B3:8</p>
-<p>0</p>
-<p>GNGDATA0_ENABLE</p>
-<p>MOV</p>
-<p>Move</p>
-<p>Source</p>
-<p>F8:4</p>
+<p>LES</p>
+<p>Less Than (A&lt;B)</p>
+<p>Source A</p>
+<p>N7:6</p>
 <p> </p>
-<p>-1.261506</p>
-<p>Dest</p>
-<p>F9:[N7:5]</p>
+<p>1025</p>
+<p>Source B</p>
+<p>1025</p>
 <p> </p>
-<p>-1.261506</p>
-<p>MOV</p>
-<p>F9:[GNGADDR_255]</p>
-<p>B3:8</p>
-<p>1</p>
-<p>GNGDATA1_ENABLE</p>
-<p>MOV</p>
-<p>Move</p>
-<p>Source</p>
-<p>F8:4</p>
-<p> </p>
-<p>-1.261506</p>
-<p>Dest</p>
-<p>F10:[N7:5]</p>
-<p> </p>
-<p>-0.05709658</p>
-<p>MOV</p>
-<p>F10:[GNGADDR_255]</p>
-<p>B3:8</p>
-<p>2</p>
-<p>GNGDATA2_ENABLE</p>
-<p>MOV</p>
-<p>Move</p>
-<p>Source</p>
-<p>F8:4</p>
-<p> </p>
-<p>-1.261506</p>
-<p>Dest</p>
-<p>F11:[N7:5]</p>
-<p> </p>
-<p>-0.05709658</p>
-<p>MOV</p>
-<p>F11:[GNGADDR_255]</p>
-<p>B3:8</p>
-<p>3</p>
-<p>GNGDATA3_ENABLE</p>
-<p>MOV</p>
-<p>Move</p>
-<p>Source</p>
-<p>F8:4</p>
-<p> </p>
-<p>-1.261506</p>
-<p>Dest</p>
-<p>F12:[N7:5]</p>
-<p> </p>
-<p>2.588002</p>
-<p>MOV</p>
-<p>F12:[GNGADDR_255]</p>
-<p> </p>
-<p>B3:9</p>
-<p>8</p>
-<p>Increment GNGDATA_ADDR by 1, reset to zero when if it hits 1024</p>
-<p>0013</p>
+<p>1025</p>
+<p>LES</p>
+<p>GNGDATA_ADDRESS</p>
 <p>ADD</p>
 <p>Add</p>
 <p>Source A</p>
 <p>N7:6</p>
 <p> </p>
-<p>102&lt;</p>
+<p>1025</p>
 <p>Source B</p>
 <p>1</p>
 <p> </p>
-<p>1&lt;</p>
+<p>1</p>
 <p>Dest</p>
 <p>N7:6</p>
 <p> </p>
-<p>102&lt;</p>
+<p>1025</p>
 <p>ADD</p>
 <p>GNGDATA_ADDRESS</p>
-<p>GRT</p>
-<p>Greater Than (A&gt;B)</p>
-<p>Source A</p>
-<p>N7:6</p>
-<p> </p>
-<p>102&lt;</p>
-<p>Source B</p>
-<p>1023</p>
-<p> </p>
-<p>1023&lt;</p>
-<p>GRT</p>
-<p>GNGDATA_ADDRESS</p>
-<p>MOV</p>
-<p>Move</p>
-<p>Source</p>
+<p>Toggle ODDEVEN scan bit at the end of each scan</p>
+<p>0013</p>
+<p>B3:0</p>
 <p>0</p>
+<p>ODDEVEN</p>
 <p> </p>
-<p>0&lt;</p>
-<p>Dest</p>
-<p>N7:6</p>
-<p> </p>
-<p>102&lt;</p>
-<p>MOV</p>
-<p>GNGDATA_ADDRESS</p>
+<p>B3:0</p>
+<p>0</p>
+<p>ODDEVEN</p>
 <p>0014</p>
 <p>END</p>
 <p> </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File O0 (bin)  --  OUTPUT</p>
 <p>Page 1     (Radix Binary)</p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Wednesday, January 01, 2020 - 12:36:59</p>
 <p>Offset   15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0                                                                                                     </p>
 <p>O:0.0     0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0   Bul.1763     MicroLogix 1100 Series B</p>
 <p>O:0.1     0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0   Bul.1763     MicroLogix 1100 Series B</p>
 <p>O:0.2     0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0   Bul.1763     MicroLogix 1100 Series B</p>
 <p>O:0.3     0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0   Bul.1763     MicroLogix 1100 Series B</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File I1 (bin)  --  INPUT</p>
 <p>Page 1     (Radix Binary)</p>
-<p>Tuesday, December 31, 2019 - 16:29:54</p>
+<p>Wednesday, January 01, 2020 - 12:37:00</p>
 <p>Offset   15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0                                                                                                     </p>
 <p>I:0.0     0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0   Bul.1763     MicroLogix 1100 Series B</p>
 <p>I:0.1     0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0   Bul.1763     MicroLogix 1100 Series B</p>
@@ -2013,15 +2277,15 @@
 <p>I:0.4     0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0   Bul.1763     MicroLogix 1100 Series B-Analog Inp 0</p>
 <p>I:0.5     0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0   Bul.1763     MicroLogix 1100 Series B-Analog Inp 1</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File S2 (hex)  --  STATUS</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:55</p>
+<p>Wednesday, January 01, 2020 - 12:37:00</p>
 <p> Main</p>
-<p> Processor Mode S:1/0 - S:1/4 = Remote Program Mode</p>
+<p> Processor Mode S:1/0 - S:1/4 = Remote Run</p>
 <p> On Power up Go To Run (Mode Behavior) S:1/12 = 0</p>
 <p> First Pass S:1/15 = No</p>
-<p> Free Running Clock S:4 = 0101-0100-1010-1011</p>
+<p> Free Running Clock S:4 = 0011-0011-0111-1000</p>
 <p> Proc</p>
 <p> OS Catalog Number S:57 = 1100</p>
 <p> OS Series S:58 = B</p>
@@ -2042,12 +2306,12 @@
 <p> Carry S:0/0 = 0</p>
 <p> Overflow S:0/1 = 0</p>
 <p> Zero Bit S:0/2 = 0</p>
-<p> Sign Bit S:0/3 = 1</p>
-<p> Math Register (lo word) S:13 = -25408</p>
-<p> Math Register (high word) S:14-S:13 = -6218</p>
-<p> Math Register (32 Bit) S:14-S:13 = -407462720</p>
+<p> Sign Bit S:0/3 = 0</p>
+<p> Math Register (lo word) S:13 = 31744</p>
+<p> Math Register (high word) S:14-S:13 = -9649</p>
+<p> Math Register (32 Bit) S:14-S:13 = -632325120</p>
 <p> Chan 0</p>
-<p> Processor Mode S:1/0- S:1/4 = Remote Program Mode</p>
+<p> Processor Mode S:1/0- S:1/4 = Remote Run</p>
 <p> Node Address S:15 (low byte) = 0</p>
 <p> Baud Rate S:15 (high byte) = ?</p>
 <p> Channel Mode S:33/3 = 0</p>
@@ -2083,20 +2347,20 @@
 <p> Program Compare S:2/9 = 0</p>
 <p> Data File Overwrite Protection Lost S:36/10 = 0</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File S2 (hex)  --  STATUS</p>
 <p>Page 2  </p>
-<p>Tuesday, December 31, 2019 - 16:29:55</p>
+<p>Wednesday, January 01, 2020 - 12:37:00</p>
 <p> Forces</p>
 <p> Forces Enabled S:1/5 = Yes</p>
 <p> Forces Installed S:1/6 = No</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File B3 (bin)  --  BINARY</p>
 <p>Page 1     (Radix Binary)</p>
-<p>Tuesday, December 31, 2019 - 16:29:55</p>
+<p>Wednesday, January 01, 2020 - 12:37:00</p>
 <p>Offset   15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0   (Symbol) Description                                                                                                    </p>
-<p>B3:0      0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  (BITS_0) </p>
+<p>B3:0      0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  (BITS_0) </p>
 <p>B3:1      0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  </p>
 <p>B3:2      0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  </p>
 <p>B3:3      0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  </p>
@@ -2104,286 +2368,294 @@
 <p>B3:5      0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  </p>
 <p>B3:6      0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  </p>
 <p>B3:7      0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  </p>
-<p>B3:8      0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  </p>
-<p>B3:9      1  0  0  0  0  0  0  1  0  0  1  0  0  1  1  1  </p>
+<p>B3:8      0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  </p>
+<p>B3:9      1  0  0  0  0  0  0  1  0  0  1  0  0  1  0  1  </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File T4  --  TIMER</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:55</p>
+<p>Wednesday, January 01, 2020 - 12:37:00</p>
 <p>Offset   EN TT DN     BASE    PRE    ACC  (Symbol) Description                                                                                                    </p>
 <p>T4:0      0  0  0  .01 sec      0      0  </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File C5  --  COUNTER</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:55</p>
+<p>Wednesday, January 01, 2020 - 12:37:00</p>
 <p>Offset   CU CD DN OV UN UA    PRE    ACC  (Symbol) Description                                                                                                    </p>
 <p>C5:0      0  0  0  0  0  0      0      0  </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File R6  --  CONTROL</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:55</p>
+<p>Wednesday, January 01, 2020 - 12:37:01</p>
 <p>Offset   EN EU DN EM ER UL IN FD    LEN    POS  (Symbol) Description                                                                                                    </p>
 <p>R6:0      0  0  0  0  0  0  0  0      0      0  </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File N7 (dec)  --  INTEGER  --  Seed1</p>
 <p>Page 1     (Radix Decimal)</p>
-<p>Tuesday, December 31, 2019 - 16:29:56</p>
+<p>Wednesday, January 01, 2020 - 12:37:01</p>
 <p>Offset        0      1      2      3      4      5      6      7      8      9                                                                                                     </p>
-<p>N7:0     -13063 -20295      0      0      0    101    102      0 </p>
+<p>N7:0     -21447 -31495      0  20077    192      1   1025      0 </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File F8  --  FLOAT</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:56</p>
+<p>Wednesday, January 01, 2020 - 12:37:01</p>
 <p>Offset               0             1             2             3             4                                                                                                     </p>
-<p>F8:0         0.4103699      0.802948      1.334688    -0.9451693     -1.261506 </p>
-<p>F8:5                 0             0             0     -1.238114      1.532927 </p>
+<p>F8:0        0.08407593     0.4994812      2.225325    -0.9999944      1.159541 </p>
+<p>F8:5                 0             0             0     -1.567537      2.457171 </p>
 <p>F8:10                0             0             0             0             0 </p>
-<p>F8:15        -0.197052     0.8207397   -0.09845462   0.009693313     0.6931472 </p>
-<p>F8:20        0.6931472     0.7071068      1.414214    -0.1792603             0 </p>
+<p>F8:15       -0.2494812      1.345215     0.1471997    0.02166774      2.772589 </p>
+<p>F8:20        0.6931472     0.7071068      1.414214     0.3452148             0 </p>
 <p>F8:25                0             0             0             0             0 </p>
 <p>F8:30                0             0 </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File F9  --  GNGDATA0  --  Accumlated Gaussian data</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:56</p>
+<p>Wednesday, January 01, 2020 - 12:37:01</p>
 <p>Offset               0             1             2             3             4                                                                                                     </p>
-<p>F9:0         0.5433941    -0.4559816    -0.1928478    -0.2416197     0.4358808 </p>
-<p>F9:5         -1.261506    -0.9924026    -0.9243795     -1.031823      1.581378 </p>
-<p>F9:10        0.4258973      2.285063      1.851425    -0.5542648    -0.1174393 </p>
-<p>F9:15       -0.9506755    -0.3779179      1.828362     -1.547203     0.3377873 </p>
-<p>F9:20         1.608895   -0.05709658    -0.5159178     -2.453258     -1.126848 </p>
-<p>F9:25       -0.7740583    -0.3145958     -1.042118     0.7537348      1.193819 </p>
-<p>F9:30       0.02235698      1.110291     -1.277109     0.2198334     0.8934317 </p>
-<p>F9:35       -0.2225185     0.3156725      2.588002     -1.387783    -0.2768764 </p>
-<p>F9:40        0.4505051    -0.1924003     -1.180793    -0.5080417     -1.310705 </p>
-<p>F9:45       -0.9500581    -0.2449654     0.9243801     0.5433941    -0.4559816 </p>
-<p>F9:50       -0.1928478    -0.2416197     0.4358808     -1.261506    -0.9924026 </p>
-<p>F9:55       -0.9243795     -1.031823      1.581378     0.4258973      2.285063 </p>
-<p>F9:60         1.851425    -0.5542648    -0.1174393    -0.9506755    -0.3779179 </p>
-<p>F9:65         1.828362     -1.547203     0.3377873      1.608895   -0.05709658 </p>
-<p>F9:70       -0.5159178     -2.453258     -1.126848    -0.7740583    -0.3145958 </p>
-<p>F9:75        -1.042118     0.7537348      1.193819    0.02235698      1.110291 </p>
-<p>F9:80        -1.277109     0.2198334     0.8934317    -0.2225185     0.3156725 </p>
-<p>F9:85         2.588002     -1.387783    -0.2768764     0.4505051    -0.1924003 </p>
-<p>F9:90        -1.180793    -0.5080417     -1.310705    -0.9500581    -0.2449654 </p>
-<p>F9:95        0.9243801     0.5433941    -0.4559816    -0.1928478    -0.2416197 </p>
-<p>F9:100       0.4358808     -1.261506     -1.387783    -0.2768764     0.4505051 </p>
-<p>F9:105      -0.1924003     -1.180793    -0.5080417     -1.310705    -0.9500581 </p>
-<p>F9:110      -0.2449654     0.9243801     0.5433941    -0.4559816    -0.1928478 </p>
-<p>F9:115      -0.2416197     0.4358808     -1.261506    -0.9924026    -0.9243795 </p>
-<p>F9:120       -1.031823      1.581378     0.4258973      2.285063      1.851425 </p>
-<p>F9:125      -0.5542648    -0.1174393    -0.9506755    -0.3779179      1.828362 </p>
-<p>F9:130       -1.547203     0.3377873      1.608895   -0.05709658    -0.5159178 </p>
-<p>F9:135       -2.453258     -1.126848    -0.7740583    -0.3145958     -1.042118 </p>
-<p>F9:140       0.7537348      1.193819    0.02235698      1.110291     -1.277109 </p>
-<p>F9:145       0.2198334     0.8934317    -0.2225185     0.3156725      2.588002 </p>
-<p>F9:150       -1.387783    -0.2768764     0.4505051    -0.1924003     -1.180793 </p>
-<p>F9:155      -0.5080417     -1.310705    -0.9500581    -0.2449654     0.9243801 </p>
-<p>F9:160       0.5433941    -0.4559816    -0.1928478    -0.2416197     0.4358808 </p>
-<p>F9:165       -1.261506    -0.9924026    -0.9243795     -1.031823      1.581378 </p>
-<p>F9:170       0.4258973      2.285063      1.851425    -0.5542648    -0.1174393 </p>
-<p>F9:175      -0.9506755    -0.3779179      1.828362     -1.547203     0.3377873 </p>
-<p>F9:180        1.608895   -0.05709658    -0.5159178     -2.453258     -1.126848 </p>
-<p>F9:185      -0.7740583    -0.3145958     -1.042118     0.7537348      1.193819 </p>
-<p>F9:190      0.02235698      1.110291     -1.277109     0.2198334     0.8934317 </p>
-<p>F9:195      -0.2225185     0.3156725      2.588002     -1.387783    -0.2768764 </p>
-<p>F9:200       0.4505051    -0.1924003     -1.180793    -0.5080417     -1.310705 </p>
-<p>F9:205      -0.9500581    -0.2449654     0.9243801     0.5433941    -0.4559816 </p>
-<p>F9:210      -0.1928478    -0.2416197     0.4358808     -1.261506    -0.9924026 </p>
-<p>F9:215      -0.9243795     -1.031823      1.581378     0.4258973      2.285063 </p>
-<p>F9:220        1.851425    -0.5542648    -0.1174393    -0.9506755    -0.3779179 </p>
-<p>F9:225        1.828362     -1.547203     0.3377873      1.608895   -0.05709658 </p>
-<p>F9:230      -0.5159178     -2.453258     -1.126848    -0.7740583    -0.3145958 </p>
-<p>F9:235       -1.042118     0.7537348      1.193819    0.02235698      1.110291 </p>
-<p>F9:240       -1.277109     0.2198334     0.8934317    -0.2225185     0.3156725 </p>
-<p>F9:245        2.588002     -1.387783    -0.2768764     0.4505051    -0.1924003 </p>
-<p>F9:250       -1.180793    -0.5080417     -1.310705    -0.9500581    -0.2449654 </p>
-<p>F9:255       0.9243801 </p>
+<p>F9:0           -1.2804     -1.252713      -1.56332     0.1231561     -1.641806 </p>
+<p>F9:5         -0.294293      1.333088    -0.1862637    0.03556834     0.6155825 </p>
+<p>F9:10       0.09701879    -0.8481203     0.8172038     -0.366562       1.33255 </p>
+<p>F9:15       -0.9052417     -1.615914    -0.2698653    0.01571224    0.03661513 </p>
+<p>F9:20       -0.2094063    -0.5597415     0.6703878      1.004974     0.8521649 </p>
+<p>F9:25        -1.101061      1.685344      1.477626     0.3931148     0.8873124 </p>
+<p>F9:30        0.3482208     0.2769486      -1.93097     -1.426946     0.5787317 </p>
+<p>F9:35        -0.270738    0.08127096    -0.4305401     0.8921328     0.9707648 </p>
+<p>F9:40         1.200957      1.465088      2.261916     0.1119899     0.6628598 </p>
+<p>F9:45       -0.8410325    -0.3658052    -0.2863812     0.5986395    -0.8448308 </p>
+<p>F9:50       -0.1350328    -0.7625812     0.2945233     -1.202178      1.441452 </p>
+<p>F9:55       -0.9938332      1.490567      1.061363    -0.8284192     0.2803836 </p>
+<p>F9:60         1.142168    -0.3654548     -1.357372     0.9684834   -0.06045286 </p>
+<p>F9:65        0.5700551    -0.6612676     -0.265329    -0.2284915     -1.145264 </p>
+<p>F9:70       -0.5159959    0.08831093    -0.1748656     -1.263888    -0.4285133 </p>
+<p>F9:75        0.1850519     -1.333608     0.2799225    -0.2865542    0.01099456 </p>
+<p>F9:80        0.3609306    -0.4511458    -0.3850162     0.1352676     -2.380493 </p>
+<p>F9:85        -1.137642     0.7305954     -1.167558     0.3657762    0.06890054 </p>
+<p>F9:90        0.7940026    -0.1563543     -1.307596     0.8849954      1.969672 </p>
+<p>F9:95         -1.77423    -0.7634377    -0.7154956     -1.352482      1.292624 </p>
+<p>F9:100       -1.426051      2.094877     0.7371041   0.008480622     0.9156969 </p>
+<p>F9:105      0.01738472       1.83979     0.5960675     0.1837741     -1.891927 </p>
+<p>F9:110       -1.130226    -0.5282061     -2.347447    -0.8313075    -0.6993395 </p>
+<p>F9:115       0.8690048      1.082537     0.2864336    0.08454966   -0.02083428 </p>
+<p>F9:120      -0.5869789    -0.7898655    -0.7926803     -1.619382      -2.59247 </p>
+<p>F9:125      -0.7956535     -1.578987    -0.5432064    -0.8941733     -1.416256 </p>
+<p>F9:130       -2.283439      2.039481    -0.6251485    -0.9727128    -0.4366587 </p>
+<p>F9:135       -2.152072     0.6352331     -0.140217     0.3425092    -0.4585041 </p>
+<p>F9:140     0.004135965    -0.5260845     0.6761213     -1.180817      1.711682 </p>
+<p>F9:145      -0.6971104    -0.9883489     0.2739205    0.07085152     0.2129617 </p>
+<p>F9:150      -0.3400162      2.489192      1.628326    -0.4793215      -1.87911 </p>
+<p>F9:155      -0.9359501    -0.6039031     0.5890342    -0.3792332       0.24178 </p>
+<p>F9:160      -0.4341493      0.366586      -1.40892     -0.738557    -0.2145473 </p>
+<p>F9:165      -0.3406831    -0.4035247     -0.388339    -0.3461494    -0.3064339 </p>
+<p>F9:170       0.1061295    -0.1629959     -1.025419     0.5257999    -0.1505442 </p>
+<p>F9:175       0.7057718      1.649826     0.1061229   -0.08988005     -2.230904 </p>
+<p>F9:180        1.387041     0.3944603     0.1360691     -1.124516     0.6418464 </p>
+<p>F9:185      -0.2170997    -0.6857576     -1.037468      1.198241    -0.9406741 </p>
+<p>F9:190     -0.07343926    0.02178634     0.4540067     -1.288302     0.1173859 </p>
+<p>F9:195     -0.03233965    -0.9481161      1.313318     -0.546876     -2.326593 </p>
+<p>F9:200       0.3762527    -0.1151598      1.083808     0.1307218     0.4776118 </p>
+<p>F9:205       -2.109869     0.9157443     -0.491283     0.1988463     -1.614758 </p>
+<p>F9:210       0.5997914      2.915883     -0.793528    -0.4157742     -1.215403 </p>
+<p>F9:215       0.3595449     -1.081805     -1.141065      1.497656    -0.7274088 </p>
+<p>F9:220       0.4406565     0.3145355    -0.4422045     -1.040388     0.4339252 </p>
+<p>F9:225      -0.2871796     -1.956401    -0.3109392    -0.1633885     -1.074494 </p>
+<p>F9:230       0.8475493   -0.04228892     0.4783282   -0.06767548    -0.8045669 </p>
+<p>F9:235       0.7197189     0.4950422    -0.8520217   -0.01022427    -0.6058706 </p>
+<p>F9:240       0.3687633      1.714307      1.011998    -0.9583361     0.1166652 </p>
+<p>F9:245       -0.383271    -0.3040311     0.5805309     0.8043092   -0.01064207 </p>
+<p>F9:250       -0.921546     0.7967821      1.443678   -0.08397119     0.9334442 </p>
+<p>F9:255       0.7284671 </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File F10  --  GNGDATA1</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:56</p>
+<p>Wednesday, January 01, 2020 - 12:37:01</p>
 <p>Offset               0             1             2             3             4                                                                                                     </p>
-<p>F10:0       -0.3779179      1.828362     -1.547203     0.3377873      1.608895 </p>
-<p>F10:5      -0.05709658    -0.5159178     -2.453258     -1.126848    -0.7740583 </p>
-<p>F10:10      -0.3145958     -1.042118     0.7537348      1.193819    0.02235698 </p>
-<p>F10:15        1.110291     -1.277109     0.2198334     0.8934317    -0.2225185 </p>
-<p>F10:20       0.3156725      2.588002     -1.387783    -0.2768764     0.4505051 </p>
-<p>F10:25      -0.1924003     -1.180793    -0.5080417     -1.310705    -0.9500581 </p>
-<p>F10:30      -0.2449654     0.9243801     0.5433941    -0.4559816    -0.1928478 </p>
-<p>F10:35      -0.2416197     0.4358808     -1.261506    -0.9924026    -0.9243795 </p>
-<p>F10:40       -1.031823      1.581378     0.4258973      2.285063      1.851425 </p>
-<p>F10:45      -0.5542648    -0.1174393    -0.9506755    -0.3779179      1.828362 </p>
-<p>F10:50       -1.547203     0.3377873      1.608895   -0.05709658    -0.5159178 </p>
-<p>F10:55       -2.453258     -1.126848    -0.7740583    -0.3145958     -1.042118 </p>
-<p>F10:60       0.7537348      1.193819    0.02235698      1.110291     -1.277109 </p>
-<p>F10:65       0.2198334     0.8934317    -0.2225185     0.3156725      2.588002 </p>
-<p>F10:70       -1.387783    -0.2768764     0.4505051    -0.1924003     -1.180793 </p>
-<p>F10:75      -0.5080417     -1.310705    -0.9500581    -0.2449654     0.9243801 </p>
-<p>F10:80       0.5433941    -0.4559816    -0.1928478    -0.2416197     0.4358808 </p>
-<p>F10:85       -1.261506    -0.9924026    -0.9243795     -1.031823      1.581378 </p>
-<p>F10:90       0.4258973      2.285063      1.851425    -0.5542648    -0.1174393 </p>
-<p>F10:95      -0.9506755    -0.3779179      1.828362     -1.547203     0.3377873 </p>
-<p>F10:100       1.608895   -0.05709658    -0.5159178     -2.453258     -1.126848 </p>
-<p>F10:105     -0.7740583    -0.3145958     -1.042118     0.7537348      1.193819 </p>
-<p>F10:110     0.02235698      1.110291     -1.277109     0.2198334     0.8934317 </p>
-<p>F10:115     -0.2225185     0.3156725      2.588002     -1.387783    -0.2768764 </p>
-<p>F10:120      0.4505051    -0.1924003     -1.180793    -0.5080417     -1.310705 </p>
-<p>F10:125     -0.9500581    -0.2449654     0.9243801     0.5433941    -0.4559816 </p>
-<p>F10:130     -0.1928478    -0.2416197     0.4358808     -1.261506    -0.9924026 </p>
-<p>F10:135     -0.9243795     -1.031823      1.581378     0.4258973      2.285063 </p>
-<p>F10:140       1.851425    -0.5542648    -0.1174393    -0.9506755    -0.3779179 </p>
-<p>F10:145       1.828362     -1.547203     0.3377873      1.608895   -0.05709658 </p>
-<p>F10:150     -0.5159178     -2.453258     -1.126848    -0.7740583    -0.3145958 </p>
-<p>F10:155      -1.042118     0.7537348      1.193819    0.02235698      1.110291 </p>
-<p>F10:160      -1.277109     0.2198334     0.8934317    -0.2225185     0.3156725 </p>
-<p>F10:165       2.588002     -1.387783    -0.2768764     0.4505051    -0.1924003 </p>
-<p>F10:170      -1.180793    -0.5080417     -1.310705    -0.9500581    -0.2449654 </p>
-<p>F10:175      0.9243801     0.5433941    -0.4559816    -0.1928478    -0.2416197 </p>
-<p>F10:180      0.4358808     -1.261506    -0.9924026    -0.9243795     -1.031823 </p>
-<p>F10:185       1.581378     0.4258973      2.285063      1.851425    -0.5542648 </p>
-<p>F10:190     -0.1174393    -0.9506755    -0.3779179      1.828362     -1.547203 </p>
-<p>F10:195      0.3377873      1.608895   -0.05709658    -0.5159178     -2.453258 </p>
-<p>F10:200      -1.126848    -0.7740583    -0.3145958     -1.042118     0.7537348 </p>
-<p>F10:205       1.193819    0.02235698      1.110291     -1.277109     0.2198334 </p>
-<p>F10:210      0.8934317    -0.2225185     0.3156725      2.588002     -1.387783 </p>
-<p>F10:215     -0.2768764     0.4505051    -0.1924003     -1.180793    -0.5080417 </p>
-<p>F10:220      -1.310705    -0.9500581    -0.2449654     0.9243801     0.5433941 </p>
-<p>F10:225     -0.4559816    -0.1928478    -0.2416197     0.4358808     -1.261506 </p>
-<p>F10:230     -0.9924026    -0.9243795     -1.031823      1.581378     0.4258973 </p>
-<p>F10:235       2.285063      1.851425    -0.5542648    -0.1174393    -0.9506755 </p>
-<p>F10:240     -0.3779179      1.828362     -1.547203     0.3377873      1.608895 </p>
-<p>F10:245    -0.05709658    -0.5159178     -2.453258     -1.126848    -0.7740583 </p>
-<p>F10:250     -0.3145958     -1.042118     0.7537348      1.193819    0.02235698 </p>
-<p>F10:255       1.110291 </p>
+<p>F10:0       -0.5092492     -1.486764    -0.1522027     0.7856264     0.1768159 </p>
+<p>F10:5       -0.6895981    -0.6892415     0.1844925    -0.2514621    -0.6355056 </p>
+<p>F10:10        3.117049     -1.323453     -2.078389    -0.9718114     0.0754582 </p>
+<p>F10:15       -1.142324     -1.264225      1.727347    -0.2488077     -1.826697 </p>
+<p>F10:20      -0.5848943     -2.001129    -0.7619342     0.6562305      2.049464 </p>
+<p>F10:25       0.7240134      1.942729     0.4027227    -0.6424976    -0.3040294 </p>
+<p>F10:30        -0.10638    -0.4419109     0.4218683     0.8345193     0.1268292 </p>
+<p>F10:35       0.7496984    -0.3519659   -0.09370626      1.197822      1.018912 </p>
+<p>F10:40       0.8103536     0.5138042    -0.2214999    -0.4404654       1.23461 </p>
+<p>F10:45     -0.05472103        0.9107    -0.2266339     0.1852716     0.3490298 </p>
+<p>F10:50       0.1238146     -1.303212    -0.5199516      1.601712    -0.3961384 </p>
+<p>F10:55      -0.4459272     0.3984077     -1.289309      1.124127     -1.258592 </p>
+<p>F10:60        1.036227     -1.692572    -0.7663832   -0.03293741    -0.1931465 </p>
+<p>F10:65       0.3000241     -1.072348      1.406051      2.592285    -0.3212407 </p>
+<p>F10:70        1.610669    -0.4845459     0.5903713      1.201993     -1.418886 </p>
+<p>F10:75       -1.073555     0.5346453     0.4082426     -1.039389      1.442661 </p>
+<p>F10:80      -0.3616027    -0.7890681      2.124073    -0.1444005     -1.332018 </p>
+<p>F10:85      -0.7616799      1.054116     0.4916516     0.1234348     0.9234418 </p>
+<p>F10:90       0.5355449    -0.4601762      0.334485      -1.23724     -2.696726 </p>
+<p>F10:95       0.1906051     0.6499493      1.772434    -0.9994476     -1.861242 </p>
+<p>F10:100       1.817288      1.443629     0.9501306    -0.1061048      1.958462 </p>
+<p>F10:105     -0.6060047    -0.0553411      -0.27009      1.901494     -1.343005 </p>
+<p>F10:110       1.585725    -0.8073546     0.9977574    -0.9561639     -1.412237 </p>
+<p>F10:115       1.015003     -1.443662    -0.4982001     -0.349981    -0.9177588 </p>
+<p>F10:120     -0.3498648     0.4977828     0.6180658     0.4229959    -0.8076729 </p>
+<p>F10:125       0.354871    -0.4192449    -0.6444256    -0.1428318     -1.470432 </p>
+<p>F10:130      0.5655666      1.144273      2.231111     -1.211874     0.3949988 </p>
+<p>F10:135       1.180462    -0.6150807     0.3656259      1.907284     0.2419261 </p>
+<p>F10:140      -1.228217       1.04274    -0.3560624     -0.870926     0.2208383 </p>
+<p>F10:145      -2.769364     0.7147194 -0.0002740906      0.406543      1.608612 </p>
+<p>F10:150      -1.902333   -0.02480553     0.1791902     0.2589395     -1.882962 </p>
+<p>F10:155      0.1004677    0.04850078     -0.561952     0.4572046    0.04361469 </p>
+<p>F10:160       1.244883    -0.2979101      1.197365     -1.278086    -0.2843141 </p>
+<p>F10:165       0.151059    -0.6402696    -0.4802061     -1.307269    -0.5612708 </p>
+<p>F10:170     -0.6855754     -0.042383     -1.225454    -0.4968956    -0.7383633 </p>
+<p>F10:175     -0.8802518     -0.515794     0.8791788     0.1661373    -0.7104722 </p>
+<p>F10:180      -1.893877    -0.6928349     -1.956197   0.004501147     -1.830422 </p>
+<p>F10:185      -2.431789      2.490899      1.269417    0.05077643    -0.2591646 </p>
+<p>F10:190      -1.106723    -0.4347295     0.8694533    -0.8357707   0.001502536 </p>
+<p>F10:195      -1.306005    -0.5161856     -0.433825     0.4507393      1.221207 </p>
+<p>F10:200     -0.3933461     0.2784951     0.2118003     0.5074741     -1.041307 </p>
+<p>F10:205       0.554282     0.1038237    -0.6038502      -1.76163     -1.176595 </p>
+<p>F10:210      0.1211642     -1.802709    -0.2807854    -0.1745787    -0.4236559 </p>
+<p>F10:215     -0.9738432      1.530954      -2.84974     0.8698698     -1.262692 </p>
+<p>F10:220      -2.863229     0.2637202     -0.293158      1.098575     -1.231925 </p>
+<p>F10:225      0.1464302     0.9459115     -2.075661     -1.038466    0.08040651 </p>
+<p>F10:230       1.046629    -0.1824339      1.290351    -0.6386905      1.341509 </p>
+<p>F10:235      0.4528955      1.127764    -0.2115391     0.8357218     0.6298063 </p>
+<p>F10:240      -1.050576      -0.27324      2.081573      -1.10545    -0.3045846 </p>
+<p>F10:245      0.7873576      1.219647     0.4586864    -0.1162812    -0.3369545 </p>
+<p>F10:250      0.8705316     -2.441828      2.396219     -2.322917    0.03043202 </p>
+<p>F10:255      0.1214917 </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Data File F11  --  GNGDATA2</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:56</p>
+<p>Wednesday, January 01, 2020 - 12:37:02</p>
 <p>Offset               0             1             2             3             4                                                                                                     </p>
-<p>F11:0                0             0             0             0             0 </p>
-<p>F11:5                0             0             0             0             0 </p>
-<p>F11:10               0             0             0             0             0 </p>
-<p>F11:15               0             0             0             0             0 </p>
-<p>F11:20               0             0             0             0             0 </p>
-<p>F11:25               0             0             0             0             0 </p>
-<p>F11:30               0             0             0             0             0 </p>
-<p>F11:35               0             0             0             0             0 </p>
-<p>F11:40               0             0             0             0             0 </p>
-<p>F11:45               0             0             0             0             0 </p>
-<p>F11:50               0             0             0             0             0 </p>
-<p>F11:55               0             0             0             0             0 </p>
-<p>F11:60               0             0             0             0             0 </p>
-<p>F11:65               0             0             0             0             0 </p>
-<p>F11:70               0             0             0             0             0 </p>
-<p>F11:75               0             0             0             0             0 </p>
-<p>F11:80               0             0             0             0             0 </p>
-<p>F11:85               0             0             0             0             0 </p>
-<p>F11:90               0             0             0             0             0 </p>
-<p>F11:95               0             0             0             0             0 </p>
-<p>F11:100              0             0             0             0             0 </p>
-<p>F11:105              0             0             0             0             0 </p>
-<p>F11:110              0             0             0             0             0 </p>
-<p>F11:115              0             0             0             0             0 </p>
-<p>F11:120              0             0             0             0             0 </p>
-<p>F11:125              0             0             0             0             0 </p>
-<p>F11:130              0             0             0             0             0 </p>
-<p>F11:135              0             0             0             0             0 </p>
-<p>F11:140              0             0             0             0             0 </p>
-<p>F11:145              0             0             0             0             0 </p>
-<p>F11:150              0             0             0             0             0 </p>
-<p>F11:155              0             0             0             0             0 </p>
-<p>F11:160              0             0             0             0             0 </p>
-<p>F11:165              0             0             0             0             0 </p>
-<p>F11:170              0             0             0             0             0 </p>
-<p>F11:175              0             0             0             0             0 </p>
-<p>F11:180              0             0             0             0             0 </p>
-<p>F11:185              0             0             0             0             0 </p>
-<p>F11:190              0             0             0             0             0 </p>
-<p>F11:195              0             0             0             0             0 </p>
-<p>F11:200              0             0             0             0             0 </p>
-<p>F11:205              0             0             0             0             0 </p>
-<p>F11:210              0             0             0             0             0 </p>
-<p>F11:215              0             0             0             0             0 </p>
-<p>F11:220              0             0             0             0             0 </p>
-<p>F11:225              0             0             0             0             0 </p>
-<p>F11:230              0             0             0             0             0 </p>
-<p>F11:235              0             0             0             0             0 </p>
-<p>F11:240              0             0             0             0             0 </p>
-<p>F11:245              0             0             0             0             0 </p>
-<p>F11:250              0             0             0             0             0 </p>
-<p>F11:255              0 </p>
+<p>F11:0        0.1888834     -1.376872      1.715463     0.8527988      1.463609 </p>
+<p>F11:5        0.4925542      1.817478    -0.7349209     0.4788288     0.5732951 </p>
+<p>F11:10        1.211752     0.9285806     0.3309642      1.175756    -0.5455902 </p>
+<p>F11:15      -0.4869246     0.1587552     0.3104847    -0.1901714      1.404254 </p>
+<p>F11:20      -0.2866032     -1.339858    -0.5947765    -0.5399055   -0.01335533 </p>
+<p>F11:25       0.6508511      1.712561    -0.5504962     0.3696139    -0.1022094 </p>
+<p>F11:30      -0.1919224     0.4224322   -0.00293398     -1.700144    -0.8693915 </p>
+<p>F11:35     -0.08933186   -0.08977117     0.2588465      1.595047      1.049923 </p>
+<p>F11:40        2.100111     0.5273333     -0.474993     0.7102874     0.9696609 </p>
+<p>F11:45        1.028293    -0.5581191      1.253902     -1.629959    0.03532251 </p>
+<p>F11:50       0.7523605     -1.970652      1.060017     -2.597058    -0.8255213 </p>
+<p>F11:55       0.9379351    -0.9822942    0.01902592    -0.1418632     0.6540022 </p>
+<p>F11:60      -0.1104566    -0.6741204     -1.283743     -1.093698      -2.30199 </p>
+<p>F11:65        1.356465     0.5681924     0.7485737    0.05343032      1.074985 </p>
+<p>F11:70      -0.9036641     0.3980812     -0.983611     -1.003039     0.1522032 </p>
+<p>F11:75       -1.143674    -0.1069494     -1.791325     0.3528977      1.209972 </p>
+<p>F11:80       -1.132828   -0.04150685     -1.547256    -0.3170307    -0.8580174 </p>
+<p>F11:85      -0.5783201    -0.2968788     0.9151328     -1.281102      0.621925 </p>
+<p>F11:90        0.201399    -0.5594888     0.4431559     0.9227433      2.292893 </p>
+<p>F11:95        1.542258    0.08528214    -0.7392432      2.465469    -0.5586063 </p>
+<p>F11:100       1.470921     -1.595033      1.138289    -0.2712477     0.8404312 </p>
+<p>F11:105     -0.5989175    -0.5429746     0.4738478     0.2439098    0.06074829 </p>
+<p>F11:110    -0.06014654     0.3098228     0.2354525     0.7671727    -0.4215646 </p>
+<p>F11:115       0.155413       2.02133     0.8687681      -1.49649     0.7925269 </p>
+<p>F11:120       2.376519     0.7184207     -1.516563    -0.1288405    -0.6410546 </p>
+<p>F11:125       1.344044        0.1449     -1.682643      0.472036     -1.218834 </p>
+<p>F11:130      0.5045167   -0.09653821     0.4381003     0.9707019    -0.2614914 </p>
+<p>F11:135     -0.5474357     0.5101753    -0.5870966     0.4688838       1.14313 </p>
+<p>F11:140      0.8752331     0.1368686    -0.4681973      -0.13189      -0.46771 </p>
+<p>F11:145     -0.2841271    -0.2817039   -0.07784152       0.19504      1.110141 </p>
+<p>F11:150     -0.1734858     -1.575409    -0.5425768     0.7191114     -1.449726 </p>
+<p>F11:155      0.9266199        1.8966      2.625024    -0.3404129    -0.3221147 </p>
+<p>F11:160      -2.570221    -0.6057023      1.015989      1.664527     0.0872395 </p>
+<p>F11:165       0.198141    -0.8809938    -0.5053439    -0.6114385   -0.05300808 </p>
+<p>F11:170      0.4441108     0.9108183    -0.4845763     -1.430822      1.633506 </p>
+<p>F11:175    -0.05765633    -0.1995827    -0.3087195     0.6056181     -1.109383 </p>
+<p>F11:180      0.3998437     0.1806433    0.09044969     0.7197145    -0.9851257 </p>
+<p>F11:185       1.420065     -1.044943    0.04611374    -0.4859704    -0.8521335 </p>
+<p>F11:190     -0.0747835    -0.1265228      1.008274    -0.3111418    -0.5295621 </p>
+<p>F11:195     -0.1472054      1.047876     -1.075152    -0.3065684     -0.594219 </p>
+<p>F11:200      0.3320737      -0.45009     -1.157522      1.491466     0.4256655 </p>
+<p>F11:205      0.1650416       -1.5313     -1.684329    -0.2901826     0.1644599 </p>
+<p>F11:210     -0.4606689      1.314438     -1.397524     -1.018722     0.7418534 </p>
+<p>F11:215     -0.4377177     0.7980222      0.140204     0.1241432     -1.409973 </p>
+<p>F11:220       1.310239     -1.358865     0.9122246     -0.689656      2.278001 </p>
+<p>F11:225      0.8264315       2.38937      2.002665   0.003630315     0.9964607 </p>
+<p>F11:230       1.226235    -0.3730008     0.4490787    -0.4430911    -0.3519547 </p>
+<p>F11:235      -1.831732      1.029382      0.821597     -1.449066     0.3890695 </p>
+<p>F11:240      0.3114518     -0.354548      0.747753    -0.1658058     0.5208607 </p>
+<p>F11:245      -1.098541     0.5767309     -2.387736     -1.540182      1.174178 </p>
+<p>F11:250       0.175843      1.006535    0.08174174    -0.9143443    -0.4852288 </p>
+<p>F11:255       1.094659 </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
-<p>Data File F12  --  GNDATA3</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
+<p>Data File F12  --  GNGDATA3</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:57</p>
+<p>Wednesday, January 01, 2020 - 12:37:02</p>
 <p>Offset               0             1             2             3             4                                                                                                     </p>
-<p>F12:0        -1.277109     0.2198334     0.8934317    -0.2225185     0.3156725 </p>
-<p>F12:5         2.588002     -1.387783    -0.2768764     0.4505051    -0.1924003 </p>
-<p>F12:10       -1.180793    -0.5080417     -1.310705    -0.9500581    -0.2449654 </p>
-<p>F12:15       0.9243801     0.5433941    -0.4559816    -0.1928478    -0.2416197 </p>
-<p>F12:20       0.4358808     -1.261506    -0.9924026    -0.9243795     -1.031823 </p>
-<p>F12:25        1.581378     0.4258973      2.285063      1.851425    -0.5542648 </p>
-<p>F12:30      -0.1174393    -0.9506755    -0.3779179      1.828362     -1.547203 </p>
-<p>F12:35       0.3377873      1.608895   -0.05709658    -0.5159178     -2.453258 </p>
-<p>F12:40       -1.126848    -0.7740583    -0.3145958     -1.042118     0.7537348 </p>
-<p>F12:45        1.193819    0.02235698      1.110291     -1.277109     0.2198334 </p>
-<p>F12:50       0.8934317    -0.2225185     0.3156725      2.588002     -1.387783 </p>
-<p>F12:55      -0.2768764     0.4505051    -0.1924003     -1.180793    -0.5080417 </p>
-<p>F12:60       -1.310705    -0.9500581    -0.2449654     0.9243801     0.5433941 </p>
-<p>F12:65      -0.4559816    -0.1928478    -0.2416197     0.4358808     -1.261506 </p>
-<p>F12:70      -0.9924026    -0.9243795     -1.031823      1.581378     0.4258973 </p>
-<p>F12:75        2.285063      1.851425    -0.5542648    -0.1174393    -0.9506755 </p>
-<p>F12:80      -0.3779179      1.828362     -1.547203     0.3377873      1.608895 </p>
-<p>F12:85     -0.05709658    -0.5159178     -2.453258     -1.126848    -0.7740583 </p>
-<p>F12:90      -0.3145958     -1.042118     0.7537348      1.193819    0.02235698 </p>
-<p>F12:95        1.110291     -1.277109     0.2198334     0.8934317    -0.2225185 </p>
-<p>F12:100      0.3156725      2.588002     -1.387783    -0.2768764     0.4505051 </p>
-<p>F12:105     -0.1924003     -1.180793    -0.5080417     -1.310705    -0.9500581 </p>
-<p>F12:110     -0.2449654     0.9243801     0.5433941    -0.4559816    -0.1928478 </p>
-<p>F12:115     -0.2416197     0.4358808     -1.261506    -0.9924026    -0.9243795 </p>
-<p>F12:120      -1.031823      1.581378     0.4258973      2.285063      1.851425 </p>
-<p>F12:125     -0.5542648    -0.1174393    -0.9506755    -0.3779179      1.828362 </p>
-<p>F12:130      -1.547203     0.3377873      1.608895   -0.05709658    -0.5159178 </p>
-<p>F12:135      -2.453258     -1.126848    -0.7740583    -0.3145958     -1.042118 </p>
-<p>F12:140      0.7537348      1.193819    0.02235698      1.110291     -1.277109 </p>
-<p>F12:145      0.2198334     0.8934317    -0.2225185     0.3156725      2.588002 </p>
-<p>F12:150      -1.387783    -0.2768764     0.4505051    -0.1924003     -1.180793 </p>
-<p>F12:155     -0.5080417     -1.310705    -0.9500581    -0.2449654     0.9243801 </p>
-<p>F12:160      0.5433941    -0.4559816    -0.1928478    -0.2416197     0.4358808 </p>
-<p>F12:165      -1.261506    -0.9924026    -0.9243795     -1.031823      1.581378 </p>
-<p>F12:170      0.4258973      2.285063      1.851425    -0.5542648    -0.1174393 </p>
-<p>F12:175     -0.9506755    -0.3779179      1.828362     -1.547203     0.3377873 </p>
-<p>F12:180       1.608895   -0.05709658    -0.5159178     -2.453258     -1.126848 </p>
-<p>F12:185     -0.7740583    -0.3145958     -1.042118     0.7537348      1.193819 </p>
-<p>F12:190     0.02235698      1.110291     -1.277109     0.2198334     0.8934317 </p>
-<p>F12:195     -0.2225185     0.3156725      2.588002     -1.387783    -0.2768764 </p>
-<p>F12:200      0.4505051    -0.1924003     -1.180793    -0.5080417     -1.310705 </p>
-<p>F12:205     -0.9500581    -0.2449654     0.9243801     0.5433941    -0.4559816 </p>
-<p>F12:210     -0.1928478    -0.2416197     0.4358808     -1.261506    -0.9924026 </p>
-<p>F12:215     -0.9243795     -1.031823      1.581378     0.4258973      2.285063 </p>
-<p>F12:220       1.851425    -0.5542648    -0.1174393    -0.9506755    -0.3779179 </p>
-<p>F12:225       1.828362     -1.547203     0.3377873      1.608895   -0.05709658 </p>
-<p>F12:230     -0.5159178     -2.453258     -1.126848    -0.7740583    -0.3145958 </p>
-<p>F12:235      -1.042118     0.7537348      1.193819    0.02235698      1.110291 </p>
-<p>F12:240      -1.277109     0.2198334     0.8934317    -0.2225185     0.3156725 </p>
-<p>F12:245       2.588002     -1.387783    -0.2768764     0.4505051    -0.1924003 </p>
-<p>F12:250      -1.180793    -0.5080417     -1.310705    -0.9500581    -0.2449654 </p>
-<p>F12:255      0.9243801 </p>
+<p>F12:0        0.6960127     -1.011568     0.6825373    -0.7606506    -0.2361002 </p>
+<p>F12:5        0.5611504     -1.003506     0.5573484     -0.686475    -0.4264519 </p>
+<p>F12:10      -0.1348383     0.9677444     0.2832314    -0.4279594     -2.941174 </p>
+<p>F12:15       0.5336094     0.7033606  -0.004450679       0.43044     -1.005206 </p>
+<p>F12:20       -0.122659    -0.8890616     0.3341536    -0.4736894     -1.086769 </p>
+<p>F12:25       0.3344519      1.116992     -1.212639     -1.244574      1.861863 </p>
+<p>F12:30       0.4194396    -0.2192558    -0.2774618     0.5535988     0.3580565 </p>
+<p>F12:35       -0.916692     0.1267968    0.05472787      2.345401      1.160353 </p>
+<p>F12:40        1.072735   -0.07850897      1.169538    0.08672093    -0.1661765 </p>
+<p>F12:45        1.608157    -0.9389578     -1.763167     0.4315338    -0.9056532 </p>
+<p>F12:50        0.405266    -0.5503982    -0.2998385     0.6034358      1.859802 </p>
+<p>F12:55        1.269684     0.2013647     0.5720976    -0.4260736       -1.3686 </p>
+<p>F12:60       -0.977084    -0.8173555     -0.157004      -0.76476     -2.062832 </p>
+<p>F12:65       0.1366612      2.105695    -0.8392751     -2.205764   -0.05287869 </p>
+<p>F12:70       0.1481745   -0.08834962      1.309772     0.6754173     0.5797031 </p>
+<p>F12:75      -0.2336349    -0.7220505     0.7021145     0.7878405     0.3136627 </p>
+<p>F12:80      -0.6835892      1.242563      1.093066     0.5581069    -0.4268982 </p>
+<p>F12:85      -0.3359294     -0.743683    -0.1437809     -1.575628     -1.621611 </p>
+<p>F12:90     -0.07901511    -0.4606185     -0.704046    -0.3070878    -0.8804846 </p>
+<p>F12:95        -2.69298    -0.7977102      1.214418   -0.01070702     0.2268209 </p>
+<p>F12:100      -1.400583     -1.496729      1.311801    -0.4887551      1.437796 </p>
+<p>F12:105      -1.961344     0.9849243     0.3460332     0.2366905     0.4686559 </p>
+<p>F12:110     -0.5573716    -0.6401683     -2.307936    -0.3927183     -1.027677 </p>
+<p>F12:115     0.08571935    -0.4754444    -0.2472561     0.3151322     0.4511182 </p>
+<p>F12:120    -0.04181216     -1.639187     0.4743586    -0.2179327    0.04976873 </p>
+<p>F12:125      0.1821492     0.5325066    -0.5732334     0.8540469    -0.7719775 </p>
+<p>F12:130      0.1237074     -1.525477     -2.040174     0.7454674      0.961176 </p>
+<p>F12:135       1.505062    -0.3235533     0.7731481    -0.4415243     0.5617527 </p>
+<p>F12:140      -1.194035     -1.918797      -1.61431      1.185778    -0.7151248 </p>
+<p>F12:145      0.4469148      1.695764      1.015518    0.06553318     0.6512865 </p>
+<p>F12:150       1.306797    -0.3092846     -1.314891    -0.4464384    -0.7397756 </p>
+<p>F12:155       1.398178     -1.870161    -0.4445119    0.07157044     0.4724984 </p>
+<p>F12:160      0.7486856     0.6277599     -2.145699     0.6124393      3.119045 </p>
+<p>F12:165      -1.107248     -1.135729    -0.4775937     -1.524318     0.3610747 </p>
+<p>F12:170      0.7589418     -1.105296     0.8810257     -1.495146     -1.801144 </p>
+<p>F12:175       2.483865      1.598677     -0.172636      1.396589     -1.441213 </p>
+<p>F12:180     -0.7633762    -0.4150229      1.330822     -0.336609      1.229804 </p>
+<p>F12:185      0.3635487      1.689001     -1.057788     -1.524298    -0.5404614 </p>
+<p>F12:190      0.1545055     -1.192432     0.8941153     0.1507317    -0.8066475 </p>
+<p>F12:195       1.342305     0.3760549     0.4247937      1.060066      1.552759 </p>
+<p>F12:200      -0.196105      0.598625      -1.20428    -0.1753348    -0.5178249 </p>
+<p>F12:205      -1.455137     -1.503176     0.1131991     0.0342082     0.6936129 </p>
+<p>F12:210      0.6117773    -0.8807988    -0.8959203    -0.7600334     0.3945142 </p>
+<p>F12:215      0.5127823     0.1866229      1.276661    -0.5418544     -1.189018 </p>
+<p>F12:220    -0.08352979      1.505811      -1.15002   -0.01764241    -0.6451194 </p>
+<p>F12:225     -0.6836019    -0.2863266     0.1972507     0.9490182    0.06652816 </p>
+<p>F12:230       1.396945    -0.6205051      0.722488     -1.411667     -0.135933 </p>
+<p>F12:235      0.1157196    0.05739793      1.503502     0.8975164     -2.120645 </p>
+<p>F12:240      0.6375777      1.579359      1.298572    0.06728934    -0.8163263 </p>
+<p>F12:245       1.437801    -0.8890509    -0.1020464      1.166509     0.7986717 </p>
+<p>F12:250      -1.233307     -1.499269    -0.8943473     -1.245872    -0.1565173 </p>
+<p>F12:255     0.08366022 </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
+<p>Data File L13 (dec)  --  LONG</p>
+<p>Page 1     (Radix Decimal)</p>
+<p>Wednesday, January 01, 2020 - 12:37:02</p>
+<p>Offset               0             1             2             3             4                                                                                                     </p>
+<p>L13:0            -6497         -3653             0         20077         12345 </p>
+<p>L13:5           -32768             0             0 </p>
+<h1 style="page-break-before:always; "></h1>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Address/Symbol Database</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:57</p>
+<p>Wednesday, January 01, 2020 - 12:37:02</p>
 <p>Address</p>
 <p>Symbol</p>
 <p>Scope</p>
@@ -2488,12 +2760,31 @@
 <p>Global</p>
 <p>Ratio LN(U1)/LN(2) </p>
 <p>F9:[N7:5]</p>
+<p>F12</p>
+<p>Global</p>
 <p>F11:[N7:5]</p>
+<p>F12:[N7:4]</p>
+<p>F12:[N7:5]</p>
+<p>L13:3</p>
+<p>LCG_A</p>
+<p>Global</p>
+<p>((a*seed)+b)|m </p>
+<p>L13:4</p>
+<p>LCG_B</p>
+<p>Global</p>
+<p>((a*seed)+b)|m </p>
+<p>L13:5</p>
+<p>LCG_M</p>
+<p>Global</p>
+<p>((a*seed)+b)|m </p>
 <p>N7:0</p>
 <p>SEED_1</p>
 <p>Global</p>
 <p>N7:1</p>
 <p>SEED_2</p>
+<p>Global</p>
+<p>N7:4</p>
+<p>FILL_POINTER</p>
 <p>Global</p>
 <p>N7:5</p>
 <p>GNGADDR_255</p>
@@ -2594,6 +2885,16 @@
 <p>Major Error Fault Code </p>
 <p>S:7</p>
 <p>Suspend Code </p>
+<h1 style="page-break-before:always; "></h1>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
+<p>Address/Symbol Database</p>
+<p>Page 2  </p>
+<p>Wednesday, January 01, 2020 - 12:37:02</p>
+<p>Address</p>
+<p>Symbol</p>
+<p>Scope</p>
+<p>Description</p>
+<p>Sym Group</p>
 <p>S:8</p>
 <p>Suspend File </p>
 <p>S:9</p>
@@ -2606,16 +2907,6 @@
 <p>I/O Slot Enables </p>
 <p>S:13</p>
 <p>Math Register </p>
-<h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
-<p>Address/Symbol Database</p>
-<p>Page 2  </p>
-<p>Tuesday, December 31, 2019 - 16:29:57</p>
-<p>Address</p>
-<p>Symbol</p>
-<p>Scope</p>
-<p>Description</p>
-<p>Sym Group</p>
 <p>S:14</p>
 <p>Math Register </p>
 <p>S:15</p>
@@ -2772,6 +3063,16 @@
 <p>Channel 0 Active Nodes </p>
 <p>S:71</p>
 <p>Channel 0 Active Nodes </p>
+<h1 style="page-break-before:always; "></h1>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
+<p>Address/Symbol Database</p>
+<p>Page 3  </p>
+<p>Wednesday, January 01, 2020 - 12:37:03</p>
+<p>Address</p>
+<p>Symbol</p>
+<p>Scope</p>
+<p>Description</p>
+<p>Sym Group</p>
 <p>S:72</p>
 <p>Channel 0 Active Nodes </p>
 <p>S:73</p>
@@ -2784,16 +3085,6 @@
 <p>Channel 0 Active Nodes </p>
 <p>S:77</p>
 <p>Channel 0 Active Nodes </p>
-<h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
-<p>Address/Symbol Database</p>
-<p>Page 3  </p>
-<p>Tuesday, December 31, 2019 - 16:29:57</p>
-<p>Address</p>
-<p>Symbol</p>
-<p>Scope</p>
-<p>Description</p>
-<p>Sym Group</p>
 <p>S:78</p>
 <p>Channel 0 Active Nodes </p>
 <p>S:79</p>
@@ -2813,18 +3104,18 @@
 <p>S:86</p>
 <p>DH+ Active Nodes </p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Instruction Comment Database</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:57</p>
+<p>Wednesday, January 01, 2020 - 12:37:03</p>
 <p>Address</p>
 <p>Instruction</p>
 <p>Description</p>
 <h1 style="page-break-before:always; "></h1>
-<p>GNG_SAVE_DATA_DATA.RSS</p>
+<p>GAUSSIAN_NUMBER_GENERATOR.RSS</p>
 <p>Symbol Group Database</p>
 <p>Page 1  </p>
-<p>Tuesday, December 31, 2019 - 16:29:58</p>
+<p>Wednesday, January 01, 2020 - 12:37:03</p>
 <p>Group_Name</p>
 <p>Description</p>
 

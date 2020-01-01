@@ -52,14 +52,15 @@ import sys
 import numpy
 
 do_debug = 'DEBUG' in os.environ
+skip_dups = 'SKIP_DUPS' in os.environ
 
-if "__main__" == __name__:
+def read_data(fin):
 
   ### Regular expressions for start and end of data
   ### - Assume gaussian data are only data in file with a dimension
   ###   greater than 99
 
-  rgx = re.compile('^<p>F(9|10|11|12):\d+.*\d +</p>$')
+  rgx = re.compile('^<p>F(9|10|11|12):\d+ .*\d +</p>$')
 
 
   ct = 0
@@ -67,7 +68,7 @@ if "__main__" == __name__:
 
   ### Loop over lines in STDIN
 
-  for rawline in sys.stdin:
+  for rawline in fin:
 
     if do_debug: print(dict(ct=ct,rawline=rawline))
 
@@ -75,12 +76,21 @@ if "__main__" == __name__:
 
     if rgx.match(rawline.strip()):
 
-      lt_vals.extend(map(float,rawline.strip().split()[1:-1]))
+      lt_vals.extend(rawline.strip().split()[1:-1])
       ct = len(lt_vals)
 
-  ### Convert the list to a numpy array; print the mean and std. dev.
+  ### Optionally remove duplicates, then convert the list to a numpy
+  ### array; print the mean and std. dev.
 
-  arr = numpy.array(lt_vals)
+  if skip_dups: lt_vals = list(set(lt_vals))
+
+  return numpy.array(list(map(float,lt_vals)))
+
+
+if "__main__" == __name__:
+
+  arr = read_data(sys.stdin)
+  ct = len(arr)
   print(dict(mean=arr.mean(),stddev=arr.std(),count=ct))
 
   ### Try to import scipy.stats, to get the Anderson-Darling tests
