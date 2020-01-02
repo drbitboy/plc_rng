@@ -3,7 +3,7 @@ FC=gfortran
 
 STDERR=/dev/null
 
-EXES=ln_check sin_check 02 01
+EXES=ln_check sin_check 01 02_15bitlcg 02_31bitlcg
 
 run: $(EXES:%=run_%)
 
@@ -22,8 +22,11 @@ ln_check: ln_check.f Makefile
 sin_check: sin_check.f Makefile
 	$(FC) $< -o $@
 
-02: 02.c Makefile
+02_15bitlcg: 02.c Makefile
 	$(CC) $< -o $@
+
+02_31bitlcg: 02.c Makefile
+	$(CC) -DBIT31 $< -o $@
 
 01: 01.c Makefile
 	( gcc 01.c -o 01 2>$(STDERR) && echo QSucceeded with plain buildQ | tr Q \\n ) \
