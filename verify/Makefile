@@ -3,7 +3,7 @@ FC=gfortran
 
 STDERR=/dev/null
 
-EXES=ln_check sin_check 01 02_15bitlcg 02_31bitlcg
+EXES=ln_check sin_check 03 01 02_15bitlcg 02_31bitlcg
 
 run: $(EXES:%=run_%)
 
@@ -20,6 +20,9 @@ ln_check: ln_check.f Makefile
 	$(FC) $< -o $@
 
 sin_check: sin_check.f Makefile
+	$(FC) $< -o $@
+
+03: 03.f Makefile
 	$(FC) $< -o $@
 
 02_15bitlcg: 02.c Makefile
