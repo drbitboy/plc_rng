@@ -17,7 +17,7 @@ Verify that 15-bit LCG (a=20077,b=12345) pair does not repeat in less than 32,76
 Verify that 31-bit LCG (a=1103515245,b=12345) pair does not repeat in less than 2,147,483,648 steps
 
 
-### 03.c
+### 03.f
 
 Emulate suspected anomalous behavior of [RSLogix Emualte500] when multiplying two 16-bit INTEGERs with overflow
 
@@ -29,4 +29,4 @@ Calculate 32-bit polynomial-based approximations for sine, and compare those res
 
 ### ln_check.f
 
-Calculate 32-bit polynomial-based approximations for natural logarigthm, and compare those results to that of the intrinsic LOG function
+Calculate 32-bit polynomial-based approximations for natural logarithm, and compare those results to that of the intrinsic LOG function
