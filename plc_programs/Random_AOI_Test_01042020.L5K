@@ -1,0 +1,1652 @@
+﻿(*********************************************
+
+  Import-Export
+  Version   := RSLogix 5000 v20.04
+  Owner     := FAS, FAS
+  Exported  := Sat Jan 04 21:33:52 2020
+
+  Note:  File encoded in UTF-8.  Only edit file in a program 
+         which supports UTF-8 (like Notepad, not Wordpad).
+
+**********************************************)
+IE_VER := 2.11;
+
+CONTROLLER Compact_AOI_Test (ProcessorType := "1768-L45",
+                             Major := 20,
+                             CompatibilityMode := V20.01,
+                             TimeSlice := 18,
+                             ShareUnusedTimeSlice := 0,
+                             RedundancyEnabled := 0,
+                             KeepTestEditsOnSwitchOver := 0,
+                             DataTablePadPercentage := 50,
+                             SecurityCode := 0,
+                             ChangesToDetect := 16#ffff_ffff_ffff_ffff,
+                             SFCExecutionControl := "CurrentActive",
+                             SFCRestartPosition := "MostRecent",
+                             SFCLastScan := "DontScan",
+                             SerialNumber := 16#4051_3d5c,
+                             MatchProjectToController := No,
+                             CanUseRPIFromProducer := No,
+                             InhibitAutomaticFirmwareUpdate := 0)
+	DATATYPE STRING_12 (FamilyType := StringFamily)
+		DINT LEN;
+		SINT DATA[12] (Radix := ASCII);
+	END_DATATYPE
+
+	DATATYPE STRING_16 (FamilyType := StringFamily)
+		DINT LEN;
+		SINT DATA[16] (Radix := ASCII);
+	END_DATATYPE
+
+	DATATYPE STRING_20 (FamilyType := StringFamily)
+		DINT LEN;
+		SINT DATA[20] (Radix := ASCII);
+	END_DATATYPE
+
+	DATATYPE STRING_40 (FamilyType := StringFamily)
+		DINT LEN;
+		SINT DATA[40] (Radix := ASCII);
+	END_DATATYPE
+
+	MODULE Local (Parent := "Local",
+	              ParentModPortId := 1,
+	              CatalogNumber := "1768-L45",
+	              Vendor := 1,
+	              ProductType := 14,
+	              ProductCode := 74,
+	              Major := 20,
+	              Minor := 19,
+	              ChassisSize := 31,
+	              Slot := 0,
+	              Mode := 2#0000_0000_0000_0001,
+	              CompatibleModule := 0,
+	              KeyMask := 2#0000_0000_0001_1111)
+	END_MODULE
+
+	MODULE Ethernet (Parent := "Local",
+	                 ParentModPortId := 1,
+	                 CatalogNumber := "1768-ENBT/A",
+	                 Vendor := 1,
+	                 ProductType := 12,
+	                 ProductCode := 151,
+	                 Major := 4,
+	                 Minor := 5,
+	                 Slot := 1,
+	                 NodeAddress := "192.168.1.200",
+	                 Mode := 2#0000_0000_0000_0000,
+	                 CompatibleModule := 1,
+	                 KeyMask := 2#0000_0000_0001_1111)
+	END_MODULE
+
+	MODULE DO_120V_S1 (Parent := "Local",
+	                   ParentModPortId := 7,
+	                   CatalogNumber := "1769-OA16/A",
+	                   Vendor := 1,
+	                   ProductType := 7,
+	                   ProductCode := 93,
+	                   Major := 3,
+	                   Minor := 1,
+	                   PortLabel := "RxBACKPLANE",
+	                   Slot := 1,
+	                   CommMethod := 536870913,
+	                   Mode := 2#0000_0000_0000_0001,
+	                   CompatibleModule := 1,
+	                   KeyMask := 2#0000_0000_0001_1111)
+			ExtendedProp := [[[___<public><ConfigID>150</ConfigID></public>___]]]
+			ConfigData  := [18,102,1,0,0,0,0,0];
+			CONNECTION Output (Rate := 20000,
+			                   EventID := 0)
+					InputData  := [0,256];
+					InputForceData := [0,0,0,0,0,1,33,85,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+					OutputData  := [256];
+					OutputForceData := [0,0,0,0,0,0,0,0,0,0,0,0];
+			END_CONNECTION
+
+	END_MODULE
+
+	MODULE DI_120VAC_S2 (Parent := "Local",
+	                     ParentModPortId := 7,
+	                     CatalogNumber := "1769-IA16/A",
+	                     Vendor := 1,
+	                     ProductType := 7,
+	                     ProductCode := 82,
+	                     Major := 1,
+	                     Minor := 1,
+	                     PortLabel := "RxBACKPLANE",
+	                     Slot := 2,
+	                     CommMethod := 536870913,
+	                     Mode := 2#0000_0000_0000_0001,
+	                     CompatibleModule := 1,
+	                     KeyMask := 2#0000_0000_0001_1111)
+			ExtendedProp := [[[___<public><ConfigID>250</ConfigID></public>___]]]
+			ConfigData := [8,102,1];
+			CONNECTION Input (Rate := 20000,
+			                  EventID := 0)
+					InputData  := [0,0];
+					InputForceData := [0,0,0,0,0,0,34,85,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+			END_CONNECTION
+
+	END_MODULE
+
+	ADD_ON_INSTRUCTION_DEFINITION A_Uniform_RNG (Description := "Random Number Generator AOI$NUses Linear Congruential Generator (LCG)$N1) Get Seed Number from either previous execution or default$N2) Generate next Seed via LCG$N4) Step #4 = Scale Seed to output range [Out_lo:out_hi)$N",
+	                                             Revision := "1.0",
+	                                             ExecutePrescan := No,
+	                                             ExecutePostscan := No,
+	                                             ExecuteEnableInFalse := No,
+	                                             CreatedDate := "2019-12-25T19:53:36.259Z",
+	                                             CreatedBy := "DOMAIN1\carp",
+	                                             EditedDate := "2019-12-30T20:11:24.531Z",
+	                                             EditedBy := "DOMAIN1\carp",
+	                                             SoftwareRevision := "v28.01")
+		
+		PARAMETERS
+			EnableIn : BOOL (Description := "Enable Input - System Defined Parameter",
+			                    Usage := Input,
+			                    RADIX := Decimal,
+			                    Required := No,
+			                    Visible := No,
+			                    ExternalAccess := Read Only);
+			EnableOut : BOOL (Description := "Enable Output - System Defined Parameter",
+			                     Usage := Output,
+			                     RADIX := Decimal,
+			                     Required := No,
+			                     Visible := No,
+			                     ExternalAccess := Read Only);
+			Seed : DINT (Description := "LCG input seed; updated after each execution",
+			                Usage := Input,
+			                RADIX := Decimal,
+			                Required := Yes,
+			                Visible := Yes,
+			                DefaultData := 0);
+			A : DINT (Description := "LCG multiplicative parameter A$N in (Seed(n+1) = Seed(n) * A + C) MOD Modulus; default is from glibc implementation",
+			             Usage := Input,
+			             RADIX := Decimal,
+			             Required := Yes,
+			             Visible := Yes,
+			             DefaultData := 110351245);
+			B : DINT (Description := "LCG additive parameter A$N in Seed(n+1) = (Seed(n) * A + C) MOD Modulus; default PJC/BTC/WA value",
+			             Usage := Input,
+			             RADIX := Decimal,
+			             Required := Yes,
+			             Visible := Yes,
+			             DefaultData := 12345);
+			Out_lo : REAL (Description := "Output value when updated seed is 0",
+			                  Usage := Input,
+			                  RADIX := Float,
+			                  Required := Yes,
+			                  Visible := Yes,
+			                  DefaultData := 0.00000000e+000);
+			Out_hi : REAL (Description := "Output value for an updated seed of 2**31 (theoretical)",
+			                  Usage := Input,
+			                  RADIX := Float,
+			                  Required := Yes,
+			                  Visible := Yes,
+			                  DefaultData := 1.00000000e+000);
+			Output_scaled : REAL (Description := "Actual output value at each execution",
+			                         Usage := Output,
+			                         RADIX := Float,
+			                         Required := Yes,
+			                         Visible := Yes,
+			                         ExternalAccess := Read Only,
+			                         DefaultData := 0.00000000e+000);
+			Seed_Out : DINT (Description := "LCG Calculation Seed Output",
+			                    Usage := Output,
+			                    RADIX := Decimal,
+			                    Required := Yes,
+			                    Visible := Yes,
+			                    ExternalAccess := Read Only,
+			                    DefaultData := 0);
+		END_PARAMETERS
+
+		LOCAL_TAGS
+			Se : DINT (Description := "Internal copy, and calculation, of seed",
+			             RADIX := Decimal,
+			             ExternalAccess := None,
+			             DefaultData := 0);
+			float_internal : REAL (Description := "Intermediate calculations for output scaling",
+			                         RADIX := Float,
+			                         ExternalAccess := None,
+			                         DefaultData := 0.00000000e+000);
+		END_LOCAL_TAGS
+
+		ROUTINE Logic 
+				RC: "Random Number Generator using Linear Congruential Generator";
+				N: NOP();
+				RC: "This rung updates Seed:  Seed(n+1) = (Seed(n) * A + B) MOD (2**31)$N"
+				    "N.B. MOD is implemented via DINT overflow plus bit-wise AND with (2**31 - 1) i.e. 0x7FFFFFFF.,$N"
+				    "so local tag [Seed_internal] may not be the same as the final seed after the AND-cum-MOD$N"
+				    "";
+				N: MUL(Seed,A,Se)ADD(Se,B,Se)OR(Se,-2147483648,Seed_Out);
+				N: OTU(S:V);
+				RC: "This rung scales Seed to Output_scaled:  Output_scaled(n+1) = Func(Seed(n+1),Out_lo,Out_hi)";
+				N: DIV(Seed_Out,-2147483648.0,float_internal)CPT(Output_scaled,((1.0 - float_internal) * Out_lo) + (float_internal * Out_hi));
+		END_ROUTINE
+
+	END_ADD_ON_INSTRUCTION_DEFINITION
+
+	ADD_ON_INSTRUCTION_DEFINITION A_Gauss_RNG (Revision := "1.0",
+	                                           ExecutePrescan := No,
+	                                           ExecutePostscan := No,
+	                                           ExecuteEnableInFalse := No,
+	                                           CreatedDate := "2019-12-25T23:30:46.260Z",
+	                                           CreatedBy := "DOMAIN1\carp",
+	                                           EditedDate := "2019-12-30T21:51:56.343Z",
+	                                           EditedBy := "FAS-ENG-PJC\image",
+	                                           SoftwareRevision := "v20.04")
+		
+		PARAMETERS
+			EnableIn : BOOL (Description := "Enable Input - System Defined Parameter",
+			                    Usage := Input,
+			                    RADIX := Decimal,
+			                    Required := No,
+			                    Visible := No,
+			                    ExternalAccess := Read Only);
+			EnableOut : BOOL (Description := "Enable Output - System Defined Parameter",
+			                     Usage := Output,
+			                     RADIX := Decimal,
+			                     Required := No,
+			                     Visible := No,
+			                     ExternalAccess := Read Only);
+			GNG_Out : REAL (Description := "Gaussian-Distributed Random Number",
+			                   Usage := Output,
+			                   RADIX := Float,
+			                   Required := Yes,
+			                   Visible := Yes,
+			                   ExternalAccess := Read Only,
+			                   DefaultData := 0.00000000e+000);
+		END_PARAMETERS
+
+		LOCAL_TAGS
+			A_URNG : A_Uniform_RNG (ExternalAccess := None,
+			                 DefaultData := "[1,0,110351245,12345,0.00000000e+000,1.00000000e+000,0.00000000e+000,0,0,0.00000000e+000]");
+			Seed_B : DINT (RADIX := Decimal,
+			                 ExternalAccess := None,
+			                 DefaultData := 0);
+			Seed_A : DINT (RADIX := Decimal,
+			                 ExternalAccess := None,
+			                 DefaultData := 0);
+			B_URNG : A_Uniform_RNG (ExternalAccess := None,
+			                 DefaultData := "[1,0,110351245,12345,0.00000000e+000,1.00000000e+000,0.00000000e+000,0,0,0.00000000e+000]");
+			AOI_FS : BOOL (Description := "Gaussian Random Number Generator First Execution Done",
+			                 RADIX := Decimal,
+			                 ExternalAccess := None,
+			                 DefaultData := 0);
+			Odd_Even : BOOL (Description := "Odd Even Scan Bit",
+			                   RADIX := Decimal,
+			                   ExternalAccess := None,
+			                   DefaultData := 0);
+			Z2 : REAL (Description := "Trig Term",
+			             RADIX := Float,
+			             ExternalAccess := None,
+			             DefaultData := 0.00000000e+000);
+			Z1 : REAL (Description := "SQR Term",
+			             RADIX := Float,
+			             ExternalAccess := None,
+			             DefaultData := 0.00000000e+000);
+		END_LOCAL_TAGS
+
+		ROUTINE Logic 
+				N: XIO(AOI_FS)MOV(0,B_URNG.Seed_Out);
+				N: [XIO(Odd_Even) ,XIO(AOI_FS) ]A_Uniform_RNG(A_URNG,B_URNG.Seed_Out,A_URNG.A,A_URNG.B,A_URNG.Out_lo,A_URNG.Out_hi,A_URNG.Output_scaled,Seed_A)A_Uniform_RNG(B_URNG,A_URNG.Seed_Out,B_URNG.A,B_URNG.B,B_URNG.Out_lo,B_URNG.Out_hi,B_URNG.Output_scaled,Seed_B);
+				N: [XIO(Odd_Even) ,XIO(AOI_FS) ]LN(A_URNG.Output_scaled,Z1)MUL(Z1,-2.0,Z1)SQR(Z1,Z1);
+				N: [XIO(Odd_Even) ,XIO(AOI_FS) ]MUL(B_URNG.Output_scaled,6.283185307179586476925286766559,Z2)COS(Z2,Z2);
+				N: XIC(Odd_Even)XIC(AOI_FS)MUL(B_URNG.Output_scaled,6.283185307179586476925286766559,Z2)SIN(Z2,Z2);
+				N: MUL(Z1,Z2,GNG_Out);
+				N: [[XIO(Odd_Even) ,XIO(AOI_FS) ] OTE(Odd_Even) ,OTE(AOI_FS) ];
+		END_ROUTINE
+
+	END_ADD_ON_INSTRUCTION_DEFINITION
+
+	ADD_ON_INSTRUCTION_DEFINITION a_RMPS (Description := "Ramp and Soak AOI",
+	                                      Revision := "1.0",
+	                                      RevisionNote := "Note: Input Arrays are Real[10] so the maximum number of segmemts is 10",
+	                                      ExecutePrescan := No,
+	                                      ExecutePostscan := No,
+	                                      ExecuteEnableInFalse := No,
+	                                      CreatedDate := "2017-09-29T11:34:44.798Z",
+	                                      CreatedBy := "DOMAIN1\carp",
+	                                      EditedDate := "2020-01-02T19:02:21.843Z",
+	                                      EditedBy := "FAS-ENG-PJC\image",
+	                                      SoftwareRevision := "v20.04")
+		
+		PARAMETERS
+			EnableIn : BOOL (Description := "Enable Input - System Defined Parameter",
+			                    Usage := Input,
+			                    RADIX := Decimal,
+			                    Required := No,
+			                    Visible := No,
+			                    ExternalAccess := Read Only);
+			EnableOut : BOOL (Description := "Enable Output - System Defined Parameter",
+			                     Usage := Output,
+			                     RADIX := Decimal,
+			                     Required := No,
+			                     Visible := No,
+			                     ExternalAccess := Read Only);
+			Run_Cmd : BOOL (Description := "AOI Run Cmd",
+			                   Usage := Input,
+			                   RADIX := Decimal,
+			                   Required := Yes,
+			                   Visible := Yes,
+			                   DefaultData := 0);
+			PV : REAL (Description := "Scaled Analog Input (Real) to the AOI",
+			              Usage := Input,
+			              RADIX := Float,
+			              Required := Yes,
+			              Visible := Yes,
+			              DefaultData := 0.00000000e+000);
+			Num_of_Seg : INT (Description := "Number of Segments (Maximum = 10)",
+			                      Usage := Input,
+			                      RADIX := Decimal,
+			                      Required := Yes,
+			                      Visible := Yes,
+			                      ExternalAccess := None,
+			                      DefaultData := 0);
+			Hold : BOOL (Description := "AOI Hold Cmd",
+			                Usage := Input,
+			                RADIX := Decimal,
+			                Required := No,
+			                Visible := Yes,
+			                DefaultData := 0);
+			Initialize : BOOL (Description := "Initialize AOI Cmd (Reset Segment to 0)",
+			                      Usage := Input,
+			                      RADIX := Decimal,
+			                      Required := No,
+			                      Visible := Yes,
+			                      DefaultData := 0);
+			SP_Out : REAL (Description := "Setpoint Output (psig, deg F)",
+			                  Usage := Output,
+			                  RADIX := Float,
+			                  Required := No,
+			                  Visible := Yes,
+			                  ExternalAccess := Read/Write,
+			                  DefaultData := 0.00000000e+000);
+			Current_Seg : INT (Description := "Current Segment",
+			                       Usage := Output,
+			                       RADIX := Decimal,
+			                       Required := No,
+			                       Visible := Yes,
+			                       ExternalAccess := None,
+			                       DefaultData := 0);
+			STime_Left : REAL (Description := "Current Segment Remaining Time (min)",
+			                      Usage := Output,
+			                      RADIX := Float,
+			                      Required := No,
+			                      Visible := Yes,
+			                      ExternalAccess := Read Only,
+			                      DefaultData := 0.00000000e+000);
+			STime_Expired : REAL (Description := "Current Segment Time Expired",
+			                         Usage := Output,
+			                         RADIX := Float,
+			                         Required := No,
+			                         Visible := Yes,
+			                         ExternalAccess := Read Only,
+			                         DefaultData := 0.00000000e+000);
+			Total_Cycle : REAL (Description := "Total Cycle Time (minutes)",
+			                       Usage := Output,
+			                       RADIX := Float,
+			                       Required := No,
+			                       Visible := Yes,
+			                       ExternalAccess := Read Only,
+			                       DefaultData := 0.00000000e+000);
+			Total_Run : REAL (Description := "Total Run Time (minutes)",
+			                     Usage := Output,
+			                     RADIX := Float,
+			                     Required := No,
+			                     Visible := Yes,
+			                     ExternalAccess := Read Only,
+			                     DefaultData := 0.00000000e+000);
+			Total_Hold : REAL (Description := "Total Hold Time (minutes)",
+			                      Usage := Output,
+			                      RADIX := Float,
+			                      Required := No,
+			                      Visible := Yes,
+			                      ExternalAccess := Read Only,
+			                      DefaultData := 0.00000000e+000);
+			Cycle_Hour : DINT (Description := "Total Cycle Time Hours",
+			                      Usage := Output,
+			                      RADIX := Decimal,
+			                      Required := No,
+			                      Visible := No,
+			                      ExternalAccess := Read Only,
+			                      DefaultData := 0);
+			Cycle_Min : REAL (Description := "Total Cycle Time Minutes",
+			                     Usage := Output,
+			                     RADIX := Float,
+			                     Required := No,
+			                     Visible := No,
+			                     ExternalAccess := Read Only,
+			                     DefaultData := 0.00000000e+000);
+			Run_Mode : BOOL (Description := "AOI in Run Mode",
+			                    Usage := Output,
+			                    RADIX := Decimal,
+			                    Required := No,
+			                    Visible := Yes,
+			                    ExternalAccess := Read Only,
+			                    DefaultData := 0);
+			Done : BOOL (Description := "AOI Done Bit",
+			                Usage := Output,
+			                RADIX := Decimal,
+			                Required := No,
+			                Visible := Yes,
+			                ExternalAccess := Read Only,
+			                DefaultData := 0);
+			Fault : BOOL (Description := "AOI Faulted / Invalid Data",
+			                 Usage := Output,
+			                 RADIX := Decimal,
+			                 Required := No,
+			                 Visible := Yes,
+			                 ExternalAccess := Read Only,
+			                 DefaultData := 0);
+			STime_SP : REAL[11] (Description := "Segment Timer Preset Array (minutes)",
+			                    COMMENT[0] := "Step 0 Time = 0 min",
+			                    COMMENT[1] := "Step 1 Time (min)",
+			                    COMMENT[2] := "Step 2 Time (min)",
+			                    COMMENT[3] := "Step 3 Time (min)",
+			                    COMMENT[4] := "Step 4 Time (min)",
+			                    COMMENT[5] := "Step 5 Time (min)",
+			                    COMMENT[6] := "Step 6 Time (min)",
+			                    COMMENT[7] := "Step 7 Time (min)",
+			                    COMMENT[8] := "Step 8 Time (min)",
+			                    COMMENT[9] := "Step 9 Time (min)",
+			                    COMMENT[10] := "Step 10 Time (min)",
+			                    Usage := InOut,
+			                    RADIX := Float,
+			                    Required := Yes,
+			                    Visible := Yes);
+			SP_In : REAL[11] (Description := "Segment Setpoint Array (psig, deg F)",
+			                 COMMENT[0] := "Step 0 / Start SP",
+			                 COMMENT[1] := "End of Step 1 SP",
+			                 COMMENT[2] := "End of Step 2 SP",
+			                 COMMENT[3] := "End of Step 3 SP",
+			                 COMMENT[4] := "End of Step 4 SP",
+			                 COMMENT[5] := "End of Step 5 SP",
+			                 COMMENT[6] := "End of Step 6 SP",
+			                 COMMENT[7] := "End of Step 7 SP",
+			                 COMMENT[8] := "End of Step 8 SP",
+			                 COMMENT[9] := "End of Step 9 SP",
+			                 COMMENT[10] := "End of Step 10 SP",
+			                 Usage := InOut,
+			                 RADIX := Float,
+			                 Required := Yes,
+			                 Visible := Yes);
+			SRun_Time : REAL[11] (Description := "Segment Run Time Array (minutes)",
+			                     COMMENT[0] := "Step 0 Run Time = 0 min",
+			                     COMMENT[1] := "Step 1 Run Time (min)",
+			                     COMMENT[2] := "Step 2 Run Time (min)",
+			                     COMMENT[3] := "Step 3 Run Time (min)",
+			                     COMMENT[4] := "Step 4 Run Time (min)",
+			                     COMMENT[5] := "Step 5 Run Time (min)",
+			                     COMMENT[6] := "Step 6 Run Time (min)",
+			                     COMMENT[7] := "Step 7 Run Time (min)",
+			                     COMMENT[8] := "Step 8 Run Time (min)",
+			                     COMMENT[9] := "Step 9 Run Time (min)",
+			                     COMMENT[10] := "Step 10 Run Time (min)",
+			                     Usage := InOut,
+			                     RADIX := Float,
+			                     Required := Yes,
+			                     Visible := Yes);
+			SHold_Time : REAL[11] (Description := "Segment Hold Time Array (minutes)",
+			                      COMMENT[0] := "Step 0 Hold Time = 0 min",
+			                      COMMENT[1] := "Step 1 Hold Time (min)",
+			                      COMMENT[2] := "Step 2 Hold Time (min)",
+			                      COMMENT[3] := "Step 3 Hold Time (min)",
+			                      COMMENT[4] := "Step 4 Hold Time (min)",
+			                      COMMENT[5] := "Step 5 Hold Time (min)",
+			                      COMMENT[6] := "Step 6 Hold Time (min)",
+			                      COMMENT[7] := "Step 7 Hold Time (min)",
+			                      COMMENT[8] := "Step 8 Hold Time (min)",
+			                      COMMENT[9] := "Step 9 Hold Time (min)",
+			                      COMMENT[10] := "Step 10 Hold Time (min)",
+			                      Usage := InOut,
+			                      RADIX := Float,
+			                      Required := Yes,
+			                      Visible := Yes);
+		END_PARAMETERS
+
+		LOCAL_TAGS
+			SRun_Tmr : TIMER[11] (Description := "Segment Run Mode Timers",
+			                   COMMENT[0] := "Segment Run Mode Timer #0",
+			                   COMMENT[1] := "Segment Run Mode Timer #1",
+			                   COMMENT[2] := "Segment Run Mode Timer #2",
+			                   COMMENT[3] := "Segment Run Mode Timer #3",
+			                   COMMENT[4] := "Segment Run Mode Timer #4",
+			                   COMMENT[5] := "Segment Run Mode Timer #5",
+			                   COMMENT[6] := "Segment Run Mode Timer #6",
+			                   COMMENT[7] := "Segment Run Mode Timer #7",
+			                   COMMENT[8] := "Segment Run Mode Timer #8",
+			                   COMMENT[9] := "Segment Run Mode Timer #9",
+			                   COMMENT[10] := "Segment Run Mode Timer #10",
+			                   ExternalAccess := None,
+			                   DefaultData := "[[0,0,0],[0,600000,0],[0,1200000,0],[0,1800000,0],[0,2400000,0],[0,3000000,0],[0,3600000,0],[0,4200000,0],[0,4200000,0],[0,5400000,0],[0,6000000,0]]");
+			ONS : BOOL[32] (Description := "One Shot Bits",
+			              RADIX := Decimal,
+			              ExternalAccess := None,
+			              DefaultData := "[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0]");
+			Cur_Seg : BOOL[32] (Description := "Current Segment Boolean Array",
+			                  COMMENT[0] := "Segment 0 Active",
+			                  COMMENT[1] := "Segment 1 Active",
+			                  COMMENT[2] := "Segment 2 Active",
+			                  COMMENT[3] := "Segment 3 Active",
+			                  COMMENT[4] := "Segment 4 Active",
+			                  COMMENT[5] := "Segment 5 Active",
+			                  COMMENT[6] := "Segment 6 Active",
+			                  COMMENT[7] := "Segment 7 Active",
+			                  COMMENT[8] := "Segment 8 Active",
+			                  COMMENT[9] := "Segment 9 Active",
+			                  COMMENT[10] := "Segment 10 Active",
+			                  RADIX := Decimal,
+			                  ExternalAccess := None,
+			                  DefaultData := "[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0]");
+			First_Scan : BOOL (Description := "AOI First Scan Completed",
+			                     RADIX := Decimal,
+			                     ExternalAccess := None,
+			                     DefaultData := 0);
+			Range_Fault : DINT (RADIX := Decimal,
+			                      ExternalAccess := None,
+			                      DefaultData := 0);
+			ST_Check_1 : CONTROL (Description := "Segment Time Input Low Limit Check",
+			                     ExternalAccess := None,
+			                     DefaultData := "[0,11,0]");
+			ST_Check_2 : CONTROL (Description := "Segment Time Input High Limit Check",
+			                     ExternalAccess := None,
+			                     DefaultData := "[0,11,0]");
+			SHold_Tmr : TIMER[11] (Description := "Segment Hold Timers",
+			                    COMMENT[0] := "Segment Hold Timer 0",
+			                    COMMENT[1] := "Segment Hold Timer 1",
+			                    COMMENT[2] := "Segment Hold Timer 2",
+			                    COMMENT[3] := "Segment Hold Timer 3",
+			                    COMMENT[4] := "Segment Hold Timer 4",
+			                    COMMENT[5] := "Segment Hold Timer 5",
+			                    COMMENT[6] := "Segment Hold Timer 6",
+			                    COMMENT[7] := "Segment Hold Timer 7",
+			                    COMMENT[8] := "Segment Hold Timer 8",
+			                    COMMENT[9] := "Segment Hold Timer 9",
+			                    COMMENT[10] := "Segment Hold Timer10",
+			                    ExternalAccess := None,
+			                    DefaultData := "[[0,0,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0]]");
+			Last_Seg : INT (Description := "Last Segment $Nof Cycle",
+			                   RADIX := Decimal,
+			                   ExternalAccess := None,
+			                   DefaultData := 0);
+		END_LOCAL_TAGS
+
+		ROUTINE Logic 
+				RC: "******$N"
+				    "Ramp and Soak Add On Instruction Logic$N"
+				    "******$N"
+				    "";
+				N: NOP();
+				RC: "******$N"
+				    "AOI Run Command and Run Mode Logic$N"
+				    "******$N"
+				    "";
+				N: XIC(First_Scan)[XIC(Run_Cmd) XIO(Run_Mode) OTL(Run_Mode) ,XIO(Run_Cmd) [XIC(Run_Mode) XIC(Done) ,XIC(Initialize) ] OTU(Run_Mode) ];
+				RC: "******$N"
+				    "Check for Valid Input Data (Segment Timer Presets & Number of Segments)$N"
+				    "******$N"
+				    "";
+				N: [RES(ST_Check_1) FSC(ST_Check_1,?,?,ALL,STime_SP[ST_Check_1.POS]<0.0) ,RES(ST_Check_2) FSC(ST_Check_2,?,?,ALL,STime_SP[ST_Check_2.POS]>35791.0) ];
+				N: [LES(Num_of_Seg,0) ,GRT(Num_of_Seg,10) ,XIC(ST_Check_1.FD) ,XIC(ST_Check_2.FD) ]OTE(Fault);
+				RC: "******$N"
+				    "Initialize the AOI Timers and Reset the Current Segment to 0$N"
+				    "******$N"
+				    "";
+				N: XIC(Initialize)XIO(Run_Cmd)ONS(ONS[31])[RES(SRun_Tmr[1]) RES(SRun_Tmr[2]) RES(SRun_Tmr[3]) RES(SRun_Tmr[4]) RES(SRun_Tmr[5]) ,RES(SRun_Tmr[6]) RES(SRun_Tmr[7]) RES(SRun_Tmr[8]) RES(SRun_Tmr[9]) RES(SRun_Tmr[10]) ,RES(SHold_Tmr[1]) RES(SHold_Tmr[2]) RES(SHold_Tmr[3]) RES(SHold_Tmr[4]) RES(SHold_Tmr[5]) ,RES(SHold_Tmr[6]) RES(SHold_Tmr[7]) RES(SHold_Tmr[8]) RES(SHold_Tmr[9]) RES(SHold_Tmr[10]) ,OTU(Cur_Seg[0]) OTU(Cur_Seg[1]) OTU(Cur_Seg[2]) OTU(Cur_Seg[3]) OTU(Cur_Seg[4]) OTU(Cur_Seg[5]) ,OTU(Cur_Seg[6]) OTU(Cur_Seg[7]) OTU(Cur_Seg[8]) OTU(Cur_Seg[9]) OTU(Cur_Seg[10]) ,MOV(0.0,SP_Out) MOV(0,Current_Seg) MOV(0.0,STime_Left) MOV(0.0,STime_Expired) ,FLL(0.0,SHold_Time[0],11) FLL(0.0,SRun_Time[0],11) ];
+				RC: "******$N"
+				    "Calculate the Segment Timer Presets in msec from Time Array SPs in minutes and Turn Segment 0 On (Cur_Seg[0])$N"
+				    "******$N"
+				    "";
+				N: XIC(Run_Mode)ONS(ONS[29])XIO(Fault)[CPT(SRun_Tmr[1].PRE,STime_SP[1]*60*1000) CPT(SRun_Tmr[2].PRE,STime_SP[2]*60*1000) CPT(SRun_Tmr[3].PRE,STime_SP[3]*60*1000) ,CPT(SRun_Tmr[4].PRE,STime_SP[4]*60*1000) CPT(SRun_Tmr[5].PRE,STime_SP[5]*60*1000) CPT(SRun_Tmr[6].PRE,STime_SP[6]*60*1000) ,CPT(SRun_Tmr[7].PRE,STime_SP[7]*60*1000) CPT(SRun_Tmr[8].PRE,STime_SP[8]*60*1000) ,CPT(SRun_Tmr[9].PRE,STime_SP[9]*60*1000) CPT(SRun_Tmr[10].PRE,STime_SP[10]*60*1000) ,OTL(Cur_Seg[0]) ];
+				RC: "******$N"
+				    "Segment 10 Timing and Setpoint Calculation$N"
+				    "******$N"
+				    "";
+				N: [XIC(SRun_Tmr[9].DN) XIC(Cur_Seg[9]) XIO(Done) [MOV(10,Current_Seg) ,OTU(Cur_Seg[9]) OTL(Cur_Seg[10]) ] ,XIO(Hold) XIC(Cur_Seg[10]) [RTO(SRun_Tmr[10],?,?) DIV(SRun_Tmr[10].ACC,60000.0,SRun_Time[10]) ,GRT(SRun_Tmr[10].PRE,1000) CPT(SP_Out,((SP_In[10]-SP_In[9])*SRun_Tmr[10].ACC/SRun_Tmr[10].PRE)+SP_In[9]) ,CPT(STime_Left,(SRun_Tmr[10].PRE-SRun_Tmr[10].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[10].ACC/60000.0) ] ];
+				RC: "******$N"
+				    "Segment 9 Timing and Setpoint Calculation$N"
+				    "******$N"
+				    "";
+				N: [XIC(SRun_Tmr[8].DN) XIC(Cur_Seg[8]) XIO(Done) [MOV(9,Current_Seg) ,OTU(Cur_Seg[8]) OTL(Cur_Seg[9]) ] ,XIO(Hold) XIC(Cur_Seg[9]) [RTO(SRun_Tmr[9],?,?) DIV(SRun_Tmr[9].ACC,60000.0,SRun_Time[9]) ,GRT(SRun_Tmr[9].PRE,1000) CPT(SP_Out,(SP_In[9]-SP_In[8])*SRun_Tmr[9].ACC/SRun_Tmr[9].PRE+SP_In[8]) ,CPT(STime_Left,(SRun_Tmr[9].PRE-SRun_Tmr[9].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[9].ACC/60000.0) ] ];
+				RC: "******$N"
+				    "Segment 8 Timing and Setpoint Calculation$N"
+				    "******$N"
+				    "";
+				N: [XIC(SRun_Tmr[7].DN) XIC(Cur_Seg[7]) XIO(Done) [MOV(8,Current_Seg) ,OTU(Cur_Seg[7]) OTL(Cur_Seg[8]) ] ,XIO(Hold) XIC(Cur_Seg[8]) [RTO(SRun_Tmr[8],?,?) DIV(SRun_Tmr[8].ACC,60000.0,SRun_Time[8]) ,GRT(SRun_Tmr[8].PRE,1000) CPT(SP_Out,((SP_In[8]-SP_In[7])*SRun_Tmr[8].ACC/SRun_Tmr[8].PRE)+SP_In[7]) ,CPT(STime_Left,(SRun_Tmr[8].PRE-SRun_Tmr[8].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[8].ACC/60000.0) ] ];
+				RC: "******$N"
+				    "Segment 7 Timing and Setpoint Calculation$N"
+				    "******$N"
+				    "";
+				N: [XIC(SRun_Tmr[6].DN) XIC(Cur_Seg[6]) XIO(Done) [MOV(7,Current_Seg) ,OTU(Cur_Seg[6]) OTL(Cur_Seg[7]) ] ,XIO(Hold) XIC(Cur_Seg[7]) [RTO(SRun_Tmr[7],?,?) DIV(SRun_Tmr[7].ACC,60000.0,SRun_Time[7]) ,GRT(SRun_Tmr[7].PRE,1000) CPT(SP_Out,((SP_In[7]-SP_In[6])*SRun_Tmr[7].ACC/SRun_Tmr[7].PRE)+SP_In[6]) ,CPT(STime_Left,(SRun_Tmr[7].PRE-SRun_Tmr[7].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[7].ACC/60000.0) ] ];
+				RC: "******$N"
+				    "Segment 6 Timing and Setpoint Calculation$N"
+				    "******$N"
+				    "";
+				N: [XIC(SRun_Tmr[5].DN) XIC(Cur_Seg[5]) XIO(Done) [MOV(6,Current_Seg) ,OTU(Cur_Seg[5]) OTL(Cur_Seg[6]) ] ,XIO(Hold) XIC(Cur_Seg[6]) [RTO(SRun_Tmr[6],?,?) DIV(SRun_Tmr[6].ACC,60000.0,SRun_Time[6]) ,GRT(SRun_Tmr[6].PRE,1000) CPT(SP_Out,((SP_In[6]-SP_In[5])*SRun_Tmr[6].ACC/SRun_Tmr[6].PRE)+SP_In[5]) ,CPT(STime_Left,(SRun_Tmr[6].PRE-SRun_Tmr[6].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[6].ACC/60000.0) ] ];
+				RC: "******$N"
+				    "Segment 5 Timing and Setpoint Calculation$N"
+				    "******$N"
+				    "";
+				N: [XIC(SRun_Tmr[4].DN) XIC(Cur_Seg[4]) XIO(Done) [MOV(5,Current_Seg) ,OTU(Cur_Seg[4]) OTL(Cur_Seg[5]) ] ,XIO(Hold) XIC(Cur_Seg[5]) [RTO(SRun_Tmr[5],?,?) DIV(SRun_Tmr[5].ACC,60000.0,SRun_Time[5]) ,GRT(SRun_Tmr[5].PRE,1000) CPT(SP_Out,((SP_In[5]-SP_In[4])*SRun_Tmr[5].ACC/SRun_Tmr[5].PRE)+SP_In[4]) ,CPT(STime_Left,(SRun_Tmr[5].PRE-SRun_Tmr[5].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[5].ACC/60000.0) ] ];
+				RC: "******$N"
+				    "Segment 4 Timing and Setpoint Calculation$N"
+				    "******$N"
+				    "";
+				N: [XIC(SRun_Tmr[3].DN) XIC(Cur_Seg[3]) XIO(Done) [MOV(4,Current_Seg) ,OTU(Cur_Seg[3]) OTL(Cur_Seg[4]) ] ,XIO(Hold) XIC(Cur_Seg[4]) [RTO(SRun_Tmr[4],?,?) DIV(SRun_Tmr[4].ACC,60000.0,SRun_Time[4]) ,GRT(SRun_Tmr[4].PRE,1000) CPT(SP_Out,((SP_In[4]-SP_In[3])*SRun_Tmr[4].ACC/SRun_Tmr[4].PRE)+SP_In[3]) ,CPT(STime_Left,(SRun_Tmr[4].PRE-SRun_Tmr[4].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[4].ACC/60000.0) ] ];
+				RC: "******$N"
+				    "Segment 3 Timing and Setpoint Calculation$N"
+				    "******$N"
+				    "";
+				N: [XIC(SRun_Tmr[2].DN) XIC(Cur_Seg[2]) XIO(Done) [MOV(3,Current_Seg) ,OTU(Cur_Seg[2]) OTL(Cur_Seg[3]) ] ,XIO(Hold) XIC(Cur_Seg[3]) [RTO(SRun_Tmr[3],?,?) DIV(SRun_Tmr[3].ACC,60000.0,SRun_Time[3]) ,GRT(SRun_Tmr[3].PRE,1000) CPT(SP_Out,((SP_In[3]-SP_In[2])*SRun_Tmr[3].ACC/SRun_Tmr[3].PRE)+SP_In[2]) ,CPT(STime_Left,(SRun_Tmr[3].PRE-SRun_Tmr[3].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[3].ACC/60000.0) ] ];
+				RC: "******$N"
+				    "Segment 2 Timing and Setpoint Calculation$N"
+				    "******$N"
+				    "";
+				N: [XIC(SRun_Tmr[1].DN) XIC(Cur_Seg[1]) XIO(Done) [MOV(2,Current_Seg) ,OTU(Cur_Seg[1]) OTL(Cur_Seg[2]) ] ,XIO(Hold) XIC(Cur_Seg[2]) [RTO(SRun_Tmr[2],?,?) DIV(SRun_Tmr[2].ACC,60000.0,SRun_Time[2]) ,GRT(SRun_Tmr[2].PRE,1000) CPT(SP_Out,((SP_In[2]-SP_In[1])*SRun_Tmr[2].ACC/SRun_Tmr[2].PRE)+SP_In[1]) ,CPT(STime_Left,(SRun_Tmr[2].PRE-SRun_Tmr[2].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[2].ACC/60000.0) ] ];
+				RC: "******$N"
+				    "Segment 1 Timing and Setpoint Calculation$N"
+				    "******$N"
+				    "";
+				N: [XIC(Cur_Seg[0]) XIO(Done) [MOV(1,Current_Seg) ,OTU(Cur_Seg[0]) OTL(Cur_Seg[1]) ] ,XIO(Hold) XIC(Cur_Seg[1]) [RTO(SRun_Tmr[1],?,?) DIV(SRun_Tmr[1].ACC,60000.0,SRun_Time[1]) ,GRT(SRun_Tmr[1].PRE,1000) CPT(SP_Out,((SP_In[1]-SP_In[0])*SRun_Tmr[1].ACC/SRun_Tmr[1].PRE)+SP_In[0]) ,CPT(STime_Left,(SRun_Tmr[1].PRE-SRun_Tmr[1].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[1].ACC/60000.0) ] ];
+				N: [MOV(SRun_Time[1],Total_Run) ADD(Total_Run,SRun_Time[2],Total_Run) ADD(Total_Run,SRun_Time[3],Total_Run) ADD(Total_Run,SRun_Time[4],Total_Run) ,ADD(Total_Run,SRun_Time[5],Total_Run) ADD(Total_Run,SRun_Time[6],Total_Run) ADD(Total_Run,SRun_Time[7],Total_Run) ADD(Total_Run,SRun_Time[8],Total_Run) ,ADD(Total_Run,SRun_Time[9],Total_Run) ADD(Total_Run,SRun_Time[10],Total_Run) ];
+				RC: "******$N"
+				    "Ramp and Soak AOI Sequence Done$N"
+				    "******$N"
+				    "";
+				N: [LIM(0,Num_of_Seg,11) MOV(Num_of_Seg,Last_Seg) ,LIM(11,Num_of_Seg,0) MOV(1,Last_Seg) ,XIC(SRun_Tmr[Last_Seg].DN) OTE(Done) ];
+				RC: "******$N"
+				    "Cycle Hold Time Logic$N"
+				    "******$N"
+				    "";
+				N: XIC(Run_Mode)XIC(Hold)[XIC(Cur_Seg[1]) RTO(SHold_Tmr[1],?,?) DIV(SHold_Tmr[1].ACC,60000.0,SHold_Time[1]) ,XIC(Cur_Seg[2]) RTO(SHold_Tmr[2],?,?) DIV(SHold_Tmr[2].ACC,60000.0,SHold_Time[2]) ,XIC(Cur_Seg[3]) RTO(SHold_Tmr[3],?,?) DIV(SHold_Tmr[3].ACC,60000.0,SHold_Time[3]) ,XIC(Cur_Seg[4]) RTO(SHold_Tmr[4],?,?) DIV(SHold_Tmr[4].ACC,60000.0,SHold_Time[4]) ,XIC(Cur_Seg[5]) RTO(SHold_Tmr[5],?,?) DIV(SHold_Tmr[5].ACC,60000.0,SHold_Time[5]) ,XIC(Cur_Seg[6]) RTO(SHold_Tmr[6],?,?) DIV(SHold_Tmr[6].ACC,60000.0,SHold_Time[6]) ,XIC(Cur_Seg[7]) RTO(SHold_Tmr[7],?,?) DIV(SHold_Tmr[7].ACC,60000.0,SHold_Time[7]) ,XIC(Cur_Seg[8]) RTO(SHold_Tmr[8],?,?) DIV(SHold_Tmr[8].ACC,60000.0,SHold_Time[8]) ,XIC(Cur_Seg[9]) RTO(SHold_Tmr[9],?,?) DIV(SHold_Tmr[9].ACC,60000.0,SHold_Time[9]) ,XIC(Cur_Seg[10]) RTO(SHold_Tmr[10],?,?) DIV(SHold_Tmr[10].ACC,60000.0,SHold_Time[10]) ];
+				N: [MOV(SHold_Time[1],Total_Hold) ADD(Total_Hold,SHold_Time[2],Total_Hold) ADD(Total_Hold,SHold_Time[3],Total_Hold) ADD(Total_Hold,SHold_Time[4],Total_Hold) ,ADD(Total_Hold,SHold_Time[5],Total_Hold) ADD(Total_Hold,SHold_Time[6],Total_Hold) ADD(Total_Hold,SHold_Time[7],Total_Hold) ADD(Total_Hold,SHold_Time[8],Total_Hold) ,ADD(Total_Hold,SHold_Time[9],Total_Hold) ADD(Total_Hold,SHold_Time[10],Total_Hold) ];
+				N: ADD(Total_Run,Total_Hold,Total_Cycle)MOD(Total_Cycle,60,Cycle_Min)CPT(Cycle_Hour,(Total_Cycle-Cycle_Min)/60);
+				N: OTE(First_Scan);
+		END_ROUTINE
+
+	END_ADD_ON_INSTRUCTION_DEFINITION
+
+	TAG
+		BTC_RNG_1 : A_Uniform_RNG (Description := "Linear Congruential Generator as a Random Number Generator #1") := [3,-1795495946,110351245,12345,0.00000000e+000,1.00000000e+000,3.62191588e-001,-777800521
+				,-777800521,3.62191588e-001];
+		BTC_RNG_2 : A_Uniform_RNG (Description := "Linear Congruential Generator as a Random Number Generator #2") := [3,-417358683,110351245,12345,0.00000000e+000,1.00000000e+000,6.61973238e-001,-1421576678
+				,725906970,6.61973238e-001];
+		DI_S2_Data : INT (RADIX := Decimal) := 0;
+		DO_S1_Data : DINT (Description := "Slot #1 1769-OAD Module Buffer Tag",
+		            RADIX := Decimal) := 256;
+		False : BOOL (Description := "Always False Bit",
+		            RADIX := Decimal) := 0;
+		Fault_Reset_Cmd : BOOL (Description := "Fault Reset Command",
+		            RADIX := Decimal) := 0;
+		Fault_Reset_PB : BOOL (Description := "Fault Reset Pushbutton",
+		            RADIX := Decimal) := 0;
+		Fault_Reset_Timer : TIMER (Description := "Fault Reset Timer") := [240276,1000,0];
+		First_Scan : BOOL (Description := "Test Program First Scan Completed",
+		            RADIX := Decimal) := 1;
+		Flash_Off : BOOL (Description := "Flash Off Bit",
+		            RADIX := Decimal) := 1;
+		Flash_Off_PB : BOOL (Description := "Flash Off Pushbutton",
+		            RADIX := Decimal) := 0;
+		Flash_On : BOOL (Description := "Flasher On Bit",
+		            RADIX := Decimal) := 0;
+		Flash_Timer : TIMER (Description := "Flasher Timer",
+		            COMMENT.DN := "Flasher Timer Done Bit") := [-1072294203,2000,850];
+		Gauss_RNG : A_Gauss_RNG (Description := "Gaussian Random Number Generator") := [7,-1.42918694e+000,[0,-482532328,110351245,12345,0.00000000e+000,1.00000000e+000,3.18699658e-001
+				,-684402319,-684402319,3.18699658e-001],-1724443018,-684402319,[0,-684402319,110351245,12345
+				,0.00000000e+000,1.00000000e+000,8.03006351e-001,-1724443018,-1724443018,8.03006351e-001
+				],-9.45050000e-001,1.51228714e+000];
+		Gauss_RNG_Data : REAL[1000] (Description := "Gaussian Random Number Generator Data from CompactLogix PLC",
+		            RADIX := Float) := [-3.59853767e-002,1.33907974e+000,-3.94488424e-001,7.41025448e-001,-9.36602652e-001,-3.45055491e-001
+				,6.08007491e-001,-9.40751910e-001,1.21911836e+000,4.67547685e-001,-5.77821136e-001,-1.24564993e+000
+				,-1.91058183e+000,1.56861997e+000,9.63158965e-001,1.73485857e-002,-7.47601688e-001,6.78847015e-001
+				,-4.79808450e-001,-4.80843991e-001,-1.37722984e-001,1.02451289e+000,-2.90121824e-001,4.74204570e-001
+				,1.26648295e+000,7.99835800e-001,-8.80720496e-001,5.72476983e-001,6.22161448e-001,-4.84327674e-001
+				,3.88613254e-001,1.11669099e+000,1.85636449e+000,-1.35881215e-001,-1.35733336e-001,9.56939578e-001
+				,1.95602223e-001,-7.79074728e-001,1.45968246e+000,-4.46269300e-001,-1.11078990e+000,-7.43702427e-002
+				,-7.58615434e-001,-1.22407520e+000,-2.64934480e-001,7.71001458e-001,4.68154430e-001,5.09690382e-002
+				,1.43353510e+000,1.05857186e-001,2.05096698e+000,7.23155856e-001,4.41189945e-001,2.07573700e+000
+				,-1.96182895e+000,1.73152193e-001,-9.38687682e-001,-2.66828728e+000,-8.18848848e-001,4.64417249e-001
+				,2.86531776e-001,-2.89190747e-002,-4.66109663e-001,3.01808983e-001,7.01715231e-001,1.24793577e+000
+				,-1.15761608e-001,3.97554785e-001,-8.52075040e-001,-5.58218658e-001,-5.12215137e-001,-1.13972056e+000
+				,-5.38375080e-001,-4.39805478e-001,-7.61580467e-001,-3.38318385e-002,1.54477453e+000,5.27183414e-001
+				,-5.24397254e-001,-2.64401853e-001,-9.99107242e-001,-5.06865621e-001,-7.09960580e-001,5.71070239e-002
+				,-2.51577199e-001,-1.77085828e-002,9.35668886e-001,-1.11431348e+000,-2.19700623e+000,1.12131810e+000
+				,8.90148800e-002,1.17600751e+000,1.33978900e+000,-7.96484500e-002,-4.45308208e-001,-3.37109894e-001
+				,-8.38911116e-001,8.71370554e-001,1.11492729e+000,-6.81134522e-001,1.14014547e-003,-2.60854554e+000
+				,-2.85219500e+000,-6.64755400e-001,8.20274293e-001,1.24650097e+000,1.40588915e+000,2.03534007e-001
+				,-2.63493836e-001,1.62575185e+000,8.69644284e-001,5.77171206e-001,-1.11271286e+000,1.48876464e+000
+				,-7.62853250e-002,6.04877472e-001,5.84878445e-001,-4.69390929e-001,4.44097221e-001,1.32557124e-001
+				,-2.10962519e-001,1.00539708e+000,1.04005800e+000,1.67415515e-002,4.34830874e-001,9.59461648e-003
+				,2.05932155e-001,-1.16849399e+000,-1.85300100e+000,-1.05737460e+000,-4.76191400e-001,1.51783907e+000
+				,1.32670152e+000,-4.02531832e-001,3.01583767e-001,5.93302727e-001,-9.52462912e-001,1.06809747e+000
+				,-7.55863607e-001,-1.40207231e+000,-6.64871812e-001,-6.11870997e-002,2.00638390e+000,2.74286246e+000
+				,1.39897966e+000,2.74089187e-001,-9.26895678e-001,6.43677592e-001,1.05439436e+000,2.65618712e-002
+				,5.74236274e-001,-2.96050930e+000,-2.29160354e-001,-5.16784132e-001,-9.95781064e-001,-1.20666167e-002
+				,5.92243791e-001,6.81620315e-002,9.26540256e-001,5.55949867e-001,2.36438081e-001,5.97326219e-001
+				,-9.06149596e-002,4.52705562e-001,3.43233700e-001,-1.09440744e+000,-1.13287091e+000,6.55325592e-001
+				,1.27223492e+000,-1.72652841e+000,-5.04538119e-001,-2.40325123e-001,2.27328539e-001,1.11276448e+000
+				,-6.87127471e-001,1.10123456e-001,-5.21318674e-001,-1.73950970e+000,-1.25662220e+000,-3.64918262e-001
+				,-1.85761797e+000,1.41928077e+000,8.52762222e-001,-2.19546124e-001,-2.15795064e+000,7.55033433e-001
+				,4.30379719e-001,9.54941273e-001,2.03401971e+000,-8.59960675e-001,5.20820916e-001,-8.47588956e-001
+				,1.69883835e+000,-1.00688547e-001,-1.42441213e-001,2.02711612e-001,1.40122205e-001,-5.60310364e-001
+				,1.58008605e-001,1.61331749e+000,-4.32501405e-001,-4.94205326e-001,-7.99848914e-001,2.07813100e-002
+				,-6.21940941e-002,-1.01646245e+000,1.33873510e+000,-3.72018844e-001,4.50188458e-001,-4.79290992e-001
+				,1.44309711e+000,7.66460896e-002,-1.33316195e+000,-2.12267622e-001,-5.77413142e-001,-6.66508317e-001
+				,3.33811343e-001,-1.08917022e+000,4.36774760e-001,5.80883443e-001,-2.01027417e+000,-8.80095184e-001
+				,-8.65119621e-002,6.15574478e-004,1.08681905e+000,2.58304358e+000,-7.93417513e-001,-9.39235747e-001
+				,-7.79419422e-001,1.32861006e+000,6.70340359e-002,-1.17569911e+000,4.39654261e-001,5.92423200e-001
+				,4.61770773e-001,-4.47118521e-001,-4.56941247e-001,6.94370568e-001,-1.70771337e+000,-2.06783199e+000
+				,-1.29532800e+000,5.56770861e-001,1.12791196e-001,-1.30148327e+000,3.42684200e-002,-1.57809627e+000
+				,1.06126058e+000,1.21862240e-001,-7.95409262e-001,8.64842415e-001,4.34786588e-001,6.42358300e-001
+				,-4.77064878e-001,-4.50050026e-001,-2.07540005e-001,-5.42533100e-001,-4.29517448e-001,1.60759836e-001
+				,2.18388200e+000,2.47381866e-001,6.65420711e-001,-2.73884177e-001,7.98887253e-001,6.05949759e-001
+				,1.14094341e+000,-7.95924187e-001,-3.66729796e-001,4.92276281e-001,1.54759324e+000,-2.75235748e+000
+				,1.51898921e+000,1.84187555e+000,-3.30184251e-001,1.09285641e+000,1.52215731e+000,8.89093041e-001
+				,-2.83716675e-002,1.25650871e+000,-1.26494477e-002,1.48025131e+000,7.75958896e-001,-4.00506824e-001
+				,-4.44111794e-001,-2.49283630e-002,9.44333613e-001,-2.54617542e-001,1.03399444e+000,-6.43705785e-001
+				,8.68439794e-001,1.38303667e-001,-8.79377600e-001,-2.04579473e-001,-1.52133048e+000,4.28154729e-002
+				,-1.11985481e+000,-2.15688419e+000,-8.97586882e-001,1.02714169e+000,2.06727665e-002,-1.33277610e-001
+				,1.55513811e+000,8.07479680e-001,4.64428365e-001,2.02108636e-001,-3.58455330e-001,2.36513555e-001
+				,3.63042057e-002,4.16407108e-001,9.99681950e-001,3.85453612e-001,4.10700917e-001,3.20896178e-001
+				,5.26170909e-001,4.99346107e-001,-1.97179154e-001,-3.65261763e-001,2.11206928e-001,8.71868283e-002
+				,-2.73890591e+000,8.64042282e-001,-1.19725132e+000,8.72688115e-001,-3.23518664e-001,-4.80649620e-002
+				,-3.71263206e-001,-1.33428156e+000,6.24276876e-001,1.07830310e+000,1.13494086e+000,1.02013731e+000
+				,-1.00885975e+000,-8.08866397e-002,2.07292843e+000,-3.36901307e-001,5.71455479e-001,5.10413110e-001
+				,4.14147675e-001,-1.34007549e+000,7.52996147e-001,-1.15683198e+000,7.75708973e-001,2.31021380e+000
+				,1.93773735e+000,-1.69948056e-001,3.90639722e-001,-2.00498596e-001,1.89944458e+000,3.46055746e-001
+				,-4.21793312e-002,-8.54516774e-002,1.71115446e+000,-8.29933047e-001,2.87826240e-001,-3.53550553e-001
+				,-6.35260761e-001,7.36549020e-001,1.97715759e+000,-1.24041855e+000,1.06376684e+000,-1.97373247e+000
+				,-2.71192729e-001,2.14821085e-001,2.59377885e+000,-1.67710826e-001,-1.54909921e+000,3.29908967e-001
+				,2.28223562e-001,7.62765110e-001,1.30714762e+000,-6.30269706e-001,-2.52256513e-001,-2.17711300e-001
+				,-1.58049810e+000,3.48648012e-001,-3.02144736e-001,-1.49921286e+000,-1.80123746e-001,1.29431224e+000
+				,9.82158300e-001,-1.72102547e+000,-8.33923757e-001,-2.36429977e+000,-6.76700830e-001,1.20975637e+000
+				,5.42443633e-001,2.36546829e-001,7.53476143e-001,5.19365251e-001,-1.25305459e-001,1.65946886e-001
+				,3.00373614e-001,1.27619252e-001,1.03746176e+000,-1.76079333e+000,-6.35007694e-002,2.85704285e-001
+				,-4.34029877e-001,3.15821856e-001,-6.95337892e-001,5.32030046e-001,-7.71091938e-001,-1.32270956e+000
+				,1.55523133e+000,-8.67389321e-001,-1.99612975e+000,-7.62368143e-001,-3.40682030e-001,1.56733418e+000
+				,-8.81915867e-001,-3.48752849e-002,8.82630110e-001,-5.41408062e-002,2.71049953e+000,-1.50390600e+000
+				,1.44360244e-001,-3.91351551e-001,8.04442644e-001,5.06494880e-001,-1.35102200e+000,7.61090398e-001
+				,6.44206345e-001,1.48220500e+000,-4.67782438e-001,2.12657094e-001,-7.91656077e-001,6.60065711e-002
+				,1.01576877e+000,1.13168406e+000,-1.14606655e+000,-1.99082091e-001,1.46336900e+000,-8.42299163e-001
+				,-1.51964530e-001,7.24145114e-001,5.11186600e-001,-2.38423967e+000,2.43166400e-001,1.35751009e-001
+				,3.25400442e-001,-6.78574860e-001,-1.74900532e+000,1.71320677e+000,5.27558744e-001,2.30445236e-001
+				,1.43994343e+000,5.01767516e-001,-3.82896215e-001,-5.66092789e-001,-5.36714256e-001,3.57245892e-001
+				,-9.17870700e-001,-2.04819608e+000,-9.49122131e-001,2.17638537e-001,-7.36109614e-001,-1.00239539e+000
+				,2.91114151e-001,-8.62095952e-001,1.34113991e+000,-6.52919173e-001,-1.35064280e+000,-7.21536055e-002
+				,3.80849063e-001,4.99545723e-001,-1.63939476e+000,4.40534800e-001,7.01179445e-001,-5.95174670e-001
+				,-6.49421632e-001,-1.90215483e-001,-1.22401941e+000,-1.20628285e+000,2.71674812e-001,6.71951845e-002
+				,-5.01051600e-001,2.77867079e+000,-1.06602862e-001,-4.21109855e-001,-3.31951022e-001,5.47530234e-001
+				,3.32819253e-001,-2.45570958e-001,5.24344862e-001,-3.86622995e-001,9.41980720e-001,1.38945448e+000
+				,-1.91223061e+000,-1.17262983e+000,-3.63833159e-001,-4.31961358e-001,-2.48501346e-001,-1.13976121e+000
+				,1.37670541e+000,-8.86835515e-001,-7.08527863e-001,-6.71963990e-001,-2.61114538e-001,1.51885140e+000
+				,-1.11709142e+000,-5.19682646e-001,-1.52416122e+000,1.65955639e+000,1.56522572e-001,1.95435286e-001
+				,5.14340937e-001,1.81141257e-001,-5.96310258e-001,-1.87961683e-002,-1.33677042e+000,8.51883531e-001
+				,-1.02885509e+000,2.30515555e-001,6.82767272e-001,-8.84223044e-001,-1.22028939e-001,-1.04114187e+000
+				,3.51353973e-001,3.66105855e-001,-7.66964555e-002,4.70174998e-001,-1.21415287e-001,1.61552227e+000
+				,2.84488410e-001,9.09529150e-001,4.47889268e-001,1.39565980e+000,9.59161878e-001,2.00983584e-001
+				,1.27574667e-001,1.06401682e+000,7.47258008e-001,-1.56322873e+000,4.39175576e-001,-4.49305981e-001
+				,2.70694590e+000,-2.74527520e-001,-1.32218075e+000,1.08585668e+000,-2.98595309e-001,1.68708587e+000
+				,-1.11847985e+000,-5.77841222e-001,4.77855593e-001,-1.19293463e+000,1.56641328e+000,-3.13337386e-001
+				,-7.42060006e-001,-9.93717834e-003,3.57373476e-001,5.63234568e-001,4.79470134e-001,-3.55017990e-001
+				,-2.43527174e-001,3.68142515e-001,-1.64963938e-002,-6.98920369e-001,9.59623158e-002,-1.31013393e+000
+				,1.22281283e-001,1.04556549e+000,1.90514565e-001,9.24625218e-001,-9.83788520e-002,3.58304769e-001
+				,-2.67214507e-001,1.04253614e+000,1.46302100e+000,-9.16322052e-001,-9.20406699e-001,4.84453231e-001
+				,2.97813800e-001,-1.30500019e+000,-2.72308677e-001,-7.06924126e-002,-3.39426845e-001,1.02498043e+000
+				,-3.70186538e-001,5.71803808e-001,1.14710534e+000,2.83284998e+000,5.87141812e-001,-2.61714339e-001
+				,2.78159231e-001,-9.12439048e-001,6.56807840e-001,-1.72130749e-001,-1.03352869e+000,1.15531123e+000
+				,4.55808610e-001,-4.47163582e-001,4.68696177e-001,2.60831308e+000,-1.74247718e+000,-4.59146827e-001
+				,-1.18133746e-001,4.57170725e-001,3.96769159e-002,-1.41338170e+000,1.01522613e+000,-1.53905332e+000
+				,1.13609231e+000,-5.22719622e-001,3.83343220e-001,-3.90767872e-001,-4.70431030e-001,-1.23428695e-001
+				,5.31439960e-001,6.35661036e-002,-7.47265160e-001,9.28679481e-002,-1.45730100e+000,7.38312600e-001
+				,1.61120069e+000,3.82946400e-001,-6.77972615e-001,1.35316148e-001,-1.24142863e-001,-8.34176838e-002
+				,-6.11708052e-002,-6.29309356e-001,-1.25275537e-001,-1.41153634e+000,7.82815814e-001,1.32267714e+000
+				,3.34776223e-001,-2.08781049e-001,1.41603200e-001,-8.61758113e-001,-2.09868193e-001,5.39744496e-001
+				,9.64393914e-001,-1.24425507e+000,1.03512406e+000,7.80001640e-001,1.37905777e+000,3.76277149e-001
+				,-1.05734125e-001,-5.72470546e-001,6.43279970e-001,2.17798209e+000,-1.60447434e-001,5.09585381e-001
+				,-7.79149473e-001,-1.08552473e-002,1.43582880e-001,-3.02100182e-002,-9.54289496e-001,-4.25710142e-001
+				,6.74870551e-001,7.92953193e-001,7.01048732e-001,1.51099145e+000,-1.16575134e+000,4.89536166e-001
+				,-8.40592921e-001,8.01060140e-001,-1.03304672e+000,3.73003600e-001,-1.30190074e+000,1.42032254e+000
+				,1.66147351e+000,-1.17422652e+000,3.49467605e-001,7.31097221e-001,-2.06091952e+000,-3.94862026e-001
+				,-2.76472181e-001,8.99460912e-002,1.70690686e-001,1.83508545e-001,-1.47941271e-002,8.77077100e-001
+				,3.89280826e-001,3.46249312e-001,-2.49306217e-001,2.79751182e-001,9.36470032e-001,9.29971397e-001
+				,1.85358143e+000,-1.32340157e+000,6.46116734e-001,-5.61128914e-001,-2.52262354e-001,-6.44243836e-001
+				,2.37569034e-001,-2.67771315e-002,-5.93403280e-001,9.72010612e-001,-3.25083971e-001,-5.45867562e-001
+				,-6.83141291e-001,1.05603695e+000,-3.96253109e-001,3.34626794e-001,3.78147274e-001,1.24380374e+000
+				,4.68187541e-001,1.96063100e+000,1.13574840e-001,-7.22430721e-002,-5.34960777e-002,-3.61408174e-001
+				,-6.30382523e-002,-2.91686565e-001,-6.07786119e-001,-9.26631033e-001,-7.10731685e-001,-6.59498870e-001
+				,5.03554400e-001,-1.11801291e+000,-1.90741800e+000,7.78650100e-001,-1.17493224e+000,-3.15765291e-001
+				,3.68808508e-001,-2.48472348e-001,-2.77631223e-001,1.38118589e+000,-1.41583800e+000,-2.58602595e+000
+				,-1.14193499e+000,5.82120847e-003,-7.32601956e-002,-7.48801600e-002,-1.55846584e+000,-2.86382288e-001
+				,-1.90105450e+000,3.48945320e-001,-1.79278791e+000,-6.58054233e-001,1.78353965e+000,-1.43726300e+000
+				,-2.28439286e-001,2.40086779e-001,-9.29083526e-002,2.69338667e-001,8.35909843e-001,3.08993100e-001
+				,-5.07332146e-001,-6.68528005e-002,-6.14103898e-002,9.93416786e-001,-4.53776449e-001,1.39385641e+000
+				,4.75040823e-001,2.01880813e+000,1.01386249e+000,1.00220752e+000,5.75825870e-001,7.99949646e-001
+				,6.68337400e-001,1.11948359e+000,-2.59328246e-001,1.19234192e+000,4.54575956e-001,-1.12116170e+000
+				,2.21447992e+000,-1.26399651e-001,-5.38220763e-001,-1.21678400e+000,-3.16166400e-001,3.29216033e-001
+				,-2.12364888e+000,-3.06269377e-001,3.88506591e-001,-6.77616894e-001,8.08660209e-001,-7.84532487e-001
+				,1.26798761e+000,-1.73918307e+000,2.62453794e+000,-2.22569555e-001,-5.58345139e-001,-2.72348166e-001
+				,1.86366588e-001,-1.94427764e+000,-5.32129049e-001,3.13000619e-001,-5.63445508e-001,1.72450280e+000
+				,-6.69736624e-001,1.64746487e+000,7.55123887e-003,-9.95299593e-002,7.57078900e-002,-1.12910283e+000
+				,3.02764714e-001,3.58988672e-001,-6.46604598e-001,9.15368855e-001,-3.79261076e-001,-1.10880673e+000
+				,1.61704576e+000,-1.55541718e+000,-1.43247163e+000,-8.41770291e-001,2.43770331e-001,-1.02703047e+000
+				,-1.53502691e+000,3.88906091e-001,8.67375851e-001,-8.79306570e-002,-7.05481529e-001,-4.33139533e-001
+				,1.83640286e-001,-9.25664900e-001,-9.18722300e-002,7.87523687e-001,5.09905815e-001,2.37613767e-001
+				,7.83365905e-001,2.26410776e-001,-1.45683670e+000,1.17471135e+000,-7.40126133e-001,-3.05413127e-001
+				,9.59545434e-001,5.01179338e-001,-1.17233670e+000,-5.86082228e-002,1.15786970e+000,6.32043300e-001
+				,-1.15130091e+000,-1.86305374e-001,-3.89927387e-001,-1.17944694e+000,-1.66522339e-001,-1.68448649e-002
+				,6.60805285e-001,-1.52570724e+000,1.26169920e-001,9.58186150e-001,5.37469089e-001,-1.40487158e+000
+				,-6.00399852e-001,-2.03174740e-001,8.83908987e-001,-1.89343965e+000,-1.93943620e+000,1.39094293e+000
+				,-1.21919644e+000,-2.06140168e-002,-7.93847382e-001,-7.88698316e-001,2.00581694e+000,-9.94215548e-001
+				,5.69200575e-001,-1.20618308e+000,2.73355544e-001,-1.19146200e+000,-5.71956635e-001,8.83994848e-002
+				,-2.12333298e+000,-1.02937055e+000,-8.23475957e-001,1.35587811e+000,3.93372893e-001,-4.42951262e-001
+				,-2.12663174e+000,1.30807257e+000,-1.76973736e+000,1.21438038e+000,-7.78184235e-001,-8.15896466e-002
+				,3.05489719e-001,1.68057054e-001,9.36094299e-002,-1.10394275e+000,-6.08272552e-001,-1.01705082e-001
+				,4.19952363e-001,-2.66475439e-001,-3.57969022e+000,1.19100034e+000,1.10133958e+000,-2.64665514e-001
+				,-1.69513261e+000,2.14566517e+000,9.19702232e-001,-3.17540020e-001,1.01120329e+000,-1.41559422e+000
+				,-1.69515181e-002,7.53011227e-001,1.12842178e+000,1.02128327e+000,-1.16954064e+000,3.24015170e-001
+				,1.01192808e+000,-2.37779164e+000,1.25269568e+000,1.93141520e-001,1.94452971e-001,-6.50905967e-002
+				,4.00802672e-001,-9.69356358e-001,1.15168917e+000,-2.73265988e-001,1.14261732e-001,-1.45068645e+000
+				,-2.75838464e-001,-3.65446895e-001,-2.43328735e-001,-7.35341966e-001,6.90996528e-001,2.14324355e-001
+				,-3.61945510e-001,-4.26886708e-001,9.54105675e-001,1.68904319e-001,-8.16239417e-001,-5.47466800e-002
+				,-4.91090477e-001,-5.33225656e-001,-3.66670012e-001,-1.44012892e+000,9.24120367e-001,-5.56732893e-001
+				,-7.76118755e-001,8.52071285e-001,-3.35665673e-001,2.86379129e-001,7.28537366e-002,-1.17557275e+000
+				,-1.98726021e-002,-1.59614038e+000,3.65481339e-002,-4.74488735e-001,2.12615296e-001,3.55487838e-002
+				,-5.11981221e-003,-1.85361341e-001,9.42899510e-002,-1.63371012e-001,1.59851238e-001,-2.98790991e-001
+				,1.09596527e+000,-1.59553623e+000,2.05690071e-001,-1.77015617e-001,8.59996319e-001,2.35827518e+000
+				,5.94931800e-002,6.19432032e-001,1.70449436e+000,-1.12630522e+000,-1.69321746e-001,1.79248944e-001
+				,7.56037116e-001,3.35474670e-001,-2.73588777e-001,-9.78104115e-001,7.50199556e-001,-1.25975394e+000
+				,-2.87059635e-001,-6.35417938e-001,3.98166358e-001,2.22043321e-002,8.68998230e-001,1.53773546e+000
+				,3.21264379e-002,1.34793031e+000,-1.11175406e+000,-4.85520810e-001,-1.03450859e+000,-1.29744232e+000
+				,-1.02423644e+000,-8.51974860e-002,3.03071856e-001,-1.04203022e+000,-8.44252825e-001,-6.19884193e-001
+				,2.69822359e-001,2.58801058e-002,5.40128350e-001,-1.62362063e-003,9.18313444e-001,-1.19554842e+000
+				,-1.26583800e+000,7.49326587e-001,-1.50351834e+000,-9.06498551e-001,-9.39943567e-002,8.18061769e-001
+				,6.39007449e-001,-1.52222216e+000,-1.88737166e+000,-1.44569725e-001,7.89189041e-001,-1.18218184e+000
+				,5.98116875e-001,-4.38566394e-002,6.19910896e-001,1.76309198e-002,-2.29623422e-001,-1.94793022e+000
+				,-1.27300632e+000,-3.25892210e-001,7.60519743e-001,7.75237083e-001];
+		GRNG_Index : INT (RADIX := Decimal) := 251;
+		PID_Cycle_Done : BOOL (Description := "One PID Instruction Cycle Completed$N (40 PIDs / 1.0 sec)",
+		            RADIX := Decimal) := 0;
+		PID_Cycle_Index : INT (RADIX := Decimal) := 0;
+		PID_Enable : BOOL[32] (COMMENT[1] := "Ramp and Soak PIDE Instruction Enable",
+		            COMMENT[2] := "PIDE Test #1 Enable Command",
+		            COMMENT[3] := "PIDE Test #2 Enable Command",
+		            RADIX := Decimal) := [2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+				,2#0,2#0,2#0,2#0,2#0];
+		PID_Index : INT (Description := "PID Instruction Index Counter",
+		            RADIX := Decimal) := 35;
+		RMPS_Auto_PB : BOOL (Description := "Ramp and Soak 1 PIDE Auto Mode Pushbutton",
+		            RADIX := Decimal) := 0;
+		RMPS_Done : BOOL (Description := "Ramp & Soak 1 Sequence Done",
+		            RADIX := Decimal) := 0;
+		RMPS_Hold : BOOL (Description := "Ramp & Soak 1 Hold Command",
+		            RADIX := Decimal) := 0;
+		RMPS_Init : BOOL (Description := "Ramp & SoaK 1 Initialize Command",
+		            RADIX := Decimal) := 0;
+		RMPS_Man_PB : BOOL (Description := "Ramp and Soak 1 PIDE Manual Mode Pushbutton",
+		            RADIX := Decimal) := 0;
+		RMPS_PIDE : PID_ENHANCED (Description := "Ramp and Soak1 PIDE Instruction") := [0,8921088,0.00000000e+000,1.00000000e+002,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,1.00000000e+002,0.00000000e+000,1.00000000e+000,1.00000000e+000,1.00000000e+000
+				,1.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,1.00000000e+002,0.00000000e+000,1.00000000e+002,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,3.00000000e-001,5.50000000e+001,0.00000000e+000,0.00000000e+000
+				,3.40282347e+038,3.40282347e+038,-3.40282347e+038,-3.40282347e+038,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,3.40282347e+038,3.40282347e+038,3.40282347e+038,3.40282347e+038
+				,0.00000000e+000,1,1.00000000e+000,1,0,0,0,37748800,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,1.00000000e+000,1.00000000e+000
+				,0,0,0,0.00000000e+000,8.04934200e-002,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,3.00000000e-001,9.16666687e-001,0.00000000e+000,1.00000000e+000,3.00000000e-001
+				,5.50000000e+001,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,1.41060040e-037,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,1.40129846e-042,2.02879711e-039
+				,0.00000000e+000,5.39906285e-041,1.00000000e+000,1.43633093e-042,2.02879711e-039,7.89211295e-042
+				,1.02500010e+000];
+		RMPS_PIDE_Auto_Restart : BOOL (Description := "Ramp & Soak 1 PIDE Instruction Auto Restart Command (Three Progam to Run Transitions)",
+		            RADIX := Decimal) := 0;
+		RMPS_PIDE_Auto_Start : BOOL (Description := "Ramp & Soak 1 PIDE Instruction Auto Mode Start Command",
+		            RADIX := Decimal) := 0;
+		RMPS_PIDE_Man_Out : REAL (Description := "Ramp & Soak 1 PIDE Manual Output (percent)",
+		            RADIX := Float) := 0.00000000e+000;
+		RMPS_PIDE_Out : REAL (Description := "Ramp & Soak 1 PIDE Output (percent)",
+		            RADIX := Float) := 0.00000000e+000;
+		RMPS_Run_Cmd : BOOL (Description := "Ramp & Soak 1 Run Command",
+		            RADIX := Decimal) := 0;
+		RMPS_Segs : INT (Description := "Ramp & Soak 1 Number of Segment / Steps",
+		            RADIX := Decimal) := 3;
+		RMPS_SHold_Time : REAL[11] (Description := "Ramp & Soak 1 Segment Hold Times in Minutes",
+		            COMMENT[0] := "Segment 0 Hold Time in Minutes",
+		            COMMENT[1] := "Segment 1 Hold Time in Minutes",
+		            COMMENT[2] := "Segment 2 Hold Time in Minutes",
+		            COMMENT[3] := "Segment 3 Hold Time in Minutes",
+		            COMMENT[4] := "Segment 4 Hold Time in Minutes",
+		            COMMENT[5] := "Segment 5 Hold Time in Minutes",
+		            COMMENT[6] := "Segment 6 Hold Time in Minutes",
+		            COMMENT[7] := "Segment 7 Hold Time in Minutes",
+		            COMMENT[8] := "Segment 8 Hold Time in Minutes",
+		            COMMENT[9] := "Segment 9 Hold Time in Minutes",
+		            COMMENT[10] := "Segment 10 Hold Time in Minutes",
+		            RADIX := Float) := [0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000];
+		RMPS_SP : REAL[11] (RADIX := Float) := [0.00000000e+000,5.00000000e+001,5.00000000e+001,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000];
+		RMPS_SRun_Time : REAL[11] (Description := "Ramp & Soak 1 Segment Times in Minutes",
+		            COMMENT[0] := "Segment 0 Segment Time in Minutes",
+		            COMMENT[1] := "Segment 1 Segment Time in Minutes",
+		            COMMENT[2] := "Segment 2 Segment Time in Minutes",
+		            COMMENT[3] := "Segment 3 Segment Time in Minutes",
+		            COMMENT[4] := "Segment 4 Segment Time in Minutes",
+		            COMMENT[5] := "Segment 5 Segment Time in Minutes",
+		            COMMENT[6] := "Segment 6 Segment Time in Minutes",
+		            COMMENT[7] := "Segment 7 Segment Time in Minutes",
+		            COMMENT[8] := "Segment 8 Segment Time in Minutes",
+		            COMMENT[9] := "Segment 9 Segment Time in Minutes",
+		            COMMENT[10] := "Segment 10 Segment Time in Minutes",
+		            RADIX := Float) := [0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000];
+		RMPS_STime_SP : REAL[11] (COMMENT[0] := "Segment 0 Time (min)",
+		            COMMENT[1] := "Segment 1 Time (min)",
+		            COMMENT[2] := "Segment 2 Time (min)",
+		            COMMENT[3] := "Segment 3 Time (min)",
+		            COMMENT[4] := "Segment 4 Time (min)",
+		            COMMENT[5] := "Segment 5 Time (min)",
+		            COMMENT[6] := "Segment 6 Time (min)",
+		            COMMENT[7] := "Segment 7 Time (min)",
+		            COMMENT[8] := "Segment 8 Time (min)",
+		            COMMENT[9] := "Segment 9 Time (min)",
+		            COMMENT[10] := "Segment 10 Time (min)",
+		            RADIX := Float) := [0.00000000e+000,2.00000000e+000,5.00000000e+000,2.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000];
+		Toggle_1 : BOOL (RADIX := Decimal) := 0;
+		Toggle_2 : BOOL (RADIX := Decimal) := 0;
+		Toggle_3 : BOOL (RADIX := Decimal) := 0;
+		Toggle_4 : BOOL (RADIX := Decimal) := 0;
+		Total_Start_1 : BOOL (RADIX := Decimal) := 0;
+		True : BOOL (Description := "Always True Bit",
+		            RADIX := Decimal) := 1;
+	END_TAG
+
+	PROGRAM P01_AOI_Test_IO_Buffer (MAIN := "R001_IO_Buffer_Main",
+	                                MODE := 0,
+	                                DisableFlag := 0)
+			TAG
+			END_TAG
+
+			ROUTINE R001_IO_Buffer_Main 
+					RC: "******$N"
+					    "PLC IO Test IO Buffer Main Routine$N"
+					    "******$N"
+					    "";
+					N: NOP();
+					N: JSR(R010_Discrete_IO,0);
+			END_ROUTINE
+
+			ROUTINE R010_Discrete_IO 
+					RC: "******$N"
+					    "PLC IO Test IO Discrete Module Buffer Routine$N"
+					    "******$N"
+					    "";
+					N: NOP();
+					N: MOV(DO_S1_Data,Local:1:O.Data);
+					N: COP(Local:2:I.Data,DI_S2_Data,1);
+			END_ROUTINE
+
+	END_PROGRAM
+
+	PROGRAM P02_AOI_Test (Description := "AOI Test Program",
+	                      MAIN := "R001_AOI_Main",
+	                      MODE := 0,
+	                      DisableFlag := 0)
+			TAG
+				BNOT_01 : FBD_BOOLEAN_NOT  := [1,3,5.60519386e-045];
+				TOT_01 : TOTALIZER  := [101,1.00000000e+000,1,1.00000000e+000,5.00000000e-001,0.00000000e+000,0.00000000e+000,0.00000000e+000
+						,0.00000000e+000,1,2.50000000e-002,1,0,123,5.00000000e-001,5.00000000e-001,2.50000000e-002
+						,0,3.50324616e-044,2.02960146e-039,0.00000000e+000,7.89351425e-042,2.50000000e-002,0.00000000e+000
+						,2.43966063e-041,8.33333377e-003,1.00000000e+000,1.75000000e+000,0.00000000e+000];
+			END_TAG
+
+			ROUTINE R001_AOI_Main (Description := "AOI Test Main Routine")
+					N: NOP();
+					N: [OTE(True) ,OTU(False) ];
+					N: [XIO(Flash_Timer.DN) TON(Flash_Timer,?,?) ,XIC(Flash_Timer.DN) XIC(Flash_On) OTE(Flash_Off_PB) ,[XIC(Flash_Timer.DN) XIO(Flash_On) ,XIC(Flash_On) ] XIO(Flash_Off_PB) OTE(Flash_On) ,XIO(Flash_On) OTE(Flash_Off) ];
+					N: [XIC(Fault_Reset_PB) OTU(Fault_Reset_PB) ,XIC(Fault_Reset_Timer.TT) ][TON(Fault_Reset_Timer,?,?) ,OTE(Fault_Reset_Cmd) ];
+					N: JSR(R200_Totalizer_1,0);
+			END_ROUTINE
+
+			FBD_ROUTINE R200_Totalizer_1 (Description := "Totalizer Instruction Test Routine 1",
+			                              SheetSize := "Letter - 8.5 x 11 in",
+			                              SheetOrientation := Landscape)
+				SHEET  (Name := "")
+					IREF  (ID := 0,
+					       X := 380,
+					       Y := 260,
+					       Operand := "0.5",
+					       HideDescription := No)
+					END_IREF
+
+					IREF  (ID := 1,
+					       X := 380,
+					       Y := 280,
+					       Operand := "1",
+					       HideDescription := No)
+					END_IREF
+
+					IREF  (ID := 2,
+					       X := 380,
+					       Y := 240,
+					       Operand := "1.0",
+					       HideDescription := No)
+					END_IREF
+
+					IREF  (ID := 3,
+					       X := 220,
+					       Y := 400,
+					       Operand := "Total_Start_1",
+					       HideDescription := No)
+					END_IREF
+
+					BNOT_BLOCK  (ID := 4,
+					             X := 300,
+					             Y := 340,
+					             Operand := "BNOT_01",
+					             VisiblePins := "In, Out",
+					             HideDescription := No)
+					END_BNOT_BLOCK
+
+					TOT_BLOCK  (ID := 5,
+					            X := 520,
+					            Y := 180,
+					            Operand := "TOT_01",
+					            VisiblePins := "In, ResetValue, ProgProgReq, ProgOperReq, ProgStartReq, ProgStopReq, ProgResetReq, Total, OldTotal, ProgOper, RunStop, ProgResetDone, DeltaT",
+					            HideDescription := No)
+					END_TOT_BLOCK
+
+					WIRE  (FromElementID := 0,
+					       FromParameter := "",
+					       ToElementID := 5,
+					       ToParameter := "ResetValue")
+					END_WIRE
+
+					WIRE  (FromElementID := 1,
+					       FromParameter := "",
+					       ToElementID := 5,
+					       ToParameter := "ProgProgReq")
+					END_WIRE
+
+					WIRE  (FromElementID := 2,
+					       FromParameter := "",
+					       ToElementID := 5,
+					       ToParameter := "In")
+					END_WIRE
+
+					WIRE  (FromElementID := 3,
+					       FromParameter := "",
+					       ToElementID := 4,
+					       ToParameter := "In")
+					END_WIRE
+
+					WIRE  (FromElementID := 3,
+					       FromParameter := "",
+					       ToElementID := 5,
+					       ToParameter := "ProgStartReq")
+					END_WIRE
+
+					WIRE  (FromElementID := 4,
+					       FromParameter := "Out",
+					       ToElementID := 5,
+					       ToParameter := "ProgResetReq")
+					END_WIRE
+
+					WIRE  (FromElementID := 4,
+					       FromParameter := "Out",
+					       ToElementID := 5,
+					       ToParameter := "ProgStopReq")
+					END_WIRE
+
+				END_SHEET
+
+			END_FBD_ROUTINE
+
+	END_PROGRAM
+
+	PROGRAM P02_Random (Description := "Gaussian Random Number Generator Program",
+	                    MAIN := "R001_Main",
+	                    MODE := 0,
+	                    DisableFlag := 0)
+			TAG
+			END_TAG
+
+			ROUTINE R001_Main (Description := "Random Number Generator Main Routine")
+					RC: "******$N"
+					    "Call Linear Congruential Generator Routine$N"
+					    "******$N"
+					    "";
+					N: JSR(R010_LCG,0);
+					RC: "******$N"
+					    "Call Gaussian Random Number Generator Routine$N"
+					    "******$N"
+					    "";
+					N: JSR(R020_Gauss_RNG,0);
+			END_ROUTINE
+
+			ROUTINE R010_LCG (Description := "Uniform Random Number Generator Subroutine")
+					N: XIC(S:FS)MOV(0,BTC_RNG_2.Seed_Out);
+					N: A_Uniform_RNG(BTC_RNG_1,BTC_RNG_2.Seed_Out,BTC_RNG_1.A,BTC_RNG_1.B,BTC_RNG_1.Out_lo,BTC_RNG_1.Out_hi,BTC_RNG_1.Output_scaled,BTC_RNG_1.Seed_Out)A_Uniform_RNG(BTC_RNG_2,BTC_RNG_1.Seed_Out,BTC_RNG_2.A,BTC_RNG_2.B,BTC_RNG_2.Out_lo,BTC_RNG_2.Out_hi,BTC_RNG_2.Output_scaled,BTC_RNG_2.Seed_Out);
+			END_ROUTINE
+
+			ROUTINE R020_Gauss_RNG (Description := "Gaussian Random Number Generator Routine")
+					N: [XIC(S:FS) MOV(0,GRNG_Index) ,ADD(GRNG_Index,1,GRNG_Index) ,GRT(GRNG_Index,999) MOV(0,GRNG_Index) ,MOV(Gauss_RNG.GNG_Out,Gauss_RNG_Data[GRNG_Index]) ];
+					N: A_Gauss_RNG(Gauss_RNG,Gauss_RNG.GNG_Out);
+			END_ROUTINE
+
+	END_PROGRAM
+
+	PROGRAM P03_RMPS_AOI_Test (Description := "Ramp & Soak AOI Test Program",
+	                           MAIN := "R001_RMPS_Main",
+	                           MODE := 0,
+	                           DisableFlag := 0)
+			TAG
+				a_RMPS_01 : a_RMPS (Description := "Ramp & Soak 1 AOI:",
+				            COMMENT.RUN_MODE := "Ramp & Soak 1 AOI: in Run Mode") := [259,0.00000000e+000,3,0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+						,0.00000000e+000,0,0.00000000e+000,[[0,0,0],[0,120000,0],[0,300000,0],[0,120000,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]],[2#0
+						,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+						,2#0,2#0,2#0,2#0],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+						,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],0,[-1610612736,11,10],[-1610612736,11,10],[[0,0,0],[0,2147483600,0],[0,2147483600
+						,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600,0],[0,2147483600
+						,0],[0,2147483600,0]],3];
+				PIDE_ONS : BOOL[32] (Description := "PIDE One Shot Bit",
+				            RADIX := Decimal) := [2#1,2#0,2#1,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+						,2#0,2#0,2#0,2#0,2#0];
+			END_TAG
+
+			ROUTINE R001_RMPS_Main (Description := "Ramp & Soak PIDE Main Routine")
+					RC: "******$N"
+					    "PID Index Counter Logic - The PID Index Counter (PID_Index) is Used to Control the Execution Timing of the PIDE Instruction(s) which are Configured for the Oversasmple Mode / Controlled by Programmer$N"
+					    "$N"
+					    "PID Index Counter Cycle Time (1 to 40) = PIID Index Counter Max x AOI_Test Task Periodic Scan Time = 40 x 25 msec = 1000 msec = 1.0 sec$N"
+					    "$N"
+					    "For a 500 msec or 0.5 sec PIDE Update period the PIDE Instruction should be executed when PID_Index = 1 & 21$N"
+					    "$N"
+					    "For a 1000 msec PIDE Update period the PIIDE Instrtuction should be executed when PID_Index = 1$N"
+					    "******$N"
+					    "";
+					N: [XIO(First_Scan) MOV(0,PID_Index) ,ADD(PID_Index,1,PID_Index) ,GRT(PID_Index,40) [OTE(PID_Cycle_Done) ,MOV(0,PID_Index) ] ,JSR(R020_RMPS_PIDE_Lad,0) JSR(R030_RMPS_PIDE_FB,0) ];
+					N: OTE(First_Scan);
+			END_ROUTINE
+
+			ROUTINE R020_RMPS_PIDE_Lad (Description := "Ramp & Soad PIDE Ladder Routine")
+					N: NOP();
+					RC: "******$N"
+					    "Ramp and Soak PIDE Restart Control$N"
+					    "******$N"
+					    "";
+					N: [[XIO(First_Scan) ,XIO(a_RMPS_01.RUN_MODE) ] MOV(0,PID_Cycle_Index) ,XIC(RMPS_PIDE.Manual) XIC(RMPS_Hold) [XIC(a_RMPS_01.RUN_MODE) XIO(PID_Cycle_Done) ADD(PID_Cycle_Index,1,PID_Cycle_Index) ,EQU(PID_Cycle_Index,3) OTE(RMPS_PIDE_Auto_Restart) ] ];
+					N: [XIC(Toggle_1) OTU(Toggle_1) OTE(RMPS_Init) ,[XIC(Toggle_2) OTU(Toggle_2) ,XIC(a_RMPS_01.RUN_MODE) XIO(a_RMPS_01.DONE) ] [XIO(RMPS_Run_Cmd) XIC(First_Scan) OTE(RMPS_PIDE_Auto_Start) ,XIO(RMPS_Init) OTE(RMPS_Run_Cmd) ] ];
+					N: [XIC(Toggle_3) OTU(Toggle_3) ,XIO(First_Scan) ,XIC(RMPS_Hold) XIC(a_RMPS_01.RUN_MODE) ]XIO(Toggle_4)XIO(RMPS_PIDE_Auto_Restart)OTE(RMPS_Hold);
+					N: XIO(RMPS_Hold)OTU(Toggle_4);
+					N: [XIO(First_Scan) MOV(RMPS_PIDE_Out,RMPS_PIDE_Man_Out) ,XIO(a_RMPS_01.RUN_MODE) ONS(PIDE_ONS[0]) [OTE(RMPS_Done) ,MOV(0.0,RMPS_PIDE_Man_Out) ] ,[XIC(RMPS_Man_PB) OTU(RMPS_Man_PB) ,XIC(RMPS_Done) ,XIO(First_Scan) ,XIC(RMPS_PIDE.ProgManualReq) ] XIO(RMPS_PIDE_Auto_Start) XIO(RMPS_PIDE_Auto_Restart) XIO(RMPS_Auto_PB) OTE(RMPS_PIDE.ProgManualReq) ,XIO(RMPS_PIDE.ProgManualReq) [OTU(RMPS_Auto_PB) ,OTE(RMPS_PIDE.ProgAutoReq) ] ,EQU(PID_Index,1) OTE(PID_Enable[1]) ];
+			END_ROUTINE
+
+			FBD_ROUTINE R030_RMPS_PIDE_FB (Description := "Ramp & Soak PIDE Functin Block Routine",
+			                               SheetSize := "Tabloid - 11 x 17 in",
+			                               SheetOrientation := Landscape)
+				SHEET  (Name := "RMPS_PIDE")
+					IREF  (ID := 0,
+					       X := 900,
+					       Y := 300,
+					       Operand := "1",
+					       HideDescription := No)
+					END_IREF
+
+					IREF  (ID := 1,
+					       X := 900,
+					       Y := 220,
+					       Operand := "PID_Enable[1]",
+					       HideDescription := No)
+					END_IREF
+
+					IREF  (ID := 2,
+					       X := 200,
+					       Y := 380,
+					       Operand := "RMPS_Hold",
+					       HideDescription := No)
+					END_IREF
+
+					IREF  (ID := 3,
+					       X := 240,
+					       Y := 460,
+					       Operand := "RMPS_Init",
+					       HideDescription := No)
+					END_IREF
+
+					IREF  (ID := 4,
+					       X := 800,
+					       Y := 340,
+					       Operand := "RMPS_PIDE_Man_Out",
+					       HideDescription := No)
+					END_IREF
+
+					IREF  (ID := 5,
+					       X := 200,
+					       Y := 200,
+					       Operand := "RMPS_PIDE_Out",
+					       HideDescription := No)
+					END_IREF
+
+					IREF  (ID := 6,
+					       X := 240,
+					       Y := 120,
+					       Operand := "RMPS_Run_Cmd",
+					       HideDescription := No)
+					END_IREF
+
+					IREF  (ID := 7,
+					       X := 180,
+					       Y := 300,
+					       Operand := "RMPS_Segs",
+					       HideDescription := No)
+					END_IREF
+
+					OREF  (ID := 8,
+					       X := 1250,
+					       Y := 220,
+					       Operand := "RMPS_PIDE_Out",
+					       HideDescription := No)
+					END_OREF
+
+					PIDE_BLOCK  (ID := 9,
+					             X := 960,
+					             Y := 160,
+					             Operand := "RMPS_PIDE",
+					             VisiblePins := "EnableIn, PV, SPProg, CVProg, ProgProgReq, ProgAutoReq, ProgManualReq, CVEU, CV, SP, ProgOper, Auto, Manual",
+					             HideDescription := No,
+					             AutotuneTag := "")
+					END_PIDE_BLOCK
+
+					ADD_ON_INSTRUCTION a_RMPS (ID := 10,
+					                           X := 340,
+					                           Y := 200,
+					                           Operand := "a_RMPS_01",
+					                           VisiblePins := "Run_Cmd, PV, Num_of_Seg, Hold, Initialize, SP_Out, Current_Seg, STime_Left, STime_Expired, Total_Cycle, Total_Run, Total_Hold, Run_Mode, Done, Fault, STime_SP, SP_In, SRun_Time, SHold_Time",
+					                           HideDescription := "No")
+						FBD_PARAMETERS  (STime_SP := RMPS_STime_SP,
+						                 SP_In := RMPS_SP,
+						                 SRun_Time := RMPS_SRun_Time,
+						                 SHold_Time := RMPS_SHold_Time)
+						END_FBD_PARAMETERS
+
+					END_ADD_ON_INSTRUCTION
+
+					WIRE  (FromElementID := 0,
+					       FromParameter := "",
+					       ToElementID := 9,
+					       ToParameter := "ProgProgReq")
+					END_WIRE
+
+					WIRE  (FromElementID := 1,
+					       FromParameter := "",
+					       ToElementID := 9,
+					       ToParameter := "EnableIn")
+					END_WIRE
+
+					WIRE  (FromElementID := 2,
+					       FromParameter := "",
+					       ToElementID := 10,
+					       ToParameter := "Hold")
+					END_WIRE
+
+					WIRE  (FromElementID := 3,
+					       FromParameter := "",
+					       ToElementID := 10,
+					       ToParameter := "Initialize")
+					END_WIRE
+
+					WIRE  (FromElementID := 4,
+					       FromParameter := "",
+					       ToElementID := 9,
+					       ToParameter := "CVProg")
+					END_WIRE
+
+					WIRE  (FromElementID := 5,
+					       FromParameter := "",
+					       ToElementID := 10,
+					       ToParameter := "PV")
+					END_WIRE
+
+					WIRE  (FromElementID := 6,
+					       FromParameter := "",
+					       ToElementID := 10,
+					       ToParameter := "Run_Cmd")
+					END_WIRE
+
+					WIRE  (FromElementID := 7,
+					       FromParameter := "",
+					       ToElementID := 10,
+					       ToParameter := "Num_of_Seg")
+					END_WIRE
+
+					WIRE  (FromElementID := 9,
+					       FromParameter := "CVEU",
+					       ToElementID := 8,
+					       ToParameter := "")
+					END_WIRE
+
+					WIRE  (FromElementID := 9,
+					       FromParameter := "CVEU",
+					       ToElementID := 9,
+					       ToParameter := "PV")
+					END_WIRE
+
+					WIRE  (FromElementID := 10,
+					       FromParameter := "SP_Out",
+					       ToElementID := 9,
+					       ToParameter := "SPProg")
+					END_WIRE
+
+				END_SHEET
+
+			END_FBD_ROUTINE
+
+	END_PROGRAM
+
+	TASK AOI_Test (Type := PERIODIC,
+	               Rate := 25,
+	               Priority := 10,
+	               Watchdog := 500,
+	               DisableUpdateOutputs := No,
+	               InhibitTask := No)
+			P01_AOI_Test_IO_Buffer;
+			P02_AOI_Test;
+			P03_RMPS_AOI_Test;
+			P02_Random;
+	END_TASK
+
+	TREND Gaussian_RNG (Description := "Gaussian Random Number Generator Data",
+	                    SamplePeriod := 10,
+	                    NumberOfCaptures := 1,
+	                    CaptureSizeType := Samples,
+	                    CaptureSize := 60000,
+	                    StartTriggerType := No Trigger,
+	                    StopTriggerType := No Trigger,
+	                    TrendxVersion := "5.2")
+			Template := [208,207,17,224,161,177,26,225,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,62,0,3,0,254,255,9,0,6,0,0,0,0,0,0,0
+,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,16,0,0,2,0,0,0,1,0,0,0,254,255,255,255,0,0,0,0,0,0,0,0
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,253,255,255,255,254,255,255,255
+,254,255,255,255,4,0,0,0,254,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,82,0,111,0,111,0,116,0,32,0,69,0,110,0,116,0
+,114,0,121,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,22,0,5,0,255,255,255,255,255,255,255,255,1,0,0,0,14,52,81,191,9,48,205,65,159,190,222,136,174,167,50,40
+,0,0,0,0,0,0,0,0,0,0,0,0,80,29,44,44,93,191,213,1,3,0,0,0,192,3,0,0,0,0,0,0,67,0,111,0,110,0,116,0
+,101,0,110,0,116,0,115,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,2,1,255,255,255,255,255,255,255,255,255,255,255,255,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,131,3,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,255,255,255
+,255,255,255,255,255,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2,0,0,0,3,0,0,0,4,0,0,0,5,0,0,0,6,0,0,0
+,7,0,0,0,8,0,0,0,9,0,0,0,10,0,0,0,11,0,0,0,12,0,0,0,13,0,0,0,14,0,0,0,254,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,4,0,0,0,8,152,0,0,159,74,0,0,0,0,0,0,13,0,0,0,255,254,255,12,71,0,97,0,117,0,115,0
+,115,0,105,0,97,0,110,0,95,0,82,0,78,0,71,0,0,0,0,0,0,0,0,0,255,255,255,255,200,0,0,0,255,157,3,0,255,1,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0,1,96,234,0,0,0,0,0,0,255,255,255,0,0,0,0,0,0,0
+,0,0,0,8,3,0,0,1,0,255,255,1,0,13,0,67,86,105,101,119,76,105,110,101,73,110,102,111,3,0,0,0,1,0,0,0,0,0,64,192
+,0,0,64,64,255,254,255,0,255,254,255,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0,255,254,255,0
+,255,254,255,17,71,0,97,0,117,0,115,0,115,0,95,0,82,0,78,0,71,0,46,0,71,0,78,0,71,0,95,0,79,0,117,0,116,0,32,1
+,0,0,0,255,254,255,0,255,254,255,0,9,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1
+,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,255
+,0,0,0,0,0,3,0,0,0,4,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,200,66,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,0,0,255,255,255
+,255,0,0,0,0,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,128,128,128,0,128,128,128,0,255,239,255,254,255,191,255,247,126,116,10,94,1,0,0,0,108,2,0,0,136,116,10
+,94,1,0,0,0,108,2,0,0,255,254,255,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,2,0,0,0,40,0,0,0,50,0,0,0,0
+,0,0,0,0,0,0,0,92,0,0,0,245,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,255,254,255,5,65,0,114,0,105,0,97,0,108,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0,255,254,255,0,255,254,255,0,32,1,0
+,0,0,255,254,255,0,255,254,255,0,3,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0,255,254,255,0,255,254,255,0,32,1,0,0,0,255
+,254,255,0,255,254,255,0,0,0,0,0,0,0,0,0,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,1
+,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,255,255,1,0,9,0,67,76,105,110,101,73,110,102,111,3,0,0,0,1,0,0,0
+,0,0,64,192,0,0,64,64,255,254,255,0,255,254,255,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0
+,255,254,255,0,255,254,255,17,71,0,97,0,117,0,115,0,115,0,95,0,82,0,78,0,71,0,46,0,71,0,78,0,71,0,95,0,79,0,117,0
+,116,0,32,1,0,0,0,255,254,255,0,255,254,255,0,0,0,0,0,0,0,0,0,1,0,0,0,0,69,0,116,0,104,0,101,0,114,0,78,0
+,101,0,116,0,47,0,73,0,80,0,32,0,65,0,100,0,97,0,112,0,116,0,101,0,114,0,0,0,0,0,0,0,207,19,54,207,0,0,8,255
+,136,155,64,31,38,0,0,0,39,0,0,0,0,0,0,0,123,0,70,0,54,0,70,0,56,0,57,0,55,0,65,0,50,0,45,0,65,0,55,0
+,66,0,49,0,45,0,49,0,49,0,100,0,48,0,45,0,65,0,68,0,53,0,68,0,45,0,48,0,48,0,67,0,0,0,0,0,127,75,3,0
+];
+		PEN Gauss_RNG.GNG_Out (Color := 16#00ff_0000,
+		                       Visible := 1,
+		                       Style := 0,
+		                       Type := Analog,
+		                       Width := 1,
+		                       Marker := 0,
+		                       Min := -3.0,
+		                       Max := 3.0)
+		END_PEN
+
+	END_TREND
+
+	TREND RMPS_01 (Description := "Ramp & Soak 1 Trend",
+	               SamplePeriod := 100,
+	               NumberOfCaptures := 1,
+	               CaptureSizeType := Time Period,
+	               CaptureSize := 1440000,
+	               StartTriggerType := No Trigger,
+	               StopTriggerType := No Trigger,
+	               TrendxVersion := "5.2")
+			Template := [208,207,17,224,161,177,26,225,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,62,0,3,0,254,255,9,0,6,0,0,0,0,0,0,0
+,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,16,0,0,2,0,0,0,1,0,0,0,254,255,255,255,0,0,0,0,0,0,0,0
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,253,255,255,255,254,255,255,255
+,254,255,255,255,4,0,0,0,5,0,0,0,254,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,82,0,111,0,111,0,116,0,32,0,69,0,110,0,116,0
+,114,0,121,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,22,0,5,0,255,255,255,255,255,255,255,255,1,0,0,0,14,52,81,191,9,48,205,65,159,190,222,136,174,167,50,40
+,0,0,0,0,0,0,0,0,0,0,0,0,208,76,113,170,225,59,213,1,3,0,0,0,0,6,0,0,0,0,0,0,67,0,111,0,110,0,116,0
+,101,0,110,0,116,0,115,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0,2,1,255,255,255,255,255,255,255,255,255,255,255,255,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,213,5,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,255,255,255
+,255,255,255,255,255,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2,0,0,0,3,0,0,0,4,0,0,0,5,0,0,0,6,0,0,0
+,7,0,0,0,8,0,0,0,9,0,0,0,10,0,0,0,11,0,0,0,12,0,0,0,13,0,0,0,14,0,0,0,15,0,0,0,16,0,0,0
+,17,0,0,0,18,0,0,0,19,0,0,0,20,0,0,0,21,0,0,0,22,0,0,0,23,0,0,0,254,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255
+,255,255,255,255,255,255,255,255,4,0,0,0,195,146,0,0,120,54,0,0,0,0,0,0,13,0,0,0,255,254,255,7,82,0,77,0,80,0,83,0
+,95,0,48,0,49,0,0,0,0,0,0,0,0,0,255,255,255,255,200,0,0,0,255,157,3,0,255,1,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,255,254,255,0,255,254,255,0,1,96,234,0,0,0,0,0,0,255,255,255,0,0,0,0,0,0,0,0,0,0,100,5,0,0,3,0,255
+,255,1,0,13,0,67,86,105,101,119,76,105,110,101,73,110,102,111,3,0,0,0,1,0,0,0,0,0,160,192,0,0,200,66,255,254,255,1,32,0
+,255,254,255,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0,255,254,255,0,255,254,255,28,80,0,48,0
+,49,0,95,0,65,0,67,0,95,0,65,0,79,0,73,0,95,0,84,0,101,0,115,0,116,0,92,0,97,0,95,0,82,0,77,0,80,0,83,0
+,95,0,48,0,49,0,46,0,83,0,80,0,32,1,0,0,0,255,254,255,0,255,254,255,0,1,128,3,0,0,0,1,0,0,0,0,0,160,192,0
+,0,200,66,255,254,255,1,32,0,255,254,255,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0,255,254,255
+,0,255,254,255,13,82,0,77,0,80,0,83,0,95,0,80,0,73,0,68,0,69,0,95,0,79,0,117,0,116,0,32,1,0,0,0,255,254,255,0
+,255,254,255,0,1,128,3,0,0,0,1,0,0,0,205,204,204,189,0,0,32,65,255,254,255,1,32,0,255,254,255,0,0,0,0,0,0,0,0,0
+,3,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0,255,254,255,0,255,254,255,37,80,0,48,0,49,0,95,0,65,0,67,0,95,0,65,0
+,79,0,73,0,95,0,84,0,101,0,115,0,116,0,92,0,97,0,95,0,82,0,77,0,80,0,83,0,95,0,48,0,49,0,46,0,67,0,117,0
+,114,0,114,0,101,0,110,0,116,0,95,0,83,0,101,0,103,0,32,1,0,0,0,255,254,255,0,255,254,255,0,9,0,0,0,1,0,0,0,0
+,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1
+,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,3,0,255,0,0,0,0,255,0,0,255,128,64,0,0,0,0,0,1,0,0,0,4,0,0
+,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,200,66,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+,0,3,0,1,0,0,0,1,0,0,0,1,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,1,0,0,0,1,0,0,0,1
+,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,255,255,255,255,0,0,0,0,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,128,128,128,0,128,128,128,0,255,239,255
+,254,255,191,255,247,160,215,45,93,1,0,0,0,253,1,0,0,64,221,45,93,1,0,0,0,253,1,0,0,255,254,255,0,1,0,0,0,1,0,0
+,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,40,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,92,0,0,0,245
+,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,254,255,5,65
+,0,114,0,105,0,97,0,108,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,3,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0,255,254,255,0,255,254,255,0,32,1,0,0,0,255,254,255,0,255,254,255,0,3,0
+,0,0,0,0,0,0,255,254,255,0,255,254,255,0,255,254,255,0,255,254,255,0,32,1,0,0,0,255,254,255,0,255,254,255,0,0,0,0,0,0
+,0,0,0,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0
+,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,255,255,1,0,9,0,67,76,105,110,101,73,110,102,111,3,0,0,0
+,1,0,0,0,0,0,160,192,0,0,200,66,255,254,255,1,32,0,255,254,255,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,255,254
+,255,0,255,254,255,0,255,254,255,0,255,254,255,28,80,0,48,0,49,0,95,0,65,0,67,0,95,0,65,0,79,0,73,0,95,0,84,0,101,0
+,115,0,116,0,92,0,97,0,95,0,82,0,77,0,80,0,83,0,95,0,48,0,49,0,46,0,83,0,80,0,32,1,0,0,0,255,254,255,0,255
+,254,255,0,5,128,3,0,0,0,1,0,0,0,0,0,160,192,0,0,200,66,255,254,255,1,32,0,255,254,255,0,0,0,0,0,0,0,0,0,3
+,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0,255,254,255,0,255,254,255,13,82,0,77,0,80,0,83,0,95,0,80,0,73,0,68,0,69
+,0,95,0,79,0,117,0,116,0,32,1,0,0,0,255,254,255,0,255,254,255,0,5,128,3,0,0,0,1,0,0,0,205,204,204,189,0,0,32,65
+,255,254,255,1,32,0,255,254,255,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,255,254,255,0,255,254,255,0,255,254,255,0,255,254
+,255,37,80,0,48,0,49,0,95,0,65,0,67,0,95,0,65,0,79,0,73,0,95,0,84,0,101,0,115,0,116,0,92,0,97,0,95,0,82,0
+,77,0,80,0,83,0,95,0,48,0,49,0,46,0,67,0,117,0,114,0,114,0,101,0,110,0,116,0,95,0,83,0,101,0,103,0,32,1,0,0
+,0,255,254,255,0,255,254,255,0,0,0,0,0,0,0,0,0,1,0,0,0,113,0,0,66,0,0,0,0,0,0,0,8,2,0,0,13,0,2,0
+,0,0,1,0,1,113,0,0,21,0,0,0,0,0,0,0,160,0,0,0,13,0,2,0,0,0,0,0,244,33,3,0];
+		PEN P03_RMPS_AOI_Test\a_RMPS_01.SP (Description := " ",
+		                                    Color := 16#0000_00ff,
+		                                    Visible := 1,
+		                                    Style := 0,
+		                                    Type := Analog,
+		                                    Width := 1,
+		                                    Marker := 0,
+		                                    Min := -5.0,
+		                                    Max := 100.0)
+		END_PEN
+
+		PEN RMPS_PIDE_Out (Description := " ",
+		                   Color := 16#0000_ff00,
+		                   Visible := 1,
+		                   Style := 0,
+		                   Type := Analog,
+		                   Width := 1,
+		                   Marker := 0,
+		                   Min := -5.0,
+		                   Max := 100.0)
+		END_PEN
+
+		PEN P03_RMPS_AOI_Test\a_RMPS_01.Current_Seg (Description := " ",
+		                                             Color := 16#0040_80ff,
+		                                             Visible := 1,
+		                                             Style := 0,
+		                                             Type := Analog,
+		                                             Width := 1,
+		                                             Marker := 0,
+		                                             Min := -0.1,
+		                                             Max := 10.0)
+		END_PEN
+
+	END_TREND
+
+CONFIG ASCII(XONXOFFEnable := 0,
+	             DeleteMode := 0,
+	             EchoMode := 0,
+	             TerminationChars := 65293,
+	             AppendChars := 2573,
+	             BufferSize := 82) END_CONFIG
+
+CONFIG CST(SystemTimeMasterID := 0) END_CONFIG
+
+CONFIG DF1(DuplicateDetection := 1,
+	           ErrorDetection := BCC Error,
+	           EmbeddedResponseEnable := 0,
+	           DF1Mode := Pt to Pt,
+	           ACKTimeout := 50,
+	           NAKReceiveLimit := 3,
+	           ENQTransmitLimit := 3,
+	           TransmitRetries := 3,
+	           StationAddress := 0,
+	           ReplyMessageWait := 5,
+	           PollingMode := 1,
+	           MasterMessageTransmit := 0,
+	           NormalPollNodeFile := "<NA>",
+	           NormalPollGroupSize := 0,
+	           PriorityPollNodeFile := "<NA>",
+	           ActiveStationFile := "<NA>",
+	           SlavePollTimeout := 3000,
+	           EOTSuppression := 0,
+	           MaxStationAddress := 31,
+	           TokenHoldFactor := 1,
+	           EnableStoreFwd := 0,
+	           StoreFwdFile := "<NA>") END_CONFIG
+
+CONFIG SerialPort(BaudRate := 19200,
+	                  Parity := No Parity,
+	                  DataBits := 8 Bits of Data,
+	                  StopBits := 1 Stop Bit,
+	                  ComDriverId := DF1,
+	                  PendingComDriverId := DF1,
+	                  RTSOffDelay := 0,
+	                  RTSSendDelay := 0,
+	                  ControlLine := No Handshake,
+	                  PendingControlLine := No Handshake,
+	                  RemoteModeChangeFlag := 0,
+	                  PendingRemoteModeChangeFlag := 0,
+	                  ModeChangeAttentionChar := 27,
+	                  PendingModeChangeAttentionChar := 27,
+	                  SystemModeCharacter := 83,
+	                  PendingSystemModeCharacter := 83,
+	                  UserModeCharacter := 85,
+	                  PendingUserModeCharacter := 85,
+	                  DCDWaitDelay := 0) END_CONFIG
+
+CONFIG TimeSynchronize(Priority1 := 128,
+	                                 Priority2 := 128,
+	                                 PTPEnable := 1) END_CONFIG
+
+CONFIG WallClockTime(LocalTimeAdjustment := 0,
+	                     TimeZone := 0) END_CONFIG
+
+END_CONTROLLER
+

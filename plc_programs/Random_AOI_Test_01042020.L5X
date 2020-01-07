@@ -1,0 +1,4212 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="20.04" TargetName="Compact_AOI_Test" TargetType="Controller" ContainsContext="false" Owner="FAS, FAS" ExportDate="Sat Jan 04 21:33:41 2020" ExportOptions="DecoratedData ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Target" Name="Compact_AOI_Test" ProcessorType="1768-L45" MajorRev="20" MinorRev="19" CompatibilityMode="V20.01" TimeSlice="18" ShareUnusedTimeSlice="0" ProjectCreationDate="Wed May 02 10:41:17 2018" LastModifiedDate="Sat Jan 04 21:31:01 2020" SFCExecutionControl="CurrentActive"
+ SFCRestartPosition="MostRecent" SFCLastScan="DontScan" ProjectSN="16#4051_3d5c" MatchProjectToController="false" CanUseRPIFromProducer="false" InhibitAutomaticFirmwareUpdate="0">
+<RedundancyInfo Enabled="false" KeepTestEditsOnSwitchOver="false" IOMemoryPadPercentage="90" DataTablePadPercentage="50"/>
+<Security Code="0" ChangesToDetect="16#ffff_ffff_ffff_ffff"/>
+<SafetyInfo/>
+<DataTypes>
+<DataType Name="STRING_12" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="12" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="STRING_16" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="16" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="STRING_20" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="20" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="STRING_40" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="40" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+</DataTypes>
+<Modules>
+<Module Name="Local" CatalogNumber="1768-L45" Vendor="1" ProductType="14" ProductCode="74" Major="20" Minor="19" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="true"
+>
+<EKey State="ExactMatch"/>
+<Ports>
+<Port Id="1" Address="0" Type="1768Ctrl5Slot" Upstream="false">
+<Bus/>
+</Port>
+<Port Id="7" Address="0" Type="Compact" Upstream="false">
+<Bus Size="31"/>
+</Port>
+</Ports>
+</Module>
+<Module Name="Ethernet" CatalogNumber="1768-ENBT/A" Vendor="1" ProductType="12" ProductCode="151" Major="4" Minor="5" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false"
+>
+<EKey State="CompatibleModule"/>
+<Ports>
+<Port Id="1" Address="1" Type="1768" Upstream="true"/>
+<Port Id="2" Address="192.168.1.200" Type="Ethernet" Upstream="false">
+<Bus/>
+</Port>
+</Ports>
+</Module>
+<Module Name="DO_120V_S1" CatalogNumber="1769-OA16/A" Vendor="1" ProductType="7" ProductCode="93" Major="3" Minor="1" ParentModule="Local" ParentModPortId="7" Inhibited="false" MajorFault="true"
+>
+<EKey State="CompatibleModule"/>
+<Ports>
+<Port Id="1" Address="1" Type="Compact" Upstream="true"/>
+</Ports>
+<Communications CommMethod="536870913">
+<ConfigTag ConfigSize="14" ExternalAccess="Read/Write">
+<Data>12 00 00 00 66 00 00 00 01 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00</Data>
+<Data Format="Decorated">
+<Structure DataType="AB:1769_DO16:C:0">
+<DataValueMember Name="Config" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="ProgToFaultEn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgMode" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="ProgValue" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="FaultMode" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="FaultValue" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+</Structure>
+</Data>
+</ConfigTag>
+<Connections>
+<Connection Name="Output" RPI="20000" Type="Output" EventID="0" ProgrammaticallySendEventTrigger="false">
+<InputTag ExternalAccess="Read/Write">
+<ForceData>00 00 00 00 00 01 21 55 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00</ForceData>
+<Data Format="Decorated">
+<Structure DataType="AB:1769_DO16:I:0">
+<DataValueMember Name="Fault" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="ReadBack" DataType="INT" Radix="Binary" Value="2#0000_0001_0000_0000"/>
+</Structure>
+</Data>
+</InputTag>
+<OutputTag ExternalAccess="Read/Write">
+<Data>00 01 00 00</Data>
+<ForceData>00 00 00 00 00 00 00 00 00 00 00 00</ForceData>
+<Data Format="Decorated">
+<Structure DataType="AB:1769_DO16:O:0">
+<DataValueMember Name="Data" DataType="INT" Radix="Binary" Value="2#0000_0001_0000_0000"/>
+</Structure>
+</Data>
+</OutputTag>
+</Connection>
+</Connections>
+</Communications>
+<ExtendedProperties>
+<public><ConfigID>150</ConfigID></public></ExtendedProperties>
+</Module>
+<Module Name="DI_120VAC_S2" CatalogNumber="1769-IA16/A" Vendor="1" ProductType="7" ProductCode="82" Major="1" Minor="1" ParentModule="Local" ParentModPortId="7" Inhibited="false" MajorFault="true"
+>
+<EKey State="CompatibleModule"/>
+<Ports>
+<Port Id="1" Address="2" Type="Compact" Upstream="true"/>
+</Ports>
+<Communications CommMethod="536870913">
+<ConfigData ConfigSize="4">
+<Data>08 00 00 00 66 00 00 00 01 00 00 00</Data>
+</ConfigData>
+<Connections>
+<Connection Name="Input" RPI="20000" Type="Input" EventID="0" ProgrammaticallySendEventTrigger="false">
+<InputTag ExternalAccess="Read/Write">
+<ForceData>00 00 00 00 00 00 22 55 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00</ForceData>
+<Data Format="Decorated">
+<Structure DataType="AB:1769_DI16:I:0">
+<DataValueMember Name="Fault" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Data" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+</Structure>
+</Data>
+</InputTag>
+</Connection>
+</Connections>
+</Communications>
+<ExtendedProperties>
+<public><ConfigID>250</ConfigID></public></ExtendedProperties>
+</Module>
+</Modules>
+<AddOnInstructionDefinitions>
+<AddOnInstructionDefinition Name="A_Uniform_RNG" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2019-12-25T19:53:36.259Z" CreatedBy="DOMAIN1\carp" EditedDate="2019-12-30T20:11:24.531Z" EditedBy="DOMAIN1\carp" SoftwareRevision="v28.01">
+<Description>
+<![CDATA[Random Number Generator AOI
+Uses Linear Congruential Generator (LCG)
+1) Get Seed Number from either previous execution or default
+2) Generate next Seed via LCG
+4) Step #4 = Scale Seed to output range [Out_lo:out_hi)
+]]>
+</Description>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Seed" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[LCG input seed; updated after each execution]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="A" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[LCG multiplicative parameter A
+ in (Seed(n+1) = Seed(n) * A + C) MOD Modulus; default is from glibc implementation]]>
+</Description>
+<DefaultData>8D D3 93 06</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="110351245"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="B" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[LCG additive parameter A
+ in Seed(n+1) = (Seed(n) * A + C) MOD Modulus; default PJC/BTC/WA value]]>
+</Description>
+<DefaultData>39 30 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="12345"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Out_lo" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Output value when updated seed is 0]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Out_hi" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Output value for an updated seed of 2**31 (theoretical)]]>
+</Description>
+<DefaultData>00 00 80 3F</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="1.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Output_scaled" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="true" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Actual output value at each execution]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Seed_Out" TagType="Base" DataType="DINT" Usage="Output" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[LCG Calculation Seed Output]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Se" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Internal copy, and calculation, of seed]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="float_internal" DataType="REAL" Radix="Float" ExternalAccess="None">
+<Description>
+<![CDATA[Intermediate calculations for output scaling]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[Random Number Generator using Linear Congruential Generator]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[This rung updates Seed:  Seed(n+1) = (Seed(n) * A + B) MOD (2**31)
+N.B. MOD is implemented via DINT overflow plus bit-wise AND with (2**31 - 1) i.e. 0x7FFFFFFF.,
+so local tag [Seed_internal] may not be the same as the final seed after the AND-cum-MOD
+]]>
+</Comment>
+<Text>
+<![CDATA[MUL(Seed,A,Se)ADD(Se,B,Se)OR(Se,-2147483648,Seed_Out);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[OTU(S:V);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[This rung scales Seed to Output_scaled:  Output_scaled(n+1) = Func(Seed(n+1),Out_lo,Out_hi)]]>
+</Comment>
+<Text>
+<![CDATA[DIV(Seed_Out,-2147483648.0,float_internal)CPT(Output_scaled,((1.0 - float_internal) * Out_lo) + (float_internal * Out_hi));]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+<AddOnInstructionDefinition Name="A_Gauss_RNG" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2019-12-25T23:30:46.260Z" CreatedBy="DOMAIN1\carp" EditedDate="2019-12-30T21:51:56.343Z" EditedBy="FAS-ENG-PJC\image" SoftwareRevision="v20.04">
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="GNG_Out" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="true" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Gaussian-Distributed Random Number]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="A_URNG" DataType="A_Uniform_RNG" ExternalAccess="None">
+<DefaultData>01 00 00 00 00 00 00 00 8D D3 93 06 39 30 00 00 
+00 00 00 00 00 00 80 3F 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="A_Uniform_RNG">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Seed" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="A" DataType="DINT" Radix="Decimal" Value="110351245"/>
+<DataValueMember Name="B" DataType="DINT" Radix="Decimal" Value="12345"/>
+<DataValueMember Name="Out_lo" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Out_hi" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="Output_scaled" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Seed_Out" DataType="DINT" Radix="Decimal" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Seed_B" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Seed_A" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="B_URNG" DataType="A_Uniform_RNG" ExternalAccess="None">
+<DefaultData>01 00 00 00 00 00 00 00 8D D3 93 06 39 30 00 00 
+00 00 00 00 00 00 80 3F 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="A_Uniform_RNG">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Seed" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="A" DataType="DINT" Radix="Decimal" Value="110351245"/>
+<DataValueMember Name="B" DataType="DINT" Radix="Decimal" Value="12345"/>
+<DataValueMember Name="Out_lo" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Out_hi" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="Output_scaled" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Seed_Out" DataType="DINT" Radix="Decimal" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="AOI_FS" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Gaussian Random Number Generator First Execution Done]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Odd_Even" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Odd Even Scan Bit]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Z2" DataType="REAL" Radix="Float" ExternalAccess="None">
+<Description>
+<![CDATA[Trig Term]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Z1" DataType="REAL" Radix="Float" ExternalAccess="None">
+<Description>
+<![CDATA[SQR Term]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[XIO(AOI_FS)MOV(0,B_URNG.Seed_Out);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[[XIO(Odd_Even) ,XIO(AOI_FS) ]A_Uniform_RNG(A_URNG,B_URNG.Seed_Out,A_URNG.A,A_URNG.B,A_URNG.Out_lo,A_URNG.Out_hi,A_URNG.Output_scaled,Seed_A)A_Uniform_RNG(B_URNG,A_URNG.Seed_Out,B_URNG.A,B_URNG.B,B_URNG.Out_lo,B_URNG.Out_hi,B_URNG.Output_scaled,Seed_B);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[[XIO(Odd_Even) ,XIO(AOI_FS) ]LN(A_URNG.Output_scaled,Z1)MUL(Z1,-2.0,Z1)SQR(Z1,Z1);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[[XIO(Odd_Even) ,XIO(AOI_FS) ]MUL(B_URNG.Output_scaled,6.283185307179586476925286766559,Z2)COS(Z2,Z2);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[XIC(Odd_Even)XIC(AOI_FS)MUL(B_URNG.Output_scaled,6.283185307179586476925286766559,Z2)SIN(Z2,Z2);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[MUL(Z1,Z2,GNG_Out);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[[[XIO(Odd_Even) ,XIO(AOI_FS) ] OTE(Odd_Even) ,OTE(AOI_FS) ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+<AddOnInstructionDefinition Name="a_RMPS" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2017-09-29T11:34:44.798Z" CreatedBy="DOMAIN1\carp" EditedDate="2020-01-02T19:02:21.843Z" EditedBy="FAS-ENG-PJC\image" SoftwareRevision="v20.04">
+<Description>
+<![CDATA[Ramp and Soak AOI]]>
+</Description>
+<RevisionNote>
+<![CDATA[Note: Input Arrays are Real[10] so the maximum number of segmemts is 10]]>
+</RevisionNote>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Run_Cmd" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[AOI Run Cmd]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="PV" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Scaled Analog Input (Real) to the AOI]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Num_of_Seg" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="None">
+<Description>
+<![CDATA[Number of Segments (Maximum = 10)]]>
+</Description>
+<DefaultData>00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Hold" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[AOI Hold Cmd]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Initialize" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Initialize AOI Cmd (Reset Segment to 0)]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="SP_Out" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Setpoint Output (psig, deg F)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Current_Seg" TagType="Base" DataType="INT" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="None">
+<Description>
+<![CDATA[Current Segment]]>
+</Description>
+<DefaultData>00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="STime_Left" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Current Segment Remaining Time (min)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="STime_Expired" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Current Segment Time Expired]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Total_Cycle" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Total Cycle Time (minutes)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Total_Run" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Total Run Time (minutes)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Total_Hold" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Total Hold Time (minutes)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cycle_Hour" TagType="Base" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Total Cycle Time Hours]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cycle_Min" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Total Cycle Time Minutes]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Run_Mode" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[AOI in Run Mode]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Done" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[AOI Done Bit]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Fault" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[AOI Faulted / Invalid Data]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="STime_SP" TagType="Base" DataType="REAL" Dimensions="11" Usage="InOut" Radix="Float" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[Segment Timer Preset Array (minutes)]]>
+</Description>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Step 0 Time = 0 min]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Step 1 Time (min)]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Step 2 Time (min)]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Step 3 Time (min)]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Step 4 Time (min)]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Step 5 Time (min)]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Step 6 Time (min)]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Step 7 Time (min)]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Step 8 Time (min)]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Step 9 Time (min)]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Step 10 Time (min)]]>
+</Comment>
+</Comments>
+</Parameter>
+<Parameter Name="SP_In" TagType="Base" DataType="REAL" Dimensions="11" Usage="InOut" Radix="Float" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[Segment Setpoint Array (psig, deg F)]]>
+</Description>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Step 0 / Start SP]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[End of Step 1 SP]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[End of Step 2 SP]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[End of Step 3 SP]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[End of Step 4 SP]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[End of Step 5 SP]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[End of Step 6 SP]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[End of Step 7 SP]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[End of Step 8 SP]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[End of Step 9 SP]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[End of Step 10 SP]]>
+</Comment>
+</Comments>
+</Parameter>
+<Parameter Name="SRun_Time" TagType="Base" DataType="REAL" Dimensions="11" Usage="InOut" Radix="Float" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[Segment Run Time Array (minutes)]]>
+</Description>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Step 0 Run Time = 0 min]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Step 1 Run Time (min)]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Step 2 Run Time (min)]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Step 3 Run Time (min)]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Step 4 Run Time (min)]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Step 5 Run Time (min)]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Step 6 Run Time (min)]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Step 7 Run Time (min)]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Step 8 Run Time (min)]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Step 9 Run Time (min)]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Step 10 Run Time (min)]]>
+</Comment>
+</Comments>
+</Parameter>
+<Parameter Name="SHold_Time" TagType="Base" DataType="REAL" Dimensions="11" Usage="InOut" Radix="Float" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[Segment Hold Time Array (minutes)]]>
+</Description>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Step 0 Hold Time = 0 min]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Step 1 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Step 2 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Step 3 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Step 4 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Step 5 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Step 6 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Step 7 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Step 8 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Step 9 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Step 10 Hold Time (min)]]>
+</Comment>
+</Comments>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="SRun_Tmr" DataType="TIMER" Dimensions="11" ExternalAccess="None">
+<Description>
+<![CDATA[Segment Run Mode Timers]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+C0 27 09 00 00 00 00 00 00 00 00 00 80 4F 12 00 
+00 00 00 00 00 00 00 00 40 77 1B 00 00 00 00 00 
+00 00 00 00 00 9F 24 00 00 00 00 00 00 00 00 00 
+C0 C6 2D 00 00 00 00 00 00 00 00 00 80 EE 36 00 
+00 00 00 00 00 00 00 00 40 16 40 00 00 00 00 00 
+00 00 00 00 40 16 40 00 00 00 00 00 00 00 00 00 
+C0 65 52 00 00 00 00 00 00 00 00 00 80 8D 5B 00 
+00 00 00 00</DefaultData>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Segment Run Mode Timer #0]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Segment Run Mode Timer #1]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Segment Run Mode Timer #2]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Segment Run Mode Timer #3]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Segment Run Mode Timer #4]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Segment Run Mode Timer #5]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Segment Run Mode Timer #6]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Segment Run Mode Timer #7]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Segment Run Mode Timer #8]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Segment Run Mode Timer #9]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Segment Run Mode Timer #10]]>
+</Comment>
+</Comments>
+<DefaultData Format="Decorated">
+<Array DataType="TIMER" Dimensions="11">
+<Element Index="[0]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[1]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="600000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[2]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1200000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[3]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1800000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[4]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2400000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[5]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="3000000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[6]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="3600000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[7]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="4200000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[8]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="4200000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[9]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="5400000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[10]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="6000000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ONS" DataType="BOOL" Dimensions="32" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[One Shot Bits]]>
+</Description>
+<DefaultData/>
+<DefaultData Format="Decorated">
+<Array DataType="BOOL" Dimensions="32" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+<Element Index="[7]" Value="0"/>
+<Element Index="[8]" Value="0"/>
+<Element Index="[9]" Value="0"/>
+<Element Index="[10]" Value="0"/>
+<Element Index="[11]" Value="0"/>
+<Element Index="[12]" Value="0"/>
+<Element Index="[13]" Value="0"/>
+<Element Index="[14]" Value="0"/>
+<Element Index="[15]" Value="0"/>
+<Element Index="[16]" Value="0"/>
+<Element Index="[17]" Value="0"/>
+<Element Index="[18]" Value="0"/>
+<Element Index="[19]" Value="0"/>
+<Element Index="[20]" Value="0"/>
+<Element Index="[21]" Value="0"/>
+<Element Index="[22]" Value="0"/>
+<Element Index="[23]" Value="0"/>
+<Element Index="[24]" Value="0"/>
+<Element Index="[25]" Value="0"/>
+<Element Index="[26]" Value="0"/>
+<Element Index="[27]" Value="0"/>
+<Element Index="[28]" Value="0"/>
+<Element Index="[29]" Value="0"/>
+<Element Index="[30]" Value="0"/>
+<Element Index="[31]" Value="0"/>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cur_Seg" DataType="BOOL" Dimensions="32" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Current Segment Boolean Array]]>
+</Description>
+<DefaultData/>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Segment 0 Active]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Segment 1 Active]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Segment 2 Active]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Segment 3 Active]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Segment 4 Active]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Segment 5 Active]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Segment 6 Active]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Segment 7 Active]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Segment 8 Active]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Segment 9 Active]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Segment 10 Active]]>
+</Comment>
+</Comments>
+<DefaultData Format="Decorated">
+<Array DataType="BOOL" Dimensions="32" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+<Element Index="[7]" Value="0"/>
+<Element Index="[8]" Value="0"/>
+<Element Index="[9]" Value="0"/>
+<Element Index="[10]" Value="0"/>
+<Element Index="[11]" Value="0"/>
+<Element Index="[12]" Value="0"/>
+<Element Index="[13]" Value="0"/>
+<Element Index="[14]" Value="0"/>
+<Element Index="[15]" Value="0"/>
+<Element Index="[16]" Value="0"/>
+<Element Index="[17]" Value="0"/>
+<Element Index="[18]" Value="0"/>
+<Element Index="[19]" Value="0"/>
+<Element Index="[20]" Value="0"/>
+<Element Index="[21]" Value="0"/>
+<Element Index="[22]" Value="0"/>
+<Element Index="[23]" Value="0"/>
+<Element Index="[24]" Value="0"/>
+<Element Index="[25]" Value="0"/>
+<Element Index="[26]" Value="0"/>
+<Element Index="[27]" Value="0"/>
+<Element Index="[28]" Value="0"/>
+<Element Index="[29]" Value="0"/>
+<Element Index="[30]" Value="0"/>
+<Element Index="[31]" Value="0"/>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="First_Scan" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[AOI First Scan Completed]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Range_Fault" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ST_Check_1" DataType="CONTROL" ExternalAccess="None">
+<Description>
+<![CDATA[Segment Time Input Low Limit Check]]>
+</Description>
+<DefaultData>00 00 00 00 0B 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="CONTROL">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="11"/>
+<DataValueMember Name="POS" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EM" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ER" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UL" DataType="BOOL" Value="0"/>
+<DataValueMember Name="IN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FD" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ST_Check_2" DataType="CONTROL" ExternalAccess="None">
+<Description>
+<![CDATA[Segment Time Input High Limit Check]]>
+</Description>
+<DefaultData>00 00 00 00 0B 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="CONTROL">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="11"/>
+<DataValueMember Name="POS" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EM" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ER" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UL" DataType="BOOL" Value="0"/>
+<DataValueMember Name="IN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FD" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="SHold_Tmr" DataType="TIMER" Dimensions="11" ExternalAccess="None">
+<Description>
+<![CDATA[Segment Hold Timers]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+D0 FF FF 7F 00 00 00 00 00 00 00 00 D0 FF FF 7F 
+00 00 00 00 00 00 00 00 D0 FF FF 7F 00 00 00 00 
+00 00 00 00 D0 FF FF 7F 00 00 00 00 00 00 00 00 
+D0 FF FF 7F 00 00 00 00 00 00 00 00 D0 FF FF 7F 
+00 00 00 00 00 00 00 00 D0 FF FF 7F 00 00 00 00 
+00 00 00 00 D0 FF FF 7F 00 00 00 00 00 00 00 00 
+D0 FF FF 7F 00 00 00 00 00 00 00 00 D0 FF FF 7F 
+00 00 00 00</DefaultData>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Segment Hold Timer 0]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Segment Hold Timer 1]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Segment Hold Timer 2]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Segment Hold Timer 3]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Segment Hold Timer 4]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Segment Hold Timer 5]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Segment Hold Timer 6]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Segment Hold Timer 7]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Segment Hold Timer 8]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Segment Hold Timer 9]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Segment Hold Timer10]]>
+</Comment>
+</Comments>
+<DefaultData Format="Decorated">
+<Array DataType="TIMER" Dimensions="11">
+<Element Index="[0]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[1]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[2]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[3]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[4]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[5]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[6]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[7]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[8]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[9]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[10]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Last_Seg" DataType="INT" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Last Segment 
+of Cycle]]>
+</Description>
+<DefaultData>00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[******
+Ramp and Soak Add On Instruction Logic
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[******
+AOI Run Command and Run Mode Logic
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(First_Scan)[XIC(Run_Cmd) XIO(Run_Mode) OTL(Run_Mode) ,XIO(Run_Cmd) [XIC(Run_Mode) XIC(Done) ,XIC(Initialize) ] OTU(Run_Mode) ];]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[******
+Check for Valid Input Data (Segment Timer Presets & Number of Segments)
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[RES(ST_Check_1) FSC(ST_Check_1,?,?,ALL,STime_SP[ST_Check_1.POS]<0.0) ,RES(ST_Check_2) FSC(ST_Check_2,?,?,ALL,STime_SP[ST_Check_2.POS]>35791.0) ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[[LES(Num_of_Seg,0) ,GRT(Num_of_Seg,10) ,XIC(ST_Check_1.FD) ,XIC(ST_Check_2.FD) ]OTE(Fault);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[******
+Initialize the AOI Timers and Reset the Current Segment to 0
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Initialize)XIO(Run_Cmd)ONS(ONS[31])[RES(SRun_Tmr[1]) RES(SRun_Tmr[2]) RES(SRun_Tmr[3]) RES(SRun_Tmr[4]) RES(SRun_Tmr[5]) ,RES(SRun_Tmr[6]) RES(SRun_Tmr[7]) RES(SRun_Tmr[8]) RES(SRun_Tmr[9]) RES(SRun_Tmr[10]) ,RES(SHold_Tmr[1]) RES(SHold_Tmr[2]) RES(SHold_Tmr[3]) RES(SHold_Tmr[4]) RES(SHold_Tmr[5]) ,RES(SHold_Tmr[6]) RES(SHold_Tmr[7]) RES(SHold_Tmr[8]) RES(SHold_Tmr[9]) RES(SHold_Tmr[10]) ,OTU(Cur_Seg[0]) OTU(Cur_Seg[1]) OTU(Cur_Seg[2]) OTU(Cur_Seg[3]) OTU(Cur_Seg[4]) OTU(Cur_Seg[5]) ,OTU(Cur_Seg[6]) OTU(Cur_Seg[7]) OTU(Cur_Seg[8]) OTU(Cur_Seg[9]) OTU(Cur_Seg[10]) ,MOV(0.0,SP_Out) MOV(0,Current_Seg) MOV(0.0,STime_Left) MOV(0.0,STime_Expired) ,FLL(0.0,SHold_Time[0],11) FLL(0.0,SRun_Time[0],11) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[******
+Calculate the Segment Timer Presets in msec from Time Array SPs in minutes and Turn Segment 0 On (Cur_Seg[0])
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Run_Mode)ONS(ONS[29])XIO(Fault)[CPT(SRun_Tmr[1].PRE,STime_SP[1]*60*1000) CPT(SRun_Tmr[2].PRE,STime_SP[2]*60*1000) CPT(SRun_Tmr[3].PRE,STime_SP[3]*60*1000) ,CPT(SRun_Tmr[4].PRE,STime_SP[4]*60*1000) CPT(SRun_Tmr[5].PRE,STime_SP[5]*60*1000) CPT(SRun_Tmr[6].PRE,STime_SP[6]*60*1000) ,CPT(SRun_Tmr[7].PRE,STime_SP[7]*60*1000) CPT(SRun_Tmr[8].PRE,STime_SP[8]*60*1000) ,CPT(SRun_Tmr[9].PRE,STime_SP[9]*60*1000) CPT(SRun_Tmr[10].PRE,STime_SP[10]*60*1000) ,OTL(Cur_Seg[0]) ];]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[******
+Segment 10 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[9].DN) XIC(Cur_Seg[9]) XIO(Done) [MOV(10,Current_Seg) ,OTU(Cur_Seg[9]) OTL(Cur_Seg[10]) ] ,XIO(Hold) XIC(Cur_Seg[10]) [RTO(SRun_Tmr[10],?,?) DIV(SRun_Tmr[10].ACC,60000.0,SRun_Time[10]) ,GRT(SRun_Tmr[10].PRE,1000) CPT(SP_Out,((SP_In[10]-SP_In[9])*SRun_Tmr[10].ACC/SRun_Tmr[10].PRE)+SP_In[9]) ,CPT(STime_Left,(SRun_Tmr[10].PRE-SRun_Tmr[10].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[10].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
+<![CDATA[******
+Segment 9 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[8].DN) XIC(Cur_Seg[8]) XIO(Done) [MOV(9,Current_Seg) ,OTU(Cur_Seg[8]) OTL(Cur_Seg[9]) ] ,XIO(Hold) XIC(Cur_Seg[9]) [RTO(SRun_Tmr[9],?,?) DIV(SRun_Tmr[9].ACC,60000.0,SRun_Time[9]) ,GRT(SRun_Tmr[9].PRE,1000) CPT(SP_Out,(SP_In[9]-SP_In[8])*SRun_Tmr[9].ACC/SRun_Tmr[9].PRE+SP_In[8]) ,CPT(STime_Left,(SRun_Tmr[9].PRE-SRun_Tmr[9].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[9].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Comment>
+<![CDATA[******
+Segment 8 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[7].DN) XIC(Cur_Seg[7]) XIO(Done) [MOV(8,Current_Seg) ,OTU(Cur_Seg[7]) OTL(Cur_Seg[8]) ] ,XIO(Hold) XIC(Cur_Seg[8]) [RTO(SRun_Tmr[8],?,?) DIV(SRun_Tmr[8].ACC,60000.0,SRun_Time[8]) ,GRT(SRun_Tmr[8].PRE,1000) CPT(SP_Out,((SP_In[8]-SP_In[7])*SRun_Tmr[8].ACC/SRun_Tmr[8].PRE)+SP_In[7]) ,CPT(STime_Left,(SRun_Tmr[8].PRE-SRun_Tmr[8].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[8].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[******
+Segment 7 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[6].DN) XIC(Cur_Seg[6]) XIO(Done) [MOV(7,Current_Seg) ,OTU(Cur_Seg[6]) OTL(Cur_Seg[7]) ] ,XIO(Hold) XIC(Cur_Seg[7]) [RTO(SRun_Tmr[7],?,?) DIV(SRun_Tmr[7].ACC,60000.0,SRun_Time[7]) ,GRT(SRun_Tmr[7].PRE,1000) CPT(SP_Out,((SP_In[7]-SP_In[6])*SRun_Tmr[7].ACC/SRun_Tmr[7].PRE)+SP_In[6]) ,CPT(STime_Left,(SRun_Tmr[7].PRE-SRun_Tmr[7].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[7].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[******
+Segment 6 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[5].DN) XIC(Cur_Seg[5]) XIO(Done) [MOV(6,Current_Seg) ,OTU(Cur_Seg[5]) OTL(Cur_Seg[6]) ] ,XIO(Hold) XIC(Cur_Seg[6]) [RTO(SRun_Tmr[6],?,?) DIV(SRun_Tmr[6].ACC,60000.0,SRun_Time[6]) ,GRT(SRun_Tmr[6].PRE,1000) CPT(SP_Out,((SP_In[6]-SP_In[5])*SRun_Tmr[6].ACC/SRun_Tmr[6].PRE)+SP_In[5]) ,CPT(STime_Left,(SRun_Tmr[6].PRE-SRun_Tmr[6].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[6].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[******
+Segment 5 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[4].DN) XIC(Cur_Seg[4]) XIO(Done) [MOV(5,Current_Seg) ,OTU(Cur_Seg[4]) OTL(Cur_Seg[5]) ] ,XIO(Hold) XIC(Cur_Seg[5]) [RTO(SRun_Tmr[5],?,?) DIV(SRun_Tmr[5].ACC,60000.0,SRun_Time[5]) ,GRT(SRun_Tmr[5].PRE,1000) CPT(SP_Out,((SP_In[5]-SP_In[4])*SRun_Tmr[5].ACC/SRun_Tmr[5].PRE)+SP_In[4]) ,CPT(STime_Left,(SRun_Tmr[5].PRE-SRun_Tmr[5].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[5].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[******
+Segment 4 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[3].DN) XIC(Cur_Seg[3]) XIO(Done) [MOV(4,Current_Seg) ,OTU(Cur_Seg[3]) OTL(Cur_Seg[4]) ] ,XIO(Hold) XIC(Cur_Seg[4]) [RTO(SRun_Tmr[4],?,?) DIV(SRun_Tmr[4].ACC,60000.0,SRun_Time[4]) ,GRT(SRun_Tmr[4].PRE,1000) CPT(SP_Out,((SP_In[4]-SP_In[3])*SRun_Tmr[4].ACC/SRun_Tmr[4].PRE)+SP_In[3]) ,CPT(STime_Left,(SRun_Tmr[4].PRE-SRun_Tmr[4].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[4].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[******
+Segment 3 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[2].DN) XIC(Cur_Seg[2]) XIO(Done) [MOV(3,Current_Seg) ,OTU(Cur_Seg[2]) OTL(Cur_Seg[3]) ] ,XIO(Hold) XIC(Cur_Seg[3]) [RTO(SRun_Tmr[3],?,?) DIV(SRun_Tmr[3].ACC,60000.0,SRun_Time[3]) ,GRT(SRun_Tmr[3].PRE,1000) CPT(SP_Out,((SP_In[3]-SP_In[2])*SRun_Tmr[3].ACC/SRun_Tmr[3].PRE)+SP_In[2]) ,CPT(STime_Left,(SRun_Tmr[3].PRE-SRun_Tmr[3].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[3].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Comment>
+<![CDATA[******
+Segment 2 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[1].DN) XIC(Cur_Seg[1]) XIO(Done) [MOV(2,Current_Seg) ,OTU(Cur_Seg[1]) OTL(Cur_Seg[2]) ] ,XIO(Hold) XIC(Cur_Seg[2]) [RTO(SRun_Tmr[2],?,?) DIV(SRun_Tmr[2].ACC,60000.0,SRun_Time[2]) ,GRT(SRun_Tmr[2].PRE,1000) CPT(SP_Out,((SP_In[2]-SP_In[1])*SRun_Tmr[2].ACC/SRun_Tmr[2].PRE)+SP_In[1]) ,CPT(STime_Left,(SRun_Tmr[2].PRE-SRun_Tmr[2].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[2].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Comment>
+<![CDATA[******
+Segment 1 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Cur_Seg[0]) XIO(Done) [MOV(1,Current_Seg) ,OTU(Cur_Seg[0]) OTL(Cur_Seg[1]) ] ,XIO(Hold) XIC(Cur_Seg[1]) [RTO(SRun_Tmr[1],?,?) DIV(SRun_Tmr[1].ACC,60000.0,SRun_Time[1]) ,GRT(SRun_Tmr[1].PRE,1000) CPT(SP_Out,((SP_In[1]-SP_In[0])*SRun_Tmr[1].ACC/SRun_Tmr[1].PRE)+SP_In[0]) ,CPT(STime_Left,(SRun_Tmr[1].PRE-SRun_Tmr[1].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[1].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Text>
+<![CDATA[[MOV(SRun_Time[1],Total_Run) ADD(Total_Run,SRun_Time[2],Total_Run) ADD(Total_Run,SRun_Time[3],Total_Run) ADD(Total_Run,SRun_Time[4],Total_Run) ,ADD(Total_Run,SRun_Time[5],Total_Run) ADD(Total_Run,SRun_Time[6],Total_Run) ADD(Total_Run,SRun_Time[7],Total_Run) ADD(Total_Run,SRun_Time[8],Total_Run) ,ADD(Total_Run,SRun_Time[9],Total_Run) ADD(Total_Run,SRun_Time[10],Total_Run) ];]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Comment>
+<![CDATA[******
+Ramp and Soak AOI Sequence Done
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[LIM(0,Num_of_Seg,11) MOV(Num_of_Seg,Last_Seg) ,LIM(11,Num_of_Seg,0) MOV(1,Last_Seg) ,XIC(SRun_Tmr[Last_Seg].DN) OTE(Done) ];]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Comment>
+<![CDATA[******
+Cycle Hold Time Logic
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Run_Mode)XIC(Hold)[XIC(Cur_Seg[1]) RTO(SHold_Tmr[1],?,?) DIV(SHold_Tmr[1].ACC,60000.0,SHold_Time[1]) ,XIC(Cur_Seg[2]) RTO(SHold_Tmr[2],?,?) DIV(SHold_Tmr[2].ACC,60000.0,SHold_Time[2]) ,XIC(Cur_Seg[3]) RTO(SHold_Tmr[3],?,?) DIV(SHold_Tmr[3].ACC,60000.0,SHold_Time[3]) ,XIC(Cur_Seg[4]) RTO(SHold_Tmr[4],?,?) DIV(SHold_Tmr[4].ACC,60000.0,SHold_Time[4]) ,XIC(Cur_Seg[5]) RTO(SHold_Tmr[5],?,?) DIV(SHold_Tmr[5].ACC,60000.0,SHold_Time[5]) ,XIC(Cur_Seg[6]) RTO(SHold_Tmr[6],?,?) DIV(SHold_Tmr[6].ACC,60000.0,SHold_Time[6]) ,XIC(Cur_Seg[7]) RTO(SHold_Tmr[7],?,?) DIV(SHold_Tmr[7].ACC,60000.0,SHold_Time[7]) ,XIC(Cur_Seg[8]) RTO(SHold_Tmr[8],?,?) DIV(SHold_Tmr[8].ACC,60000.0,SHold_Time[8]) ,XIC(Cur_Seg[9]) RTO(SHold_Tmr[9],?,?) DIV(SHold_Tmr[9].ACC,60000.0,SHold_Time[9]) ,XIC(Cur_Seg[10]) RTO(SHold_Tmr[10],?,?) DIV(SHold_Tmr[10].ACC,60000.0,SHold_Time[10]) ];]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Text>
+<![CDATA[[MOV(SHold_Time[1],Total_Hold) ADD(Total_Hold,SHold_Time[2],Total_Hold) ADD(Total_Hold,SHold_Time[3],Total_Hold) ADD(Total_Hold,SHold_Time[4],Total_Hold) ,ADD(Total_Hold,SHold_Time[5],Total_Hold) ADD(Total_Hold,SHold_Time[6],Total_Hold) ADD(Total_Hold,SHold_Time[7],Total_Hold) ADD(Total_Hold,SHold_Time[8],Total_Hold) ,ADD(Total_Hold,SHold_Time[9],Total_Hold) ADD(Total_Hold,SHold_Time[10],Total_Hold) ];]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Text>
+<![CDATA[ADD(Total_Run,Total_Hold,Total_Cycle)MOD(Total_Cycle,60,Cycle_Min)CPT(Cycle_Hour,(Total_Cycle-Cycle_Min)/60);]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Text>
+<![CDATA[OTE(First_Scan);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+<Tags>
+<Tag Name="BTC_RNG_1" TagType="Base" DataType="A_Uniform_RNG" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Linear Congruential Generator as a Random Number Generator #1]]>
+</Description>
+<Data>03 00 00 00 F6 E7 FA 94 8D D3 93 06 39 30 00 00 
+00 00 00 00 00 00 80 3F 2D 71 B9 3E B7 B4 A3 D1 
+B7 B4 A3 D1 2D 71 B9 3E</Data>
+<Data Format="Decorated">
+<Structure DataType="A_Uniform_RNG">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Seed" DataType="DINT" Radix="Decimal" Value="-1795495946"/>
+<DataValueMember Name="A" DataType="DINT" Radix="Decimal" Value="110351245"/>
+<DataValueMember Name="B" DataType="DINT" Radix="Decimal" Value="12345"/>
+<DataValueMember Name="Out_lo" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Out_hi" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="Output_scaled" DataType="REAL" Radix="Float" Value="0.3621916"/>
+<DataValueMember Name="Seed_Out" DataType="DINT" Radix="Decimal" Value="-777800521"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="BTC_RNG_2" TagType="Base" DataType="A_Uniform_RNG" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Linear Congruential Generator as a Random Number Generator #2]]>
+</Description>
+<Data>03 00 00 00 A5 9C 1F E7 8D D3 93 06 39 30 00 00 
+00 00 00 00 00 00 80 3F 14 77 29 3F 1A 76 44 AB 
+1A 76 44 2B 14 77 29 3F</Data>
+<Data Format="Decorated">
+<Structure DataType="A_Uniform_RNG">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Seed" DataType="DINT" Radix="Decimal" Value="-417358683"/>
+<DataValueMember Name="A" DataType="DINT" Radix="Decimal" Value="110351245"/>
+<DataValueMember Name="B" DataType="DINT" Radix="Decimal" Value="12345"/>
+<DataValueMember Name="Out_lo" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Out_hi" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="Output_scaled" DataType="REAL" Radix="Float" Value="0.66197324"/>
+<DataValueMember Name="Seed_Out" DataType="DINT" Radix="Decimal" Value="-1421576678"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="DI_S2_Data" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data>00 00</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="DO_S1_Data" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Slot #1 1769-OAD Module Buffer Tag]]>
+</Description>
+<Data>00 01 00 00</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="256"/>
+</Data>
+</Tag>
+<Tag Name="False" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Always False Bit]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Fault_Reset_Cmd" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Fault Reset Command]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Fault_Reset_PB" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Fault Reset Pushbutton]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Fault_Reset_Timer" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Fault Reset Timer]]>
+</Description>
+<Data>94 AA 03 00 E8 03 00 00 00 00 00 00</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="First_Scan" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Test Program First Scan Completed]]>
+</Description>
+<Data>01</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Flash_Off" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Flash Off Bit]]>
+</Description>
+<Data>01</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Flash_Off_PB" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Flash Off Pushbutton]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Flash_On" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Flasher On Bit]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Flash_Timer" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Flasher Timer]]>
+</Description>
+<Comments>
+<Comment Operand=".DN">
+<![CDATA[Flasher Timer Done Bit]]>
+</Comment>
+</Comments>
+<Data>C5 16 16 C0 D0 07 00 00 52 03 00 00</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="850"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="1"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="Gauss_RNG" TagType="Base" DataType="A_Gauss_RNG" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Gaussian Random Number Generator]]>
+</Description>
+<Data>07 00 00 00 99 EF B6 BF 00 00 00 00 18 24 3D E3 
+8D D3 93 06 39 30 00 00 00 00 00 00 00 00 80 3F 
+9A 2C A3 3E 71 D9 34 D7 71 D9 34 D7 9A 2C A3 3E 
+76 16 37 99 71 D9 34 D7 00 00 00 00 71 D9 34 D7 
+8D D3 93 06 39 30 00 00 00 00 00 00 00 00 80 3F 
+D3 91 4D 3F 76 16 37 99 76 16 37 99 D3 91 4D 3F 
+CC EE 71 BF A0 92 C1 3F</Data>
+<Data Format="Decorated">
+<Structure DataType="A_Gauss_RNG">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="GNG_Out" DataType="REAL" Radix="Float" Value="-1.4291869"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="Gauss_RNG_Data" TagType="Base" DataType="REAL" Dimensions="1000" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Gaussian Random Number Generator Data from CompactLogix PLC]]>
+</Description>
+<Data>67 65 13 BD F7 66 AB 3F 63 FA C9 BE D8 B3 3D 3F 
+31 C5 6F BF 1D AB B0 BE 61 A6 1B 3F 1E D5 70 BF 
+12 0C 9C 3F 69 62 EF 3E 16 EC 13 BF 75 71 9F BF 
+F2 8D F4 BF 8A C8 C8 3F 96 91 76 3F 9F 1E 8E 3C 
+D3 62 3F BF EB C8 2D 3F 74 A9 F5 BE 2F 31 F6 BE 
+41 07 0D BE 3D 23 83 3F D9 8A 94 BE F1 CA F2 3E 
+1D 1C A2 3F 0A C2 4C 3F E6 76 61 BF DA 8D 12 3F 
+F9 45 1F 3F CC F9 F7 BE 51 F8 C6 3E BB EF 8E 3F 
+5A 9D ED 3F 72 24 0B BE AE FD 0A BE FE F9 74 3F 
+F3 4B 48 3E 71 71 47 BF E0 D6 BA 3F 69 7D E4 BE 
+5D 2E 8E BF 6D 4F 98 BD 9F 34 42 BF 7F AE 9C BF 
+7E A5 87 BE 5A 60 45 3F F0 B1 EF 3E E9 C4 50 3D 
+14 7E B7 3F A7 CB D8 3D 0B 43 03 40 BE 20 39 3F 
+A6 E3 E1 3E E0 D8 04 40 36 1D FB BF CF 4E 31 3E 
+D6 4D 70 BF 38 C5 2A C0 14 A0 51 BF 19 C8 ED 3E 
+4B B4 92 3E B2 E7 EC BC ED A5 EE BE B5 86 9A 3E 
+9C A3 33 3F 5C BC 9F 3F 6C 14 ED BD 4D 8C CB 3E 
+97 21 5A BF 6B E7 0E BF 88 20 03 BF 5D E2 91 BF 
+F3 D2 09 BF 2F 2E E1 BE F0 F6 42 BF 41 93 0A BD 
+2C BB C5 3F 7E F5 06 3F E6 3E 06 BF AE 5F 87 BE 
+7E C5 7F BF F2 C1 01 BF FA BF 35 BF 0E E9 69 3D 
+BA CE 80 BE 97 11 91 BC FF 87 6F 3F D3 A1 8E BF 
+C0 9B 0C C0 5A 87 8F 3F 6F 4D B6 3D 6A 87 96 3F 
+35 7E AB 3F BA 1E A3 BD 70 FF E3 BE AB 99 AC BE 
+E1 C2 56 BF 24 12 5F 3F F0 B5 8E 3F D5 5E 2E BF 
+EF 70 95 3A 69 F2 26 C0 5D 8A 36 C0 69 2D 2A BF 
+7F FD 51 3F 58 8D 9F 3F 2D F4 B3 3F 38 6B 50 3E 
+AA E8 86 BE A3 18 D0 3F 02 A1 5E 3F 7E C1 13 3F 
+60 6D 8E BF D7 8F BE 3F 7B 3B 9C BD 40 D9 1A 3F 
+98 BA 15 3F 02 54 F0 BE B6 60 E3 3E 0E BD 07 3E 
+8F 06 58 BE DA B0 80 3F 9F 20 85 3F 94 25 89 3C 
+27 A2 DE 3E BD 32 1D 3C E1 DF 52 3E 36 91 95 BF 
+23 2F ED BF 0D 58 87 BF 5C CF F3 BE 8D 48 C2 3F 
+5B D1 A9 3F A7 18 CE BE 30 69 9A 3E B0 E2 17 3F 
+9C D4 73 BF 6B B7 88 3F 47 80 41 BF 1B 77 B3 BF 
+0A 35 2A BF 53 9F 7A BD 98 68 00 40 0F 8B 2F 40 
+C4 11 B3 3F 6B 55 8C 3E 09 49 6D BF 0E C8 24 3F 
+65 F6 86 3F 48 98 D9 3C 26 01 13 3F FC 78 3D C0 
+03 A9 6A BE F7 4B 04 BF 82 EB 7E BF 0F B3 45 BC 
+4A 9D 17 3F 89 98 8B 3D BE 31 6D 3F BB 52 0E 3F 
+D3 1C 72 3E 5F EA 18 3F 56 94 B9 BD 06 C9 E7 3E 
+54 BC AF 3E 8B 15 8C BF EA 01 91 BF 6B C3 27 3F 
+98 D8 A2 3F E2 FE DC BF 69 29 01 BF CA 17 76 BE 
+D0 C8 68 3E 11 6F 8E 3F 96 E7 2F BF 68 88 E1 3D 
+24 75 05 BF 41 A8 DE BF FF D8 A0 BF 91 D6 BA BE 
+6D C6 ED BF FE AA B5 3F A0 4E 5A 3F B3 D0 60 BE 
+DD 1B 0A C0 DF 49 41 3F BB 5A DC 3E 08 77 74 3F 
+61 2D 02 40 62 26 5C BF 85 54 05 3F 97 FB 58 BF 
+89 73 D9 3F CC 35 CE BD 1C DC 11 BE A2 93 4F 3E 
+32 7C 0F 3E 80 70 0F BF 02 CD 21 3E 30 81 CE 3F 
+D3 70 DD BE 7B 08 FD BE E6 C2 4C BF 91 3D AA 3C 
+3C BF 7E BD 71 1B 82 BF AC 5B AB 3F 41 79 BE BE 
+1A 7F E6 3E A1 65 F5 BE 68 B7 B8 3F A0 F8 9C 3D 
+0D A5 AA BF AF 5C 59 BE 59 D1 13 BF 4A A0 2A BF 
+52 E9 AA 3E EE 69 8B BF F1 A0 DF 3E C7 B4 14 3F 
+55 A8 00 C0 EB 4D 61 BF 2F 2D B1 BD 81 5E 21 3A 
+E3 1C 8B 3F 96 50 25 40 69 1D 4B BF C1 71 70 BF 
+08 88 47 BF E5 0F AA 3F 24 49 89 3D 4F 7D 96 BF 
+5D 1A E1 3E 0C A9 17 3F 38 6D EC 3E B8 EC E4 BE 
+34 F4 E9 BE 45 C2 31 3F 5A 96 DA BF 5C 57 04 C0 
+4F CD A5 BF 89 88 0E 3F 12 FF E6 3D 01 97 A6 BF 
+0B 5D 0C 3D 0F FF C9 BF 63 D7 87 3F E9 92 F9 3D 
+F1 9F 4B BF 50 66 5D 3F 59 9C DE 3E 98 71 24 3F 
+D9 41 F4 BE F5 6C E6 BE 5E 85 54 BE 73 E3 0A BF 
+B6 E9 DB BE 3A 9E 24 3E B9 C4 0B 40 AC 51 7D 3E 
+03 59 2A 3F 8C 3A 8C BE E0 83 4C 3F 86 1F 1B 3F 
+6F 0A 92 3F B0 C1 4B BF 02 C4 BB BE A3 0B FC 3E 
+89 17 C6 3F A0 26 30 C0 3D 6E C2 3F 94 C2 EB 3F 
+E9 0D A9 BE B8 E2 8B 3F 0D D6 C2 3F 9A 9B 63 3F 
+B3 6B E8 BC 47 D5 A0 3F A1 3F 4F BC E0 78 BD 3F 
+3E A5 46 3F 3B 0F CD BE 9F 62 E3 BE 91 36 CC BC 
+D9 BF 71 3F 3B 5D 82 BE EE 59 84 3F E7 C9 24 BF 
+12 52 5E 3F 7A 9F 0D 3E E4 1E 61 BF 48 7D 51 BE 
+F5 BA C2 BF 47 5F 2F 3D 67 57 8F BF 64 0A 0A C0 
+41 C8 65 BF 61 79 83 3F EF 59 A9 3C ED 79 08 BE 
+C4 0E C7 3F FD B6 4E 3F 8E C9 ED 3E 91 F5 4E 3E 
+75 87 B7 BE 9C 30 72 3E B8 B3 14 3D 50 33 D5 3E 
+28 EB 7F 3F 2D 5A C5 3E 64 47 D2 3E 81 4C A4 3E 
+23 B3 06 3F 4B AA FF 3E 55 E9 49 BE 97 03 BB BE 
+A1 46 58 3E 02 8F B2 3D 3C 4A 2F C0 E0 31 5D 3F 
+88 3F 99 BF 7D 68 5F 3F 3D A4 A5 BE C4 DF 44 BD 
+36 16 BE BE BD C9 AA BF 9C D0 1F 3F D6 05 8A 3F 
+BE 45 91 3F DC 93 82 3F 51 22 81 BF E5 A7 A5 BD 
+DC AA 04 40 54 7E AC BE E8 4A 12 3F 6F AA 02 3F 
+2A 0B D4 3E 98 87 AB BF 5B C4 40 3F 12 13 94 BF 
+DD 94 46 3F 8B DA 13 40 C7 07 F8 3F DD 06 2E BE 
+EE 01 C8 3E 81 4F 4D BE 00 21 F3 3F 38 2E B1 3E 
+3C C4 2C BD 4A 01 AF BD 1C 07 DB 3F 7E 76 54 BF 
+F6 5D 93 3E 94 04 B5 BE 73 A0 22 BF 7A 8E 3C 3F 
+80 13 FD 3F 09 C6 9E BF 83 29 88 3F 44 A3 FC BF 
+C6 D9 8A BE 0F FA 5B 3E 79 00 26 40 63 BC 2B BE 
+E2 48 C6 BF D4 E9 A8 3E 70 B3 69 3E 93 44 43 3F 
+9D 50 A7 3F 5B 59 21 BF C4 27 81 BE B6 EF 5E BE 
+C3 4D CA BF FE 81 B2 3E B7 B2 9A BE 35 E6 BF BF 
+5C 72 38 BE 06 AC A5 3F BA 6E 7B 3F 90 4A DC BF 
+07 7C 55 BF B0 50 17 C0 44 3C 2D BF 4C D9 9A 3F 
+96 DD 0A 3F 55 39 72 3E D0 E3 40 3F 1F F5 04 3F 
+13 50 00 BE FB ED 29 3E 92 CA 99 3E 9F AE 02 3E 
+8C CB 84 3F AD 61 E1 BF B1 0C 82 BD D5 47 92 3E 
+2A 39 DE BE 67 B3 A1 3E AA 01 32 BF 1F 33 08 3F 
+48 66 45 BF 8C 4E A9 BF D2 11 C7 3F 3A 0D 5E BF 
+2E 81 FF BF 8F 2A 43 BF E0 6D AE BE 68 9E C8 3F 
+3D C5 61 BF 63 D9 0E BD 0C F4 61 3F C0 C2 5D BD 
+D3 78 2D 40 FE 7F C0 BF 2C D3 13 3E 3B 5F C8 BE 
+F4 EF 4D 3F A6 A9 01 3F 4A EE AC BF D2 D6 42 3F 
+B5 EA 24 3F E5 B8 BD 3F 2E 81 EF BE C8 C2 59 3E 
+F9 A9 4A BF 74 2E 87 3D B6 04 82 3F 06 DB 90 3F 
+4F B2 92 BF 2D DC 4B BE AD 4F BB 3F EB A0 57 BF 
+97 9C 1B BE 93 61 39 3F 20 DD 02 3F 62 97 18 C0 
+9D 00 79 3E 50 02 0B 3E E3 9A A6 3E 15 B7 2D BF 
+68 DF DF BF 5C 4A DB 3F 17 0E 07 3F D6 F9 6B 3E 
+11 50 B8 3F D6 73 00 3F F9 0A C4 BE 75 EB 10 BF 
+1B 66 09 BF EF E8 B6 3E 93 F9 6A BF A5 15 03 C0 
+AB F9 72 BF A3 DC 5E 3E AE 71 3C BF 7E 4E 80 BF 
+EA 0C 95 3E 52 B2 5C BF 79 AA AB 3F B6 25 27 BF 
+DD E1 AC BF 45 C5 93 BD A6 FE C2 3E 75 C4 FF 3E 
+B0 D7 D1 BF C7 8D E1 3E 7F 80 33 3F 5E 5D 18 BF 
+7F 40 26 BF D9 C7 42 BE AB AC 9C BF 7A 67 9A BF 
+F6 18 8B 3E A1 9D 89 3D EB 44 00 BF BE D5 31 40 
+9A 52 DA BD B6 9B D7 BE 7C F5 A9 BE F1 2A 0C 3F 
+49 67 AA 3E F4 76 7B BE 77 3B 06 3F 73 F3 C5 BE 
+A6 25 71 3F A5 D9 B1 3F F9 C3 F4 BF BC 18 96 BF 
+57 48 BA BE 0A 2A DD BE 23 77 7E BE B2 E3 91 BF 
+E2 37 B0 3F A7 07 63 BF 15 62 35 BF D5 05 2C BF 
+CE B0 85 BE B9 69 C2 3F DA FC 8E BF EC 09 05 BF 
+B7 17 C3 BF 58 6C D4 3F 74 47 20 3E 30 20 48 3E 
+D9 AB 03 3F 18 7D 39 3E CA A7 18 BF 6C FA 99 BC 
+4B 1B AB BF 0A 15 5A 3F 86 B1 83 BF 45 0C 6C 3E 
+D6 C9 2E 3F 71 5C 62 BF 4F EA F9 BD 23 44 85 BF 
+AB E4 B3 3E 3A 72 BB 3E 08 13 9D BD C7 BA F0 3E 
+94 A8 F8 BD 6F C9 CE 3F 77 A8 91 3E E7 D6 68 3F 
+BE 51 E5 3E FB A4 B2 3F A2 8B 75 3F A4 CE 4D 3E 
+EF A2 02 3E B4 31 88 3F 4D 4C 3F 3F E1 17 C8 BF 
+9F DB E0 3E 6F 0B E6 BE 9A 3E 2D 40 DF 8E 8C BE 
+38 3D A9 BF 5A FD 8A 3F 7C E1 98 BE 6E F2 D7 3F 
+59 2A 8F BF 67 ED 13 BF 7D A9 F4 3E 15 B2 98 BF 
+3B 80 C8 3F C2 6D A0 BE A5 F7 3D BF 8C CF 22 BC 
+A8 F9 B6 3E 24 30 10 3F 1C 7D F5 3E EB C4 B5 BE 
+30 5F 79 BE 2D 7D BC 3E 72 23 87 BC 72 EC 32 BF 
+E4 87 C4 3D 78 B2 A7 BF 9C 6E FA 3D 17 D5 85 3F 
+40 16 43 3E 3D B4 6C 3F DA 7A C9 BD B9 73 B7 3E 
+57 D0 88 BE D3 71 85 3F 46 44 BB 3F 15 94 6A BF 
+C6 9F 6B BF 41 0A F8 3E 0D 7B 98 3E 3F 0A A7 BF 
+0B 6C 8B BE 2F C7 90 BD 5B C9 AD BE 8F 32 83 3F 
+17 89 BD BE BC 61 12 3F 59 D4 92 3F 6A 4D 35 40 
+ED 4E 16 3F 6C FF 85 BE E3 6A 8E 3E 9B 95 69 BF 
+8F 24 28 3F 0B 43 30 BE AB 4A 84 BF 3D E1 93 3F 
+BF 5F E9 3E A0 F2 E4 BE F2 F8 EF 3E 9A EE 26 40 
+7E 09 DF BF 4B 15 EB BE 1B F0 F1 BD 48 12 EA 3E 
+43 84 22 3D B1 E9 B4 BF EE F2 81 3F B3 FF C4 BF 
+79 6B 91 3F F4 D0 05 BF 90 45 C4 3E BA 12 C8 BE 
+56 DC F0 BE 2F C8 FC BD 73 0C 08 3F F2 2E 82 3D 
+C5 4C 3F BF 8D 31 BE 3D D7 88 BA BF 0E 02 3D 3F 
+D3 3B CE 3F 8D 11 C4 3E 9D 8F 2D BF 51 90 0A 3E 
+9D 3E FE BD E4 D6 AA BD 3D 8E 7A BD 6B 1A 21 BF 
+3B 48 00 BE 39 AD B4 BF 9E 66 48 3F 7C 4D A9 3F 
+CA 67 AB 3E B3 CA 55 BE 6E 00 11 3E 2E 9C 5C BF 
+B0 E7 56 BE B2 2C 0A 3F 85 E2 76 3F C0 43 9F BF 
+F2 7E 84 3F 30 AE 47 3F F7 84 B0 3F 66 A7 C0 3E 
+22 8B D8 BD 6E 8D 12 BF FF AD 24 3F 0F 64 0B 40 
+55 4C 24 BE 30 74 02 3F 57 76 47 BF 35 DA 31 BC 
+64 07 13 3E 00 7B F7 BC 51 4C 74 BF AE F6 D9 BE 
+51 C4 2C 3F FB FE 4A 3F EE 77 33 3F 2B 68 C1 3F 
+57 37 95 BF 7C A4 FA 3E 19 31 57 BF 47 12 4D 3F 
+E0 3A 84 BF 54 FA BE 3E AF A4 A6 BF 21 CD B5 3F 
+2A AB D4 3F 0E 4D 96 BF 6B ED B2 3E 30 29 3B 3F 
+1B E6 03 C0 5B 2B CA BE C3 8D 8D BE A8 35 B8 3D 
+8A C9 2E 3E AA E9 3B 3E 11 63 72 BC 20 88 60 3F 
+D1 4F C7 3E 97 47 B1 3E 21 4A 7F BE 8C 3B 8F 3E 
+80 BC 6F 3F 9B 12 6E 3F 28 42 ED 3F 39 65 A9 BF 
+E8 67 25 3F 25 A6 0F BF 88 28 81 BE 2A ED 24 BF 
+4C 45 73 3E B7 5B DB BC 47 E9 17 BF B0 D5 78 3F 
+68 71 A6 BE FA BD 0B BF 59 E2 2E BF 38 2C 87 3F 
+B0 E1 CA BE 34 54 AB 3E 85 9C C1 3E F6 34 9F 3F 
+47 B6 EF 3E F5 F5 FA 3F ED 99 E8 3D 2D F4 93 BD 
+B4 1E 5B BD 7E 0A B9 BE 33 1A 81 BD F1 57 95 BE 
+DF 97 1B BF B1 37 6D BF 83 F2 35 BF EB D4 28 BF 
+F1 E8 00 3F 0C 1B 8F BF 46 26 F4 BF 9D 55 47 3F 
+2E 64 96 BF FD AB A1 BE 78 D4 BC 3E 89 6F 7E BE 
+AE 25 8E BE B3 CA B0 3F 2E 3A B5 BF 73 81 25 C0 
+ED 2A 92 BF D6 BF BE 3B 71 09 96 BD C5 5A 99 BD 
+CF 7B C7 BF B3 A0 92 BE C1 55 F3 BF F6 A8 B2 3E 
+13 7A E5 BF 3E 76 28 BF 07 4B E4 3F 3C F8 B7 BF 
+FD EB 69 BE 4F D9 75 3E BC 46 BE BD C2 E6 89 3E 
+30 FE 55 3F 58 34 9E 3E 85 E0 01 BF 1F EA 88 BD 
+76 89 7B BD 90 50 7E 3F 63 55 E8 BE E3 69 B2 3F 
+8D 38 F3 3E 27 34 01 40 3F C6 81 3F 56 48 80 3F 
+53 69 13 3F 80 C9 4C 3F 29 18 2B 3F 3D 4B 8F 3F 
+AC C6 84 BE A9 9E 98 3F 2E BE E8 3E 3A 82 8F BF 
+0A BA 0D 40 E9 6E 01 BE D6 C8 09 BF 94 BF 9B BF 
+90 E0 A1 BE 01 8F A8 3E DD E9 07 C0 57 CF 9C BE 
+56 EA C6 3E 4D 78 2D BF 5B 04 4F 3F 1F D7 48 BF 
+6B 4D A2 3F 8D 9D DE BF 6E F8 27 40 46 E9 63 BE 
+B5 EF 0E BF 38 71 8B BE E2 D6 3E 3E 17 DE F8 BF 
+9C 39 08 BF 9E 41 A0 3E F7 3D 10 BF 82 BC DC 3F 
+DC 73 2B BF 21 E0 D2 3F 62 70 F7 3B 5D D6 CB BD 
+BD 0C 9B 3D 71 86 90 BF FA 03 9B 3E 5D CD B7 3E 
+E1 87 25 BF 9D 55 6A 3F 82 2E C2 BE 61 ED 8D BF 
+5B FB CE 3F E9 17 C7 BF 3B 5B B7 BF 42 7E 57 BF 
+EE 9E 79 3E BC 75 83 BF C3 7B C4 BF B3 1E C7 3E 
+58 0C 5E 3F FD 14 B4 BD 70 9A 34 BF 77 C4 DD BE 
+33 0C 3C 3E 60 F8 6C BF 82 27 BC BD 27 9B 49 3F 
+30 89 02 3F 06 51 73 3E AB 8A 48 3F 3A D8 67 3E 
+A0 79 BA BF F1 5C 96 3F E8 78 3D BF 1C 5F 9C BE 
+C5 A4 75 3F 4A 4D 00 3F 21 0F 96 BF 2D 0F 70 BD 
+13 35 94 3F 97 CD 21 3F D4 5D 93 BF D6 C6 3E BE 
+90 A4 C7 BE 1E F8 96 BF D5 84 2A BE 3E FE 89 BC 
+89 2A 29 3F 60 4A C3 BF B0 32 01 3E B0 4B 75 3F 
+93 97 09 3F D5 D2 B3 BF CE B3 19 BF 0A 0D 50 BE 
+DC 47 62 3F 3B 5C F2 BF 72 3F F8 BF 6B 0A B2 3F 
+A1 0E 9C BF BA DE A8 BC 95 39 4B BF 22 E8 49 BF 
+4E 5F 00 40 E9 84 7E BF 21 B7 11 3F 35 64 9A BF 
+42 F5 8B 3E D4 81 98 BF C0 6B 12 BF CA 0A B5 3D 
+B0 E4 07 C0 6A C2 83 BF 52 CF 52 BF 6A 8D AD 3F 
+2C 68 C9 3E 82 CA E2 BE BC 1A 08 C0 EC 6E A7 3F 
+C1 86 E2 BF D1 70 9B 3F 15 37 47 BF 79 18 A7 BD 
+26 69 9C 3E 26 17 2C 3E 4D B6 BF 3D FF 4D 8D BF 
+C0 B7 1B BF C1 4A D0 BD FF 03 D7 3E 78 6F 88 BE 
+A5 19 65 C0 B3 72 98 3F B2 F8 8C 3F 3D 82 87 BE 
+1B FA D8 BF 94 52 09 40 9B 71 6B 3F 9B 94 A2 BE 
+1C 6F 81 3F 31 32 B5 BF E9 DD 8A BC 58 C5 40 3F 
+20 70 90 3F 69 B9 82 3F 82 B3 95 BF 51 E5 A5 3E 
+DC 86 81 3F BD 2D 18 C0 55 58 A0 3F E4 C6 45 3E 
+AE 1E 47 3E 38 4E 85 BD 02 36 CD 3E BD 27 78 BF 
+8D 6A 93 3F 85 E9 8B BE 0E 02 EA 3D 18 B0 B9 BF 
+B3 3A 8D BE DB 1B BB BE 2B 2B 79 BE 5F 3F 3C BF 
+26 E5 30 3F D8 77 5B 3E EC 50 B9 BE E5 90 DA BE 
+45 40 74 3F 41 F5 2C 3E 11 F5 50 BF 0E 3E 60 BD 
+36 70 FB BE 7A 81 08 BF 2C BC BB BE 25 56 B8 BF 
+27 93 6C 3F 0C 86 0E BF B8 AF 46 BF 58 21 5A 3F 
+5F DC AB BE 49 A0 92 3E 57 34 95 3D 2B 79 96 BF 
+DE CB A2 BC 54 4E CC BF 7F B3 15 3D 30 F0 F2 BE 
+D3 B7 59 3E 9A 9B 11 3D 19 C4 A7 BB 5D CF 3D BE 
+17 1B C1 3D BB 4A 27 BE 0B B0 23 3E 22 FB 98 BE 
+97 48 8C 3F 88 3A CC BF 6B A0 52 3E 95 43 35 BE 
+B8 28 5C 3F FB ED 16 40 1F AF 73 3D 19 93 1E 3F 
+DF 2C DA 3F C5 2A 90 BF AE 62 2D BE 09 8D 37 3E 
+A6 8B 41 3F 56 C3 AB 3E D4 13 8C BE 08 65 7A BF 
+14 0D 40 3F 9E 3F A1 BF 7B F9 92 BE C0 AA 22 BF 
+76 DC CB 3E DC E5 B5 3C AB 76 5E 3F 84 D4 C4 3F 
+03 97 03 3D FB 88 AC 3F F5 4D 8E BF 2F 96 F8 BE 
+C7 6A 84 BF 97 12 A6 BF 2E 1A 83 BF 05 7C AE BD 
+3C 2C 9B 3E 3F 61 85 BF F4 20 58 BF BB B0 1E BF 
+28 26 8A 3E 84 02 D4 3C DA 45 0A 3F AB CF D4 BA 
+97 16 6B 3F BB 07 99 BF FB 06 A2 BF DE D3 3F 3F 
+4A 73 C0 BF 4A 10 68 BF 1D 80 C0 BD 7F 6C 51 3F 
+FE 95 23 3F 2D D8 C2 BF 65 95 F1 BF 16 0A 14 BE 
+4B 08 4A 3F BC 51 97 BF 30 1E 19 3F 05 A3 33 BD 
+7B B2 1E 3F B8 6E 90 3C 67 22 6B BE C7 55 F9 BF 
+DF F1 A2 BF 58 DB A6 BE 6C B1 42 3F F0 75 46 3F</Data>
+<Data Format="Decorated">
+<Array DataType="REAL" Dimensions="1000" Radix="Float">
+<Element Index="[0]" Value="-0.035985377"/>
+<Element Index="[1]" Value="1.3390797"/>
+<Element Index="[2]" Value="-0.39448842"/>
+<Element Index="[3]" Value="0.74102545"/>
+<Element Index="[4]" Value="-0.93660265"/>
+<Element Index="[5]" Value="-0.3450555"/>
+<Element Index="[6]" Value="0.6080075"/>
+<Element Index="[7]" Value="-0.9407519"/>
+<Element Index="[8]" Value="1.2191184"/>
+<Element Index="[9]" Value="0.46754768"/>
+<Element Index="[10]" Value="-0.57782114"/>
+<Element Index="[11]" Value="-1.2456499"/>
+<Element Index="[12]" Value="-1.9105818"/>
+<Element Index="[13]" Value="1.56862"/>
+<Element Index="[14]" Value="0.96315897"/>
+<Element Index="[15]" Value="0.017348586"/>
+<Element Index="[16]" Value="-0.7476017"/>
+<Element Index="[17]" Value="0.678847"/>
+<Element Index="[18]" Value="-0.47980845"/>
+<Element Index="[19]" Value="-0.480844"/>
+<Element Index="[20]" Value="-0.13772298"/>
+<Element Index="[21]" Value="1.0245129"/>
+<Element Index="[22]" Value="-0.29012182"/>
+<Element Index="[23]" Value="0.47420457"/>
+<Element Index="[24]" Value="1.266483"/>
+<Element Index="[25]" Value="0.7998358"/>
+<Element Index="[26]" Value="-0.8807205"/>
+<Element Index="[27]" Value="0.572477"/>
+<Element Index="[28]" Value="0.62216145"/>
+<Element Index="[29]" Value="-0.48432767"/>
+<Element Index="[30]" Value="0.38861325"/>
+<Element Index="[31]" Value="1.116691"/>
+<Element Index="[32]" Value="1.8563645"/>
+<Element Index="[33]" Value="-0.13588122"/>
+<Element Index="[34]" Value="-0.13573334"/>
+<Element Index="[35]" Value="0.9569396"/>
+<Element Index="[36]" Value="0.19560222"/>
+<Element Index="[37]" Value="-0.7790747"/>
+<Element Index="[38]" Value="1.4596825"/>
+<Element Index="[39]" Value="-0.4462693"/>
+<Element Index="[40]" Value="-1.1107899"/>
+<Element Index="[41]" Value="-0.07437024"/>
+<Element Index="[42]" Value="-0.75861543"/>
+<Element Index="[43]" Value="-1.2240752"/>
+<Element Index="[44]" Value="-0.26493448"/>
+<Element Index="[45]" Value="0.77100146"/>
+<Element Index="[46]" Value="0.46815443"/>
+<Element Index="[47]" Value="0.05096904"/>
+<Element Index="[48]" Value="1.4335351"/>
+<Element Index="[49]" Value="0.105857186"/>
+<Element Index="[50]" Value="2.050967"/>
+<Element Index="[51]" Value="0.72315586"/>
+<Element Index="[52]" Value="0.44118994"/>
+<Element Index="[53]" Value="2.075737"/>
+<Element Index="[54]" Value="-1.961829"/>
+<Element Index="[55]" Value="0.1731522"/>
+<Element Index="[56]" Value="-0.9386877"/>
+<Element Index="[57]" Value="-2.6682873"/>
+<Element Index="[58]" Value="-0.81884885"/>
+<Element Index="[59]" Value="0.46441725"/>
+<Element Index="[60]" Value="0.28653178"/>
+<Element Index="[61]" Value="-0.028919075"/>
+<Element Index="[62]" Value="-0.46610966"/>
+<Element Index="[63]" Value="0.30180898"/>
+<Element Index="[64]" Value="0.70171523"/>
+<Element Index="[65]" Value="1.2479358"/>
+<Element Index="[66]" Value="-0.11576161"/>
+<Element Index="[67]" Value="0.39755479"/>
+<Element Index="[68]" Value="-0.85207504"/>
+<Element Index="[69]" Value="-0.55821866"/>
+<Element Index="[70]" Value="-0.51221514"/>
+<Element Index="[71]" Value="-1.1397206"/>
+<Element Index="[72]" Value="-0.5383751"/>
+<Element Index="[73]" Value="-0.43980548"/>
+<Element Index="[74]" Value="-0.76158047"/>
+<Element Index="[75]" Value="-0.03383184"/>
+<Element Index="[76]" Value="1.5447745"/>
+<Element Index="[77]" Value="0.5271834"/>
+<Element Index="[78]" Value="-0.52439725"/>
+<Element Index="[79]" Value="-0.26440185"/>
+<Element Index="[80]" Value="-0.99910724"/>
+<Element Index="[81]" Value="-0.5068656"/>
+<Element Index="[82]" Value="-0.7099606"/>
+<Element Index="[83]" Value="0.057107024"/>
+<Element Index="[84]" Value="-0.2515772"/>
+<Element Index="[85]" Value="-0.017708583"/>
+<Element Index="[86]" Value="0.9356689"/>
+<Element Index="[87]" Value="-1.1143135"/>
+<Element Index="[88]" Value="-2.1970062"/>
+<Element Index="[89]" Value="1.1213181"/>
+<Element Index="[90]" Value="0.08901488"/>
+<Element Index="[91]" Value="1.1760075"/>
+<Element Index="[92]" Value="1.339789"/>
+<Element Index="[93]" Value="-0.07964845"/>
+<Element Index="[94]" Value="-0.4453082"/>
+<Element Index="[95]" Value="-0.3371099"/>
+<Element Index="[96]" Value="-0.8389111"/>
+<Element Index="[97]" Value="0.87137055"/>
+<Element Index="[98]" Value="1.1149273"/>
+<Element Index="[99]" Value="-0.6811345"/>
+<Element Index="[100]" Value="1.14014547e-003"/>
+<Element Index="[101]" Value="-2.6085455"/>
+<Element Index="[102]" Value="-2.852195"/>
+<Element Index="[103]" Value="-0.6647554"/>
+<Element Index="[104]" Value="0.8202743"/>
+<Element Index="[105]" Value="1.246501"/>
+<Element Index="[106]" Value="1.4058892"/>
+<Element Index="[107]" Value="0.203534"/>
+<Element Index="[108]" Value="-0.26349384"/>
+<Element Index="[109]" Value="1.6257519"/>
+<Element Index="[110]" Value="0.8696443"/>
+<Element Index="[111]" Value="0.5771712"/>
+<Element Index="[112]" Value="-1.1127129"/>
+<Element Index="[113]" Value="1.4887646"/>
+<Element Index="[114]" Value="-0.076285325"/>
+<Element Index="[115]" Value="0.6048775"/>
+<Element Index="[116]" Value="0.58487844"/>
+<Element Index="[117]" Value="-0.46939093"/>
+<Element Index="[118]" Value="0.44409722"/>
+<Element Index="[119]" Value="0.13255712"/>
+<Element Index="[120]" Value="-0.21096252"/>
+<Element Index="[121]" Value="1.0053971"/>
+<Element Index="[122]" Value="1.040058"/>
+<Element Index="[123]" Value="0.016741551"/>
+<Element Index="[124]" Value="0.43483087"/>
+<Element Index="[125]" Value="9.59461648e-003"/>
+<Element Index="[126]" Value="0.20593216"/>
+<Element Index="[127]" Value="-1.168494"/>
+<Element Index="[128]" Value="-1.853001"/>
+<Element Index="[129]" Value="-1.0573746"/>
+<Element Index="[130]" Value="-0.4761914"/>
+<Element Index="[131]" Value="1.5178391"/>
+<Element Index="[132]" Value="1.3267015"/>
+<Element Index="[133]" Value="-0.40253183"/>
+<Element Index="[134]" Value="0.30158377"/>
+<Element Index="[135]" Value="0.5933027"/>
+<Element Index="[136]" Value="-0.9524629"/>
+<Element Index="[137]" Value="1.0680975"/>
+<Element Index="[138]" Value="-0.7558636"/>
+<Element Index="[139]" Value="-1.4020723"/>
+<Element Index="[140]" Value="-0.6648718"/>
+<Element Index="[141]" Value="-0.0611871"/>
+<Element Index="[142]" Value="2.006384"/>
+<Element Index="[143]" Value="2.7428625"/>
+<Element Index="[144]" Value="1.3989797"/>
+<Element Index="[145]" Value="0.2740892"/>
+<Element Index="[146]" Value="-0.9268957"/>
+<Element Index="[147]" Value="0.6436776"/>
+<Element Index="[148]" Value="1.0543944"/>
+<Element Index="[149]" Value="0.026561871"/>
+<Element Index="[150]" Value="0.5742363"/>
+<Element Index="[151]" Value="-2.9605093"/>
+<Element Index="[152]" Value="-0.22916035"/>
+<Element Index="[153]" Value="-0.51678413"/>
+<Element Index="[154]" Value="-0.99578106"/>
+<Element Index="[155]" Value="-0.012066617"/>
+<Element Index="[156]" Value="0.5922438"/>
+<Element Index="[157]" Value="0.06816203"/>
+<Element Index="[158]" Value="0.92654026"/>
+<Element Index="[159]" Value="0.55594987"/>
+<Element Index="[160]" Value="0.23643808"/>
+<Element Index="[161]" Value="0.5973262"/>
+<Element Index="[162]" Value="-0.09061496"/>
+<Element Index="[163]" Value="0.45270556"/>
+<Element Index="[164]" Value="0.3432337"/>
+<Element Index="[165]" Value="-1.0944074"/>
+<Element Index="[166]" Value="-1.1328709"/>
+<Element Index="[167]" Value="0.6553256"/>
+<Element Index="[168]" Value="1.2722349"/>
+<Element Index="[169]" Value="-1.7265284"/>
+<Element Index="[170]" Value="-0.5045381"/>
+<Element Index="[171]" Value="-0.24032512"/>
+<Element Index="[172]" Value="0.22732854"/>
+<Element Index="[173]" Value="1.1127645"/>
+<Element Index="[174]" Value="-0.6871275"/>
+<Element Index="[175]" Value="0.110123456"/>
+<Element Index="[176]" Value="-0.5213187"/>
+<Element Index="[177]" Value="-1.7395097"/>
+<Element Index="[178]" Value="-1.2566222"/>
+<Element Index="[179]" Value="-0.36491826"/>
+<Element Index="[180]" Value="-1.857618"/>
+<Element Index="[181]" Value="1.4192808"/>
+<Element Index="[182]" Value="0.8527622"/>
+<Element Index="[183]" Value="-0.21954612"/>
+<Element Index="[184]" Value="-2.1579506"/>
+<Element Index="[185]" Value="0.75503343"/>
+<Element Index="[186]" Value="0.43037972"/>
+<Element Index="[187]" Value="0.9549413"/>
+<Element Index="[188]" Value="2.0340197"/>
+<Element Index="[189]" Value="-0.8599607"/>
+<Element Index="[190]" Value="0.5208209"/>
+<Element Index="[191]" Value="-0.84758896"/>
+<Element Index="[192]" Value="1.6988384"/>
+<Element Index="[193]" Value="-0.10068855"/>
+<Element Index="[194]" Value="-0.14244121"/>
+<Element Index="[195]" Value="0.20271161"/>
+<Element Index="[196]" Value="0.1401222"/>
+<Element Index="[197]" Value="-0.56031036"/>
+<Element Index="[198]" Value="0.1580086"/>
+<Element Index="[199]" Value="1.6133175"/>
+<Element Index="[200]" Value="-0.4325014"/>
+<Element Index="[201]" Value="-0.49420533"/>
+<Element Index="[202]" Value="-0.7998489"/>
+<Element Index="[203]" Value="0.02078131"/>
+<Element Index="[204]" Value="-0.062194094"/>
+<Element Index="[205]" Value="-1.0164624"/>
+<Element Index="[206]" Value="1.3387351"/>
+<Element Index="[207]" Value="-0.37201884"/>
+<Element Index="[208]" Value="0.45018846"/>
+<Element Index="[209]" Value="-0.479291"/>
+<Element Index="[210]" Value="1.4430971"/>
+<Element Index="[211]" Value="0.07664609"/>
+<Element Index="[212]" Value="-1.333162"/>
+<Element Index="[213]" Value="-0.21226762"/>
+<Element Index="[214]" Value="-0.57741314"/>
+<Element Index="[215]" Value="-0.6665083"/>
+<Element Index="[216]" Value="0.33381134"/>
+<Element Index="[217]" Value="-1.0891702"/>
+<Element Index="[218]" Value="0.43677476"/>
+<Element Index="[219]" Value="0.58088344"/>
+<Element Index="[220]" Value="-2.0102742"/>
+<Element Index="[221]" Value="-0.8800952"/>
+<Element Index="[222]" Value="-0.08651196"/>
+<Element Index="[223]" Value="6.15574478e-004"/>
+<Element Index="[224]" Value="1.086819"/>
+<Element Index="[225]" Value="2.5830436"/>
+<Element Index="[226]" Value="-0.7934175"/>
+<Element Index="[227]" Value="-0.93923575"/>
+<Element Index="[228]" Value="-0.7794194"/>
+<Element Index="[229]" Value="1.3286101"/>
+<Element Index="[230]" Value="0.067034036"/>
+<Element Index="[231]" Value="-1.1756991"/>
+<Element Index="[232]" Value="0.43965426"/>
+<Element Index="[233]" Value="0.5924232"/>
+<Element Index="[234]" Value="0.46177077"/>
+<Element Index="[235]" Value="-0.44711852"/>
+<Element Index="[236]" Value="-0.45694125"/>
+<Element Index="[237]" Value="0.69437057"/>
+<Element Index="[238]" Value="-1.7077134"/>
+<Element Index="[239]" Value="-2.067832"/>
+<Element Index="[240]" Value="-1.295328"/>
+<Element Index="[241]" Value="0.55677086"/>
+<Element Index="[242]" Value="0.112791196"/>
+<Element Index="[243]" Value="-1.3014833"/>
+<Element Index="[244]" Value="0.03426842"/>
+<Element Index="[245]" Value="-1.5780963"/>
+<Element Index="[246]" Value="1.0612606"/>
+<Element Index="[247]" Value="0.12186224"/>
+<Element Index="[248]" Value="-0.79540926"/>
+<Element Index="[249]" Value="0.8648424"/>
+<Element Index="[250]" Value="0.4347866"/>
+<Element Index="[251]" Value="0.6423583"/>
+<Element Index="[252]" Value="-0.47706488"/>
+<Element Index="[253]" Value="-0.45005003"/>
+<Element Index="[254]" Value="-0.20754"/>
+<Element Index="[255]" Value="-0.5425331"/>
+<Element Index="[256]" Value="-0.42951745"/>
+<Element Index="[257]" Value="0.16075984"/>
+<Element Index="[258]" Value="2.183882"/>
+<Element Index="[259]" Value="0.24738187"/>
+<Element Index="[260]" Value="0.6654207"/>
+<Element Index="[261]" Value="-0.27388418"/>
+<Element Index="[262]" Value="0.79888725"/>
+<Element Index="[263]" Value="0.60594976"/>
+<Element Index="[264]" Value="1.1409434"/>
+<Element Index="[265]" Value="-0.7959242"/>
+<Element Index="[266]" Value="-0.3667298"/>
+<Element Index="[267]" Value="0.49227628"/>
+<Element Index="[268]" Value="1.5475932"/>
+<Element Index="[269]" Value="-2.7523575"/>
+<Element Index="[270]" Value="1.5189892"/>
+<Element Index="[271]" Value="1.8418756"/>
+<Element Index="[272]" Value="-0.33018425"/>
+<Element Index="[273]" Value="1.0928564"/>
+<Element Index="[274]" Value="1.5221573"/>
+<Element Index="[275]" Value="0.88909304"/>
+<Element Index="[276]" Value="-0.028371667"/>
+<Element Index="[277]" Value="1.2565087"/>
+<Element Index="[278]" Value="-0.012649448"/>
+<Element Index="[279]" Value="1.4802513"/>
+<Element Index="[280]" Value="0.7759589"/>
+<Element Index="[281]" Value="-0.40050682"/>
+<Element Index="[282]" Value="-0.4441118"/>
+<Element Index="[283]" Value="-0.024928363"/>
+<Element Index="[284]" Value="0.9443336"/>
+<Element Index="[285]" Value="-0.25461754"/>
+<Element Index="[286]" Value="1.0339944"/>
+<Element Index="[287]" Value="-0.6437058"/>
+<Element Index="[288]" Value="0.8684398"/>
+<Element Index="[289]" Value="0.13830367"/>
+<Element Index="[290]" Value="-0.8793776"/>
+<Element Index="[291]" Value="-0.20457947"/>
+<Element Index="[292]" Value="-1.5213305"/>
+<Element Index="[293]" Value="0.042815473"/>
+<Element Index="[294]" Value="-1.1198548"/>
+<Element Index="[295]" Value="-2.1568842"/>
+<Element Index="[296]" Value="-0.8975869"/>
+<Element Index="[297]" Value="1.0271417"/>
+<Element Index="[298]" Value="0.020672766"/>
+<Element Index="[299]" Value="-0.13327761"/>
+<Element Index="[300]" Value="1.5551381"/>
+<Element Index="[301]" Value="0.8074797"/>
+<Element Index="[302]" Value="0.46442837"/>
+<Element Index="[303]" Value="0.20210864"/>
+<Element Index="[304]" Value="-0.35845533"/>
+<Element Index="[305]" Value="0.23651356"/>
+<Element Index="[306]" Value="0.036304206"/>
+<Element Index="[307]" Value="0.4164071"/>
+<Element Index="[308]" Value="0.99968195"/>
+<Element Index="[309]" Value="0.3854536"/>
+<Element Index="[310]" Value="0.41070092"/>
+<Element Index="[311]" Value="0.32089618"/>
+<Element Index="[312]" Value="0.5261709"/>
+<Element Index="[313]" Value="0.4993461"/>
+<Element Index="[314]" Value="-0.19717915"/>
+<Element Index="[315]" Value="-0.36526176"/>
+<Element Index="[316]" Value="0.21120693"/>
+<Element Index="[317]" Value="0.08718683"/>
+<Element Index="[318]" Value="-2.738906"/>
+<Element Index="[319]" Value="0.8640423"/>
+<Element Index="[320]" Value="-1.1972513"/>
+<Element Index="[321]" Value="0.8726881"/>
+<Element Index="[322]" Value="-0.32351866"/>
+<Element Index="[323]" Value="-0.048064962"/>
+<Element Index="[324]" Value="-0.3712632"/>
+<Element Index="[325]" Value="-1.3342816"/>
+<Element Index="[326]" Value="0.6242769"/>
+<Element Index="[327]" Value="1.0783031"/>
+<Element Index="[328]" Value="1.1349409"/>
+<Element Index="[329]" Value="1.0201373"/>
+<Element Index="[330]" Value="-1.0088598"/>
+<Element Index="[331]" Value="-0.08088664"/>
+<Element Index="[332]" Value="2.0729284"/>
+<Element Index="[333]" Value="-0.3369013"/>
+<Element Index="[334]" Value="0.5714555"/>
+<Element Index="[335]" Value="0.5104131"/>
+<Element Index="[336]" Value="0.41414768"/>
+<Element Index="[337]" Value="-1.3400755"/>
+<Element Index="[338]" Value="0.75299615"/>
+<Element Index="[339]" Value="-1.156832"/>
+<Element Index="[340]" Value="0.775709"/>
+<Element Index="[341]" Value="2.3102138"/>
+<Element Index="[342]" Value="1.9377373"/>
+<Element Index="[343]" Value="-0.16994806"/>
+<Element Index="[344]" Value="0.39063972"/>
+<Element Index="[345]" Value="-0.2004986"/>
+<Element Index="[346]" Value="1.8994446"/>
+<Element Index="[347]" Value="0.34605575"/>
+<Element Index="[348]" Value="-0.04217933"/>
+<Element Index="[349]" Value="-0.08545168"/>
+<Element Index="[350]" Value="1.7111545"/>
+<Element Index="[351]" Value="-0.82993305"/>
+<Element Index="[352]" Value="0.28782624"/>
+<Element Index="[353]" Value="-0.35355055"/>
+<Element Index="[354]" Value="-0.63526076"/>
+<Element Index="[355]" Value="0.736549"/>
+<Element Index="[356]" Value="1.9771576"/>
+<Element Index="[357]" Value="-1.2404186"/>
+<Element Index="[358]" Value="1.0637668"/>
+<Element Index="[359]" Value="-1.9737325"/>
+<Element Index="[360]" Value="-0.27119273"/>
+<Element Index="[361]" Value="0.21482109"/>
+<Element Index="[362]" Value="2.5937788"/>
+<Element Index="[363]" Value="-0.16771083"/>
+<Element Index="[364]" Value="-1.5490992"/>
+<Element Index="[365]" Value="0.32990897"/>
+<Element Index="[366]" Value="0.22822356"/>
+<Element Index="[367]" Value="0.7627651"/>
+<Element Index="[368]" Value="1.3071476"/>
+<Element Index="[369]" Value="-0.6302697"/>
+<Element Index="[370]" Value="-0.2522565"/>
+<Element Index="[371]" Value="-0.2177113"/>
+<Element Index="[372]" Value="-1.5804981"/>
+<Element Index="[373]" Value="0.348648"/>
+<Element Index="[374]" Value="-0.30214474"/>
+<Element Index="[375]" Value="-1.4992129"/>
+<Element Index="[376]" Value="-0.18012375"/>
+<Element Index="[377]" Value="1.2943122"/>
+<Element Index="[378]" Value="0.9821583"/>
+<Element Index="[379]" Value="-1.7210255"/>
+<Element Index="[380]" Value="-0.83392376"/>
+<Element Index="[381]" Value="-2.3642998"/>
+<Element Index="[382]" Value="-0.67670083"/>
+<Element Index="[383]" Value="1.2097564"/>
+<Element Index="[384]" Value="0.54244363"/>
+<Element Index="[385]" Value="0.23654683"/>
+<Element Index="[386]" Value="0.75347614"/>
+<Element Index="[387]" Value="0.51936525"/>
+<Element Index="[388]" Value="-0.12530546"/>
+<Element Index="[389]" Value="0.16594689"/>
+<Element Index="[390]" Value="0.3003736"/>
+<Element Index="[391]" Value="0.12761925"/>
+<Element Index="[392]" Value="1.0374618"/>
+<Element Index="[393]" Value="-1.7607933"/>
+<Element Index="[394]" Value="-0.06350077"/>
+<Element Index="[395]" Value="0.28570428"/>
+<Element Index="[396]" Value="-0.43402988"/>
+<Element Index="[397]" Value="0.31582186"/>
+<Element Index="[398]" Value="-0.6953379"/>
+<Element Index="[399]" Value="0.53203005"/>
+<Element Index="[400]" Value="-0.77109194"/>
+<Element Index="[401]" Value="-1.3227096"/>
+<Element Index="[402]" Value="1.5552313"/>
+<Element Index="[403]" Value="-0.8673893"/>
+<Element Index="[404]" Value="-1.9961298"/>
+<Element Index="[405]" Value="-0.76236814"/>
+<Element Index="[406]" Value="-0.34068203"/>
+<Element Index="[407]" Value="1.5673342"/>
+<Element Index="[408]" Value="-0.88191587"/>
+<Element Index="[409]" Value="-0.034875285"/>
+<Element Index="[410]" Value="0.8826301"/>
+<Element Index="[411]" Value="-0.054140806"/>
+<Element Index="[412]" Value="2.7104995"/>
+<Element Index="[413]" Value="-1.503906"/>
+<Element Index="[414]" Value="0.14436024"/>
+<Element Index="[415]" Value="-0.39135155"/>
+<Element Index="[416]" Value="0.80444264"/>
+<Element Index="[417]" Value="0.5064949"/>
+<Element Index="[418]" Value="-1.351022"/>
+<Element Index="[419]" Value="0.7610904"/>
+<Element Index="[420]" Value="0.64420635"/>
+<Element Index="[421]" Value="1.482205"/>
+<Element Index="[422]" Value="-0.46778244"/>
+<Element Index="[423]" Value="0.2126571"/>
+<Element Index="[424]" Value="-0.7916561"/>
+<Element Index="[425]" Value="0.06600657"/>
+<Element Index="[426]" Value="1.0157688"/>
+<Element Index="[427]" Value="1.1316841"/>
+<Element Index="[428]" Value="-1.1460665"/>
+<Element Index="[429]" Value="-0.19908209"/>
+<Element Index="[430]" Value="1.463369"/>
+<Element Index="[431]" Value="-0.84229916"/>
+<Element Index="[432]" Value="-0.15196453"/>
+<Element Index="[433]" Value="0.7241451"/>
+<Element Index="[434]" Value="0.5111866"/>
+<Element Index="[435]" Value="-2.3842397"/>
+<Element Index="[436]" Value="0.2431664"/>
+<Element Index="[437]" Value="0.13575101"/>
+<Element Index="[438]" Value="0.32540044"/>
+<Element Index="[439]" Value="-0.67857486"/>
+<Element Index="[440]" Value="-1.7490053"/>
+<Element Index="[441]" Value="1.7132068"/>
+<Element Index="[442]" Value="0.52755874"/>
+<Element Index="[443]" Value="0.23044524"/>
+<Element Index="[444]" Value="1.4399434"/>
+<Element Index="[445]" Value="0.5017675"/>
+<Element Index="[446]" Value="-0.3828962"/>
+<Element Index="[447]" Value="-0.5660928"/>
+<Element Index="[448]" Value="-0.53671426"/>
+<Element Index="[449]" Value="0.3572459"/>
+<Element Index="[450]" Value="-0.9178707"/>
+<Element Index="[451]" Value="-2.048196"/>
+<Element Index="[452]" Value="-0.94912213"/>
+<Element Index="[453]" Value="0.21763854"/>
+<Element Index="[454]" Value="-0.7361096"/>
+<Element Index="[455]" Value="-1.0023954"/>
+<Element Index="[456]" Value="0.29111415"/>
+<Element Index="[457]" Value="-0.86209595"/>
+<Element Index="[458]" Value="1.3411399"/>
+<Element Index="[459]" Value="-0.6529192"/>
+<Element Index="[460]" Value="-1.3506428"/>
+<Element Index="[461]" Value="-0.072153606"/>
+<Element Index="[462]" Value="0.38084906"/>
+<Element Index="[463]" Value="0.49954572"/>
+<Element Index="[464]" Value="-1.6393948"/>
+<Element Index="[465]" Value="0.4405348"/>
+<Element Index="[466]" Value="0.70117944"/>
+<Element Index="[467]" Value="-0.5951747"/>
+<Element Index="[468]" Value="-0.64942163"/>
+<Element Index="[469]" Value="-0.19021548"/>
+<Element Index="[470]" Value="-1.2240194"/>
+<Element Index="[471]" Value="-1.2062829"/>
+<Element Index="[472]" Value="0.2716748"/>
+<Element Index="[473]" Value="0.067195185"/>
+<Element Index="[474]" Value="-0.5010516"/>
+<Element Index="[475]" Value="2.7786708"/>
+<Element Index="[476]" Value="-0.10660286"/>
+<Element Index="[477]" Value="-0.42110986"/>
+<Element Index="[478]" Value="-0.33195102"/>
+<Element Index="[479]" Value="0.54753023"/>
+<Element Index="[480]" Value="0.33281925"/>
+<Element Index="[481]" Value="-0.24557096"/>
+<Element Index="[482]" Value="0.52434486"/>
+<Element Index="[483]" Value="-0.386623"/>
+<Element Index="[484]" Value="0.9419807"/>
+<Element Index="[485]" Value="1.3894545"/>
+<Element Index="[486]" Value="-1.9122306"/>
+<Element Index="[487]" Value="-1.1726298"/>
+<Element Index="[488]" Value="-0.36383316"/>
+<Element Index="[489]" Value="-0.43196136"/>
+<Element Index="[490]" Value="-0.24850135"/>
+<Element Index="[491]" Value="-1.1397612"/>
+<Element Index="[492]" Value="1.3767054"/>
+<Element Index="[493]" Value="-0.8868355"/>
+<Element Index="[494]" Value="-0.70852786"/>
+<Element Index="[495]" Value="-0.671964"/>
+<Element Index="[496]" Value="-0.26111454"/>
+<Element Index="[497]" Value="1.5188514"/>
+<Element Index="[498]" Value="-1.1170914"/>
+<Element Index="[499]" Value="-0.51968265"/>
+<Element Index="[500]" Value="-1.5241612"/>
+<Element Index="[501]" Value="1.6595564"/>
+<Element Index="[502]" Value="0.15652257"/>
+<Element Index="[503]" Value="0.19543529"/>
+<Element Index="[504]" Value="0.51434094"/>
+<Element Index="[505]" Value="0.18114126"/>
+<Element Index="[506]" Value="-0.59631026"/>
+<Element Index="[507]" Value="-0.018796168"/>
+<Element Index="[508]" Value="-1.3367704"/>
+<Element Index="[509]" Value="0.85188353"/>
+<Element Index="[510]" Value="-1.0288551"/>
+<Element Index="[511]" Value="0.23051555"/>
+<Element Index="[512]" Value="0.6827673"/>
+<Element Index="[513]" Value="-0.88422304"/>
+<Element Index="[514]" Value="-0.12202894"/>
+<Element Index="[515]" Value="-1.0411419"/>
+<Element Index="[516]" Value="0.35135397"/>
+<Element Index="[517]" Value="0.36610585"/>
+<Element Index="[518]" Value="-0.076696455"/>
+<Element Index="[519]" Value="0.470175"/>
+<Element Index="[520]" Value="-0.12141529"/>
+<Element Index="[521]" Value="1.6155223"/>
+<Element Index="[522]" Value="0.2844884"/>
+<Element Index="[523]" Value="0.90952915"/>
+<Element Index="[524]" Value="0.44788927"/>
+<Element Index="[525]" Value="1.3956598"/>
+<Element Index="[526]" Value="0.9591619"/>
+<Element Index="[527]" Value="0.20098358"/>
+<Element Index="[528]" Value="0.12757467"/>
+<Element Index="[529]" Value="1.0640168"/>
+<Element Index="[530]" Value="0.747258"/>
+<Element Index="[531]" Value="-1.5632287"/>
+<Element Index="[532]" Value="0.43917558"/>
+<Element Index="[533]" Value="-0.44930598"/>
+<Element Index="[534]" Value="2.706946"/>
+<Element Index="[535]" Value="-0.27452752"/>
+<Element Index="[536]" Value="-1.3221807"/>
+<Element Index="[537]" Value="1.0858567"/>
+<Element Index="[538]" Value="-0.2985953"/>
+<Element Index="[539]" Value="1.6870859"/>
+<Element Index="[540]" Value="-1.1184798"/>
+<Element Index="[541]" Value="-0.5778412"/>
+<Element Index="[542]" Value="0.4778556"/>
+<Element Index="[543]" Value="-1.1929346"/>
+<Element Index="[544]" Value="1.5664133"/>
+<Element Index="[545]" Value="-0.3133374"/>
+<Element Index="[546]" Value="-0.74206"/>
+<Element Index="[547]" Value="-0.009937178"/>
+<Element Index="[548]" Value="0.35737348"/>
+<Element Index="[549]" Value="0.56323457"/>
+<Element Index="[550]" Value="0.47947013"/>
+<Element Index="[551]" Value="-0.355018"/>
+<Element Index="[552]" Value="-0.24352717"/>
+<Element Index="[553]" Value="0.36814252"/>
+<Element Index="[554]" Value="-0.016496394"/>
+<Element Index="[555]" Value="-0.69892037"/>
+<Element Index="[556]" Value="0.095962316"/>
+<Element Index="[557]" Value="-1.3101339"/>
+<Element Index="[558]" Value="0.12228128"/>
+<Element Index="[559]" Value="1.0455655"/>
+<Element Index="[560]" Value="0.19051456"/>
+<Element Index="[561]" Value="0.9246252"/>
+<Element Index="[562]" Value="-0.09837885"/>
+<Element Index="[563]" Value="0.35830477"/>
+<Element Index="[564]" Value="-0.2672145"/>
+<Element Index="[565]" Value="1.0425361"/>
+<Element Index="[566]" Value="1.463021"/>
+<Element Index="[567]" Value="-0.91632205"/>
+<Element Index="[568]" Value="-0.9204067"/>
+<Element Index="[569]" Value="0.48445323"/>
+<Element Index="[570]" Value="0.2978138"/>
+<Element Index="[571]" Value="-1.3050002"/>
+<Element Index="[572]" Value="-0.27230868"/>
+<Element Index="[573]" Value="-0.07069241"/>
+<Element Index="[574]" Value="-0.33942685"/>
+<Element Index="[575]" Value="1.0249804"/>
+<Element Index="[576]" Value="-0.37018654"/>
+<Element Index="[577]" Value="0.5718038"/>
+<Element Index="[578]" Value="1.1471053"/>
+<Element Index="[579]" Value="2.83285"/>
+<Element Index="[580]" Value="0.5871418"/>
+<Element Index="[581]" Value="-0.26171434"/>
+<Element Index="[582]" Value="0.27815923"/>
+<Element Index="[583]" Value="-0.91243905"/>
+<Element Index="[584]" Value="0.65680784"/>
+<Element Index="[585]" Value="-0.17213075"/>
+<Element Index="[586]" Value="-1.0335287"/>
+<Element Index="[587]" Value="1.1553112"/>
+<Element Index="[588]" Value="0.4558086"/>
+<Element Index="[589]" Value="-0.44716358"/>
+<Element Index="[590]" Value="0.46869618"/>
+<Element Index="[591]" Value="2.608313"/>
+<Element Index="[592]" Value="-1.7424772"/>
+<Element Index="[593]" Value="-0.45914683"/>
+<Element Index="[594]" Value="-0.118133746"/>
+<Element Index="[595]" Value="0.45717072"/>
+<Element Index="[596]" Value="0.039676916"/>
+<Element Index="[597]" Value="-1.4133817"/>
+<Element Index="[598]" Value="1.0152261"/>
+<Element Index="[599]" Value="-1.5390533"/>
+<Element Index="[600]" Value="1.1360923"/>
+<Element Index="[601]" Value="-0.5227196"/>
+<Element Index="[602]" Value="0.38334322"/>
+<Element Index="[603]" Value="-0.39076787"/>
+<Element Index="[604]" Value="-0.47043103"/>
+<Element Index="[605]" Value="-0.123428695"/>
+<Element Index="[606]" Value="0.53143996"/>
+<Element Index="[607]" Value="0.0635661"/>
+<Element Index="[608]" Value="-0.74726516"/>
+<Element Index="[609]" Value="0.09286795"/>
+<Element Index="[610]" Value="-1.457301"/>
+<Element Index="[611]" Value="0.7383126"/>
+<Element Index="[612]" Value="1.6112007"/>
+<Element Index="[613]" Value="0.3829464"/>
+<Element Index="[614]" Value="-0.6779726"/>
+<Element Index="[615]" Value="0.13531615"/>
+<Element Index="[616]" Value="-0.12414286"/>
+<Element Index="[617]" Value="-0.083417684"/>
+<Element Index="[618]" Value="-0.061170805"/>
+<Element Index="[619]" Value="-0.62930936"/>
+<Element Index="[620]" Value="-0.12527554"/>
+<Element Index="[621]" Value="-1.4115363"/>
+<Element Index="[622]" Value="0.7828158"/>
+<Element Index="[623]" Value="1.3226771"/>
+<Element Index="[624]" Value="0.33477622"/>
+<Element Index="[625]" Value="-0.20878105"/>
+<Element Index="[626]" Value="0.1416032"/>
+<Element Index="[627]" Value="-0.8617581"/>
+<Element Index="[628]" Value="-0.2098682"/>
+<Element Index="[629]" Value="0.5397445"/>
+<Element Index="[630]" Value="0.9643939"/>
+<Element Index="[631]" Value="-1.2442551"/>
+<Element Index="[632]" Value="1.0351241"/>
+<Element Index="[633]" Value="0.78000164"/>
+<Element Index="[634]" Value="1.3790578"/>
+<Element Index="[635]" Value="0.37627715"/>
+<Element Index="[636]" Value="-0.105734125"/>
+<Element Index="[637]" Value="-0.57247055"/>
+<Element Index="[638]" Value="0.64327997"/>
+<Element Index="[639]" Value="2.177982"/>
+<Element Index="[640]" Value="-0.16044743"/>
+<Element Index="[641]" Value="0.5095854"/>
+<Element Index="[642]" Value="-0.7791495"/>
+<Element Index="[643]" Value="-0.010855247"/>
+<Element Index="[644]" Value="0.14358288"/>
+<Element Index="[645]" Value="-0.030210018"/>
+<Element Index="[646]" Value="-0.9542895"/>
+<Element Index="[647]" Value="-0.42571014"/>
+<Element Index="[648]" Value="0.67487055"/>
+<Element Index="[649]" Value="0.7929532"/>
+<Element Index="[650]" Value="0.70104873"/>
+<Element Index="[651]" Value="1.5109915"/>
+<Element Index="[652]" Value="-1.1657513"/>
+<Element Index="[653]" Value="0.48953617"/>
+<Element Index="[654]" Value="-0.8405929"/>
+<Element Index="[655]" Value="0.80106014"/>
+<Element Index="[656]" Value="-1.0330467"/>
+<Element Index="[657]" Value="0.3730036"/>
+<Element Index="[658]" Value="-1.3019007"/>
+<Element Index="[659]" Value="1.4203225"/>
+<Element Index="[660]" Value="1.6614735"/>
+<Element Index="[661]" Value="-1.1742265"/>
+<Element Index="[662]" Value="0.3494676"/>
+<Element Index="[663]" Value="0.7310972"/>
+<Element Index="[664]" Value="-2.0609195"/>
+<Element Index="[665]" Value="-0.39486203"/>
+<Element Index="[666]" Value="-0.27647218"/>
+<Element Index="[667]" Value="0.08994609"/>
+<Element Index="[668]" Value="0.17069069"/>
+<Element Index="[669]" Value="0.18350855"/>
+<Element Index="[670]" Value="-0.014794127"/>
+<Element Index="[671]" Value="0.8770771"/>
+<Element Index="[672]" Value="0.38928083"/>
+<Element Index="[673]" Value="0.3462493"/>
+<Element Index="[674]" Value="-0.24930622"/>
+<Element Index="[675]" Value="0.27975118"/>
+<Element Index="[676]" Value="0.93647003"/>
+<Element Index="[677]" Value="0.9299714"/>
+<Element Index="[678]" Value="1.8535814"/>
+<Element Index="[679]" Value="-1.3234016"/>
+<Element Index="[680]" Value="0.64611673"/>
+<Element Index="[681]" Value="-0.5611289"/>
+<Element Index="[682]" Value="-0.25226235"/>
+<Element Index="[683]" Value="-0.64424384"/>
+<Element Index="[684]" Value="0.23756903"/>
+<Element Index="[685]" Value="-0.026777131"/>
+<Element Index="[686]" Value="-0.5934033"/>
+<Element Index="[687]" Value="0.9720106"/>
+<Element Index="[688]" Value="-0.32508397"/>
+<Element Index="[689]" Value="-0.54586756"/>
+<Element Index="[690]" Value="-0.6831413"/>
+<Element Index="[691]" Value="1.056037"/>
+<Element Index="[692]" Value="-0.3962531"/>
+<Element Index="[693]" Value="0.3346268"/>
+<Element Index="[694]" Value="0.37814727"/>
+<Element Index="[695]" Value="1.2438037"/>
+<Element Index="[696]" Value="0.46818754"/>
+<Element Index="[697]" Value="1.960631"/>
+<Element Index="[698]" Value="0.11357484"/>
+<Element Index="[699]" Value="-0.07224307"/>
+<Element Index="[700]" Value="-0.053496078"/>
+<Element Index="[701]" Value="-0.36140817"/>
+<Element Index="[702]" Value="-0.06303825"/>
+<Element Index="[703]" Value="-0.29168656"/>
+<Element Index="[704]" Value="-0.6077861"/>
+<Element Index="[705]" Value="-0.92663103"/>
+<Element Index="[706]" Value="-0.7107317"/>
+<Element Index="[707]" Value="-0.6594989"/>
+<Element Index="[708]" Value="0.5035544"/>
+<Element Index="[709]" Value="-1.1180129"/>
+<Element Index="[710]" Value="-1.907418"/>
+<Element Index="[711]" Value="0.7786501"/>
+<Element Index="[712]" Value="-1.1749322"/>
+<Element Index="[713]" Value="-0.3157653"/>
+<Element Index="[714]" Value="0.3688085"/>
+<Element Index="[715]" Value="-0.24847235"/>
+<Element Index="[716]" Value="-0.27763122"/>
+<Element Index="[717]" Value="1.3811859"/>
+<Element Index="[718]" Value="-1.415838"/>
+<Element Index="[719]" Value="-2.586026"/>
+<Element Index="[720]" Value="-1.141935"/>
+<Element Index="[721]" Value="5.82120847e-003"/>
+<Element Index="[722]" Value="-0.073260196"/>
+<Element Index="[723]" Value="-0.07488016"/>
+<Element Index="[724]" Value="-1.5584658"/>
+<Element Index="[725]" Value="-0.2863823"/>
+<Element Index="[726]" Value="-1.9010545"/>
+<Element Index="[727]" Value="0.34894532"/>
+<Element Index="[728]" Value="-1.7927879"/>
+<Element Index="[729]" Value="-0.65805423"/>
+<Element Index="[730]" Value="1.7835397"/>
+<Element Index="[731]" Value="-1.437263"/>
+<Element Index="[732]" Value="-0.22843929"/>
+<Element Index="[733]" Value="0.24008678"/>
+<Element Index="[734]" Value="-0.09290835"/>
+<Element Index="[735]" Value="0.26933867"/>
+<Element Index="[736]" Value="0.83590984"/>
+<Element Index="[737]" Value="0.3089931"/>
+<Element Index="[738]" Value="-0.50733215"/>
+<Element Index="[739]" Value="-0.0668528"/>
+<Element Index="[740]" Value="-0.06141039"/>
+<Element Index="[741]" Value="0.9934168"/>
+<Element Index="[742]" Value="-0.45377645"/>
+<Element Index="[743]" Value="1.3938564"/>
+<Element Index="[744]" Value="0.47504082"/>
+<Element Index="[745]" Value="2.0188081"/>
+<Element Index="[746]" Value="1.0138625"/>
+<Element Index="[747]" Value="1.0022075"/>
+<Element Index="[748]" Value="0.57582587"/>
+<Element Index="[749]" Value="0.79994965"/>
+<Element Index="[750]" Value="0.6683374"/>
+<Element Index="[751]" Value="1.1194836"/>
+<Element Index="[752]" Value="-0.25932825"/>
+<Element Index="[753]" Value="1.1923419"/>
+<Element Index="[754]" Value="0.45457596"/>
+<Element Index="[755]" Value="-1.1211617"/>
+<Element Index="[756]" Value="2.21448"/>
+<Element Index="[757]" Value="-0.12639965"/>
+<Element Index="[758]" Value="-0.53822076"/>
+<Element Index="[759]" Value="-1.216784"/>
+<Element Index="[760]" Value="-0.3161664"/>
+<Element Index="[761]" Value="0.32921603"/>
+<Element Index="[762]" Value="-2.123649"/>
+<Element Index="[763]" Value="-0.30626938"/>
+<Element Index="[764]" Value="0.3885066"/>
+<Element Index="[765]" Value="-0.6776169"/>
+<Element Index="[766]" Value="0.8086602"/>
+<Element Index="[767]" Value="-0.7845325"/>
+<Element Index="[768]" Value="1.2679876"/>
+<Element Index="[769]" Value="-1.7391831"/>
+<Element Index="[770]" Value="2.624538"/>
+<Element Index="[771]" Value="-0.22256956"/>
+<Element Index="[772]" Value="-0.55834514"/>
+<Element Index="[773]" Value="-0.27234817"/>
+<Element Index="[774]" Value="0.18636659"/>
+<Element Index="[775]" Value="-1.9442776"/>
+<Element Index="[776]" Value="-0.53212905"/>
+<Element Index="[777]" Value="0.31300062"/>
+<Element Index="[778]" Value="-0.5634455"/>
+<Element Index="[779]" Value="1.7245028"/>
+<Element Index="[780]" Value="-0.6697366"/>
+<Element Index="[781]" Value="1.6474649"/>
+<Element Index="[782]" Value="0.007551239"/>
+<Element Index="[783]" Value="-0.09952996"/>
+<Element Index="[784]" Value="0.07570789"/>
+<Element Index="[785]" Value="-1.1291028"/>
+<Element Index="[786]" Value="0.3027647"/>
+<Element Index="[787]" Value="0.35898867"/>
+<Element Index="[788]" Value="-0.6466046"/>
+<Element Index="[789]" Value="0.91536885"/>
+<Element Index="[790]" Value="-0.37926108"/>
+<Element Index="[791]" Value="-1.1088067"/>
+<Element Index="[792]" Value="1.6170458"/>
+<Element Index="[793]" Value="-1.5554172"/>
+<Element Index="[794]" Value="-1.4324716"/>
+<Element Index="[795]" Value="-0.8417703"/>
+<Element Index="[796]" Value="0.24377033"/>
+<Element Index="[797]" Value="-1.0270305"/>
+<Element Index="[798]" Value="-1.5350269"/>
+<Element Index="[799]" Value="0.3889061"/>
+<Element Index="[800]" Value="0.86737585"/>
+<Element Index="[801]" Value="-0.08793066"/>
+<Element Index="[802]" Value="-0.7054815"/>
+<Element Index="[803]" Value="-0.43313953"/>
+<Element Index="[804]" Value="0.18364029"/>
+<Element Index="[805]" Value="-0.9256649"/>
+<Element Index="[806]" Value="-0.09187223"/>
+<Element Index="[807]" Value="0.7875237"/>
+<Element Index="[808]" Value="0.5099058"/>
+<Element Index="[809]" Value="0.23761377"/>
+<Element Index="[810]" Value="0.7833659"/>
+<Element Index="[811]" Value="0.22641078"/>
+<Element Index="[812]" Value="-1.4568367"/>
+<Element Index="[813]" Value="1.1747113"/>
+<Element Index="[814]" Value="-0.74012613"/>
+<Element Index="[815]" Value="-0.30541313"/>
+<Element Index="[816]" Value="0.95954543"/>
+<Element Index="[817]" Value="0.50117934"/>
+<Element Index="[818]" Value="-1.1723367"/>
+<Element Index="[819]" Value="-0.058608223"/>
+<Element Index="[820]" Value="1.1578697"/>
+<Element Index="[821]" Value="0.6320433"/>
+<Element Index="[822]" Value="-1.1513009"/>
+<Element Index="[823]" Value="-0.18630537"/>
+<Element Index="[824]" Value="-0.3899274"/>
+<Element Index="[825]" Value="-1.1794469"/>
+<Element Index="[826]" Value="-0.16652234"/>
+<Element Index="[827]" Value="-0.016844865"/>
+<Element Index="[828]" Value="0.6608053"/>
+<Element Index="[829]" Value="-1.5257072"/>
+<Element Index="[830]" Value="0.12616992"/>
+<Element Index="[831]" Value="0.95818615"/>
+<Element Index="[832]" Value="0.5374691"/>
+<Element Index="[833]" Value="-1.4048716"/>
+<Element Index="[834]" Value="-0.60039985"/>
+<Element Index="[835]" Value="-0.20317474"/>
+<Element Index="[836]" Value="0.883909"/>
+<Element Index="[837]" Value="-1.8934397"/>
+<Element Index="[838]" Value="-1.9394362"/>
+<Element Index="[839]" Value="1.3909429"/>
+<Element Index="[840]" Value="-1.2191964"/>
+<Element Index="[841]" Value="-0.020614017"/>
+<Element Index="[842]" Value="-0.7938474"/>
+<Element Index="[843]" Value="-0.7886983"/>
+<Element Index="[844]" Value="2.005817"/>
+<Element Index="[845]" Value="-0.99421555"/>
+<Element Index="[846]" Value="0.5692006"/>
+<Element Index="[847]" Value="-1.2061831"/>
+<Element Index="[848]" Value="0.27335554"/>
+<Element Index="[849]" Value="-1.191462"/>
+<Element Index="[850]" Value="-0.57195663"/>
+<Element Index="[851]" Value="0.088399485"/>
+<Element Index="[852]" Value="-2.123333"/>
+<Element Index="[853]" Value="-1.0293705"/>
+<Element Index="[854]" Value="-0.82347596"/>
+<Element Index="[855]" Value="1.3558781"/>
+<Element Index="[856]" Value="0.3933729"/>
+<Element Index="[857]" Value="-0.44295126"/>
+<Element Index="[858]" Value="-2.1266317"/>
+<Element Index="[859]" Value="1.3080726"/>
+<Element Index="[860]" Value="-1.7697374"/>
+<Element Index="[861]" Value="1.2143804"/>
+<Element Index="[862]" Value="-0.77818424"/>
+<Element Index="[863]" Value="-0.08158965"/>
+<Element Index="[864]" Value="0.30548972"/>
+<Element Index="[865]" Value="0.16805705"/>
+<Element Index="[866]" Value="0.09360943"/>
+<Element Index="[867]" Value="-1.1039428"/>
+<Element Index="[868]" Value="-0.60827255"/>
+<Element Index="[869]" Value="-0.10170508"/>
+<Element Index="[870]" Value="0.41995236"/>
+<Element Index="[871]" Value="-0.26647544"/>
+<Element Index="[872]" Value="-3.5796902"/>
+<Element Index="[873]" Value="1.1910003"/>
+<Element Index="[874]" Value="1.1013396"/>
+<Element Index="[875]" Value="-0.2646655"/>
+<Element Index="[876]" Value="-1.6951326"/>
+<Element Index="[877]" Value="2.1456652"/>
+<Element Index="[878]" Value="0.91970223"/>
+<Element Index="[879]" Value="-0.31754002"/>
+<Element Index="[880]" Value="1.0112033"/>
+<Element Index="[881]" Value="-1.4155942"/>
+<Element Index="[882]" Value="-0.016951518"/>
+<Element Index="[883]" Value="0.7530112"/>
+<Element Index="[884]" Value="1.1284218"/>
+<Element Index="[885]" Value="1.0212833"/>
+<Element Index="[886]" Value="-1.1695406"/>
+<Element Index="[887]" Value="0.32401517"/>
+<Element Index="[888]" Value="1.0119281"/>
+<Element Index="[889]" Value="-2.3777916"/>
+<Element Index="[890]" Value="1.2526957"/>
+<Element Index="[891]" Value="0.19314152"/>
+<Element Index="[892]" Value="0.19445297"/>
+<Element Index="[893]" Value="-0.0650906"/>
+<Element Index="[894]" Value="0.40080267"/>
+<Element Index="[895]" Value="-0.96935636"/>
+<Element Index="[896]" Value="1.1516892"/>
+<Element Index="[897]" Value="-0.273266"/>
+<Element Index="[898]" Value="0.11426173"/>
+<Element Index="[899]" Value="-1.4506865"/>
+<Element Index="[900]" Value="-0.27583846"/>
+<Element Index="[901]" Value="-0.3654469"/>
+<Element Index="[902]" Value="-0.24332874"/>
+<Element Index="[903]" Value="-0.73534197"/>
+<Element Index="[904]" Value="0.6909965"/>
+<Element Index="[905]" Value="0.21432436"/>
+<Element Index="[906]" Value="-0.3619455"/>
+<Element Index="[907]" Value="-0.4268867"/>
+<Element Index="[908]" Value="0.9541057"/>
+<Element Index="[909]" Value="0.16890432"/>
+<Element Index="[910]" Value="-0.8162394"/>
+<Element Index="[911]" Value="-0.05474668"/>
+<Element Index="[912]" Value="-0.49109048"/>
+<Element Index="[913]" Value="-0.53322566"/>
+<Element Index="[914]" Value="-0.36667"/>
+<Element Index="[915]" Value="-1.4401289"/>
+<Element Index="[916]" Value="0.92412037"/>
+<Element Index="[917]" Value="-0.5567329"/>
+<Element Index="[918]" Value="-0.77611876"/>
+<Element Index="[919]" Value="0.8520713"/>
+<Element Index="[920]" Value="-0.33566567"/>
+<Element Index="[921]" Value="0.28637913"/>
+<Element Index="[922]" Value="0.07285374"/>
+<Element Index="[923]" Value="-1.1755728"/>
+<Element Index="[924]" Value="-0.019872602"/>
+<Element Index="[925]" Value="-1.5961404"/>
+<Element Index="[926]" Value="0.036548134"/>
+<Element Index="[927]" Value="-0.47448874"/>
+<Element Index="[928]" Value="0.2126153"/>
+<Element Index="[929]" Value="0.035548784"/>
+<Element Index="[930]" Value="-0.005119812"/>
+<Element Index="[931]" Value="-0.18536134"/>
+<Element Index="[932]" Value="0.09428995"/>
+<Element Index="[933]" Value="-0.16337101"/>
+<Element Index="[934]" Value="0.15985124"/>
+<Element Index="[935]" Value="-0.298791"/>
+<Element Index="[936]" Value="1.0959653"/>
+<Element Index="[937]" Value="-1.5955362"/>
+<Element Index="[938]" Value="0.20569007"/>
+<Element Index="[939]" Value="-0.17701562"/>
+<Element Index="[940]" Value="0.8599963"/>
+<Element Index="[941]" Value="2.3582752"/>
+<Element Index="[942]" Value="0.05949318"/>
+<Element Index="[943]" Value="0.61943203"/>
+<Element Index="[944]" Value="1.7044944"/>
+<Element Index="[945]" Value="-1.1263052"/>
+<Element Index="[946]" Value="-0.16932175"/>
+<Element Index="[947]" Value="0.17924894"/>
+<Element Index="[948]" Value="0.7560371"/>
+<Element Index="[949]" Value="0.33547467"/>
+<Element Index="[950]" Value="-0.27358878"/>
+<Element Index="[951]" Value="-0.9781041"/>
+<Element Index="[952]" Value="0.75019956"/>
+<Element Index="[953]" Value="-1.259754"/>
+<Element Index="[954]" Value="-0.28705963"/>
+<Element Index="[955]" Value="-0.63541794"/>
+<Element Index="[956]" Value="0.39816636"/>
+<Element Index="[957]" Value="0.022204332"/>
+<Element Index="[958]" Value="0.8689982"/>
+<Element Index="[959]" Value="1.5377355"/>
+<Element Index="[960]" Value="0.032126438"/>
+<Element Index="[961]" Value="1.3479303"/>
+<Element Index="[962]" Value="-1.1117541"/>
+<Element Index="[963]" Value="-0.4855208"/>
+<Element Index="[964]" Value="-1.0345086"/>
+<Element Index="[965]" Value="-1.2974423"/>
+<Element Index="[966]" Value="-1.0242364"/>
+<Element Index="[967]" Value="-0.085197486"/>
+<Element Index="[968]" Value="0.30307186"/>
+<Element Index="[969]" Value="-1.0420302"/>
+<Element Index="[970]" Value="-0.8442528"/>
+<Element Index="[971]" Value="-0.6198842"/>
+<Element Index="[972]" Value="0.26982236"/>
+<Element Index="[973]" Value="0.025880106"/>
+<Element Index="[974]" Value="0.54012835"/>
+<Element Index="[975]" Value="-1.62362063e-003"/>
+<Element Index="[976]" Value="0.91831344"/>
+<Element Index="[977]" Value="-1.1955484"/>
+<Element Index="[978]" Value="-1.265838"/>
+<Element Index="[979]" Value="0.7493266"/>
+<Element Index="[980]" Value="-1.5035183"/>
+<Element Index="[981]" Value="-0.90649855"/>
+<Element Index="[982]" Value="-0.09399436"/>
+<Element Index="[983]" Value="0.81806177"/>
+<Element Index="[984]" Value="0.63900745"/>
+<Element Index="[985]" Value="-1.5222222"/>
+<Element Index="[986]" Value="-1.8873717"/>
+<Element Index="[987]" Value="-0.14456972"/>
+<Element Index="[988]" Value="0.78918904"/>
+<Element Index="[989]" Value="-1.1821818"/>
+<Element Index="[990]" Value="0.5981169"/>
+<Element Index="[991]" Value="-0.04385664"/>
+<Element Index="[992]" Value="0.6199109"/>
+<Element Index="[993]" Value="0.01763092"/>
+<Element Index="[994]" Value="-0.22962342"/>
+<Element Index="[995]" Value="-1.9479302"/>
+<Element Index="[996]" Value="-1.2730063"/>
+<Element Index="[997]" Value="-0.3258922"/>
+<Element Index="[998]" Value="0.76051974"/>
+<Element Index="[999]" Value="0.7752371"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="GRNG_Index" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data>FB 00</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="251"/>
+</Data>
+</Tag>
+<Tag Name="PID_Cycle_Done" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[One PID Instruction Cycle Completed
+ (40 PIDs / 1.0 sec)]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PID_Cycle_Index" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data>00 00</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PID_Enable" TagType="Base" DataType="BOOL" Dimensions="32" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Comments>
+<Comment Operand="[1]">
+<![CDATA[Ramp and Soak PIDE Instruction Enable]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[PIDE Test #1 Enable Command]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[PIDE Test #2 Enable Command]]>
+</Comment>
+</Comments>
+<Data>00 00 00 00</Data>
+<Data Format="Decorated">
+<Array DataType="BOOL" Dimensions="32" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+<Element Index="[7]" Value="0"/>
+<Element Index="[8]" Value="0"/>
+<Element Index="[9]" Value="0"/>
+<Element Index="[10]" Value="0"/>
+<Element Index="[11]" Value="0"/>
+<Element Index="[12]" Value="0"/>
+<Element Index="[13]" Value="0"/>
+<Element Index="[14]" Value="0"/>
+<Element Index="[15]" Value="0"/>
+<Element Index="[16]" Value="0"/>
+<Element Index="[17]" Value="0"/>
+<Element Index="[18]" Value="0"/>
+<Element Index="[19]" Value="0"/>
+<Element Index="[20]" Value="0"/>
+<Element Index="[21]" Value="0"/>
+<Element Index="[22]" Value="0"/>
+<Element Index="[23]" Value="0"/>
+<Element Index="[24]" Value="0"/>
+<Element Index="[25]" Value="0"/>
+<Element Index="[26]" Value="0"/>
+<Element Index="[27]" Value="0"/>
+<Element Index="[28]" Value="0"/>
+<Element Index="[29]" Value="0"/>
+<Element Index="[30]" Value="0"/>
+<Element Index="[31]" Value="0"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="PID_Index" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PID Instruction Index Counter]]>
+</Description>
+<Data>23 00</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="35"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_Auto_PB" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp and Soak 1 PIDE Auto Mode Pushbutton]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_Done" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 Sequence Done]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_Hold" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 Hold Command]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_Init" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & SoaK 1 Initialize Command]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_Man_PB" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp and Soak 1 PIDE Manual Mode Pushbutton]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_PIDE" TagType="Base" DataType="PID_ENHANCED" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp and Soak1 PIDE Instruction]]>
+</Description>
+<Data>00 00 00 00 00 20 88 00 00 00 00 00 00 00 C8 42 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 C8 42 00 00 00 00 00 00 80 3F 00 00 80 3F 
+00 00 80 3F 00 00 80 3F 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 C8 42 
+00 00 00 00 00 00 C8 42 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 9A 99 99 3E 
+00 00 5C 42 00 00 00 00 00 00 00 00 FF FF 7F 7F 
+FF FF 7F 7F FF FF 7F FF FF FF 7F FF 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 FF FF 7F 7F 
+FF FF 7F 7F FF FF 7F 7F FF FF 7F 7F 00 00 00 00 
+01 00 00 00 00 00 80 3F 01 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 40 00 40 02 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 80 3F 00 00 80 3F 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+BC D9 A4 3D 00 00 00 80 00 00 00 00 00 00 00 00 
+00 00 00 80 00 00 00 80 9A 99 99 3E AB AA 6A 3F 
+00 00 00 00 00 00 80 3F 9A 99 99 3E 00 00 5C 42 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 
+00 00 00 00 00 00 00 00 00 00 00 00 40 00 40 02 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 E8 03 00 00 
+76 17 16 00 00 00 00 00 81 96 00 00 00 00 80 3F 
+01 04 00 00 76 17 16 00 00 16 00 00 34 33 83 3F</Data>
+<Data Format="Decorated">
+<Structure DataType="PID_ENHANCED">
+<DataValueMember Name="EnableIn" DataType="BOOL" Radix="Decimal" Value="0"/>
+<DataValueMember Name="PV" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="PVFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVEUMax" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="PVEUMin" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="SPProg" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="SPOper" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="SPCascade" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="SPHLimit" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="SPLLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="UseRatio" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RatioProg" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="RatioOper" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="RatioHLimit" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="RatioLLimit" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="CVFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVInitReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVInitValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CVProg" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CVOper" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CVOverride" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CVPrevious" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CVSetPrevious" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVManLimiting" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVEUMax" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="CVEUMin" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CVHLimit" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="CVLLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CVROCLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FF" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FFPrevious" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FFSetPrevious" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HandFB" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HandFBFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="WindupHIn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="WindupLIn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ControlAction" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DependIndepend" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PGain" DataType="REAL" Radix="Float" Value="0.3"/>
+<DataValueMember Name="IGain" DataType="REAL" Radix="Float" Value="55.0"/>
+<DataValueMember Name="DGain" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="PVEProportional" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVEDerivative" DataType="BOOL" Value="1"/>
+<DataValueMember Name="DSmoothing" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVTracking" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ZCDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="ZCOff" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVHHLimit" DataType="REAL" Radix="Float" Value="3.40282347e+038"/>
+<DataValueMember Name="PVHLimit" DataType="REAL" Radix="Float" Value="3.40282347e+038"/>
+<DataValueMember Name="PVLLimit" DataType="REAL" Radix="Float" Value="-3.40282347e+038"/>
+<DataValueMember Name="PVLLLimit" DataType="REAL" Radix="Float" Value="-3.40282347e+038"/>
+<DataValueMember Name="PVDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="PVROCPosLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="PVROCNegLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="PVROCPeriod" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="DevHHLimit" DataType="REAL" Radix="Float" Value="3.40282347e+038"/>
+<DataValueMember Name="DevHLimit" DataType="REAL" Radix="Float" Value="3.40282347e+038"/>
+<DataValueMember Name="DevLLimit" DataType="REAL" Radix="Float" Value="3.40282347e+038"/>
+<DataValueMember Name="DevLLLimit" DataType="REAL" Radix="Float" Value="3.40282347e+038"/>
+<DataValueMember Name="DevDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="AllowCasRat" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ManualAfterInit" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgProgReq" DataType="BOOL" Value="1"/>
+<DataValueMember Name="ProgOperReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgCasRatReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgAutoReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgManualReq" DataType="BOOL" Value="1"/>
+<DataValueMember Name="ProgOverrideReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgHandReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OperProgReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OperOperReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OperCasRatReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OperAutoReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OperManualReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgValueReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TimingMode" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="OversampleDT" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="RTSTime" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="RTSTimeStamp" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="AtuneAcquire" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtuneStart" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtuneUseGains" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtuneAbort" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtuneUnacquire" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CVEU" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CV" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CVInitializing" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVROCAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="SPPercent" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="SPHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SPLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVPercent" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="E" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="EPercent" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="InitPrimary" DataType="BOOL" Value="1"/>
+<DataValueMember Name="WindupHOut" DataType="BOOL" Value="0"/>
+<DataValueMember Name="WindupLOut" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ratio" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="RatioHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RatioLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ZCDeadbandOn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVHHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVLLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVROCPosAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVROCNegAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DevHHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DevHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DevLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DevLLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgOper" DataType="BOOL" Value="1"/>
+<DataValueMember Name="CasRat" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Auto" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Manual" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Override" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Hand" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DeltaT" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="AtuneReady" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtuneOn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtuneDone" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtuneAborted" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtuneBusy" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Status1" DataType="DINT" Radix="Hex" Value="16#0000_0000"/>
+<DataValueMember Name="Status2" DataType="DINT" Radix="Hex" Value="16#0000_0000"/>
+<DataValueMember Name="InstructFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVFaulted" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVFaulted" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HandFBFaulted" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVSpanInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SPProgInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SPOperInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SPCascadeInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SPLimitsInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RatioProgInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RatioOperInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RatioLimitsInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVProgInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVOperInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVOverrideInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVPreviousInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVEUSpanInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVLimitsInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CVROCLimitInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FFInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FFPreviousInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HandFBInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PGainInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="IGainInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DGainInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ZCDeadbandInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVDeadbandInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PVROCLimitsInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DevHLLimitsInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DevDeadbandInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtuneDataInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TimingModeInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RTSMissed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RTSTimeInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RTSTimeStampInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DeltaTInv" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="RMPS_PIDE_Auto_Restart" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 PIDE Instruction Auto Restart Command (Three Progam to Run Transitions)]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_PIDE_Auto_Start" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 PIDE Instruction Auto Mode Start Command]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_PIDE_Man_Out" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 PIDE Manual Output (percent)]]>
+</Description>
+<Data>00 00 00 00</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_PIDE_Out" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 PIDE Output (percent)]]>
+</Description>
+<Data>00 00 00 00</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_Run_Cmd" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 Run Command]]>
+</Description>
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_Segs" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 Number of Segment / Steps]]>
+</Description>
+<Data>03 00</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="3"/>
+</Data>
+</Tag>
+<Tag Name="RMPS_SHold_Time" TagType="Base" DataType="REAL" Dimensions="11" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 Segment Hold Times in Minutes]]>
+</Description>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Segment 0 Hold Time in Minutes]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Segment 1 Hold Time in Minutes]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Segment 2 Hold Time in Minutes]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Segment 3 Hold Time in Minutes]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Segment 4 Hold Time in Minutes]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Segment 5 Hold Time in Minutes]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Segment 6 Hold Time in Minutes]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Segment 7 Hold Time in Minutes]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Segment 8 Hold Time in Minutes]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Segment 9 Hold Time in Minutes]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Segment 10 Hold Time in Minutes]]>
+</Comment>
+</Comments>
+<Data>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</Data>
+<Data Format="Decorated">
+<Array DataType="REAL" Dimensions="11" Radix="Float">
+<Element Index="[0]" Value="0.0"/>
+<Element Index="[1]" Value="0.0"/>
+<Element Index="[2]" Value="0.0"/>
+<Element Index="[3]" Value="0.0"/>
+<Element Index="[4]" Value="0.0"/>
+<Element Index="[5]" Value="0.0"/>
+<Element Index="[6]" Value="0.0"/>
+<Element Index="[7]" Value="0.0"/>
+<Element Index="[8]" Value="0.0"/>
+<Element Index="[9]" Value="0.0"/>
+<Element Index="[10]" Value="0.0"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="RMPS_SP" TagType="Base" DataType="REAL" Dimensions="11" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Data>00 00 00 00 00 00 48 42 00 00 48 42 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</Data>
+<Data Format="Decorated">
+<Array DataType="REAL" Dimensions="11" Radix="Float">
+<Element Index="[0]" Value="0.0"/>
+<Element Index="[1]" Value="50.0"/>
+<Element Index="[2]" Value="50.0"/>
+<Element Index="[3]" Value="0.0"/>
+<Element Index="[4]" Value="0.0"/>
+<Element Index="[5]" Value="0.0"/>
+<Element Index="[6]" Value="0.0"/>
+<Element Index="[7]" Value="0.0"/>
+<Element Index="[8]" Value="0.0"/>
+<Element Index="[9]" Value="0.0"/>
+<Element Index="[10]" Value="0.0"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="RMPS_SRun_Time" TagType="Base" DataType="REAL" Dimensions="11" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 Segment Times in Minutes]]>
+</Description>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Segment 0 Segment Time in Minutes]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Segment 1 Segment Time in Minutes]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Segment 2 Segment Time in Minutes]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Segment 3 Segment Time in Minutes]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Segment 4 Segment Time in Minutes]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Segment 5 Segment Time in Minutes]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Segment 6 Segment Time in Minutes]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Segment 7 Segment Time in Minutes]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Segment 8 Segment Time in Minutes]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Segment 9 Segment Time in Minutes]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Segment 10 Segment Time in Minutes]]>
+</Comment>
+</Comments>
+<Data>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</Data>
+<Data Format="Decorated">
+<Array DataType="REAL" Dimensions="11" Radix="Float">
+<Element Index="[0]" Value="0.0"/>
+<Element Index="[1]" Value="0.0"/>
+<Element Index="[2]" Value="0.0"/>
+<Element Index="[3]" Value="0.0"/>
+<Element Index="[4]" Value="0.0"/>
+<Element Index="[5]" Value="0.0"/>
+<Element Index="[6]" Value="0.0"/>
+<Element Index="[7]" Value="0.0"/>
+<Element Index="[8]" Value="0.0"/>
+<Element Index="[9]" Value="0.0"/>
+<Element Index="[10]" Value="0.0"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="RMPS_STime_SP" TagType="Base" DataType="REAL" Dimensions="11" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Segment 0 Time (min)]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Segment 1 Time (min)]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Segment 2 Time (min)]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Segment 3 Time (min)]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Segment 4 Time (min)]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Segment 5 Time (min)]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Segment 6 Time (min)]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Segment 7 Time (min)]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Segment 8 Time (min)]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Segment 9 Time (min)]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Segment 10 Time (min)]]>
+</Comment>
+</Comments>
+<Data>00 00 00 00 00 00 00 40 00 00 A0 40 00 00 00 40 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</Data>
+<Data Format="Decorated">
+<Array DataType="REAL" Dimensions="11" Radix="Float">
+<Element Index="[0]" Value="0.0"/>
+<Element Index="[1]" Value="2.0"/>
+<Element Index="[2]" Value="5.0"/>
+<Element Index="[3]" Value="2.0"/>
+<Element Index="[4]" Value="0.0"/>
+<Element Index="[5]" Value="0.0"/>
+<Element Index="[6]" Value="0.0"/>
+<Element Index="[7]" Value="0.0"/>
+<Element Index="[8]" Value="0.0"/>
+<Element Index="[9]" Value="0.0"/>
+<Element Index="[10]" Value="0.0"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="Toggle_1" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Toggle_2" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Toggle_3" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Toggle_4" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Total_Start_1" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data>00</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="True" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Always True Bit]]>
+</Description>
+<Data>01</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+</Tags>
+<Programs>
+<Program Name="P01_AOI_Test_IO_Buffer" TestEdits="false" MainRoutineName="R001_IO_Buffer_Main" Disabled="false">
+<Tags/>
+<Routines>
+<Routine Name="R001_IO_Buffer_Main" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[******
+PLC IO Test IO Buffer Main Routine
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[JSR(R010_Discrete_IO,0);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R010_Discrete_IO" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[******
+PLC IO Test IO Discrete Module Buffer Routine
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[MOV(DO_S1_Data,Local:1:O.Data);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[COP(Local:2:I.Data,DI_S2_Data,1);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</Program>
+<Program Name="P02_AOI_Test" TestEdits="false" MainRoutineName="R001_AOI_Main" Disabled="false">
+<Description>
+<![CDATA[AOI Test Program]]>
+</Description>
+<Tags>
+<Tag Name="BNOT_01" TagType="Base" DataType="FBD_BOOLEAN_NOT" Constant="false" ExternalAccess="Read/Write">
+<Data>01 00 00 00 03 00 00 00 04 00 00 00</Data>
+<Data Format="Decorated">
+<Structure DataType="FBD_BOOLEAN_NOT">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="In" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Out" DataType="BOOL" Value="1"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TOT_01" TagType="Base" DataType="TOTALIZER" Constant="false" ExternalAccess="Read/Write">
+<Data>65 00 00 00 00 00 80 3F 01 00 00 00 00 00 80 3F 
+00 00 00 3F 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 01 00 00 00 CD CC CC 3C 01 00 00 00 
+00 00 00 00 7B 00 00 00 00 00 00 3F 00 00 00 3F 
+CD CC CC 3C 00 00 00 00 19 00 00 00 B4 19 16 00 
+00 00 00 00 01 16 00 00 CD CC CC 3C 00 00 00 00 
+02 44 00 00 89 88 08 3C 00 00 80 3F 00 00 E0 3F 
+00 00 00 00</Data>
+<Data Format="Decorated">
+<Structure DataType="TOTALIZER">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="In" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="InFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TimeBase" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="Gain" DataType="REAL" Radix="Float" Value="1.0"/>
+<DataValueMember Name="ResetValue" DataType="REAL" Radix="Float" Value="0.5"/>
+<DataValueMember Name="Target" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="TargetDev1" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="TargetDev2" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowInCutoff" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="ProgProgReq" DataType="BOOL" Value="1"/>
+<DataValueMember Name="ProgOperReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgStartReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgStopReq" DataType="BOOL" Value="1"/>
+<DataValueMember Name="ProgResetReq" DataType="BOOL" Value="1"/>
+<DataValueMember Name="OperProgReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OperOperReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OperStartReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OperStopReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OperResetReq" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgValueReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TimingMode" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="OversampleDT" DataType="REAL" Radix="Float" Value="0.025"/>
+<DataValueMember Name="RTSTime" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="RTSTimeStamp" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Total" DataType="REAL" Radix="Float" Value="0.5"/>
+<DataValueMember Name="OldTotal" DataType="REAL" Radix="Float" Value="0.5"/>
+<DataValueMember Name="ProgOper" DataType="BOOL" Value="1"/>
+<DataValueMember Name="RunStop" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgResetDone" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TargetFlag" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TargetDev1Flag" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TargetDev2Flag" DataType="BOOL" Value="1"/>
+<DataValueMember Name="LowInCutoffFlag" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DeltaT" DataType="REAL" Radix="Float" Value="0.025"/>
+<DataValueMember Name="Status" DataType="DINT" Radix="Hex" Value="16#0000_0000"/>
+<DataValueMember Name="InstructFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InFaulted" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TimeBaseInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TimingModeInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RTSMissed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RTSTimeInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RTSTimeStampInv" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DeltaTInv" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+</Tags>
+<Routines>
+<Routine Name="R001_AOI_Main" Type="RLL">
+<Description>
+<![CDATA[AOI Test Main Routine]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[[OTE(True) ,OTU(False) ];]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[[XIO(Flash_Timer.DN) TON(Flash_Timer,?,?) ,XIC(Flash_Timer.DN) XIC(Flash_On) OTE(Flash_Off_PB) ,[XIC(Flash_Timer.DN) XIO(Flash_On) ,XIC(Flash_On) ] XIO(Flash_Off_PB) OTE(Flash_On) ,XIO(Flash_On) OTE(Flash_Off) ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[[XIC(Fault_Reset_PB) OTU(Fault_Reset_PB) ,XIC(Fault_Reset_Timer.TT) ][TON(Fault_Reset_Timer,?,?) ,OTE(Fault_Reset_Cmd) ];]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[JSR(R200_Totalizer_1,0);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R200_Totalizer_1" Type="FBD">
+<Description>
+<![CDATA[Totalizer Instruction Test Routine 1]]>
+</Description>
+<FBDContent SheetSize="Letter - 8.5 x 11 in" SheetOrientation="Landscape">
+<Sheet Number="1">
+<IRef ID="0" X="380" Y="260" Operand="0.5" HideDesc="false"/>
+<IRef ID="1" X="380" Y="280" Operand="1" HideDesc="false"/>
+<IRef ID="2" X="380" Y="240" Operand="1.0" HideDesc="false"/>
+<IRef ID="3" X="220" Y="400" Operand="Total_Start_1" HideDesc="false"/>
+<Block Type="BNOT" ID="4" X="300" Y="340" Operand="BNOT_01" VisiblePins="In Out" HideDesc="false"/>
+<Block Type="TOT" ID="5" X="520" Y="180" Operand="TOT_01" VisiblePins="In ResetValue ProgProgReq ProgOperReq ProgStartReq ProgStopReq ProgResetReq Total OldTotal ProgOper RunStop ProgResetDone DeltaT" HideDesc="false"/>
+<Wire FromID="0" ToID="5" ToParam="ResetValue"/>
+<Wire FromID="1" ToID="5" ToParam="ProgProgReq"/>
+<Wire FromID="2" ToID="5" ToParam="In"/>
+<Wire FromID="3" ToID="4" ToParam="In"/>
+<Wire FromID="3" ToID="5" ToParam="ProgStartReq"/>
+<Wire FromID="4" FromParam="Out" ToID="5" ToParam="ProgResetReq"/>
+<Wire FromID="4" FromParam="Out" ToID="5" ToParam="ProgStopReq"/>
+</Sheet>
+</FBDContent>
+</Routine>
+</Routines>
+</Program>
+<Program Name="P02_Random" TestEdits="false" MainRoutineName="R001_Main" Disabled="false">
+<Description>
+<![CDATA[Gaussian Random Number Generator Program]]>
+</Description>
+<Tags/>
+<Routines>
+<Routine Name="R001_Main" Type="RLL">
+<Description>
+<![CDATA[Random Number Generator Main Routine]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[******
+Call Linear Congruential Generator Routine
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[JSR(R010_LCG,0);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[******
+Call Gaussian Random Number Generator Routine
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[JSR(R020_Gauss_RNG,0);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R010_LCG" Type="RLL">
+<Description>
+<![CDATA[Uniform Random Number Generator Subroutine]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[XIC(S:FS)MOV(0,BTC_RNG_2.Seed_Out);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[A_Uniform_RNG(BTC_RNG_1,BTC_RNG_2.Seed_Out,BTC_RNG_1.A,BTC_RNG_1.B,BTC_RNG_1.Out_lo,BTC_RNG_1.Out_hi,BTC_RNG_1.Output_scaled,BTC_RNG_1.Seed_Out)A_Uniform_RNG(BTC_RNG_2,BTC_RNG_1.Seed_Out,BTC_RNG_2.A,BTC_RNG_2.B,BTC_RNG_2.Out_lo,BTC_RNG_2.Out_hi,BTC_RNG_2.Output_scaled,BTC_RNG_2.Seed_Out);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R020_Gauss_RNG" Type="RLL">
+<Description>
+<![CDATA[Gaussian Random Number Generator Routine]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[[XIC(S:FS) MOV(0,GRNG_Index) ,ADD(GRNG_Index,1,GRNG_Index) ,GRT(GRNG_Index,999) MOV(0,GRNG_Index) ,MOV(Gauss_RNG.GNG_Out,Gauss_RNG_Data[GRNG_Index]) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[A_Gauss_RNG(Gauss_RNG,Gauss_RNG.GNG_Out);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</Program>
+<Program Name="P03_RMPS_AOI_Test" TestEdits="false" MainRoutineName="R001_RMPS_Main" Disabled="false">
+<Description>
+<![CDATA[Ramp & Soak AOI Test Program]]>
+</Description>
+<Tags>
+<Tag Name="a_RMPS_01" TagType="Base" DataType="a_RMPS" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ramp & Soak 1 AOI:]]>
+</Description>
+<Comments>
+<Comment Operand=".RUN_MODE">
+<![CDATA[Ramp & Soak 1 AOI: in Run Mode]]>
+</Comment>
+</Comments>
+<Data>03 01 00 00 00 00 00 00 03 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+C0 D4 01 00 00 00 00 00 00 00 00 00 E0 93 04 00 
+00 00 00 00 00 00 00 00 C0 D4 01 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 A0 0B 00 00 00 0A 00 00 00 00 00 00 A0 
+0B 00 00 00 0A 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 D0 FF FF 7F 00 00 00 00 
+00 00 00 00 D0 FF FF 7F 00 00 00 00 00 00 00 00 
+D0 FF FF 7F 00 00 00 00 00 00 00 00 D0 FF FF 7F 
+00 00 00 00 00 00 00 00 D0 FF FF 7F 00 00 00 00 
+00 00 00 00 D0 FF FF 7F 00 00 00 00 00 00 00 00 
+D0 FF FF 7F 00 00 00 00 00 00 00 00 D0 FF FF 7F 
+00 00 00 00 00 00 00 00 D0 FF FF 7F 00 00 00 00 
+00 00 00 00 D0 FF FF 7F 00 00 00 00 03 00 00 00</Data>
+<Data Format="Decorated">
+<Structure DataType="a_RMPS">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Run_Cmd" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PV" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Num_of_Seg" DataType="INT" Radix="Decimal" Value="3"/>
+<DataValueMember Name="Hold" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Initialize" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP_Out" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Current_Seg" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="STime_Left" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="STime_Expired" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Total_Cycle" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Total_Run" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Total_Hold" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Cycle_Hour" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Cycle_Min" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Run_Mode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Done" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Fault" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="PIDE_ONS" TagType="Base" DataType="BOOL" Dimensions="32" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PIDE One Shot Bit]]>
+</Description>
+<Data>05 00 00 00</Data>
+<Data Format="Decorated">
+<Array DataType="BOOL" Dimensions="32" Radix="Decimal">
+<Element Index="[0]" Value="1"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="1"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+<Element Index="[7]" Value="0"/>
+<Element Index="[8]" Value="0"/>
+<Element Index="[9]" Value="0"/>
+<Element Index="[10]" Value="0"/>
+<Element Index="[11]" Value="0"/>
+<Element Index="[12]" Value="0"/>
+<Element Index="[13]" Value="0"/>
+<Element Index="[14]" Value="0"/>
+<Element Index="[15]" Value="0"/>
+<Element Index="[16]" Value="0"/>
+<Element Index="[17]" Value="0"/>
+<Element Index="[18]" Value="0"/>
+<Element Index="[19]" Value="0"/>
+<Element Index="[20]" Value="0"/>
+<Element Index="[21]" Value="0"/>
+<Element Index="[22]" Value="0"/>
+<Element Index="[23]" Value="0"/>
+<Element Index="[24]" Value="0"/>
+<Element Index="[25]" Value="0"/>
+<Element Index="[26]" Value="0"/>
+<Element Index="[27]" Value="0"/>
+<Element Index="[28]" Value="0"/>
+<Element Index="[29]" Value="0"/>
+<Element Index="[30]" Value="0"/>
+<Element Index="[31]" Value="0"/>
+</Array>
+</Data>
+</Tag>
+</Tags>
+<Routines>
+<Routine Name="R001_RMPS_Main" Type="RLL">
+<Description>
+<![CDATA[Ramp & Soak PIDE Main Routine]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[******
+PID Index Counter Logic - The PID Index Counter (PID_Index) is Used to Control the Execution Timing of the PIDE Instruction(s) which are Configured for the Oversasmple Mode / Controlled by Programmer
+
+PID Index Counter Cycle Time (1 to 40) = PIID Index Counter Max x AOI_Test Task Periodic Scan Time = 40 x 25 msec = 1000 msec = 1.0 sec
+
+For a 500 msec or 0.5 sec PIDE Update period the PIDE Instruction should be executed when PID_Index = 1 & 21
+
+For a 1000 msec PIDE Update period the PIIDE Instrtuction should be executed when PID_Index = 1
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIO(First_Scan) MOV(0,PID_Index) ,ADD(PID_Index,1,PID_Index) ,GRT(PID_Index,40) [OTE(PID_Cycle_Done) ,MOV(0,PID_Index) ] ,JSR(R020_RMPS_PIDE_Lad,0) JSR(R030_RMPS_PIDE_FB,0) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[OTE(First_Scan);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R020_RMPS_PIDE_Lad" Type="RLL">
+<Description>
+<![CDATA[Ramp & Soad PIDE Ladder Routine]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[******
+Ramp and Soak PIDE Restart Control
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[[XIO(First_Scan) ,XIO(a_RMPS_01.RUN_MODE) ] MOV(0,PID_Cycle_Index) ,XIC(RMPS_PIDE.Manual) XIC(RMPS_Hold) [XIC(a_RMPS_01.RUN_MODE) XIO(PID_Cycle_Done) ADD(PID_Cycle_Index,1,PID_Cycle_Index) ,EQU(PID_Cycle_Index,3) OTE(RMPS_PIDE_Auto_Restart) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[[XIC(Toggle_1) OTU(Toggle_1) OTE(RMPS_Init) ,[XIC(Toggle_2) OTU(Toggle_2) ,XIC(a_RMPS_01.RUN_MODE) XIO(a_RMPS_01.DONE) ] [XIO(RMPS_Run_Cmd) XIC(First_Scan) OTE(RMPS_PIDE_Auto_Start) ,XIO(RMPS_Init) OTE(RMPS_Run_Cmd) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[[XIC(Toggle_3) OTU(Toggle_3) ,XIO(First_Scan) ,XIC(RMPS_Hold) XIC(a_RMPS_01.RUN_MODE) ]XIO(Toggle_4)XIO(RMPS_PIDE_Auto_Restart)OTE(RMPS_Hold);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[XIO(RMPS_Hold)OTU(Toggle_4);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[[XIO(First_Scan) MOV(RMPS_PIDE_Out,RMPS_PIDE_Man_Out) ,XIO(a_RMPS_01.RUN_MODE) ONS(PIDE_ONS[0]) [OTE(RMPS_Done) ,MOV(0.0,RMPS_PIDE_Man_Out) ] ,[XIC(RMPS_Man_PB) OTU(RMPS_Man_PB) ,XIC(RMPS_Done) ,XIO(First_Scan) ,XIC(RMPS_PIDE.ProgManualReq) ] XIO(RMPS_PIDE_Auto_Start) XIO(RMPS_PIDE_Auto_Restart) XIO(RMPS_Auto_PB) OTE(RMPS_PIDE.ProgManualReq) ,XIO(RMPS_PIDE.ProgManualReq) [OTU(RMPS_Auto_PB) ,OTE(RMPS_PIDE.ProgAutoReq) ] ,EQU(PID_Index,1) OTE(PID_Enable[1]) ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R030_RMPS_PIDE_FB" Type="FBD">
+<Description>
+<![CDATA[Ramp & Soak PIDE Functin Block Routine]]>
+</Description>
+<FBDContent SheetSize="Tabloid - 11 x 17 in" SheetOrientation="Landscape">
+<Sheet Number="1">
+<Description>
+<![CDATA[RMPS_PIDE]]>
+</Description>
+<IRef ID="0" X="900" Y="300" Operand="1" HideDesc="false"/>
+<IRef ID="1" X="900" Y="220" Operand="PID_Enable[1]" HideDesc="false"/>
+<IRef ID="2" X="200" Y="380" Operand="RMPS_Hold" HideDesc="false"/>
+<IRef ID="3" X="240" Y="460" Operand="RMPS_Init" HideDesc="false"/>
+<IRef ID="4" X="800" Y="340" Operand="RMPS_PIDE_Man_Out" HideDesc="false"/>
+<IRef ID="5" X="200" Y="200" Operand="RMPS_PIDE_Out" HideDesc="false"/>
+<IRef ID="6" X="240" Y="120" Operand="RMPS_Run_Cmd" HideDesc="false"/>
+<IRef ID="7" X="180" Y="300" Operand="RMPS_Segs" HideDesc="false"/>
+<ORef ID="8" X="1250" Y="220" Operand="RMPS_PIDE_Out" HideDesc="false"/>
+<Block Type="PIDE" ID="9" X="960" Y="160" Operand="RMPS_PIDE" VisiblePins="EnableIn PV SPProg CVProg ProgProgReq ProgAutoReq ProgManualReq CVEU CV SP ProgOper Auto Manual" HideDesc="false"/>
+<AddOnInstruction Name="a_RMPS" ID="10" X="340" Y="200" Operand="a_RMPS_01" VisiblePins="Run_Cmd PV Num_of_Seg Hold Initialize SP_Out Current_Seg STime_Left STime_Expired Total_Cycle Total_Run Total_Hold Run_Mode Done Fault STime_SP SP_In SRun_Time SHold_Time">
+<InOutParameter Name="SHold_Time" Argument="RMPS_SHold_Time"/>
+<InOutParameter Name="SP_In" Argument="RMPS_SP"/>
+<InOutParameter Name="SRun_Time" Argument="RMPS_SRun_Time"/>
+<InOutParameter Name="STime_SP" Argument="RMPS_STime_SP"/>
+</AddOnInstruction>
+<Wire FromID="0" ToID="9" ToParam="ProgProgReq"/>
+<Wire FromID="1" ToID="9" ToParam="EnableIn"/>
+<Wire FromID="2" ToID="10" ToParam="Hold"/>
+<Wire FromID="3" ToID="10" ToParam="Initialize"/>
+<Wire FromID="4" ToID="9" ToParam="CVProg"/>
+<Wire FromID="5" ToID="10" ToParam="PV"/>
+<Wire FromID="6" ToID="10" ToParam="Run_Cmd"/>
+<Wire FromID="7" ToID="10" ToParam="Num_of_Seg"/>
+<Wire FromID="9" FromParam="CVEU" ToID="8"/>
+<Wire FromID="9" FromParam="CVEU" ToID="9" ToParam="PV"/>
+<Wire FromID="10" FromParam="SP_Out" ToID="9" ToParam="SPProg"/>
+</Sheet>
+</FBDContent>
+</Routine>
+</Routines>
+</Program>
+</Programs>
+<Tasks>
+<Task Name="AOI_Test" Type="PERIODIC" Rate="25" Priority="10" Watchdog="500" DisableUpdateOutputs="false" InhibitTask="false">
+<ScheduledPrograms>
+<ScheduledProgram Name="P01_AOI_Test_IO_Buffer"/>
+<ScheduledProgram Name="P02_AOI_Test"/>
+<ScheduledProgram Name="P03_RMPS_AOI_Test"/>
+<ScheduledProgram Name="P02_Random"/>
+</ScheduledPrograms>
+</Task>
+</Tasks>
+<CommPorts>
+<SerialPort Channel="0" BaudRate="19200" Parity="No Parity" DataBits="8 Bits of Data" StopBits="1 Stop Bit" ComDriverId="DF1" RTSOffDelay="0" RTSSendDelay="0" ControlLine="No Handshake" RemoteModeChangeFlag="false" ModeChangeAttentionChar="27"
+ SystemModeCharacter="83" UserModeCharacter="85" DCDWaitDelay="0">
+<ASCII XONXOFFEnable="false" DeleteMode="0" EchoMode="0" TerminationChars="65293" AppendChars="2573" BufferSize="82"/>
+<DF1 DuplicateDetection="true" ErrorDetection="BCC Error" EmbeddedResponseEnable="Autodetect" DF1Mode="Pt to Pt" ACKTimeout="50" NAKReceiveLimit="3" ENQTransmitLimit="3" TransmitRetries="3" StationAddress="0" ReplyMessageWait="5" PollingMode="Message Based (slave can initiate messages)"
+ MasterMessageTransmit="Between station polls" NormalPollNodeFile="&lt;NA&gt;" NormalPollGroupSize="0" PriorityPollNodeFile="&lt;NA&gt;" ActiveStationFile="&lt;NA&gt;" SlavePollTimeout="3000" EOTSuppression="0" MaxStationAddress="31" TokenHoldFactor="1" EnableStoreFwd="false" StoreFwdFile="&lt;NA&gt;"
+/>
+</SerialPort>
+</CommPorts>
+<CST MasterID="0"/>
+<WallClockTime LocalTimeAdjustment="0" TimeZone="0"/>
+<Trends>
+<Trend Name="Gaussian_RNG" SamplePeriod="10" NumberOfCaptures="1" CaptureSizeType="Samples" CaptureSize="60000" StartTriggerType="No Trigger" StopTriggerType="No Trigger" TrendxVersion="5.2">
+<Description>
+<![CDATA[Gaussian Random Number Generator Data]]>
+</Description>
+<Template>208 207 17 224 161 177 26 225 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 62 0 3 0 254 255 9 0 6 0 0 0 0 0 0 0
+ 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 16 0 0 2 0 0 0 1 0 0 0 254 255 255 255 0 0 0 0 0 0 0 0
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 253 255 255 255 254 255 255 255
+ 254 255 255 255 4 0 0 0 254 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 82 0 111 0 111 0 116 0 32 0 69 0 110 0 116 0
+ 114 0 121 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 22 0 5 0 255 255 255 255 255 255 255 255 1 0 0 0 14 52 81 191 9 48 205 65 159 190 222 136 174 167 50 40
+ 0 0 0 0 0 0 0 0 0 0 0 0 80 29 44 44 93 191 213 1 3 0 0 0 192 3 0 0 0 0 0 0 67 0 111 0 110 0 116 0
+ 101 0 110 0 116 0 115 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 18 0 2 1 255 255 255 255 255 255 255 255 255 255 255 255 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 131 3 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 255 255 255 255 255 255 255 255 255 255 255
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 255 255 255
+ 255 255 255 255 255 255 255 255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 2 0 0 0 3 0 0 0 4 0 0 0 5 0 0 0 6 0 0 0
+ 7 0 0 0 8 0 0 0 9 0 0 0 10 0 0 0 11 0 0 0 12 0 0 0 13 0 0 0 14 0 0 0 254 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 4 0 0 0 8 152 0 0 159 74 0 0 0 0 0 0 13 0 0 0 255 254 255 12 71 0 97 0 117 0 115 0
+ 115 0 105 0 97 0 110 0 95 0 82 0 78 0 71 0 0 0 0 0 0 0 0 0 255 255 255 255 200 0 0 0 255 157 3 0 255 1 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0 1 96 234 0 0 0 0 0 0 255 255 255 0 0 0 0 0 0 0
+ 0 0 0 8 3 0 0 1 0 255 255 1 0 13 0 67 86 105 101 119 76 105 110 101 73 110 102 111 3 0 0 0 1 0 0 0 0 0 64 192
+ 0 0 64 64 255 254 255 0 255 254 255 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0 255 254 255 0
+ 255 254 255 17 71 0 97 0 117 0 115 0 115 0 95 0 82 0 78 0 71 0 46 0 71 0 78 0 71 0 95 0 79 0 117 0 116 0 32 1
+ 0 0 0 255 254 255 0 255 254 255 0 9 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1
+ 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 255
+ 0 0 0 0 0 3 0 0 0 4 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 200 66 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 1 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 1 0 0 0 0 0 255 255 255
+ 255 0 0 0 0 44 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 128 128 128 0 128 128 128 0 255 239 255 254 255 191 255 247 126 116 10 94 1 0 0 0 108 2 0 0 136 116 10
+ 94 1 0 0 0 108 2 0 0 255 254 255 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 2 0 0 0 40 0 0 0 50 0 0 0 0
+ 0 0 0 0 0 0 0 92 0 0 0 245 255 255 255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 255 254 255 5 65 0 114 0 105 0 97 0 108 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0 255 254 255 0 255 254 255 0 32 1 0
+ 0 0 255 254 255 0 255 254 255 0 3 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0 255 254 255 0 255 254 255 0 32 1 0 0 0 255
+ 254 255 0 255 254 255 0 0 0 0 0 0 0 0 0 255 255 255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 8 0 0 0 1
+ 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 255 255 1 0 9 0 67 76 105 110 101 73 110 102 111 3 0 0 0 1 0 0 0
+ 0 0 64 192 0 0 64 64 255 254 255 0 255 254 255 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0
+ 255 254 255 0 255 254 255 17 71 0 97 0 117 0 115 0 115 0 95 0 82 0 78 0 71 0 46 0 71 0 78 0 71 0 95 0 79 0 117 0
+ 116 0 32 1 0 0 0 255 254 255 0 255 254 255 0 0 0 0 0 0 0 0 0 1 0 0 0 0 69 0 116 0 104 0 101 0 114 0 78 0
+ 101 0 116 0 47 0 73 0 80 0 32 0 65 0 100 0 97 0 112 0 116 0 101 0 114 0 0 0 0 0 0 0 207 19 54 207 0 0 8 255
+ 136 155 64 31 38 0 0 0 39 0 0 0 0 0 0 0 123 0 70 0 54 0 70 0 56 0 57 0 55 0 65 0 50 0 45 0 65 0 55 0
+ 66 0 49 0 45 0 49 0 49 0 100 0 48 0 45 0 65 0 68 0 53 0 68 0 45 0 48 0 48 0 67 0 0 0 0 0 127 75 3 0
+</Template>
+<Pens>
+<Pen Name="Gauss_RNG.GNG_Out" Color="16#00ff_0000" Visible="true" Style="0" Type="Analog" Width="1" Marker="0" Min="-3.0" Max="3.0"/>
+</Pens>
+</Trend>
+<Trend Name="RMPS_01" SamplePeriod="100" NumberOfCaptures="1" CaptureSizeType="Time Period" CaptureSize="1440000" StartTriggerType="No Trigger" StopTriggerType="No Trigger" TrendxVersion="5.2">
+<Description>
+<![CDATA[Ramp & Soak 1 Trend]]>
+</Description>
+<Template>208 207 17 224 161 177 26 225 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 62 0 3 0 254 255 9 0 6 0 0 0 0 0 0 0
+ 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 16 0 0 2 0 0 0 1 0 0 0 254 255 255 255 0 0 0 0 0 0 0 0
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 253 255 255 255 254 255 255 255
+ 254 255 255 255 4 0 0 0 5 0 0 0 254 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 82 0 111 0 111 0 116 0 32 0 69 0 110 0 116 0
+ 114 0 121 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 22 0 5 0 255 255 255 255 255 255 255 255 1 0 0 0 14 52 81 191 9 48 205 65 159 190 222 136 174 167 50 40
+ 0 0 0 0 0 0 0 0 0 0 0 0 208 76 113 170 225 59 213 1 3 0 0 0 0 6 0 0 0 0 0 0 67 0 111 0 110 0 116 0
+ 101 0 110 0 116 0 115 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 18 0 2 1 255 255 255 255 255 255 255 255 255 255 255 255 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 213 5 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 255 255 255 255 255 255 255 255 255 255 255
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 255 255 255
+ 255 255 255 255 255 255 255 255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 2 0 0 0 3 0 0 0 4 0 0 0 5 0 0 0 6 0 0 0
+ 7 0 0 0 8 0 0 0 9 0 0 0 10 0 0 0 11 0 0 0 12 0 0 0 13 0 0 0 14 0 0 0 15 0 0 0 16 0 0 0
+ 17 0 0 0 18 0 0 0 19 0 0 0 20 0 0 0 21 0 0 0 22 0 0 0 23 0 0 0 254 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
+ 255 255 255 255 255 255 255 255 4 0 0 0 195 146 0 0 120 54 0 0 0 0 0 0 13 0 0 0 255 254 255 7 82 0 77 0 80 0 83 0
+ 95 0 48 0 49 0 0 0 0 0 0 0 0 0 255 255 255 255 200 0 0 0 255 157 3 0 255 1 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 255 254 255 0 255 254 255 0 1 96 234 0 0 0 0 0 0 255 255 255 0 0 0 0 0 0 0 0 0 0 100 5 0 0 3 0 255
+ 255 1 0 13 0 67 86 105 101 119 76 105 110 101 73 110 102 111 3 0 0 0 1 0 0 0 0 0 160 192 0 0 200 66 255 254 255 1 32 0
+ 255 254 255 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0 255 254 255 0 255 254 255 28 80 0 48 0
+ 49 0 95 0 65 0 67 0 95 0 65 0 79 0 73 0 95 0 84 0 101 0 115 0 116 0 92 0 97 0 95 0 82 0 77 0 80 0 83 0
+ 95 0 48 0 49 0 46 0 83 0 80 0 32 1 0 0 0 255 254 255 0 255 254 255 0 1 128 3 0 0 0 1 0 0 0 0 0 160 192 0
+ 0 200 66 255 254 255 1 32 0 255 254 255 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0 255 254 255
+ 0 255 254 255 13 82 0 77 0 80 0 83 0 95 0 80 0 73 0 68 0 69 0 95 0 79 0 117 0 116 0 32 1 0 0 0 255 254 255 0
+ 255 254 255 0 1 128 3 0 0 0 1 0 0 0 205 204 204 189 0 0 32 65 255 254 255 1 32 0 255 254 255 0 0 0 0 0 0 0 0 0
+ 3 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0 255 254 255 0 255 254 255 37 80 0 48 0 49 0 95 0 65 0 67 0 95 0 65 0
+ 79 0 73 0 95 0 84 0 101 0 115 0 116 0 92 0 97 0 95 0 82 0 77 0 80 0 83 0 95 0 48 0 49 0 46 0 67 0 117 0
+ 114 0 114 0 101 0 110 0 116 0 95 0 83 0 101 0 103 0 32 1 0 0 0 255 254 255 0 255 254 255 0 9 0 0 0 1 0 0 0 0
+ 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1
+ 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 3 0 255 0 0 0 0 255 0 0 255 128 64 0 0 0 0 0 1 0 0 0 4 0 0
+ 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 200 66 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0
+ 0 3 0 1 0 0 0 1 0 0 0 1 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 1 0 0 0 1 0 0 0 1
+ 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 255 255 255 255 0 0 0 0 44 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 128 128 128 0 128 128 128 0 255 239 255
+ 254 255 191 255 247 160 215 45 93 1 0 0 0 253 1 0 0 64 221 45 93 1 0 0 0 253 1 0 0 255 254 255 0 1 0 0 0 1 0 0
+ 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 40 0 0 0 50 0 0 0 0 0 0 0 0 0 0 0 92 0 0 0 245
+ 255 255 255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 254 255 5 65
+ 0 114 0 105 0 97 0 108 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 3 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0 255 254 255 0 255 254 255 0 32 1 0 0 0 255 254 255 0 255 254 255 0 3 0
+ 0 0 0 0 0 0 255 254 255 0 255 254 255 0 255 254 255 0 255 254 255 0 32 1 0 0 0 255 254 255 0 255 254 255 0 0 0 0 0 0
+ 0 0 0 255 255 255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 8 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 255 255 1 0 9 0 67 76 105 110 101 73 110 102 111 3 0 0 0
+ 1 0 0 0 0 0 160 192 0 0 200 66 255 254 255 1 32 0 255 254 255 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 255 254
+ 255 0 255 254 255 0 255 254 255 0 255 254 255 28 80 0 48 0 49 0 95 0 65 0 67 0 95 0 65 0 79 0 73 0 95 0 84 0 101 0
+ 115 0 116 0 92 0 97 0 95 0 82 0 77 0 80 0 83 0 95 0 48 0 49 0 46 0 83 0 80 0 32 1 0 0 0 255 254 255 0 255
+ 254 255 0 5 128 3 0 0 0 1 0 0 0 0 0 160 192 0 0 200 66 255 254 255 1 32 0 255 254 255 0 0 0 0 0 0 0 0 0 3
+ 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0 255 254 255 0 255 254 255 13 82 0 77 0 80 0 83 0 95 0 80 0 73 0 68 0 69
+ 0 95 0 79 0 117 0 116 0 32 1 0 0 0 255 254 255 0 255 254 255 0 5 128 3 0 0 0 1 0 0 0 205 204 204 189 0 0 32 65
+ 255 254 255 1 32 0 255 254 255 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 255 254 255 0 255 254 255 0 255 254 255 0 255 254
+ 255 37 80 0 48 0 49 0 95 0 65 0 67 0 95 0 65 0 79 0 73 0 95 0 84 0 101 0 115 0 116 0 92 0 97 0 95 0 82 0
+ 77 0 80 0 83 0 95 0 48 0 49 0 46 0 67 0 117 0 114 0 114 0 101 0 110 0 116 0 95 0 83 0 101 0 103 0 32 1 0 0
+ 0 255 254 255 0 255 254 255 0 0 0 0 0 0 0 0 0 1 0 0 0 113 0 0 66 0 0 0 0 0 0 0 8 2 0 0 13 0 2 0
+ 0 0 1 0 1 113 0 0 21 0 0 0 0 0 0 0 160 0 0 0 13 0 2 0 0 0 0 0 244 33 3 0</Template>
+<Pens>
+<Pen Name="P03_RMPS_AOI_Test\a_RMPS_01.SP" Color="16#0000_00ff" Visible="true" Style="0" Type="Analog" Width="1" Marker="0" Min="-5.0" Max="100.0">
+<Description>
+<![CDATA[ ]]>
+</Description>
+</Pen>
+<Pen Name="RMPS_PIDE_Out" Color="16#0000_ff00" Visible="true" Style="0" Type="Analog" Width="1" Marker="0" Min="-5.0" Max="100.0">
+<Description>
+<![CDATA[ ]]>
+</Description>
+</Pen>
+<Pen Name="P03_RMPS_AOI_Test\a_RMPS_01.Current_Seg" Color="16#0040_80ff" Visible="true" Style="0" Type="Analog" Width="1" Marker="0" Min="-0.1" Max="10.0">
+<Description>
+<![CDATA[ ]]>
+</Description>
+</Pen>
+</Pens>
+</Trend>
+</Trends>
+<TimeSynchronize Priority1="128" Priority2="128" PTPEnable="true"/>
+</Controller>
+</RSLogix5000Content>

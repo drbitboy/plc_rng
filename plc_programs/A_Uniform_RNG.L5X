@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Random Number Generator AOI
+Uses Linear Congruential Generator (LCG)
+1) Get Seed Number from either previous execution or default
+2) Generate next Seed via LCG
+4) Step #4 = Scale Seed to output range [Out_lo:out_hi)
+-->
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="20.04" TargetName="A_Uniform_RNG" TargetType="AddOnInstructionDefinition" TargetRevision="1.0 " TargetLastEdited="2019-12-30T20:11:24.531Z" ContainsContext="true" Owner="FAS, FAS" ExportDate="Sat Jan 04 21:33:23 2020" ExportOptions="References DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="Compact_AOI_Test">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="A_Uniform_RNG" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2019-12-25T19:53:36.259Z" CreatedBy="DOMAIN1\carp" EditedDate="2019-12-30T20:11:24.531Z" EditedBy="DOMAIN1\carp" SoftwareRevision="v28.01"
+>
+<Description>
+<![CDATA[Random Number Generator AOI
+Uses Linear Congruential Generator (LCG)
+1) Get Seed Number from either previous execution or default
+2) Generate next Seed via LCG
+4) Step #4 = Scale Seed to output range [Out_lo:out_hi)
+]]>
+</Description>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Seed" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[LCG input seed; updated after each execution]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="A" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[LCG multiplicative parameter A
+ in (Seed(n+1) = Seed(n) * A + C) MOD Modulus; default is from glibc implementation]]>
+</Description>
+<DefaultData>8D D3 93 06</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="110351245"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="B" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[LCG additive parameter A
+ in Seed(n+1) = (Seed(n) * A + C) MOD Modulus; default PJC/BTC/WA value]]>
+</Description>
+<DefaultData>39 30 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="12345"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Out_lo" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Output value when updated seed is 0]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Out_hi" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Output value for an updated seed of 2**31 (theoretical)]]>
+</Description>
+<DefaultData>00 00 80 3F</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="1.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Output_scaled" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="true" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Actual output value at each execution]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Seed_Out" TagType="Base" DataType="DINT" Usage="Output" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[LCG Calculation Seed Output]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Se" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Internal copy, and calculation, of seed]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="float_internal" DataType="REAL" Radix="Float" ExternalAccess="None">
+<Description>
+<![CDATA[Intermediate calculations for output scaling]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[Random Number Generator using Linear Congruential Generator]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[This rung updates Seed:  Seed(n+1) = (Seed(n) * A + B) MOD (2**31)
+N.B. MOD is implemented via DINT overflow plus bit-wise AND with (2**31 - 1) i.e. 0x7FFFFFFF.,
+so local tag [Seed_internal] may not be the same as the final seed after the AND-cum-MOD
+]]>
+</Comment>
+<Text>
+<![CDATA[MUL(Seed,A,Se)ADD(Se,B,Se)OR(Se,-2147483648,Seed_Out);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[OTU(S:V);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[This rung scales Seed to Output_scaled:  Output_scaled(n+1) = Func(Seed(n+1),Out_lo,Out_hi)]]>
+</Comment>
+<Text>
+<![CDATA[DIV(Seed_Out,-2147483648.0,float_internal)CPT(Output_scaled,((1.0 - float_internal) * Out_lo) + (float_internal * Out_hi));]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

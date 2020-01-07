@@ -1,0 +1,1052 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Ramp and Soak AOI-->
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="20.04" TargetName="a_RMPS" TargetType="AddOnInstructionDefinition" TargetRevision="1.0 " TargetLastEdited="2020-01-02T19:02:21.843Z" ContainsContext="true" Owner="FAS, FAS" ExportDate="Sat Jan 04 21:35:11 2020" ExportOptions="References DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="Compact_AOI_Test">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="a_RMPS" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2017-09-29T11:34:44.798Z" CreatedBy="DOMAIN1\carp" EditedDate="2020-01-02T19:02:21.843Z" EditedBy="FAS-ENG-PJC\image" SoftwareRevision="v20.04"
+>
+<Description>
+<![CDATA[Ramp and Soak AOI]]>
+</Description>
+<RevisionNote>
+<![CDATA[Note: Input Arrays are Real[10] so the maximum number of segmemts is 10]]>
+</RevisionNote>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Run_Cmd" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[AOI Run Cmd]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="PV" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Scaled Analog Input (Real) to the AOI]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Num_of_Seg" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="None">
+<Description>
+<![CDATA[Number of Segments (Maximum = 10)]]>
+</Description>
+<DefaultData>00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Hold" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[AOI Hold Cmd]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Initialize" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Initialize AOI Cmd (Reset Segment to 0)]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="SP_Out" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Setpoint Output (psig, deg F)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Current_Seg" TagType="Base" DataType="INT" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="None">
+<Description>
+<![CDATA[Current Segment]]>
+</Description>
+<DefaultData>00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="STime_Left" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Current Segment Remaining Time (min)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="STime_Expired" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Current Segment Time Expired]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Total_Cycle" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Total Cycle Time (minutes)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Total_Run" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Total Run Time (minutes)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Total_Hold" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Total Hold Time (minutes)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cycle_Hour" TagType="Base" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Total Cycle Time Hours]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cycle_Min" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Total Cycle Time Minutes]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Run_Mode" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[AOI in Run Mode]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Done" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[AOI Done Bit]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Fault" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[AOI Faulted / Invalid Data]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="STime_SP" TagType="Base" DataType="REAL" Dimensions="11" Usage="InOut" Radix="Float" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[Segment Timer Preset Array (minutes)]]>
+</Description>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Step 0 Time = 0 min]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Step 1 Time (min)]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Step 2 Time (min)]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Step 3 Time (min)]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Step 4 Time (min)]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Step 5 Time (min)]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Step 6 Time (min)]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Step 7 Time (min)]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Step 8 Time (min)]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Step 9 Time (min)]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Step 10 Time (min)]]>
+</Comment>
+</Comments>
+</Parameter>
+<Parameter Name="SP_In" TagType="Base" DataType="REAL" Dimensions="11" Usage="InOut" Radix="Float" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[Segment Setpoint Array (psig, deg F)]]>
+</Description>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Step 0 / Start SP]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[End of Step 1 SP]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[End of Step 2 SP]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[End of Step 3 SP]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[End of Step 4 SP]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[End of Step 5 SP]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[End of Step 6 SP]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[End of Step 7 SP]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[End of Step 8 SP]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[End of Step 9 SP]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[End of Step 10 SP]]>
+</Comment>
+</Comments>
+</Parameter>
+<Parameter Name="SRun_Time" TagType="Base" DataType="REAL" Dimensions="11" Usage="InOut" Radix="Float" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[Segment Run Time Array (minutes)]]>
+</Description>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Step 0 Run Time = 0 min]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Step 1 Run Time (min)]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Step 2 Run Time (min)]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Step 3 Run Time (min)]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Step 4 Run Time (min)]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Step 5 Run Time (min)]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Step 6 Run Time (min)]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Step 7 Run Time (min)]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Step 8 Run Time (min)]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Step 9 Run Time (min)]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Step 10 Run Time (min)]]>
+</Comment>
+</Comments>
+</Parameter>
+<Parameter Name="SHold_Time" TagType="Base" DataType="REAL" Dimensions="11" Usage="InOut" Radix="Float" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[Segment Hold Time Array (minutes)]]>
+</Description>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Step 0 Hold Time = 0 min]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Step 1 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Step 2 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Step 3 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Step 4 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Step 5 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Step 6 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Step 7 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Step 8 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Step 9 Hold Time (min)]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Step 10 Hold Time (min)]]>
+</Comment>
+</Comments>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="SRun_Tmr" DataType="TIMER" Dimensions="11" ExternalAccess="None">
+<Description>
+<![CDATA[Segment Run Mode Timers]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+C0 27 09 00 00 00 00 00 00 00 00 00 80 4F 12 00 
+00 00 00 00 00 00 00 00 40 77 1B 00 00 00 00 00 
+00 00 00 00 00 9F 24 00 00 00 00 00 00 00 00 00 
+C0 C6 2D 00 00 00 00 00 00 00 00 00 80 EE 36 00 
+00 00 00 00 00 00 00 00 40 16 40 00 00 00 00 00 
+00 00 00 00 40 16 40 00 00 00 00 00 00 00 00 00 
+C0 65 52 00 00 00 00 00 00 00 00 00 80 8D 5B 00 
+00 00 00 00</DefaultData>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Segment Run Mode Timer #0]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Segment Run Mode Timer #1]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Segment Run Mode Timer #2]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Segment Run Mode Timer #3]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Segment Run Mode Timer #4]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Segment Run Mode Timer #5]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Segment Run Mode Timer #6]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Segment Run Mode Timer #7]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Segment Run Mode Timer #8]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Segment Run Mode Timer #9]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Segment Run Mode Timer #10]]>
+</Comment>
+</Comments>
+<DefaultData Format="Decorated">
+<Array DataType="TIMER" Dimensions="11">
+<Element Index="[0]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[1]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="600000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[2]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1200000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[3]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1800000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[4]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2400000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[5]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="3000000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[6]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="3600000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[7]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="4200000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[8]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="4200000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[9]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="5400000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[10]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="6000000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ONS" DataType="BOOL" Dimensions="32" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[One Shot Bits]]>
+</Description>
+<DefaultData/>
+<DefaultData Format="Decorated">
+<Array DataType="BOOL" Dimensions="32" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+<Element Index="[7]" Value="0"/>
+<Element Index="[8]" Value="0"/>
+<Element Index="[9]" Value="0"/>
+<Element Index="[10]" Value="0"/>
+<Element Index="[11]" Value="0"/>
+<Element Index="[12]" Value="0"/>
+<Element Index="[13]" Value="0"/>
+<Element Index="[14]" Value="0"/>
+<Element Index="[15]" Value="0"/>
+<Element Index="[16]" Value="0"/>
+<Element Index="[17]" Value="0"/>
+<Element Index="[18]" Value="0"/>
+<Element Index="[19]" Value="0"/>
+<Element Index="[20]" Value="0"/>
+<Element Index="[21]" Value="0"/>
+<Element Index="[22]" Value="0"/>
+<Element Index="[23]" Value="0"/>
+<Element Index="[24]" Value="0"/>
+<Element Index="[25]" Value="0"/>
+<Element Index="[26]" Value="0"/>
+<Element Index="[27]" Value="0"/>
+<Element Index="[28]" Value="0"/>
+<Element Index="[29]" Value="0"/>
+<Element Index="[30]" Value="0"/>
+<Element Index="[31]" Value="0"/>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cur_Seg" DataType="BOOL" Dimensions="32" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Current Segment Boolean Array]]>
+</Description>
+<DefaultData/>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Segment 0 Active]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Segment 1 Active]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Segment 2 Active]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Segment 3 Active]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Segment 4 Active]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Segment 5 Active]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Segment 6 Active]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Segment 7 Active]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Segment 8 Active]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Segment 9 Active]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Segment 10 Active]]>
+</Comment>
+</Comments>
+<DefaultData Format="Decorated">
+<Array DataType="BOOL" Dimensions="32" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+<Element Index="[7]" Value="0"/>
+<Element Index="[8]" Value="0"/>
+<Element Index="[9]" Value="0"/>
+<Element Index="[10]" Value="0"/>
+<Element Index="[11]" Value="0"/>
+<Element Index="[12]" Value="0"/>
+<Element Index="[13]" Value="0"/>
+<Element Index="[14]" Value="0"/>
+<Element Index="[15]" Value="0"/>
+<Element Index="[16]" Value="0"/>
+<Element Index="[17]" Value="0"/>
+<Element Index="[18]" Value="0"/>
+<Element Index="[19]" Value="0"/>
+<Element Index="[20]" Value="0"/>
+<Element Index="[21]" Value="0"/>
+<Element Index="[22]" Value="0"/>
+<Element Index="[23]" Value="0"/>
+<Element Index="[24]" Value="0"/>
+<Element Index="[25]" Value="0"/>
+<Element Index="[26]" Value="0"/>
+<Element Index="[27]" Value="0"/>
+<Element Index="[28]" Value="0"/>
+<Element Index="[29]" Value="0"/>
+<Element Index="[30]" Value="0"/>
+<Element Index="[31]" Value="0"/>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="First_Scan" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[AOI First Scan Completed]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Range_Fault" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ST_Check_1" DataType="CONTROL" ExternalAccess="None">
+<Description>
+<![CDATA[Segment Time Input Low Limit Check]]>
+</Description>
+<DefaultData>00 00 00 00 0B 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="CONTROL">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="11"/>
+<DataValueMember Name="POS" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EM" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ER" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UL" DataType="BOOL" Value="0"/>
+<DataValueMember Name="IN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FD" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ST_Check_2" DataType="CONTROL" ExternalAccess="None">
+<Description>
+<![CDATA[Segment Time Input High Limit Check]]>
+</Description>
+<DefaultData>00 00 00 00 0B 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="CONTROL">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="11"/>
+<DataValueMember Name="POS" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EM" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ER" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UL" DataType="BOOL" Value="0"/>
+<DataValueMember Name="IN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FD" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="SHold_Tmr" DataType="TIMER" Dimensions="11" ExternalAccess="None">
+<Description>
+<![CDATA[Segment Hold Timers]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+D0 FF FF 7F 00 00 00 00 00 00 00 00 D0 FF FF 7F 
+00 00 00 00 00 00 00 00 D0 FF FF 7F 00 00 00 00 
+00 00 00 00 D0 FF FF 7F 00 00 00 00 00 00 00 00 
+D0 FF FF 7F 00 00 00 00 00 00 00 00 D0 FF FF 7F 
+00 00 00 00 00 00 00 00 D0 FF FF 7F 00 00 00 00 
+00 00 00 00 D0 FF FF 7F 00 00 00 00 00 00 00 00 
+D0 FF FF 7F 00 00 00 00 00 00 00 00 D0 FF FF 7F 
+00 00 00 00</DefaultData>
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[Segment Hold Timer 0]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Segment Hold Timer 1]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[Segment Hold Timer 2]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[Segment Hold Timer 3]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[Segment Hold Timer 4]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[Segment Hold Timer 5]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[Segment Hold Timer 6]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[Segment Hold Timer 7]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[Segment Hold Timer 8]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[Segment Hold Timer 9]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[Segment Hold Timer10]]>
+</Comment>
+</Comments>
+<DefaultData Format="Decorated">
+<Array DataType="TIMER" Dimensions="11">
+<Element Index="[0]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[1]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[2]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[3]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[4]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[5]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[6]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[7]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[8]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[9]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[10]">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483600"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Last_Seg" DataType="INT" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Last Segment 
+of Cycle]]>
+</Description>
+<DefaultData>00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[******
+Ramp and Soak Add On Instruction Logic
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[******
+AOI Run Command and Run Mode Logic
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(First_Scan)[XIC(Run_Cmd) XIO(Run_Mode) OTL(Run_Mode) ,XIO(Run_Cmd) [XIC(Run_Mode) XIC(Done) ,XIC(Initialize) ] OTU(Run_Mode) ];]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[******
+Check for Valid Input Data (Segment Timer Presets & Number of Segments)
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[RES(ST_Check_1) FSC(ST_Check_1,?,?,ALL,STime_SP[ST_Check_1.POS]<0.0) ,RES(ST_Check_2) FSC(ST_Check_2,?,?,ALL,STime_SP[ST_Check_2.POS]>35791.0) ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[[LES(Num_of_Seg,0) ,GRT(Num_of_Seg,10) ,XIC(ST_Check_1.FD) ,XIC(ST_Check_2.FD) ]OTE(Fault);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[******
+Initialize the AOI Timers and Reset the Current Segment to 0
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Initialize)XIO(Run_Cmd)ONS(ONS[31])[RES(SRun_Tmr[1]) RES(SRun_Tmr[2]) RES(SRun_Tmr[3]) RES(SRun_Tmr[4]) RES(SRun_Tmr[5]) ,RES(SRun_Tmr[6]) RES(SRun_Tmr[7]) RES(SRun_Tmr[8]) RES(SRun_Tmr[9]) RES(SRun_Tmr[10]) ,RES(SHold_Tmr[1]) RES(SHold_Tmr[2]) RES(SHold_Tmr[3]) RES(SHold_Tmr[4]) RES(SHold_Tmr[5]) ,RES(SHold_Tmr[6]) RES(SHold_Tmr[7]) RES(SHold_Tmr[8]) RES(SHold_Tmr[9]) RES(SHold_Tmr[10]) ,OTU(Cur_Seg[0]) OTU(Cur_Seg[1]) OTU(Cur_Seg[2]) OTU(Cur_Seg[3]) OTU(Cur_Seg[4]) OTU(Cur_Seg[5]) ,OTU(Cur_Seg[6]) OTU(Cur_Seg[7]) OTU(Cur_Seg[8]) OTU(Cur_Seg[9]) OTU(Cur_Seg[10]) ,MOV(0.0,SP_Out) MOV(0,Current_Seg) MOV(0.0,STime_Left) MOV(0.0,STime_Expired) ,FLL(0.0,SHold_Time[0],11) FLL(0.0,SRun_Time[0],11) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[******
+Calculate the Segment Timer Presets in msec from Time Array SPs in minutes and Turn Segment 0 On (Cur_Seg[0])
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Run_Mode)ONS(ONS[29])XIO(Fault)[CPT(SRun_Tmr[1].PRE,STime_SP[1]*60*1000) CPT(SRun_Tmr[2].PRE,STime_SP[2]*60*1000) CPT(SRun_Tmr[3].PRE,STime_SP[3]*60*1000) ,CPT(SRun_Tmr[4].PRE,STime_SP[4]*60*1000) CPT(SRun_Tmr[5].PRE,STime_SP[5]*60*1000) CPT(SRun_Tmr[6].PRE,STime_SP[6]*60*1000) ,CPT(SRun_Tmr[7].PRE,STime_SP[7]*60*1000) CPT(SRun_Tmr[8].PRE,STime_SP[8]*60*1000) ,CPT(SRun_Tmr[9].PRE,STime_SP[9]*60*1000) CPT(SRun_Tmr[10].PRE,STime_SP[10]*60*1000) ,OTL(Cur_Seg[0]) ];]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[******
+Segment 10 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[9].DN) XIC(Cur_Seg[9]) XIO(Done) [MOV(10,Current_Seg) ,OTU(Cur_Seg[9]) OTL(Cur_Seg[10]) ] ,XIO(Hold) XIC(Cur_Seg[10]) [RTO(SRun_Tmr[10],?,?) DIV(SRun_Tmr[10].ACC,60000.0,SRun_Time[10]) ,GRT(SRun_Tmr[10].PRE,1000) CPT(SP_Out,((SP_In[10]-SP_In[9])*SRun_Tmr[10].ACC/SRun_Tmr[10].PRE)+SP_In[9]) ,CPT(STime_Left,(SRun_Tmr[10].PRE-SRun_Tmr[10].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[10].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
+<![CDATA[******
+Segment 9 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[8].DN) XIC(Cur_Seg[8]) XIO(Done) [MOV(9,Current_Seg) ,OTU(Cur_Seg[8]) OTL(Cur_Seg[9]) ] ,XIO(Hold) XIC(Cur_Seg[9]) [RTO(SRun_Tmr[9],?,?) DIV(SRun_Tmr[9].ACC,60000.0,SRun_Time[9]) ,GRT(SRun_Tmr[9].PRE,1000) CPT(SP_Out,(SP_In[9]-SP_In[8])*SRun_Tmr[9].ACC/SRun_Tmr[9].PRE+SP_In[8]) ,CPT(STime_Left,(SRun_Tmr[9].PRE-SRun_Tmr[9].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[9].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Comment>
+<![CDATA[******
+Segment 8 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[7].DN) XIC(Cur_Seg[7]) XIO(Done) [MOV(8,Current_Seg) ,OTU(Cur_Seg[7]) OTL(Cur_Seg[8]) ] ,XIO(Hold) XIC(Cur_Seg[8]) [RTO(SRun_Tmr[8],?,?) DIV(SRun_Tmr[8].ACC,60000.0,SRun_Time[8]) ,GRT(SRun_Tmr[8].PRE,1000) CPT(SP_Out,((SP_In[8]-SP_In[7])*SRun_Tmr[8].ACC/SRun_Tmr[8].PRE)+SP_In[7]) ,CPT(STime_Left,(SRun_Tmr[8].PRE-SRun_Tmr[8].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[8].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[******
+Segment 7 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[6].DN) XIC(Cur_Seg[6]) XIO(Done) [MOV(7,Current_Seg) ,OTU(Cur_Seg[6]) OTL(Cur_Seg[7]) ] ,XIO(Hold) XIC(Cur_Seg[7]) [RTO(SRun_Tmr[7],?,?) DIV(SRun_Tmr[7].ACC,60000.0,SRun_Time[7]) ,GRT(SRun_Tmr[7].PRE,1000) CPT(SP_Out,((SP_In[7]-SP_In[6])*SRun_Tmr[7].ACC/SRun_Tmr[7].PRE)+SP_In[6]) ,CPT(STime_Left,(SRun_Tmr[7].PRE-SRun_Tmr[7].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[7].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[******
+Segment 6 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[5].DN) XIC(Cur_Seg[5]) XIO(Done) [MOV(6,Current_Seg) ,OTU(Cur_Seg[5]) OTL(Cur_Seg[6]) ] ,XIO(Hold) XIC(Cur_Seg[6]) [RTO(SRun_Tmr[6],?,?) DIV(SRun_Tmr[6].ACC,60000.0,SRun_Time[6]) ,GRT(SRun_Tmr[6].PRE,1000) CPT(SP_Out,((SP_In[6]-SP_In[5])*SRun_Tmr[6].ACC/SRun_Tmr[6].PRE)+SP_In[5]) ,CPT(STime_Left,(SRun_Tmr[6].PRE-SRun_Tmr[6].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[6].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[******
+Segment 5 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[4].DN) XIC(Cur_Seg[4]) XIO(Done) [MOV(5,Current_Seg) ,OTU(Cur_Seg[4]) OTL(Cur_Seg[5]) ] ,XIO(Hold) XIC(Cur_Seg[5]) [RTO(SRun_Tmr[5],?,?) DIV(SRun_Tmr[5].ACC,60000.0,SRun_Time[5]) ,GRT(SRun_Tmr[5].PRE,1000) CPT(SP_Out,((SP_In[5]-SP_In[4])*SRun_Tmr[5].ACC/SRun_Tmr[5].PRE)+SP_In[4]) ,CPT(STime_Left,(SRun_Tmr[5].PRE-SRun_Tmr[5].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[5].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[******
+Segment 4 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[3].DN) XIC(Cur_Seg[3]) XIO(Done) [MOV(4,Current_Seg) ,OTU(Cur_Seg[3]) OTL(Cur_Seg[4]) ] ,XIO(Hold) XIC(Cur_Seg[4]) [RTO(SRun_Tmr[4],?,?) DIV(SRun_Tmr[4].ACC,60000.0,SRun_Time[4]) ,GRT(SRun_Tmr[4].PRE,1000) CPT(SP_Out,((SP_In[4]-SP_In[3])*SRun_Tmr[4].ACC/SRun_Tmr[4].PRE)+SP_In[3]) ,CPT(STime_Left,(SRun_Tmr[4].PRE-SRun_Tmr[4].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[4].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[******
+Segment 3 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[2].DN) XIC(Cur_Seg[2]) XIO(Done) [MOV(3,Current_Seg) ,OTU(Cur_Seg[2]) OTL(Cur_Seg[3]) ] ,XIO(Hold) XIC(Cur_Seg[3]) [RTO(SRun_Tmr[3],?,?) DIV(SRun_Tmr[3].ACC,60000.0,SRun_Time[3]) ,GRT(SRun_Tmr[3].PRE,1000) CPT(SP_Out,((SP_In[3]-SP_In[2])*SRun_Tmr[3].ACC/SRun_Tmr[3].PRE)+SP_In[2]) ,CPT(STime_Left,(SRun_Tmr[3].PRE-SRun_Tmr[3].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[3].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Comment>
+<![CDATA[******
+Segment 2 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SRun_Tmr[1].DN) XIC(Cur_Seg[1]) XIO(Done) [MOV(2,Current_Seg) ,OTU(Cur_Seg[1]) OTL(Cur_Seg[2]) ] ,XIO(Hold) XIC(Cur_Seg[2]) [RTO(SRun_Tmr[2],?,?) DIV(SRun_Tmr[2].ACC,60000.0,SRun_Time[2]) ,GRT(SRun_Tmr[2].PRE,1000) CPT(SP_Out,((SP_In[2]-SP_In[1])*SRun_Tmr[2].ACC/SRun_Tmr[2].PRE)+SP_In[1]) ,CPT(STime_Left,(SRun_Tmr[2].PRE-SRun_Tmr[2].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[2].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Comment>
+<![CDATA[******
+Segment 1 Timing and Setpoint Calculation
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Cur_Seg[0]) XIO(Done) [MOV(1,Current_Seg) ,OTU(Cur_Seg[0]) OTL(Cur_Seg[1]) ] ,XIO(Hold) XIC(Cur_Seg[1]) [RTO(SRun_Tmr[1],?,?) DIV(SRun_Tmr[1].ACC,60000.0,SRun_Time[1]) ,GRT(SRun_Tmr[1].PRE,1000) CPT(SP_Out,((SP_In[1]-SP_In[0])*SRun_Tmr[1].ACC/SRun_Tmr[1].PRE)+SP_In[0]) ,CPT(STime_Left,(SRun_Tmr[1].PRE-SRun_Tmr[1].ACC)/60000.0) ,CPT(STime_Expired,SRun_Tmr[1].ACC/60000.0) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Text>
+<![CDATA[[MOV(SRun_Time[1],Total_Run) ADD(Total_Run,SRun_Time[2],Total_Run) ADD(Total_Run,SRun_Time[3],Total_Run) ADD(Total_Run,SRun_Time[4],Total_Run) ,ADD(Total_Run,SRun_Time[5],Total_Run) ADD(Total_Run,SRun_Time[6],Total_Run) ADD(Total_Run,SRun_Time[7],Total_Run) ADD(Total_Run,SRun_Time[8],Total_Run) ,ADD(Total_Run,SRun_Time[9],Total_Run) ADD(Total_Run,SRun_Time[10],Total_Run) ];]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Comment>
+<![CDATA[******
+Ramp and Soak AOI Sequence Done
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[[LIM(0,Num_of_Seg,11) MOV(Num_of_Seg,Last_Seg) ,LIM(11,Num_of_Seg,0) MOV(1,Last_Seg) ,XIC(SRun_Tmr[Last_Seg].DN) OTE(Done) ];]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Comment>
+<![CDATA[******
+Cycle Hold Time Logic
+******
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Run_Mode)XIC(Hold)[XIC(Cur_Seg[1]) RTO(SHold_Tmr[1],?,?) DIV(SHold_Tmr[1].ACC,60000.0,SHold_Time[1]) ,XIC(Cur_Seg[2]) RTO(SHold_Tmr[2],?,?) DIV(SHold_Tmr[2].ACC,60000.0,SHold_Time[2]) ,XIC(Cur_Seg[3]) RTO(SHold_Tmr[3],?,?) DIV(SHold_Tmr[3].ACC,60000.0,SHold_Time[3]) ,XIC(Cur_Seg[4]) RTO(SHold_Tmr[4],?,?) DIV(SHold_Tmr[4].ACC,60000.0,SHold_Time[4]) ,XIC(Cur_Seg[5]) RTO(SHold_Tmr[5],?,?) DIV(SHold_Tmr[5].ACC,60000.0,SHold_Time[5]) ,XIC(Cur_Seg[6]) RTO(SHold_Tmr[6],?,?) DIV(SHold_Tmr[6].ACC,60000.0,SHold_Time[6]) ,XIC(Cur_Seg[7]) RTO(SHold_Tmr[7],?,?) DIV(SHold_Tmr[7].ACC,60000.0,SHold_Time[7]) ,XIC(Cur_Seg[8]) RTO(SHold_Tmr[8],?,?) DIV(SHold_Tmr[8].ACC,60000.0,SHold_Time[8]) ,XIC(Cur_Seg[9]) RTO(SHold_Tmr[9],?,?) DIV(SHold_Tmr[9].ACC,60000.0,SHold_Time[9]) ,XIC(Cur_Seg[10]) RTO(SHold_Tmr[10],?,?) DIV(SHold_Tmr[10].ACC,60000.0,SHold_Time[10]) ];]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Text>
+<![CDATA[[MOV(SHold_Time[1],Total_Hold) ADD(Total_Hold,SHold_Time[2],Total_Hold) ADD(Total_Hold,SHold_Time[3],Total_Hold) ADD(Total_Hold,SHold_Time[4],Total_Hold) ,ADD(Total_Hold,SHold_Time[5],Total_Hold) ADD(Total_Hold,SHold_Time[6],Total_Hold) ADD(Total_Hold,SHold_Time[7],Total_Hold) ADD(Total_Hold,SHold_Time[8],Total_Hold) ,ADD(Total_Hold,SHold_Time[9],Total_Hold) ADD(Total_Hold,SHold_Time[10],Total_Hold) ];]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Text>
+<![CDATA[ADD(Total_Run,Total_Hold,Total_Cycle)MOD(Total_Cycle,60,Cycle_Min)CPT(Cycle_Hour,(Total_Cycle-Cycle_Min)/60);]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Text>
+<![CDATA[OTE(First_Scan);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>
