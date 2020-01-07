@@ -1,6 +1,6 @@
 """
 Purpose:  verify that Gaussian-distribution random number data in
-          file Compact_AOI_Test.L5X are indeed normal
+          file Random_AOI_Test_01042020.L5X are indeed normal
 
 
 Usage:
@@ -9,32 +9,33 @@ Usage:
 
     OR
 
-  python parse_gng_data_run_anderson_darling.py < Compact_AOI_Test.L5X
+  python parse_gng_data_run_anderson_darling.py < Random_AOI_Test_01042020.L5X
 
 
-Expected results for Compact_AOI_Test.L5X*
+Expected results for Random_AOI_Test_01042020.L5X*
 
-  {'mean': 0.00107577450613001, 'stddev': 0.9750078972656193}
-  {'anderson': AndersonResult(statistic=0.24714887810432629
+  {'mean': -0.004702179917731991, 'stddev': 0.9655188438278086, 'count': 1000}
+  {'anderson': AndersonResult(statistic=0.40373008024221235
   , critical_values=array([0.574, 0.653, 0.784, 0.914, 1.088])
   , significance_level=array([15. , 10. ,  5. ,  2.5,  1. ]))
   }
 
-* MD5 checksum = e585178251072c8bb8bae02bf7d2960eA)
+* MD5 checksum = 5b58f62f887bfc3990e56775c39e226c)
 
 
-Sample of data from Compact_AOI_Test.L5X:
+Sample of data from Random_AOI_Test_01042020.L5X
 
   [...]
-  <Array DataType="REAL" Dimensions="1000" Radix="Float">^M
-  <Element Index="[0]" Value="-0.3287957"/>^M
-  <Element Index="[1]" Value="-0.43335447"/>^M
-  <Element Index="[2]" Value="0.5401235"/>^M
-  <Element Index="[3]" Value="0.97914433"/>^M
-  <Element Index="[4]" Value="0.124257356"/>^M
+  <Array DataType="REAL" Dimensions="1000" Radix="Float">
+  <Element Index="[0]" Value="-0.035985377"/>
+  <Element Index="[1]" Value="1.3390797"/>
+  <Element Index="[2]" Value="-0.39448842"/>
+  <Element Index="[3]" Value="0.74102545"/>
+  <Element Index="[4]" Value="-0.93660265"/>
   [...]
-  <Element Index="[998]" Value="1.5655007"/>
-  <Element Index="[999]" Value="-1.1983824"/>
+  <Element Index="[998]" Value="0.76051974"/>
+  <Element Index="[999]" Value="0.7752371"/>
+  [...]
   </Array>
 
 
