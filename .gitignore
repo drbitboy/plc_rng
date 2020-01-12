@@ -4,3 +4,5 @@ x.*
 *_BAK*.RSS
 plc_programs/MicroLogix/Gaussian_number_generator*.RSS
 plc_programs/MicroLogix/Gaussian_number_generator*.pdf
+plc_programs/MicroLogix/Natural_logarithm_alternate_shift_algorithm*.pdf
+plc_programs/MicroLogix/Natural_logarithm_alternate_shift_algorithm*.RSS
