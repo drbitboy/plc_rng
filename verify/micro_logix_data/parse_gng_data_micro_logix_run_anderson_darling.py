@@ -9,18 +9,18 @@ Usage:
 
     OR
 
-  python parse_gng_data_run_anderson_darling.py < Compact_AOI_Test.L5X
+  python parse_gng_data_run_anderson_darling.py < Gaussian_number_generator.htm
 
 
-Expected results for GNG_save_data_view_halted.htm
+Expected results for Gaussian_number_generator.htm*
 
-{'mean': -0.07299352643229169, 'stddev': 1.0703175443958814, 'count': 768}
-{'anderson': AndersonResult(statistic=9.080452969401904
-           , critical_values=array([0.573, 0.653, 0.783, 0.913, 1.086])
+{'mean': 0.003964246432714841, 'stddev': 1.0238125757408072, 'count': 1024}
+{'anderson': AndersonResult(statistic=0.32942194720658335
+           , critical_values=array([0.574, 0.653, 0.784, 0.914, 1.088])
            , significance_level=array([15. , 10. ,  5. ,  2.5,  1. ]))
            }
 
-* MD5 checksum = e3888dd6dd950002ab92d0454ae0c103
+* MD5 checksum = b5a2acef9e84b129ff1875dbbecde992
 
 
 Sample of data from GNG_save_data_view_halted.htm:
